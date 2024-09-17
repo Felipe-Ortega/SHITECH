@@ -1,4 +1,4 @@
-#SHITECH#
+# SHITECH #
 
 O projeto consiste em desenvolver e implementar um sistema de análise e coleta de dados de temperatura e umidade na produção de cogumelos, especificamente Shimeji (Pleurotus eryngii) e Champignon de Paris (Agaricaceae). Como objetivo temos o de melhorar a eficiência do cultivo através do controle preciso de variáveis ambientais. O sistema incluirá uma ferramenta web com acesso restrito ao cliente, permitindo a visualização e análise dos dados coletados em tempo real.
 

@@ -1,0 +1,130 @@
+body{
+    background-color: #EEEBE8;
+    margin: 0;
+}
+
+.logo{
+    background-image: url(./images/logoshitech.png);
+    width: 4rem;
+    height: 4rem;
+    background-size: cover;
+}
+
+.icone_pessoas{
+    background-image: url(./images/icone.png);
+    width: 3rem;
+    height: 3rem;
+    background-size: cover;
+}
+.fungos{
+    background-image: url(./images/fungos.png);
+    width: 55%;
+    height: 100%;
+}
+.div_nav_bar{
+    margin-inline: auto;
+    background-color: #64594a;
+    height: 40px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-top: 1rem;
+}
+#search{
+    height: 20px;
+}
+.border {
+    border-radius: 50px;
+}
+.lateral_direita_nav{
+    display: flex;
+    margin-top: auto;
+}
+.bem_vindo{
+    color: white;
+}
+
+.nossos_dados{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.produto_disponivel{
+    flex-direction: column;
+    background-color: #CFD0BD;
+    height: 33em;
+    display: flex;
+}
+.titulo{
+    text-align: center;
+    padding: 10px;
+}
+.div_eficiencia{
+    width: 35%;
+}
+.controle_efi_fungos{
+    display: flex;
+    justify-content: space-around;
+}
+.contato{
+    width: 40%;
+    height: 70px;
+    background-color: #64594a;
+    margin-inline: auto;
+    margin-top: 2rem;
+    text-align: center;
+
+}
+.div_quem_proposito{
+    display: flex;
+    margin: 3%;
+    justify-content: space-around;
+}
+.div_meio_home{
+    width: 40%;
+}
+
+.tit_h3{
+    width: 80%;
+}
+.produtor_fungos{
+    flex-direction: column;
+    background-color: #CFD0BD;
+    padding: 2%;
+    display: flex;
+    align-items: center;
+}
+
+.inputs_calculadora_financeira{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.divs_calculadoras{
+    width: 30%;
+    text-align: center;
+}
+.botao{
+    padding: 10%;
+    padding-inline: 30px;
+    background-color: #936639;
+    border: 0;
+    color: white;
+}
+.botao_simular{
+    text-align: center;
+    margin-top: 3%;
+}
+.footer{
+    margin-top: 10%;
+    background-color: #535B44;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+.h3_endereco{
+    margin: 0;
+}

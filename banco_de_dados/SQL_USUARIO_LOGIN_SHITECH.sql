@@ -44,6 +44,31 @@ INSERT INTO Login VALUES
 
 SELECT u.razaoSocial AS 'Razão Social', u.cnpj AS 'CNPJ', u.telefone AS 'Telefone', l.email AS 'Email', l.dtAcesso FROM Usuario AS u JOIN Login AS l
     ON idUsuario = fkUsuario
-    -- WHERE email = emailInformado AND senha = senhaInformada. Este comando está comentado pois nós fomos conversando com o Vitor e
-    -- o Leo e caminhamos para um código como se já houvesse uma comparação JS.
 ;
+
+CREATE TABLE produto(
+id INT PRIMARY KEY AUTO_INCREMENT,
+tipo CHAR(10),
+CONSTRAINT chkTipo CHECK (tipo in('Shimeji', 'Champignon')),
+dia date, -- Acho que podemos juntar em datetime
+horario TIME, -- Acho que podemos juntar em datetime
+temperatura_celcius DECIMAL(5,2),
+umidade DECIMAL(5,2)	
+);
+
+INSERT INTO produto (tipo, dia, horario, temperaturaºC, umidade) VALUES
+('Champignon','2024-09-01','08:00:00',22.5, 85.0),
+('Champignon','2024-09-01','08:30:00',23.0, 80.0),
+('Champignon','2024-09-01','09:00:00',21.5, 82.0),
+('Shimeji','2024-09-02','14:30:00',22.0, 83.0),
+('Shimeji','2024-09-02','15:00:00',23.5, 79.0),
+('Shimeji','2024-09-02','15:30:00',21.3, 83.0),
+('Champignon','2024-09-03','09:00:00',22.0, 83.0),
+('Champignon','2024-09-03','09:30:00',22.5, 83.0),
+('Champignon','2024-09-03','10:00:00',23.0, 83.0),
+('Shimeji','2024-09-04','12:00:00',22.7, 83.0),
+('Shimeji','2024-09-04','12:30:00',23.1, 83.0),
+('Shimeji','2024-09-04','13:00:00',21.0, 83.0)
+;
+
+

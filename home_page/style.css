@@ -250,6 +250,7 @@ body{
     flex-direction: row;
     font-size: 20px; 
     text-align: center;
+    align-items: center;
 }
 
 .itens_footer{
@@ -272,4 +273,16 @@ body{
     background-size: cover;
     
     
+}
+
+.fa-solid{
+    padding: 1vh;
+}
+.fa-brands{
+    padding: 1vh;
+}
+
+
+.itens_footer{
+    text-align: center;
 }

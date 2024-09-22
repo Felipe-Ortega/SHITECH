@@ -4,26 +4,26 @@ body{
 }
 
 .logo{
-    background-image: url(./images/logoshitech.png);
-    width: 4rem;
-    height: 4rem;
+    background-image: url(./images/logo2.png);
+    width: 65px;
+    height: 65px;
     background-size: cover;
 }
 
-.icone_pessoas{
+/*.icone_pessoas{
     background-image: url(./images/icone.png);
     width: 3rem;
     height: 3rem;
     background-size: cover;
-}
+}*/
 .fungos{
     background-image: url(./images/fungos.png);
-    width: 55%;
-    height: 100%;
+    width: 755px;
+    height: 410px;
 }
 .div_nav_bar{
     margin-inline: auto;
-    background-color: #64594a;
+    background-color: rgba(166, 138, 100, 0.7);
     height: 40px;
     width: 60%;
     display: flex;
@@ -31,12 +31,22 @@ body{
     justify-content: space-between;
     padding: 10px;
     margin-top: 1rem;
+    color: white;
 }
+
 #search{
-    height: 20px;
+    height: 20px;   
+    width: 100px;   
 }
+
+.icone_entrar{
+    margin-left: 15px;
+    font-size: 24px;
+
+}
+
 .border {
-    border-radius: 50px;
+    border-radius: 25px;
 }
 .lateral_direita_nav{
     display: flex;
@@ -44,40 +54,84 @@ body{
 }
 .bem_vindo{
     color: white;
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-weight: 300;
+    text-align: right;
+}
+
+.entrar{
+    color: rgba(127, 79, 36, 0.7);
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
 }
 
 .nossos_dados{
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-weight: 300;
+    font-size: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 50px;
+    padding: 2rem;
+
 }
 .produto_disponivel{
     flex-direction: column;
     background-color: #CFD0BD;
-    height: 33em;
+    height: 45rem;
     display: flex;
+    
 }
 .titulo{
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-weight: 400;
+    font-size: 45px;
     text-align: center;
     padding: 10px;
 }
 .div_eficiencia{
     width: 35%;
+    font-family: "Roboto", sans-serif;
+    font-size:  25px;
+    text-align: center;
+   
+}
+
+.titulo_corpo {
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-weight: 700;
+    font-size: 60px;
 }
 .controle_efi_fungos{
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 .contato{
+    font-family: "Roboto", sans-serif; 
+    font-size: 20px;
+    font-weight: bold;
     width: 40%;
-    height: 70px;
-    background-color: #64594a;
+    height: 50px;
+    background-color: rgba(166, 138, 100, 1);
     margin-inline: auto;
     margin-top: 2rem;
     text-align: center;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
 
 }
+
+.icone_user {
+    font-size: 40px;
+}
+
+
 .div_quem_proposito{
     display: flex;
     margin: 3%;
@@ -85,10 +139,48 @@ body{
 }
 .div_meio_home{
     width: 40%;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size:  25px;
+    text-align: center;
+}
+
+.titulo_meio{
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-weight: 300;
+    font-size: 60px;
+
+}
+
+.simulacao{
+    text-align: center;
+}
+
+.titulo_simulacao{
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-weight: bold;
+    font-size: 45px;
+    color:rgba(147, 102, 57, 1);
+}
+
+.titulo_simulacao2{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 35px;
+    color: rgba(166, 138, 100, 1)
 }
 
 .tit_h3{
     width: 80%;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 25px;
+}
+
+.tit_h3_grande{
+    color: rgba(147, 102, 57, 1);
+    font-weight: bold;
+
 }
 .produtor_fungos{
     flex-direction: column;
@@ -98,10 +190,24 @@ body{
     align-items: center;
 }
 
+.titulo_calculadora{
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    color:#936639;
+}
+
 .inputs_calculadora_financeira{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.ipts_calculadora{
+    width: 80%;
+    height: 25px;
+    border-color: #936639;
+    border-spacing: 8px;
 }
 .divs_calculadoras{
     width: 30%;
@@ -113,6 +219,8 @@ body{
     background-color: #936639;
     border: 0;
     color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
 }
 .botao_simular{
     text-align: center;
@@ -124,6 +232,29 @@ body{
     display: flex;
     justify-content: space-around;
     color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    text-align: left;
+    
+}
+
+.titulo_footer{
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-weight:400;
+    font-size: 35px;
+    text-align: center;  
+}
+
+.icone_texto_footer{
+    display: flex;  
+    flex-direction: row;
+    font-size: 20px; 
+    text-align: center;
+}
+
+.itens_footer{
+    display: flex;
+    flex-direction: column;
 }
 .h3_endereco{
     margin: 0;

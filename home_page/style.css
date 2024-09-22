@@ -5,8 +5,8 @@ body{
 
 .logo{
     background-image: url(./images/logo2.png);
-    width: 65px;
-    height: 65px;
+    width: 70px;
+    height: 55px;
     background-size: cover;
 }
 
@@ -258,4 +258,18 @@ body{
 }
 .h3_endereco{
     margin: 0;
+}
+
+#logofooter{
+    background-color: #535B44;
+    display: flex;
+    justify-content: center;
+}
+.logo_footer{
+    background-image: url(./images/logo2.png);
+    width: 195px;
+    height: 175px;
+    background-size: cover;
+    
+    
 }

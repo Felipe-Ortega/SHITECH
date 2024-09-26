@@ -76,7 +76,7 @@ body{
 .produto_disponivel{
     flex-direction: column;
     background-color: #CFD0BD;
-    height: 45rem;
+    padding: 30px;
     display: flex;
     
 }

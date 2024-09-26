@@ -3,6 +3,10 @@
 
 body {
     background-color: #A68A64;
+    display: flex;
+    justify-content: center;
+    padding: 70px;
+
 }
 
 .corpo {
@@ -19,7 +23,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
+    padding-top: 30px;
 }
 
 .titulo {
@@ -37,10 +41,10 @@ body {
 }
 
 .logo {
-    background-image: url('../home_page/images/logoshitech.PNG');
+    background-image: url('../images/logo_marrom.png');
     background-size: cover;
-    width: 150px;
-    height: 150px;
+    width: 170px;
+    height: 140px;
 }
 
 .inputs {
@@ -50,8 +54,7 @@ body {
 }
 
 input {
-    border-color: #936639;
-    border-spacing: 10px;
+    border: 2px solid #936639;
     height: 30px;
     width: 350px;
     border-radius: 5px;
@@ -64,4 +67,13 @@ input {
     width: 90px;
     border-radius: 100px;
     border: 0;
+}
+
+.links {
+    padding-top: 10px;
+    text-align: center;
+    color:#936639;
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
 }

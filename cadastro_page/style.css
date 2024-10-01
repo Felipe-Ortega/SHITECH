@@ -1,0 +1,88 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+body {
+    background-color: #A68A64;
+    background-size: cover;
+}
+.cadastro .container {
+    height: 750px;
+    width: 800px;
+    border-radius: 30px;
+    background-color: #EAE7E3;
+    position: relative;
+    margin: auto;
+    margin-top: 80px;
+
+}
+
+.cadastro .container .card-cadastro   {
+    width: 100%;
+    color: #936639;
+}
+.cadastro .container .card-cadastro img {
+    height: 13vh;
+    display: flex;
+    position: relative;
+    margin-left: 41.5%;
+    margin-bottom: 10px;
+
+}
+
+.cadastro .container .campo input {
+    height: 45px;
+    width: 78%;
+    border: solid #936639 0.3px;
+    border-radius: 12px;
+    display: flex;
+    margin-top: 5px;
+    margin-left: 10%;
+    margin-bottom: 16px;
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+    font-size: 17px;
+    background-color: #EAE7E3;
+}
+
+.cadastro .container .campo span {
+    font-weight: 750;
+    font-size: 17px;
+    margin-left: 80px;
+    display: flex;
+    font-family: 'Barlow', sans-serif;
+}
+
+.cadastro .container .formulario .possui {
+    font-weight: 750;
+    font-size: 12px;
+    margin-left: 42%;
+    margin-top: -5px;
+    display: flex;
+    position: relative;
+    font-family: 'Barlow', sans-serif;
+}
+
+.cadastro .container .campo {
+    position: relative;
+    top: -25px;
+}
+
+.cadastro .container .formulario .botao {
+    height: 40px;
+    width: 150px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 15px;
+    background-color: #936639;
+    border: none;
+    border-radius: 100px;
+    margin-left: 40%; 
+    position: relative;
+    top: -10px;
+    font-family: 'Barlow', sans-serif;
+}
+
+.cadastro .container .formulario .botao:hover {
+    background-color: #75522e;
+}

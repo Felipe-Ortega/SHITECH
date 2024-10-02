@@ -8,7 +8,7 @@
 
   <title>SHITech | Cadastro</title>
 
-  <link rel="stylesheet" href="./" />
+  <link rel="stylesheet" href="../css/style.css" />
   <!-- <link rel="icon" href="assets/icon/favicon2.ico" /> -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
@@ -19,7 +19,7 @@
 
     <div class="container">
       <div class="card card-cadastro">
-        <img src="./logo.png" alt="Logo SHITech">
+        <img src="../images/logo.png" alt="Logo SHITech">
         <div class="formulario">
            <div class="campo">
             <span>Razão Social:</span>
@@ -31,11 +31,11 @@
           </div>
           <div class="campo">
             <span>Telefone:</span>
-            <input id="telefone_input" type="number" placeholder="Insira seu telefone sem espaços, traços e parenteses" />
+            <input id="telefone_input" type="text" maxlength="11" placeholder="Insira seu telefone sem espaços, traços e parenteses" />
           </div>
           <div class="campo">
             <span>CNPJ:</span>
-            <input id="cnpj_input" type="text" placeholder="**.***.***/****-**" />
+            <input id="cnpj_input" type="text" maxlength="14" placeholder="**.***.***/****-**" />
           </div>
           <div class="campo">
             <span>Senha:</span>
@@ -67,6 +67,7 @@ function cadastrar(){
   var cnpj = cnpj_input.value;
   var senha = senha_input.value;
   var confirmacao_senha = confirmacao_senha_input.value;
+  var mensagemErro = '';
 
   // INICIA UM CONTADOR DE VERIFICAÇÕES QUE SERÁ USADO PARA REALIZAR O CADASTRO
   var verificacoes = 0;
@@ -75,45 +76,53 @@ function cadastrar(){
   // email tem que conter @ e terminar .com ou .br
 
 if (email.includes('@') && (email.endsWith('.com') || email.endsWith('.br'))){
-  console.log(email)
   verificacoes++;
+}
+else{
+  mensagemErro += 'Email inválido.\n'
 }
 
   // telefone tem que ter 10 ou 11 digitos
   
 if(telefone.length < 12 && telefone.length > 9){
-  console.log(telefone)
   verificacoes++;
-
+}
+else{
+  mensagemErro += 'Telefone inválido.\n'
 }
 
   // cnpj tem que ter 14 digitos
 
 if(cnpj.length == 14){
-  console.log(cnpj)
   verificacoes++;
-
+}
+else{
+  mensagemErro += 'CNPJ inválido.\n'
 }
 
   // senha tem que ter no mínimo um caráctere maiúsculo, um minúsculo, um número e um dos seguintes simbolos (. ! _ - $)
   
 if((senha.includes('.') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) && senha.toUpperCase() != senha && senha.toLowerCase() != senha){
-  console.log(senha)
   verificacoes++;
-
+}
+else{
+  mensagemErro += 'Senha inválida.\n'
 }
 
   // confirmação tem que ser igual senha
 if(confirmacao_senha == senha){
-  console.log(confirmacao_senha)
   verificacoes++;
-
+}
+else{
+  mensagemErro += 'As senhas não são compátiveis.\n'
 }
 
 
-if(verificacoes == 6){
-  alert('Login Realizado!')
-  window.location.href = 'https://stackoverflow.com/questions/503093/how-do-i-redirect-to-another-webpage';
+if(verificacoes == 5){
+  alert("Login Realizado.")
+}
+else{
+  alert(mensagemErro)
 }
 }
 

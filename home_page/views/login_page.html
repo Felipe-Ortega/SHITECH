@@ -42,11 +42,26 @@
 
 <script>
 
-    function logar(){
-        var email = ipt_email.value;
-        var senha = ipt_senha.value;
+function logar(){
+    var email = ipt_email.value;
+    var senha = ipt_senha.value;
+    var erros = 0;
+    var mensagemErro = '';
 
-        
+    if ((email.includes('@') && (email.endsWith('.com') || email.endsWith('.br'))) == false){
+        mensagemErro += 'Email inválido.\n';
+        erros++;
     }
+    if(((senha.includes('.') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) && senha.toUpperCase() != senha && senha.toLowerCase() != senha) == false){
+        mensagemErro += 'Senha inválida.\n'
+        erros++;
+    }
+    if(erros == 0){
+        alert("Login Realizado.");
+    }
+    else{
+        alert(mensagemErro);
+    }
+}
 
 </script>

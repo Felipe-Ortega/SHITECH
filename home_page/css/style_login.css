@@ -77,3 +77,11 @@ input {
     font-size: 13px;
     font-weight: 500;
 }
+
+.botao_entrar:hover{
+    background-color: #75522e;
+}
+
+a:hover{
+    background-color: #75522e;
+}

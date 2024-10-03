@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+
+<body>
+    <h1>Shitech </h1>
+    <h2>Soluções em cultivo de Fungos.</h2>
+
+    <p>Produtor de Fungos, <br>
+        Sabia que a Universidade Federal do Rio Grande do Sul (UFRGS) realizou uma pesquisa em 2021 que demonstrou
+        que<b> UMA DAS PRINCIPAIS CAUSAS DE PERDA DE COLHEITA DE FUNGOS SÃO FATORES RELACIONADOS A TEMPERATURA E
+            UMIDADE?</b></p>
+
+    <p>Problemas relacionados a <b>TEMPERATURA</b> podem causam em média <b>25% DE PERDA DA COLHEITA</b>, e Problemas
+        relacionados <b>UMIDADE</b> podem causam em média <b>30% DE PERDA DA COLHEITA</b> </p>
+
+    <p>Em alguns casos, má gestão destes fatores pode causar <b>PERCA DA COLHEITA INTEIRA!</b> </p>
+
+    <p>Quer colocar sua colheita em <b>RISCO</b>? <br> Acreditamos que não!</p>
+
+    <h3>Simule com a gente!</h3>
+    <h4>Calculadora Financeira</h4>
+
+    Informe quantos quilos você colhe por safra:
+    <input type="number" id="ipt_KgColheita">
+    <br>
+
+    Informe quantos dias para a sua colheita :
+    <input type="text" id="ipt_tempo_producao">
+    <br>
+
+    Informe o preço (por kg) de seus fungos:
+    <input type="number" id="ipt_valorColheita">
+    <br>
+
+    Informe o tamanho da área (m²) do local de cultivo:
+    <input type="text" id="ipt_area">
+    <br>
+
+    <button onclick="calcular()">Simular</button>
+
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+
+
+<script>
+
+    function calcular() {
+        var quilo_plantado = Number(ipt_KgColheita.value);
+        var tempo_producao = Number(ipt_tempo_producao.value);
+        var preco = Number(ipt_valorColheita.value);
+        var area = Number(ipt_area.value);
+
+        // Calculo Tempo (40% de Eficiência)
+        var tempo_reduzido = (tempo_producao * 0.4)
+        var tempo_reduzido_anual = 365 / tempo_reduzido; // Quantidade de colheita por ano (Com sistema Shitech)
+
+        var receita = quilo_plantado * preco; //uma safra
+
+        var receita_por_ano = (365 / tempo_producao) * receita;
+        var receita_por_ano_shitech = tempo_reduzido_anual * receita;
+
+        var lucro_anual_shitech = receita_por_ano_shitech - receita_por_ano; // Valor de diferença as duas Receitas Anuais
+
+        // Custo de Serviço
+        var qtd_sensor = area / 50; // 50 = 50m² (Raio abrangente do sensor)
+        var custo_instalacao = 600;
+        var custo_manutençao_trimestre = (qtd_sensor * 150) + 30; // 30 = Conjunto Protoboard + Arduíno UNO R3
+
+        // Prejuizo & Lucro
+        var prejuizoTemperatura = receita * 0.25; // 25% da Receita
+        var prejuizoUmidade = receita * 0.3; // 30% da Receita
+
+
+        div_mensagem.innerHTML = `<br><b>Devido a problemas de temperatura, sua produção pode ter <spam style="color: red;"><b>PREJUIZO DE ${prejuizoTemperatura} REAIS!</b></spam>  <br>
+
+        <p>Devido a problemas de umidade, sua produção pode ter <spam style="color: red;"> <b>PREJUIZO DE ${prejuizoUmidade} REAIS!</b></spam> <br></p>
+
+        <p>Caso perca a colheita inteira, terá <spam style="color: red;"> <b>PREJUIZO DE ${receita} REAIS!</b></spam> <br></p>
+
+        Com a solução da Shitech é possível diminuir o tempo de colheita em <spam style="color: green;">${tempo_reduzido} DIAS</spam><br>
+
+        <p>Sua receita anual é de <spam style="color: green">${receita_por_ano} REAIS</spam>, com a solução da shitech é possível transformar a receita para <spam style="color: green">${receita_por_ano_shitech} REAIS</spam></p>
+
+        O investimento para instalação vai ser <b style="color: orange">R$${custo_instalacao}</b> e o custo de manutenção trimestral é calculado com base na quantidade de sensores em sua área de produção (m²), resultando em <b style="color: orange">R$${custo_manutençao_trimestre}</b> a cada três meses.<br><br> 
+
+        Quer ficar a frente no mercado?! Contrate a Shitech AGORA!!!
+        `
+    }
+
+</script>

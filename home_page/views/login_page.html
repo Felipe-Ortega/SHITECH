@@ -48,7 +48,7 @@ function logar(){
     var erros = 0;
     var mensagemErro = '';
 
-    if ((email.includes('@') && (email.endsWith('.com') || email.endsWith('.br'))) == false){
+    if ((email.includes('@') && (email.endsWith('.com') || email.endsWith('.br')) && email.length > 10) == false){
         mensagemErro += 'Email inválido.\n';
         erros++;
     }

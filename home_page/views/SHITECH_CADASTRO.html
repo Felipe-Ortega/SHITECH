@@ -99,9 +99,15 @@ else{
   mensagemErro += 'CNPJ inválido.\n'
 }
 
-  // senha tem que ter no mínimo um caráctere maiúsculo, um minúsculo e um dos seguintes simbolos (. ! _ - $)
+  // senha tem que ter no mínimo um caráctere maiúsculo, um número, um minúsculo e um dos seguintes simbolos (. ! _ - $)
 
+
+  // variável que armazena se o texto contém numero ou não
+  
 var contem_numero = false;
+
+
+// loop que passa por cada dígito do texto e verifica se é um número ou não.
 
 for(i = 0; i < senha.length; i++){
   if(!isNaN(senha[i])){

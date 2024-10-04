@@ -60,15 +60,11 @@
         var receita = producao_anual * preco;
         var receita_lucro = receita + (receita * 0.207);
 
-        mensagem += ` <br> Com a solução da SHITECH, a Receita Anual da sua empresa pode ir de R$${receita.toFixed(2)} para R$${receita_lucro.toFixed(2)} e seu tempo de produção de ${safra} safras pode ir de ${dias_totais} dias para ${producao_otimizada.toFixed(0)} dias.`
+        mensagem += ` <br> A solução da SHITECH oferece a possibilidade de aumentar a Receita Anual da sua empresa de R$${receita.toFixed(2)} para R$${receita_lucro.toFixed(2)}. Com ela, você pode otimizar o tempo de produção de ${safra} safras, reduzindo de ${dias_totais} dias para ${producao_otimizada.toFixed(0)} dias.`
 
         }
-        // frases: A SHITECH pode ajudar a sua empresa a gerar uma receita anual de $... 
-        // Aumente sua receita anual de $... para $... com a solução SHITECH
-        // 
 
         div_mensagem.innerHTML = mensagem
 
     }
-    
 </script>

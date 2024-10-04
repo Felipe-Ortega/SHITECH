@@ -26,6 +26,9 @@
     Informe o preço (por kg) de seus fungos:
     <input type="number" id="ipt_preco"> <br> <br>
 
+    Informe a média de quantidade de safras por ano:
+    <input type="number" id="ipt_safra">
+
     <button onclick="calcular()">Simular</button> <br>
 
     <div id="div_mensagem"></div>
@@ -40,25 +43,24 @@
         var kg = Number(ipt_Kg.value);
         var tempo = Number(ipt_tempo.value);
         var preco = Number(ipt_preco.value);
+        var safra = Number(ipt_safra.value);
 
         if (kg <= 0 || tempo <= 0 || preco <= 0) {
             alert("Dados inválidos, por favor preencher os campos corretamente")
         } else {
 
         // Quantidade de safras por ano
-        var safra_por_ano = 365 / tempo; // 1 ano = 365 dias
-        var producao_anual = kg * safra_por_ano;
+        var producao_anual = kg * safra;
 
-        
         // Otimização de tempo
-        var producao_otimizada = safra_por_ano * tempo * 0.89; // otimização de 11% do tempo
-        var dias_totais = safra_por_ano * tempo;
+        var dias_totais = safra * tempo;
+        var producao_otimizada = dias_totais * 0.89
         
         // Cálculo da Receita
         var receita = producao_anual * preco;
         var receita_lucro = receita + (receita * 0.207);
 
-        mensagem += ` Com a solução da SHITECH, a Receita Anual da sua empresa pode ir de R$${receita.toFixed(2)} para R$${receita_lucro.toFixed(2)} e seu tempo de produção anual pode ir de ${dias_totais} para ${producao_otimizada}`
+        mensagem += ` <br> Com a solução da SHITECH, a Receita Anual da sua empresa pode ir de R$${receita.toFixed(2)} para R$${receita_lucro.toFixed(2)} e seu tempo de produção de ${safra} safras pode ir de ${dias_totais} dias para ${producao_otimizada.toFixed(0)} dias.`
 
         }
         // frases: A SHITECH pode ajudar a sua empresa a gerar uma receita anual de $... 

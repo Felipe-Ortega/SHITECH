@@ -100,8 +100,17 @@ else{
 }
 
   // senha tem que ter no mínimo um caráctere maiúsculo, um minúsculo e um dos seguintes simbolos (. ! _ - $)
+
+var contem_numero = false;
+
+for(i = 0; i < senha.length; i++){
+  if(!isNaN(senha[i])){
+    contem_numero = true;
+    i = senha.length;
+  }
+}
   
-if((senha.includes('.') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) && senha.toUpperCase() != senha && senha.toLowerCase() != senha){
+if((senha.includes('.') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) && senha.toUpperCase() != senha && senha.toLowerCase() != senha && contem_numero){
   verificacoes++;
 }
 else{

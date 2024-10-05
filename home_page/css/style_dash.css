@@ -1,0 +1,44 @@
+
+body{
+    margin: 0;
+    background-color: #EAE7E3;
+}
+.div_nav_dash{
+    margin: 2%;
+    margin-inline: auto;
+    background-color: rgba(166, 138, 100, 0.7);
+    height: 40px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    color: white;
+}
+.border {
+    border-radius: 25px;
+}
+.icone_entrar{
+    margin-inline: 1vw;
+}
+.div_titulo{
+    display: flex;
+    justify-content: center;
+}
+.container_dashboard{
+    display: flex;
+    justify-content: center;
+}
+.dashboard{
+    width: 95vw;
+    background-color: #CECFBB;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.graficos{
+    display: flex;
+    background-color: #EAE7E3;
+    height: 40vh;
+    margin: 20px;
+}

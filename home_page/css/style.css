@@ -7,13 +7,14 @@ body {
     background-size: cover;
 }
 .cadastro .container {
-    height: 750px;
+    height: fit-content;
     width: 800px;
     border-radius: 30px;
     background-color: #EAE7E3;
     position: relative;
     margin: auto;
     margin-top: 80px;
+    padding-bottom: 30px;
 
 }
 

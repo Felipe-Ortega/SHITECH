@@ -49,23 +49,18 @@ body {
 .cadastro .container .campo_funcao {
     display: flex;
     flex-direction: row;
-    justify-content: space-ar;
+    justify-content: center;
+}
+.cadastro .container .ipt_funcao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    justify-content: space-around;
 }
 
-.cadastro .container .campo_funcao input {
-    height: 25px;
-    width: 78%;
-    border: solid #936639 0.3px;
-    border-radius: 12px;
+.cadastro .container .ipt_funcao .ipt_radio_span{
     display: flex;
-    margin-top: 5px;
-    margin-left: 10%;
-    margin-bottom: 16px;
-    text-align: center;
-    font-family: 'Barlow', sans-serif;
-    font-size: 17px;
-    background-color: #EAE7E3;
-    
 }
 
 
@@ -77,7 +72,7 @@ body {
     font-family: 'Barlow', sans-serif;
 }
 
-.cadastro .container .campo_funcao .txtfuncao {
+.cadastro .container .campo_funcao{
     font-weight: 750;
     font-size: 17px;
     margin-left: 80px;
@@ -85,10 +80,12 @@ body {
     font-family: 'Barlow', sans-serif;
     width: 40%;
 }
-
+.cadastro .container .formulario{
+    display: flex;
+    flex-direction: column;
+}
 .cadastro .container .formulario .campo_funcao .funcaoradio {
-    height: 20px;
-    width: 10%;
+    size: 20px;
     border: solid #936639 0.3px;
     border-radius: 12px;
     display: flex;
@@ -97,14 +94,27 @@ body {
     margin-top: 30px;
     padding-right: 30px;
 }
-
+.cadastro .funcao{
+    font-weight: 750;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Barlow', sans-serif;
+}
+.cadastro .ipt_funcao span{
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Barlow', sans-serif;
+}
 .cadastro .container .formulario .possui {
     font-weight: 750;
     font-size: 12px;
-    margin-left: 42%;
-    margin-top: -5px;
     display: flex;
-    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding: 2vh;
     font-family: 'Barlow', sans-serif;
 }
 
@@ -123,7 +133,6 @@ body {
     border: none;
     border-radius: 100px;
     margin-left: 40%; 
-    position: relative;
     top: -10px;
     font-family: 'Barlow', sans-serif;
 }

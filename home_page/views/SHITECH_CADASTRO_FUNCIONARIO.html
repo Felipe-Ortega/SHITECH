@@ -1,159 +1,211 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHITech | Cadastro Funcionário</title>
 
-  <title>SHITech | Cadastro Funcionário</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+  </head>
 
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-</head>
-
-<body>
-
-  <div class="cadastro">
-
-    <div class="container">
-      <div class="card card-cadastro">
-        <img src="../images/logo.png" alt="Logo SHITech">
-        <div class="formulario">
-           <div class="campo">
-            <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Nome Funcionário" />
-           </div>  
-          <div class="campo">
-            <span>CPF:</span>
-            <input id="cpf_input" type="text" placeholder="CPF Funcionário" maxlength="11"/>
-          </div>
-          <div class="campo">
-            <span>Email:</span>
-            <input id="email_input" type="text" placeholder="Email Funcionário" />
-          </div>
-          <div class="campo">
-            <span>Telefone:</span>
-            <input id="telefone_input" type="text" maxlength="11" placeholder="Insira seu telefone sem espaços, traços e parenteses" />
-          </div>
-          <div class="campo">
-            <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
-          </div>
-          <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
-          </div>
-          <div class="campo_funcao">
-            <div class="txtfuncao">
-              <span class="funcao">Selecione sua função:</span>
+  <body>
+    <div class="cadastro">
+      <div class="container">
+        <div class="card card-cadastro">
+          <img src="../images/logo.png" alt="Logo SHITech" />
+          <div class="formulario">
+            <div class="campo">
+              <span>Nome:</span>
+              <input
+                id="nome_input"
+                type="text"
+                placeholder="Nome Funcionário"
+              />
             </div>
-            <input class="funcaoradio" id="funcao_input" type="radio" />
-            <input class="funcaoradio" id="funcao_input" type="radio" />
-            <input class="funcaoradio" id="funcao_input" type="radio" />
+            <div class="campo">
+              <span>CPF:</span>
+              <input
+                id="cpf_input"
+                type="text"
+                placeholder="CPF Funcionário"
+                maxlength="11"
+              />
+            </div>
+            <div class="campo">
+              <span>Email:</span>
+              <input
+                id="email_input"
+                type="text"
+                placeholder="Email Funcionário"
+              />
+            </div>
+            <div class="campo">
+              <span>Telefone:</span>
+              <input
+                id="telefone_input"
+                type="text"
+                maxlength="11"
+                placeholder="Insira seu telefone sem espaços, traços e parenteses"
+              />
+            </div>
+            <div class="campo">
+              <span>Senha:</span>
+              <input id="senha_input" type="password" placeholder="******" />
+            </div>
+            <div class="campo">
+              <span>Confirmação da Senha:</span>
+              <input
+                id="confirmacao_senha_input"
+                type="password"
+                placeholder="******"
+              />
+            </div>
+            <div class="campo">
+              <span>Unidade:</span>
+              <input
+                id="unidade_ipt"
+                type="number"
+                placeholder="Unidade de atuação"
+                min="0"
+                max="999"
+              />
+            </div>
+            <span class="funcao">Selecione sua função:</span>
+            <div class="ipt_funcao">
+              <div class="ipt_radio_span">
+                <span>Gerente</span>
+                <input id="ipt_gerente" class="funcaoradio" type="radio" name="funcao" />
+              </div>
+              <div class="ipt_radio_span">
+                <span>Supervisor</span>
+                <input id="ipt_supervisor" class="funcaoradio" type="radio" name="funcao" />
+              </div>
+              <div class="ipt_radio_span">
+                <span>Comum</span>
+                <input id="ipt_comum" class="funcaoradio" type="radio" name="funcao" />
+              </div>
+            </div>
+            <button class="botao" onclick="cadastrar()">Cadastrar</button>
+            <span class="possui">Já possui uma conta?</span>
           </div>
-          <button class="botao" onclick="cadastrar()">Cadastrar</button>
-          <span class="possui">Já possui uma conta?</span>
         </div>
       </div>
     </div>
-  </div>
-
-</body>
-
+  </body>
 </html>
 
 <script>
+  function cadastrar() {
+    // ALOCA AS VARIÁVEIS
+    var gerente = ipt_gerente
+    var supervisor = ipt_supervisor
+    var comum = ipt_comum
+    var unidade = Number(unidade_ipt.value);
+    var nome = nome_input.value;
+    var email = email_input.value; //nome_fantasia
+    var telefone = telefone_input.value; //x
+    var cpf = cpf_input.value;
+    var senha = senha_input.value; //x
+    var confirmacao_senha = confirmacao_senha_input.value; //x
+    var mensagemErro = "";
 
-function cadastrar(){
-  // ALOCA AS VARIÁVEIS
+    // INICIA UM CONTADOR DE VERIFICAÇÕES QUE SERÁ USADO PARA REALIZAR O CADASTRO
+    var verificacoes = 0;
 
-  var nome = nome_input.value;
-  var email = email_input.value; //nome_fantasia
-  var telefone = telefone_input.value; //x
-  var cpf = cpf_input.value;
-  var senha = senha_input.value; //x
-  var confirmacao_senha = confirmacao_senha_input.value; //x
-  var mensagemErro = '';
+    // Verifica se a função foi escolhida
+    if (gerente.checked || supervisor.checked || comum.checked) {
+      verificacoes++;
+    } else {
+      mensagemErro += "Escolha uma função. \n";
+    }
+    // Unidade deve ser maior que 0
+    if (unidade < 0) {
+      mensagemErro += "Unidade deve ser igual ou maior que 0";
+    } else {
+      verificacoes++;
+    }
+    // email tem que conter @ e terminar .com ou .br
 
-  // INICIA UM CONTADOR DE VERIFICAÇÕES QUE SERÁ USADO PARA REALIZAR O CADASTRO
-  var verificacoes = 0;
+    if (
+      email.includes("@") &&
+      (email.endsWith(".com") || email.endsWith(".br")) &&
+      email.length > 10
+    ) {
+      verificacoes++;
+    } else {
+      mensagemErro += "Email inválido.\n";
+    }
 
+    // telefone tem que ter 10 ou 11 digitos
 
-  // email tem que conter @ e terminar .com ou .br
+    if (telefone.length < 12 && telefone.length > 9) {
+      verificacoes++;
+    } else {
+      mensagemErro += "Telefone inválido.\n";
+    }
 
-if (email.includes('@') && (email.endsWith('.com') || email.endsWith('.br')) && email.length > 10){
-  verificacoes++;
-}
-else{
-  mensagemErro += 'Email inválido.\n'
-}
+    // cnpj tem que ter 14 digitos
 
-  // telefone tem que ter 10 ou 11 digitos
-  
-if(telefone.length < 12 && telefone.length > 9){
-  verificacoes++;
-}
-else{
-  mensagemErro += 'Telefone inválido.\n'
-}
+    if (cpf.length == 11) {
+      verificacoes++;
+    } else {
+      mensagemErro += "CPF inválido.\n";
+    }
 
-  // cnpj tem que ter 14 digitos
+    // senha tem que ter no mínimo um caráctere maiúsculo, um número, um minúsculo e um dos seguintes simbolos (. ! _ - $)
 
-if(cpf.length == 11){
-  verificacoes++;
-}
-else{
-  mensagemErro += 'CPF inválido.\n'
-}
+    // variável que armazena se o texto contém numero ou não
 
-  // senha tem que ter no mínimo um caráctere maiúsculo, um número, um minúsculo e um dos seguintes simbolos (. ! _ - $)
+    var contem_numero = false;
 
+    // loop que passa por cada dígito do texto e verifica se é um número ou não.
 
-  // variável que armazena se o texto contém numero ou não
-  
-var contem_numero = false;
+    for (i = 0; i < senha.length; i++) {
+      if (!isNaN(senha[i])) {
+        contem_numero = true;
+        i = senha.length;
+      }
+    }
 
+    if (
+      (senha.includes(".") ||
+        senha.includes("#") ||
+        senha.includes("!") ||
+        senha.includes("_") ||
+        senha.includes("-") ||
+        senha.includes("$") ||
+        senha.includes("@")) &&
+      senha.toUpperCase() != senha &&
+      senha.toLowerCase() != senha &&
+      contem_numero &&
+      senha.length >= 8
+    ) {
+      verificacoes++;
+    } else {
+      mensagemErro += "Senha inválida.\n";
+    }
 
-// loop que passa por cada dígito do texto e verifica se é um número ou não.
+    // confirmação tem que ser igual senha
+    if (confirmacao_senha == senha) {
+      verificacoes++;
+    } else {
+      mensagemErro += "As senhas não são compátiveis.\n";
+    }
 
-for(i = 0; i < senha.length; i++){
-  if(!isNaN(senha[i])){
-    contem_numero = true;
-    i = senha.length;
+    // confirmação de que o nome do Resposável não está vazio
+    if (nome != "") {
+      verificacoes++;
+    } else {
+      mensagemErro += "Nome não pode estar vazio.\n";
+    }
+
+    if (verificacoes == 8) {
+      alert("Cadastro Realizado.");
+    } else {
+      alert(mensagemErro);
+    }
   }
-}
-  
-if((senha.includes('.') || senha.includes('#') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) && senha.toUpperCase() != senha && senha.toLowerCase() != senha && contem_numero && senha.length >= 8){
-  verificacoes++;
-}
-else{
-  mensagemErro += 'Senha inválida.\n'
-}
-
-  // confirmação tem que ser igual senha
-if(confirmacao_senha == senha){
-  verificacoes++;
-}
-else{
-  mensagemErro += 'As senhas não são compátiveis.\n'
-}
-
-  // confirmação de que o nome do Resposável não está vazio
-if(nome != ""){
-  verificacoes++;
-}
-else{
-  mensagemErro += 'Nome não pode estar vazio.\n'
-}
-
-
-if(verificacoes == 6){
-  alert("Cadastro Realizado.")
-}
-else{
-  alert(mensagemErro)
-}
-}
-
 </script>

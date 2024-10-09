@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>SHITech | Cadastro Responsável</title>
+  <title>SHITech | Cadastro Funcionário</title>
 
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -22,15 +22,15 @@
         <div class="formulario">
            <div class="campo">
             <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Nome Responsável" />
+            <input id="nome_input" type="text" placeholder="Nome Funcionário" />
            </div>  
           <div class="campo">
             <span>CPF:</span>
-            <input id="cpf_input" type="text" placeholder="CPF Responsável" maxlength="11"/>
+            <input id="cpf_input" type="text" placeholder="CPF Funcionário" maxlength="11"/>
           </div>
           <div class="campo">
             <span>Email:</span>
-            <input id="email_input" type="text" placeholder="Email Responsável" />
+            <input id="email_input" type="text" placeholder="Email Funcionário" />
           </div>
           <div class="campo">
             <span>Telefone:</span>
@@ -43,6 +43,14 @@
           <div class="campo">
             <span>Confirmação da Senha:</span>
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
+          </div>
+          <div class="campo_funcao">
+            <div class="txtfuncao">
+              <span class="funcao">Selecione sua função:</span>
+            </div>
+            <input class="funcaoradio" id="funcao_input" type="radio" />
+            <input class="funcaoradio" id="funcao_input" type="radio" />
+            <input class="funcaoradio" id="funcao_input" type="radio" />
           </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
           <span class="possui">Já possui uma conta?</span>
@@ -116,7 +124,7 @@ for(i = 0; i < senha.length; i++){
   }
 }
   
-if((senha.includes('.') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) && senha.toUpperCase() != senha && senha.toLowerCase() != senha && contem_numero && senha.length >= 8){
+if((senha.includes('.') || senha.includes('#') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) && senha.toUpperCase() != senha && senha.toLowerCase() != senha && contem_numero && senha.length >= 8){
   verificacoes++;
 }
 else{

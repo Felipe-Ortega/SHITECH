@@ -26,7 +26,7 @@ body {
     height: 13vh;
     display: flex;
     position: relative;
-    margin-left: 41.5%;
+    margin-left: 44%;
     margin-bottom: 10px;
 
 }
@@ -46,12 +46,56 @@ body {
     background-color: #EAE7E3;
 }
 
+.cadastro .container .campo_funcao {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-ar;
+}
+
+.cadastro .container .campo_funcao input {
+    height: 25px;
+    width: 78%;
+    border: solid #936639 0.3px;
+    border-radius: 12px;
+    display: flex;
+    margin-top: 5px;
+    margin-left: 10%;
+    margin-bottom: 16px;
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+    font-size: 17px;
+    background-color: #EAE7E3;
+    
+}
+
+
 .cadastro .container .campo span {
     font-weight: 750;
     font-size: 17px;
     margin-left: 80px;
     display: flex;
     font-family: 'Barlow', sans-serif;
+}
+
+.cadastro .container .campo_funcao .txtfuncao {
+    font-weight: 750;
+    font-size: 17px;
+    margin-left: 80px;
+    display: flex;
+    font-family: 'Barlow', sans-serif;
+    width: 40%;
+}
+
+.cadastro .container .formulario .campo_funcao .funcaoradio {
+    height: 20px;
+    width: 10%;
+    border: solid #936639 0.3px;
+    border-radius: 12px;
+    display: flex;
+    margin-bottom: 16px;
+    background-color: #EAE7E3;
+    margin-top: 30px;
+    padding-right: 30px;
 }
 
 .cadastro .container .formulario .possui {

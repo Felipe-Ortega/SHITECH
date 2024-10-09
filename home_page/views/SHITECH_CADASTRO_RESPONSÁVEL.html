@@ -116,7 +116,7 @@ for(i = 0; i < senha.length; i++){
   }
 }
   
-if((senha.includes('.') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) && senha.toUpperCase() != senha && senha.toLowerCase() != senha && contem_numero){
+if((senha.includes('.') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) && senha.toUpperCase() != senha && senha.toLowerCase() != senha && contem_numero && senha.length >= 8){
   verificacoes++;
 }
 else{
@@ -131,8 +131,16 @@ else{
   mensagemErro += 'As senhas não são compátiveis.\n'
 }
 
+  // confirmação de que o nome do Resposável não está vazio
+if(nome != ""){
+  verificacoes++;
+}
+else{
+  mensagemErro += 'Nome não pode estar vazio.\n'
+}
 
-if(verificacoes == 5 && nome != ""){
+
+if(verificacoes == 6){
   alert("Cadastro Realizado.")
 }
 else{

@@ -65,14 +65,22 @@ else{
   mensagemErro += 'CNPJ inválido.\n'
 }
 
-  // senha tem que ter no mínimo um caráctere maiúsculo, um número, um minúsculo e um dos seguintes simbolos (. ! _ - $)
+if(nomeFantasia!= ''){
+  verificacoes++
+}
+else{
+  mensagemErro += 'Nome fantasia não pode ser vazio.\n'
+}
 
+if(razaoSocial!= ''){
+  verificacoes++
+}
+else{
+  mensagemErro += 'Razao social não pode ser vazio.\n'
+}
 
-  // variável que armazena se o texto contém numero ou não
-
-
-if(verificacoes == 1 && nomeFantasia != "" && razaoSocial != ""){
-  alert("Empresa cadastrada.")
+if(verificacoes == 3){
+  window.location.href = './SHITECH_CADASTRO_RESPONSÁVEL copy.html';
 }
 else{
   alert(mensagemErro)

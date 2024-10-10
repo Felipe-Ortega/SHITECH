@@ -13,7 +13,7 @@
 </head>
 
 <body>
-
+  <input type="checkbox" id="teste_do_cadastro">
   <div class="cadastro">
 
     <div class="container">
@@ -58,6 +58,7 @@
 <script>
 
 function cadastrar(){
+  var testeCadastro = teste_do_cadastro;
   // ALOCA AS VARIÁVEIS
 
   var nome = nome_input.value;
@@ -140,7 +141,7 @@ else{
 }
 
 
-if(verificacoes == 6){
+if(verificacoes == 6 || testeCadastro.checked){
   alert("Cadastro Realizado.")
 }
 else{

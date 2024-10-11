@@ -22,16 +22,22 @@
         </div>
     </div>
     <div class="nossos_dados">
-        <a href="#quem_somos" style="text-decoration:none; color: black;" ><spam>QUEM SOMOS</spam></a>
-        <a href="#quem_somos" style="text-decoration:none; color: black;"><spam>NOSSO PROPÓSITO</spam></a>
-        <a href="#simulacao" style="text-decoration:none; color: black;"><spam>SIMULADOR</spam></a>
+        <a href="#quem_somos" style="text-decoration:none; color: black;">
+            <spam class="nossos_dados1">QUEM SOMOS</spam>
+        </a>
+        <a href="#quem_somos" style="text-decoration:none; color: black;">
+            <spam class="nossos_dados2">NOSSO PROPÓSITO</spam>
+        </a>
+        <a href="#simulacao" style="text-decoration:none; color: black;">
+            <spam class="nossos_dados3">SIMULADOR</spam>
+        </a>
     </div>
     <div class="produto_disponivel">
         <h2 class="titulo">PRODUTO DISPONÍVEL</h2>
         <div class="controle_efi_fungos">
             <div class="div_eficiencia">
                 <h1 class="titulo_corpo">
-                    Aumente a eficiência do seu <br> cultivo em até 40% !!!
+                    Aumente a eficiência do seu <br> cultivo em mais de 20% !!!
                 </h1>
                 <spam>
                     Com nossos sensores que auxiliam na <b>adequação de ambiente</b> em cultivo de Fungos.
@@ -79,24 +85,20 @@
     <div class="produtor_fungos">
         <h3 class="tit_h3">
             Prezado Produtor de Fungos, <br>
-            a Universidade Federal do Rio Grande do Sul (UFRGS) realizou uma pesquisa em 2021 que
-            demonstrou que <span class="tit_h3_grande"> UMA DAS PRINCIPAIS CAUSAS DE PERDA DE COLHEITA DE FUNGOS SÃO
-                FATORES RELACIONADOS A
-                TEMPERATURA E UMIDADE?</span>
+            Em 2014, a <span class="tit_h3_grande"> SciELO </span> realizou uma pesquisa que demonstrou que linhagens de cogumelos Shimeji (Pleurotus spp.) e
+            Champignon de Paris (Agaricus bisporus),<span class="tit_h3_grande"> quando cultivadas sob controle
+            rigoroso de temperatura e umidade, podem apresentar um aumento de produtividade de até 20,7%.</span><a href="https://www.scielo.br/j/cr/a/cfP6KPdVGqtBTYH33kCJZLP/#"><i class="fa-solid fa-up-right-from-square icone_link"></i></a>
 
         </h3>
         <h3 class="tit_h3">
-            Problemas relacionados a<span class="tit_h3_grande"> TEMPERATURA </span>podem causar em média<span
-                class="tit_h3_grande"> 25% DE PERDA DA COLHEITA. </span>Problemas
-            relacionados a <span class="tit_h3_grande">UMIDADE </span> causar em média <span class="tit_h3_grande">30%
-                DE PERDA DA COLHEITA.</span>
-
+            Problemas relacionados à variação desses fatores<span class="tit_h3_grande"> podem gerar perdas
+                significativas nos cultivos. </span>
         </h3>
+
         <h3 class="tit_h3">
-            Em alguns casos, a má gestão destes fatores pode causar a <span class="tit_h3_grande">PERDA DA COLHEITA
-                INTEIRA!</span>
-            Quer colocar sua colheita em <span class="tit_h3_grande">RISCO?</span> <br>
-            Acreditamos que não!!
+            <span class="tit_h3_grande">Faça uma simulação e descubra o quanto sua produção pode crescer ao contar com a
+                parceria da Shitech! </span>
+
         </h3>
         <div class="inputs_calculadora_financeira">
             <div class="divs_calculadoras">
@@ -108,15 +110,22 @@
             <div class="divs_calculadoras">
                 <h3 class="titulo_calculadora">Informe a duração média do ciclo de cultivo, em dias:
                 </h3>
-                <input class="ipts_calculadora border" type="number" id="ipt_dias">
-                <h3 class="titulo_calculadora" id="h3_metro_2">IInforme a média de quantidade de safras por ano:</h3>
-                <input class="ipts_calculadora border" type="number" id="ipt_m2">
+                <input class="ipts_calculadora border" type="number" id="ipt_tempo">
+                <h3 class="titulo_calculadora" id="h3_metro_2">Informe a média de quantidade de safras por ano:</h3>
+                <input class="ipts_calculadora border" type="number" id="ipt_safra">
             </div>
         </div>
         <div class="botao_simular">
-            <button class="border botao">Simular</button>
+            <button onclick="calcular()" class="border botao">Simular</button>
         </div>
+
+        
     </div>
+
+
+    <div id="div_mensagem"></div>
+    <div id="div_imagem"></div>
+
 
     <div class="footer">
         <div class="inicio">
@@ -166,6 +175,59 @@
     <div id="logofooter">
         <div class="logo_footer"></div>
     </div>
+
 </body>
 
 </html>
+
+<script>
+
+    function calcular() {
+
+        var mensagem = "";
+        var kg = Number(ipt_quilos.value);
+        var tempo = Number(ipt_tempo.value);
+        var preco = Number(ipt_preco.value);
+        var safra = Number(ipt_safra.value);
+
+        if (kg <= 0 || tempo <= 0 || preco <= 0 || safra <= 0) {
+            alert("Dados inválidos, por favor preencher os campos corretamente")
+        } else {
+
+            // Quantidade de safras por ano
+            var producao_anual = kg * safra;
+
+            // Otimização de tempo
+            var dias_totais = safra * tempo;
+            var producao_otimizada = dias_totais * 0.89
+
+            // Cálculo da Receita
+            var receita = producao_anual * preco;
+            var receita_lucro = receita + (receita * 0.207);
+            var lucro = receita_lucro - receita
+
+            mensagem += ` <br>
+                      <b style= "font-size: 29px;">Com a solução da <span style="font-weight: 800; color: #535B44;">SHITECH</span> você pode: <br></b>
+                    
+                        <br>⚡ Aumentar a produtividade do seus cultivos em até <span style= "font-weight: 800;">21%</span>;<br>
+
+                        <br>⏳ Otimizar o tempo de produção de <span style= "font-weight: 800;">${safra}</span> safras, reduzindo de <span style= "font-weight: 800;">${dias_totais}</span> dias para <span style= "font-weight: 800;">${producao_otimizada.toFixed(0)} </span> dias;<br>
+
+                        <br>💰 Aumentar sua receita anual de <span style= "font-weight: 800; color: red">${receita.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </span> para  <span style= "font-weight: 800; color: rgb(132, 214, 107)">${receita_lucro.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </span>.
+
+                         <br> 💵 Um aumento de  <span style= "font-weight: 800; color:rgb(132, 214, 107) ">${lucro.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>!! <br> <br>
+
+                        <br> Entre em contato e faça um orçamento agora mesmo!
+                    `
+
+            mensagem += ` <br><img src="../images/logo2.png" width = '80px'>`
+
+        }                                                                               
+
+        div_mensagem.innerHTML = ` <p style= "background-color: rgba(166, 138, 100, 1) ; border-radius: 40px;"> ${mensagem}</p>`
+
+    }
+
+
+
+</script>

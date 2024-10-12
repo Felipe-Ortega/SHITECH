@@ -1,0 +1,175 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+html{
+    margin: 0;
+}
+body {
+    background-color: #A68A64;
+    background-size: cover;
+    margin: 0;
+}
+.cadastro {
+    width: 80vh;
+}
+.cadastro .container {
+    height: fit-content;
+    width: 80vw;
+    border-radius: 30px;
+    background-color: #EAE7E3;
+
+}
+
+.cadastro .container .card-cadastro   {
+    width: 100%;
+    color: #936639;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cadastro .container .card-cadastro img {
+    height: 13vh;
+    width: 13vh;
+}
+
+.cadastro .container .campo input {
+    height: 45px;
+    width: 65vw;
+    border: solid #936639 0.3px;
+    border-radius: 12px;
+    display: flex;
+    margin-top: 5px;
+    margin-bottom: 16px;
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+    font-size: 17px;
+    background-color: #EAE7E3;
+}
+
+.cadastro .container .campo_funcao {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.cadastro .container .ipt_funcao {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    justify-content: space-around;
+}
+
+.cadastro .container .ipt_funcao .ipt_radio_span{
+    display: flex;
+}
+
+.cadastro .container .campo span {
+    font-weight: 750;
+    font-size: 17px;
+    font-family: 'Barlow', sans-serif;
+}
+
+.cadastro .container .campo_funcao{
+    font-weight: 750;
+    font-size: 17px;
+    display: flex;
+    font-family: 'Barlow', sans-serif;
+}
+.cadastro .container .formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cadastro .container .formulario .campo_funcao .funcaoradio {
+    size: 20px;
+    border: solid #936639 0.3px;
+    border-radius: 12px;
+    display: flex;
+    margin-bottom: 16px;
+    background-color: #EAE7E3;
+    margin-top: 30px;
+}
+
+.cadastro .funcao{
+    font-weight: 750;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Barlow', sans-serif;
+}
+
+.cadastro .ipt_funcao span{
+    font-weight: 600;
+    font-size: 18px;
+    font-family: 'Barlow', sans-serif;
+}
+
+.cadastro .container .formulario .possui {
+    font-weight: 750;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow', sans-serif;
+}
+
+.cadastro .container .campo {
+    position: relative;
+}
+
+.cadastro .container .formulario .botao {
+    height: 40px;
+    width: 150px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 15px;
+    background-color: #936639;
+    border: none;
+    border-radius: 100px; 
+    font-family: 'Barlow', sans-serif;
+}
+
+.cadastro .container .formulario .botao:hover {
+    background-color: #75522e;
+}
+
+
+.container_menu{
+    width: 20vw;
+    background-color: rgba(166, 138, 100, 1);
+    display: flex;
+    justify-content: center;
+}
+.lista{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0;
+    width: 100%;
+}
+.lista li{
+    text-decoration: none;
+}
+.lista button{
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    border: none;
+    background-color: rgba(166, 138, 100, 1);
+    color: white;
+    height: 100%;
+    width: 100%;
+}
+.lista button:hover{
+    border: none;
+    background-color: rgba(127, 79, 36, 1);
+
+}
+.container_all{
+    display: flex;
+}
+.container_menu img {
+    width: 150px;
+    height: 120px;
+}

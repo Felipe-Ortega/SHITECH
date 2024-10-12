@@ -42,3 +42,44 @@ body{
     height: 40vh;
     margin: 20px;
 }
+.container_menu{
+    width: 20vw;
+    background-color: rgba(166, 138, 100, 1);
+    display: flex;
+    justify-content: center;
+}
+.lista{
+    list-style: none;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+}
+.lista li{
+    text-decoration: none;
+}
+.lista button{
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    border: none;
+    background-color: rgba(166, 138, 100, 1);
+    color: white;
+    height: 100%;
+    width: 100%;
+}
+.lista button:hover{
+    border: none;
+    background-color: rgba(127, 79, 36, 1);
+
+}
+.container_dash{
+    width: 80vw;
+}
+.container_all{
+    display: flex;
+}
+.container_menu img {
+    width: 150px;
+    height: 120px;
+}

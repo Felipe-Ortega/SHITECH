@@ -12,29 +12,47 @@
       src="https://kit.fontawesome.com/88fed8b646.js"
       crossorigin="anonymous"
     ></script>
-    <div class="div_nav_dash border">
-      <div class="bem_vindo">
-        <span>Bem-vindo! Empresa</span>
+    <div class="container_all">
+      <div class="container_menu">
+        <ul class="lista">
+          <li>
+          <a href="landing_page.html"><img src="../images/logo1.png" alt=""> </a>
+
+          </li>
+          <li><a href="dashboard.html"><button>
+            DASH
+          </button></a></li>
+          <li>
+            <a href="SHITECH_CADASTRO_FUNCIONARIO.html"><button>CADASTRO</button></a>
+          </li>
+        </ul>
       </div>
-      <i class="fa-solid fa-user icone_entrar"></i>
-    </div>
-    <div class="div_titulo">
-      <h2>Informações sobre Linha de Produção</h2>
-    </div>
-    <div class="container_dashboard">
-      <div class="dashboard border">
-          <div class="graficos border">
-            <canvas class="chart" id="myChart2"></canvas>
+      <div class="container_dash">
+        <div class="div_nav_dash border">
+          <div class="bem_vindo">
+            <span>Bem-vindo! Empresa</span>
           </div>
-          <div class="graficos border">
-            <canvas class="chart" id="myChart"></canvas>
+          <i class="fa-solid fa-user icone_entrar"></i>
+        </div>
+        <div class="div_titulo">
+          <h2>Informações sobre Linha de Produção</h2>
+        </div>
+        <div class="container_dashboard">
+          <div class="dashboard border">
+              <div class="graficos border">
+                <canvas class="chart" id="myChart2"></canvas>
+              </div>
+              <div class="graficos border">
+                <canvas class="chart" id="myChart"></canvas>
+              </div>
+              <div class="graficos border">
+                <canvas class="chart" id="myChart3"></canvas>
+              </div>
+              <div class="graficos border">
+                <canvas class="chart" id="myChart4"></canvas>
+              </div>
           </div>
-          <div class="graficos border">
-            <canvas class="chart" id="myChart3"></canvas>
-          </div>
-          <div class="graficos border">
-            <canvas class="chart" id="myChart4"></canvas>
-          </div>
+        </div>
       </div>
     </div>
   </body>

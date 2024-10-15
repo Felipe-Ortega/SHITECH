@@ -55,7 +55,7 @@
               <div class="campo">
                 <span>Email:</span>
                 <input
-                  id="email_in  put"
+                  id="email_input"
                   type="text"
                   placeholder="Email Funcionário"
                 />
@@ -133,7 +133,6 @@
 
 <script>
   function cadastrar() {
-    var testeCadastro = teste_do_cadastro;
     // ALOCA AS VARIÁVEIS
     var gerente = ipt_gerente;
     var supervisor = ipt_supervisor;
@@ -237,8 +236,8 @@
       mensagemErro += "Nome não pode estar vazio.\n";
     }
 
-    if (verificacoes == 8 || testeCadastro.checked) {
-      window.location.href = "./login_page.html";
+    if (verificacoes == 8) {
+      window.location.href = "./dashboard.html";
     } else {
       alert(mensagemErro);
     }

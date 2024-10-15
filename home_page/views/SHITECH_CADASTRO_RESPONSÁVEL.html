@@ -30,7 +30,7 @@
           </div>
           <div class="campo">
             <span>Email:</span>
-            <input id="email_input" type="text" placeholder="Email Responsável" />
+            <input id="email_input" type="email" placeholder="Email Responsável" />
           </div>
           <div class="campo">
             <span>Telefone:</span>
@@ -117,7 +117,7 @@ for(i = 0; i < senha.length; i++){
   }
 }
   
-if((senha.includes('.') || senha.includes('#') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) && senha.toUpperCase() != senha && senha.toLowerCase() != senha && contem_numero && senha.length >= 8){
+if((senha.includes('.') || senha.includes('#') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) || senha.includes("@") && senha.toUpperCase() != senha && senha.toLowerCase() != senha && contem_numero && senha.length >= 8){
   verificacoes++;
 }
 else{

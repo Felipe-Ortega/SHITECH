@@ -20,7 +20,7 @@
         <div class="inputs">
 
             <span> Email: </span> <br> <br>
-            <input type="text" id="ipt_email" placeholder="exemplo@gmail.com">  <br> <br>
+            <input type="email" id="ipt_email" placeholder="exemplo@gmail.com">  <br> <br>
 
             <span> Senha: </span> <br> <br>
             <input type="password" id="ipt_senha" placeholder="Digite sua senha">
@@ -32,7 +32,7 @@
         <div class="links">
 
             <a> Esqueceu sua senha? <a> <br> <br>
-            <a> Não possui conta? Cadastre-se <a> 
+            <a href="SHITECH_CADASTRO.html" style="text-decoration: none; color: #936639"> Não possui conta? Cadastre-se <a> 
 
         </div>
     </div>
@@ -52,12 +52,13 @@ function logar(){
         mensagemErro += 'Email inválido.\n';
         erros++;
     }
-    if(((senha.includes('.') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) && senha.toUpperCase() != senha && senha.toLowerCase() != senha) == false){
+    if(((senha.includes('.') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) ||
+    senha.includes("@") && senha.toUpperCase() != senha && senha.toLowerCase() != senha) == false){
         mensagemErro += 'Senha inválida.\n'
         erros++;
     }
     if(erros == 0){
-        alert("Login Realizado.");
+        window.location.href = "./dashboard.html";
     }
     else{
         alert(mensagemErro);

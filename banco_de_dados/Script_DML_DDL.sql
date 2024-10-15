@@ -217,7 +217,7 @@ VALUES
 (DEFAULT, 12, 28.1, 69.6, '2024-08-11 13:09:00'),
 (DEFAULT, 12, 28.3, 69.8, '2024-08-11 13:10:00');
 
-select*from empresa join lote
+select * from empresa join lote
 on idEmpresa = fkEmpresa
 order by nomeFantasia asc;
 
@@ -225,10 +225,85 @@ select nomeFantasia, idLote, dtPlantacao, dtColheita, dtFrutificacao, tipo from 
 on idEmpresa = fkEmpresa
 where tipo = 'Shimeji';
 
-select  usuario.nome,usuario.status_colaborador, nomeFantasia
+select usuario.nome,usuario.status_colaborador, nomeFantasia
 from usuario join empresa
 on idEmpresa = fkEmpresa
-order by  nomeFantasia;
+order by nomeFantasia;
+
+select nomeFantasia, idLote, dtPlantacao, dtColheita, dtFrutificacao, tipo from empresa join lote
+on idEmpresa = fkEmpresa
+where tipo = 'Champignon';
+
+select Empresa.nomeFantasia, Lote.localidade,
+Sensor.manutencao, Sensor.sensorStatus 
+from Empresa join Lote
+on idEmpresa = fkEmpresa
+join Sensor
+on fkLote = idLote;
+
+select * from Empresa
+left join Lote
+on idEmpresa = fkEmpresa
+where nomeFantasia = 'BioFarms';
+
+select Lote.localidade as 'Localidade', Lote.tipo as 'Tipo',
+Sensor.sensorStatus as 'Status do Sensor', Sensor.posicao as 'Posição do Sensor'
+from Lote join Sensor
+on fkLote = idLote;
+
+select * from Sensor 
+join Dados
+on fkSensor = idSensor;
+
+select * from Sensor 
+join Dados
+on fkSensor = idSensor
+where horarioCaptura > '2024-05-11 10:05:00';
+
+select Lote.idLote as 'N° Lote', Sensor.posicao as 'Posição',
+Dados.temperatura as 'Temperatura', Dados.umidade as 'Umidade',
+Dados.horarioCaptura as 'Horário da Captura'
+from Lote join Sensor
+on fkLote = idLote
+join Dados
+on fkSensor = idSensor;
+
+select Lote.idLote as 'N° Lote', Sensor.posicao as 'Posição',
+Dados.temperatura as 'Temperatura', Dados.umidade as 'Umidade',
+Dados.horarioCaptura as 'Horário da Captura'
+from Lote join Sensor
+on fkLote = idLote
+join Dados
+on fkSensor = idSensor
+where Lote.tipo = 'Shimeji';
+
+select Lote.idLote as 'N° Lote', Sensor.posicao as 'Posição',
+Dados.temperatura as 'Temperatura', Dados.umidade as 'Umidade',
+Dados.horarioCaptura as 'Horário da Captura'
+from Lote join Sensor
+on fkLote = idLote
+join Dados
+on fkSensor = idSensor
+where Lote.tipo = 'Champignon';
+
+select Empresa.nomeFantasia as 'Nome da Empresa', Usuario.nome as 'Representante',
+Usuario.status_colaborador as 'Status Colaborador', Lote.idLote as 'N° Lote', 
+Lote.localidade as 'Localidade', Sensor.idSensor as 'N° Sensor',
+Sensor.posicao as 'Posição', Sensor.manutencao as 'Manutenção'
+from Empresa join Usuario
+on Usuario.fkEmpresa = Empresa.idEmpresa
+join Lote 
+on Lote.fkEmpresa = Empresa.idEmpresa
+join Sensor
+on Sensor.fkLote = Lote.idLote;
+
+
+
+
+
+
+
+
 
 
 

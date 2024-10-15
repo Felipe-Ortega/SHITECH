@@ -217,3 +217,18 @@ VALUES
 (DEFAULT, 12, 28.1, 69.6, '2024-08-11 13:09:00'),
 (DEFAULT, 12, 28.3, 69.8, '2024-08-11 13:10:00');
 
+select*from empresa join lote
+on idEmpresa = fkEmpresa
+order by nomeFantasia asc;
+
+select nomeFantasia, idLote, dtPlantacao, dtColheita, dtFrutificacao, tipo from empresa join lote
+on idEmpresa = fkEmpresa
+where tipo = 'Shimeji';
+
+select  usuario.nome,usuario.status_colaborador, nomeFantasia
+from usuario join empresa
+on idEmpresa = fkEmpresa
+order by  nomeFantasia;
+
+
+

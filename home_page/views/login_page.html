@@ -47,7 +47,8 @@ function logar(){
     var senha = ipt_senha.value;
     var erros = 0;
     var mensagemErro = '';
-
+    var senhaCorreta = 'Shitech#123'
+    var emailCorreto = 'Shitech@gmail.com'
     if ((email.includes('@') && (email.endsWith('.com') || email.endsWith('.br')) && email.length > 10) == false){
         mensagemErro += 'Email inválido.\n';
         erros++;
@@ -58,7 +59,12 @@ function logar(){
         erros++;
     }
     if(erros == 0){
-        window.location.href = "./dashboard.html";
+        if (email == emailCorreto && senha == senhaCorreta) {
+            window.location.href = "./dashboard.html";
+    } else{
+        alert('Email ou senha incorretos')
+    }
+        
     }
     else{
         alert(mensagemErro);

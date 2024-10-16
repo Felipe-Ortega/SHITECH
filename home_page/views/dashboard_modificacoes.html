@@ -100,7 +100,7 @@
                 <canvas class="chart" id="myChart2_lote"></canvas>
               </div>
               <div class="graficos border">
-                <h1>Gráfico sobre a temperatura e umidade média de cada mês</h1>
+                <h1>Gráfico sobre a temperatura e umidade média do lote em cada mês</h1>
                 <canvas class="chart" id="myChart_lote"></canvas>
               </div>
               <div class="graficos border">
@@ -133,6 +133,7 @@ function filtro(){
   const ctx2 = document.getElementById("myChart2");
   const ctx3 = document.getElementById("myChart3");
   const ctx4 = document.getElementById("myChart4");
+  const ctx_lote = document.getElementById("myChart_lote")
   new Chart(ctx2, {
     type: "line",
     data: {
@@ -176,7 +177,36 @@ function filtro(){
         },
         {
           label: "Umidade Média",
-          data: [40, 42, 34, 38, 45, 43],
+          data: [70, 73, 78, 90, 87, 82],
+          borderWidth: 1,
+          borderColor: "#A68A64",
+          backgroundColor: "#A68A64",
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+  new Chart(ctx_lote, {
+    type: "bar",
+    data: {
+      labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
+      datasets: [
+        {
+          label: "Temperatura Média",
+          data: [22, 24, 24, 23, 17, 21],
+          borderWidth: 1,
+          borderColor: "#995DB5",
+          backgroundColor: "#995DB5",
+        },
+        {
+          label: "Umidade Média",
+          data: [50, 55, 60, 57, 63, 55],
           borderWidth: 1,
           borderColor: "#A68A64",
           backgroundColor: "#A68A64",

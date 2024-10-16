@@ -39,8 +39,9 @@ body{
 .graficos{
     display: flex;
     background-color: #EAE7E3;
-    height: 40vh;
+    height: 60vh;
     margin: 20px;
+    width: 60vw;
 }
 .container_menu{
     width: 20vw;
@@ -82,4 +83,31 @@ body{
 .container_menu img {
     width: 150px;
     height: 120px;
+}
+.graficos{
+    display: flex;
+    flex-direction: column;
+}
+.dashboard{
+    display: block;
+    flex-direction: row;
+}
+.container_kpis{
+    display: flex;
+    flex-direction: row;
+}
+.container_kpis_lote{
+    display: flex;
+    flex-direction: row;
+}
+.kpis{
+    display: flex;
+    font-size: 2em;
+    width: 15vw;
+    margin: 15px;
+    background-color: yellow;
+}
+.div_filtro{
+    display: flex;
+    justify-self: flex-end;
 }

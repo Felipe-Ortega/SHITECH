@@ -1,134 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="../css/style_dash.css" />
-  </head>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <body>
-    <script
-      src="https://kit.fontawesome.com/88fed8b646.js"
-      crossorigin="anonymous"
-    ></script>
-    <div class="container_all">
-      <div class="container_menu">
-        <ul class="lista">
-          <li>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../css/style_dash.css" />
+</head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<body>
+  <script src="https://kit.fontawesome.com/88fed8b646.js" crossorigin="anonymous"></script>
+  <div class="container_all">
+    <div class="container_menu">
+      <ul class="lista">
+        <li>
           <a href="landing_page.html"><img src="../images/logo1.png" alt=""> </a>
 
-          </li>
-          <li><a href="dashboard.html"><button>
-            DASH
-          </button></a></li>
-          <li>
-            <a href="SHITECH_CADASTRO_FUNCIONARIO.html"><button>CADASTRO</button></a>
-          </li>
-        </ul>
-      </div>
-      <div class="container_dash">
-        <div class="div_nav_dash border">
-          <div class="bem_vindo">
-            <span>Bem-vindo! Empresa</span>
-          </div>
-          <i class="fa-solid fa-user icone_entrar"></i>
+        </li>
+        <li><a href="dashboard.html"><button>
+              DASH
+            </button></a></li>
+        <li>
+          <a href="SHITECH_CADASTRO_FUNCIONARIO.html"><button>CADASTRO</button></a>
+        </li>
+      </ul>
+    </div>
+    <div class="container_dash">
+      <div class="div_nav_dash border">
+        <div class="bem_vindo">
+          <span>Bem-vindo! Empresa</span>
         </div>
-        <div class="div_titulo">
-          <h2>Informações sobre Linha de Produção</h2>
-          <span class="span_filtro"><select name="" id="select_filtro" onclick="filtro()">
+        <i class="fa-solid fa-user icone_entrar"></i>
+      </div>
+      <div class="div_titulo">
+        <h2>Informações sobre Linha de Produção</h2>
+        <span class="span_filtro"><select name="" id="select_filtro" onclick="filtro()">
             <option value="todos" selected>Todos Sensores</option>
             <option value="lotes">Lotes</option>
-                  </select></span>
-        </div>
-        </select></span>
-        <div class="container_dashboard">
-          <div class="dashboard border">
-            <div class="container_kpis" id="container_kpis_sensores">
+          </select></span>
+      </div>
+      </select></span>
+      <div class="container_dashboard">
+        <div class="dashboard border">
+          <div class="container_kpis" id="container_kpis_sensores">
             <span class="kpis">
-                Variação entre a máxima e a mínima:
-                8°C
-                20%
+              <span class="titulos-kpis"> Variação entre a máxima e a mínima:</span>
+              <span class="info-kpi"> 8°C
+                20% </span>
             </span>
             <span class="kpis">
-                Horários de maior variação: 
-                12:00 e 17:00
+              <span class="titulos-kpis"> Horários de maior variação: </span>
+              <span class="info-kpi" style="font-size: 40px; padding-top: 2vh;"> 12:00 e 17:00 </span>
             </span>
             <span class="kpis">
-                Média de temperatura e umidade mensal:
-                26°C e 80%
+              <span class="titulos-kpis"> Média de temperatura e umidade mensal:</span>
+              <span class="info-kpi" style="color: rgb(63, 255, 63);"> 26°C | 80% </span>
             </span>
             <span class="kpis">
-                Variação de temperatura e umidade entre os sensores:
+              <span class="titulos-kpis"> Variação de temperatura e umidade entre os sensores:</span>
             </span>
+          </div>
+          <div class="container_kpis_lote" id="container_kpis_lote">
+            <span class="kpis">
+              <span class="titulos-kpis"> Variação entre a máxima e a mínima:</span>
+              <span class="info-kpi"> 8°C
+                20%</span>
+            </span>
+            <span class="kpis">
+              <span class="titulos-kpis"> Horários de maior variação:</span>
+              <span class="info-kpi" style="font-size: 40px; padding-top: 2vh;" ;>12:00 e 17:00</span>
+            </span>
+            </span>
+            <span class="kpis">
+              <span class="titulos-kpis"> Sensor que mais desviou do padrão de medição:</span>
+              <span class="info-kpi">Sensor 2</span>
+            </span>
+            </span>
+            <span class="kpis">
+              <span class="titulos-kpis"> Variação de temperatura e umidade entre os sensores do lote:</span>
+            </span>
+          </div>
+          <div id="graficos_todos">
+            <div class="graficos border">
+              <h1>Gráfico sobre temperatura e umidade durante um dia</h1>
+              <canvas class="chart" id="myChart2"></canvas>
             </div>
-            <div class="container_kpis_lote" id="container_kpis_lote">
-              <span class="kpis">
-                  Variação entre a máxima e a mínima:
-                  8°C
-                  20%
-              </span>
-              <span class="kpis">
-                  Horários de maior variação: 
-                  12:00 e 17:00
-              </span>
-              <span class="kpis">
-                  Sensor que mais desviou do padrão de medição:
-                  Sensor 2
-              </span>
-              <span class="kpis">
-                  Variação de temperatura e umidade entre os sensores do lote:
-              </span>
-              </div>
-              <div id="graficos_todos">
-              <div class="graficos border">
-                <h1>Gráfico sobre temperatura e umidade durante um dia</h1>
-                <canvas class="chart" id="myChart2"></canvas>
-              </div>
-              <div class="graficos border">
-                <h1>Gráfico sobre a temperatura e umidade média de cada mês</h1>
-                <canvas class="chart" id="myChart"></canvas>
-              </div>
-              <div class="graficos border">
-                <h1>Adicionar mapa de calor</h1>
-                <canvas class="chart" id="myChart3"></canvas>
-              </div>
+            <div class="graficos border">
+              <h1>Gráfico sobre a temperatura e umidade média de cada mês</h1>
+              <canvas class="chart" id="myChart"></canvas>
             </div>
-            <div id="graficos_lotes">
-              <div class="graficos border">
-                <h1>Gráfico sobre temperatura e umidade do lote durante um dia</h1>
-                <canvas class="chart" id="myChart2_lote"></canvas>
-              </div>
-              <div class="graficos border">
-                <h1>Gráfico sobre a temperatura e umidade média do lote em cada mês</h1>
-                <canvas class="chart" id="myChart_lote"></canvas>
-              </div>
-              <div class="graficos border">
-                <h1>Adicionar mapa de calor</h1>
-                <canvas class="chart" id="myChart3_lote"></canvas>
-              </div>
+            <div class="graficos border">
+              <h1>Adicionar mapa de calor</h1>
+              <canvas class="chart" id="myChart3"></canvas>
+            </div>
+          </div>
+          <div id="graficos_lotes">
+            <div class="graficos border">
+              <h1>Gráfico sobre temperatura e umidade do lote durante um dia</h1>
+              <canvas class="chart" id="myChart2_lote"></canvas>
+            </div>
+            <div class="graficos border">
+              <h1>Gráfico sobre a temperatura e umidade média do lote em cada mês</h1>
+              <canvas class="chart" id="myChart_lote"></canvas>
+            </div>
+            <div class="graficos border">
+              <h1>Adicionar mapa de calor</h1>
+              <canvas class="chart" id="myChart3_lote"></canvas>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
 <script>
-function filtro(){
-  if(select_filtro.value == 'lotes'){
-    document.getElementById("container_kpis_sensores").style.display = "none";
-    document.getElementById("container_kpis_lote").style.display = "flex";
-    document.getElementById("graficos_todos").style.display = 'none';
-    document.getElementById("graficos_lotes").style.display = 'block';
+  function filtro() {
+    if (select_filtro.value == 'lotes') {
+      document.getElementById("container_kpis_sensores").style.display = "none";
+      document.getElementById("container_kpis_lote").style.display = "flex";
+      document.getElementById("graficos_todos").style.display = 'none';
+      document.getElementById("graficos_lotes").style.display = 'block';
+    }
+    else if (select_filtro.value == 'todos') {
+      document.getElementById("container_kpis_sensores").style.display = "flex";
+      document.getElementById("container_kpis_lote").style.display = "none";
+      document.getElementById("graficos_todos").style.display = 'block';
+      document.getElementById("graficos_lotes").style.display = 'none';
+    }
   }
-  else if(select_filtro.value == 'todos'){
-    document.getElementById("container_kpis_sensores").style.display = "flex";
-    document.getElementById("container_kpis_lote").style.display = "none";
-    document.getElementById("graficos_todos").style.display = 'block';
-    document.getElementById("graficos_lotes").style.display = 'none';
-  }
-}
   const ctx = document.getElementById("myChart");
   const ctx2 = document.getElementById("myChart2");
   const ctx3 = document.getElementById("myChart3");

@@ -36,8 +36,8 @@
         </div>
         <div class="div_titulo">
           <h2>Informações sobre Linha de Produção</h2>
-          <span class="div_filtro"><select name="" id="select_filtro" onclick="filtro()">
-            <option value="todos">Todos Sensores</option>
+          <span class="span_filtro"><select name="" id="select_filtro" onclick="filtro()">
+            <option value="todos" selected>Todos Sensores</option>
             <option value="lotes">Lotes</option>
                   </select></span>
         </div>
@@ -96,7 +96,7 @@
             </div>
             <div id="graficos_lotes">
               <div class="graficos border">
-                <h1>Gráfico sobre temperatura e umidade durante um dia</h1>
+                <h1>Gráfico sobre temperatura e umidade do lote durante um dia</h1>
                 <canvas class="chart" id="myChart2_lote"></canvas>
               </div>
               <div class="graficos border">
@@ -134,6 +134,7 @@ function filtro(){
   const ctx3 = document.getElementById("myChart3");
   const ctx4 = document.getElementById("myChart4");
   const ctx_lote = document.getElementById("myChart_lote")
+  const ctx2_lote = document.getElementById("myChart2_lote")
   new Chart(ctx2, {
     type: "line",
     data: {
@@ -208,6 +209,35 @@ function filtro(){
           label: "Umidade Média",
           data: [50, 55, 60, 57, 63, 55],
           borderWidth: 1,
+          borderColor: "#A68A64",
+          backgroundColor: "#A68A64",
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+  new Chart(ctx2_lote, {
+    type: "line",
+    data: {
+      labels: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+      datasets: [
+        {
+          label: "Temperatura",
+          data: [30, 29, 28, 25, 22, 23, 25, 22, 21, 22, 21, 23],
+          borderWidth: 2,
+          borderColor: "#995DB5",
+          backgroundColor: "#995DB5",
+        },
+        {
+          label: "Umidade",
+          data: [76, 78, 76, 81, 76, 79, 78, 79, 76, 75, 75],
+          borderWidth: 2,
           borderColor: "#A68A64",
           backgroundColor: "#A68A64",
         },

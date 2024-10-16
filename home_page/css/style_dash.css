@@ -106,7 +106,7 @@ body{
     margin: 15px;
     background-color: yellow;
 }
-.div_filtro{
+.span_filtro{
     display: flex;
     justify-self: flex-end;
 }

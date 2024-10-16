@@ -45,17 +45,27 @@
         <div class="dashboard border">
           <div class="container_kpis" id="container_kpis_sensores">
             <span class="kpis">
-              <span class="titulos-kpis"> Variação entre a máxima e a mínima:</span>
-              <span class="info-kpi"> 8°C
+              <div class="horarioVar">
+                <span class="titulos-kpis"> Variação entre a máxima e a mínima:</span>
+                <span class="info-kpi"> 8°C
                 20% </span>
+              </div>
             </span>
             <span class="kpis">
-              <span class="titulos-kpis"> Horários de maior variação: </span>
-              <span class="info-kpi" style="font-size: 40px; padding-top: 2vh;"> 12:00 e 17:00 </span>
+              <div class="horarioVar">
+                <span class="titulos-kpis"> Horários de maior variação: </span>
+                <span class="info-kpi" style="font-size: 40px; padding-top: 2vh;"> 12:00 e 17:00 </span>
+              </div>
             </span>
             <span class="kpis">
-              <span class="titulos-kpis"> Média de temperatura e umidade mensal:</span>
-              <span class="info-kpi" style="color: rgb(63, 255, 63);"> 26°C | 80% </span>
+                <div class="informacao">
+                  <span class="titulos-kpis">Média de umidade mensal:</span>
+                  <span id="UmidadePorcentagem" class="info-kpi" style="color: rgb(48, 196, 48);"></span>
+                </div>
+                <div class="container_termometro">
+                  <div class="termometro" id="termometro">
+                  </div>
+                </div>
             </span>
             <span class="kpis">
               <span class="titulos-kpis"> Variação de temperatura e umidade entre os sensores:</span>
@@ -131,6 +141,14 @@
       document.getElementById("graficos_lotes").style.display = 'none';
     }
   }
+
+  
+  var mediaUmidadeMensal = 80;
+  const termometroUmidade = document.getElementById("termometro")
+  termometroUmidade.style.height = mediaUmidadeMensal + "%";
+  UmidadePorcentagem.innerHTML = mediaUmidadeMensal;
+
+
   const ctx = document.getElementById("myChart");
   const ctx2 = document.getElementById("myChart2");
   const ctx3 = document.getElementById("myChart3");

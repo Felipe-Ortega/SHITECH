@@ -125,12 +125,35 @@ body{
 #container_kpis_lote2{
     display: none;
 }
+
+.container_kpis{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-around;
+}
+.container_kpis_lote{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-around;
+
+}
+
+.container_kpis_lote2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-around;
+}
 .kpis{
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     justify-content: center;
     align-items: center;
-    width: 12vw;
+    max-width: 20%;
+    width: fit-content;
     height: 9vw;
     margin: 15px;
     border-radius: 20px;
@@ -143,33 +166,39 @@ body{
     font-family: "Afacad Flux", sans-serif;
     color: #424242;
     font-size: 25px;
-    padding: 0 2vh 2vh 2vh;
     text-align: center;
 }
 
 .info-kpi {
     font-size: 40px;
-    align-self: center;
     color: red;
     font-weight: bold;
     font-family: "Afacad Flux", sans-serif;
-    padding-bottom: 1vh;
 }
 
 .span_filtro{
     display: flex;
     justify-self: flex-end;
 }
-
-.container_termometro{
-    margin-right: 2vw;
+.container_valor_termometro{
     display: flex;
-    flex-direction: column;
-    justify-content: end;
-    height: 70%;
+    align-items: end;
+    justify-content: center;
+    gap: 10px;
+}
+.container_termometro{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    height: 100%;
     width: 5%;
 }
 .termometro{
+    box-shadow: 3px 3px 10px rgb(88, 88, 250, 0.5);
+    width: 100%;
+    background-color: rgb(201, 137, 17);
+}
+.umidade{
     box-shadow: 3px 3px 10px rgb(88, 88, 250, 0.5);
     width: 100%;
     background-color: rgb(17, 17, 201);

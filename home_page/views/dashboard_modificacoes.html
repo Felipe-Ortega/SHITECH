@@ -50,25 +50,42 @@
         <div class="dashboard border">
           <div class="container_kpis" id="container_kpis_sensores">
             <span class="kpis">
-              <div class="horarioVar">
-                <span class="titulos-kpis"> Variação entre a máxima e a mínima:</span>
-                <span class="info-kpi"> 8°C
-                10% </span>
+              <div class="informacao">
+                <span class="titulos-kpis">Média de temperatura e umidade diária:</span>
+                <div class="container_valor_termometro">
+                  <span id="TemperaturaGraus3" class="info-kpi" style="color: rgb(196, 169, 48);"></span>
+                  <div class="container_termometro">
+                    <div class="termometro" id="termometro3">
+                    </div>
+                  </div>
+                  <span style="font-size: 50px;">|</span>
+                  <span id="UmidadePorcentagem3" class="info-kpi" style="color: rgb(48, 107, 196);"></span>
+                  <div class="container_termometro">
+                    <div class="umidade" id="umidade3">
+                    </div>
+                  </div>
+                </div>
               </div>
             </span>
             <span class="kpis">
-              <div class="horarioVar">
                 <span class="titulos-kpis"> Horários de maior variação: </span>
                 <span class="info-kpi" style="font-size: 40px; padding-top: 2vh;"> 10:00 e 18:00 </span>
-              </div>
             </span>
             <span class="kpis">
                 <div class="informacao">
                   <span class="titulos-kpis">Média de temperatura e umidade diária:</span>
-                  <span id="UmidadePorcentagem" class="info-kpi" style="color: rgb(48, 196, 48);">26,45°C e 73,90%</span>
-                </div>
-                <div class="container_termometro">
-                  <div class="termometro" id="termometro">
+                  <div class="container_valor_termometro">
+                    <span id="TemperaturaGraus" class="info-kpi" style="color: rgb(196, 169, 48);"></span>
+                    <div class="container_termometro">
+                      <div class="termometro" id="termometro">
+                      </div>
+                    </div>
+                    <span style="font-size: 50px;">|</span>
+                    <span id="UmidadePorcentagem" class="info-kpi" style="color: rgb(48, 107, 196);"></span>
+                    <div class="container_termometro">
+                      <div class="umidade" id="umidade">
+                      </div>
+                    </div>
                   </div>
                 </div>
             </span>
@@ -79,10 +96,22 @@
           <span id="kpis_lotes">
           <div class="container_kpis_lote" id="container_kpis_lote">
             <span class="kpis">
-              <span class="titulos-kpis"> Variação entre a máxima e a mínima:</span>
-              <span class="info-kpi"> 8°C
-                                      20%
-              </span>
+              <div class="informacao">
+                <span class="titulos-kpis">Média de temperatura e umidade diária:</span>
+                <div class="container_valor_termometro">
+                  <span id="TemperaturaGraus2" class="info-kpi" style="color: rgb(196, 169, 48);"></span>
+                  <div class="container_termometro">
+                    <div class="termometro" id="termometro2">
+                    </div>
+                  </div>
+                  <span style="font-size: 50px;">|</span>
+                  <span id="UmidadePorcentagem2" class="info-kpi" style="color: rgb(48, 107, 196);"></span>
+                  <div class="container_termometro">
+                    <div class="umidade" id="umidade2">
+                    </div>
+                  </div>
+                </div>
+              </div>
             </span>
             <span class="kpis">
               <span class="titulos-kpis"> Horários de maior variação:</span>
@@ -98,10 +127,22 @@
           </div>
           <div class="container_kpis_lote2" id="container_kpis_lote2">
             <span class="kpis">
-              <span class="titulos-kpis"> Variação entre a máxima e a mínima:</span>
-              <span class="info-kpi"> 8°C
-                                      20%
-              </span>
+                <div class="informacao">
+                  <span class="titulos-kpis">Média de temperatura e umidade diária:</span>
+                  <div class="container_valor_termometro">
+                    <span id="TemperaturaGraus0" class="info-kpi" style="color: rgb(196, 169, 48);"></span>
+                    <div class="container_termometro">
+                      <div class="termometro" id="termometro0">
+                      </div>
+                    </div>
+                    <span style="font-size: 50px;">|</span>
+                    <span id="UmidadePorcentagem0" class="info-kpi" style="color: rgb(48, 107, 196);"></span>
+                    <div class="container_termometro">
+                      <div class="umidade" id="umidade0">
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </span>
             <span class="kpis">
               <span class="titulos-kpis"> Horários de maior variação:</span>
@@ -200,11 +241,39 @@
     }
   }
 
-  
+
   var mediaUmidadeMensal = 80;
-  const termometroUmidade = document.getElementById("termometro")
+  var mediaTemp = 22;
+
+
+  const termometroUmidade3 = document.getElementById("umidade3")
+  termometroUmidade3.style.height = mediaUmidadeMensal + "%";
+  TemperaturaGraus3.innerHTML = `${mediaTemp}°C`;
+
+  const termometroTemp3 = document.getElementById("termometro3")
+  termometroTemp3.style.height = mediaTemp + "%";
+  UmidadePorcentagem3.innerHTML = `${mediaUmidadeMensal}%`;
+
+
+  const termometroUmidade2 = document.getElementById("umidade2")
+  termometroUmidade2.style.height = mediaUmidadeMensal + "%";
+  TemperaturaGraus2.innerHTML = `${mediaTemp}°C`;
+
+  const termometroTemp2 = document.getElementById("termometro2")
+  termometroTemp2.style.height = mediaTemp + "%";
+  UmidadePorcentagem2.innerHTML = `${mediaUmidadeMensal}%`;
+
+
+  const termometroTemp = document.getElementById("termometro")
+  termometroTemp.style.height = mediaTemp + "%";
+  TemperaturaGraus.innerHTML = `${mediaTemp}°C`;
+  
+
+  const termometroUmidade = document.getElementById("umidade")
   termometroUmidade.style.height = mediaUmidadeMensal + "%";
-  UmidadePorcentagem.innerHTML = mediaUmidadeMensal;
+  UmidadePorcentagem.innerHTML = `${mediaUmidadeMensal}%`;
+
+  
 
 
   const ctx = document.getElementById("myChart");

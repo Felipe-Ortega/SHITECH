@@ -113,6 +113,18 @@ body{
     flex-direction: row;
 
 }
+#graficos_lote1{
+    display: none;
+}
+#graficos_lote2{
+    display: none;
+}
+#select_filtro_lote{
+    display: none;
+}
+#container_kpis_lote2{
+    display: none;
+}
 .kpis{
     display: flex;
     justify-content: space-around;

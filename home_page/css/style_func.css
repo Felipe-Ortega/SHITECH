@@ -16,7 +16,8 @@ body {
     width: 80vw;
     border-radius: 30px;
     background-color: #EAE7E3;
-
+    padding-bottom: 1em;
+    height: 98vh;
 }
 
 .cadastro .container .card-cadastro   {
@@ -106,8 +107,9 @@ body {
 }
 
 .cadastro .container .formulario .possui {
+    padding: 1em;
     font-weight: 750;
-    font-size: 12px;
+    font-size: 15 px;
     display: flex;
     align-items: center;
     justify-content: center;

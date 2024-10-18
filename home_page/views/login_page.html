@@ -54,13 +54,14 @@ function logar(){
         erros++;
     }
     if(((senha.includes('.') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) ||
-    senha.includes("@") && senha.toUpperCase() != senha && senha.toLowerCase() != senha) == false){
+    senha.includes("@") ||
+    senha.includes("#") && senha.toUpperCase() != senha && senha.toLowerCase() != senha) == false){
         mensagemErro += 'Senha inválida.\n'
         erros++;
     }
     if(erros == 0){
         if (email == emailCorreto && senha == senhaCorreta) {
-            window.location.href = "./dashboard.html";
+            window.location.href = "./dashboard_modificacoes_novo.html";
     } else{
         alert('Email ou senha incorretos')
     }

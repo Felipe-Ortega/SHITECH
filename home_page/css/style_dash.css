@@ -37,19 +37,29 @@ body{
     justify-content: center;
 }
 .dashboard{
-    width: 95vw;
+    width: 100%;
     background-color: #CECFBB;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    padding-bottom: 3vh;
 }
+#graficos_todos{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 .graficos{
     display: flex;
     background-color: #EAE7E3;
-    height: 60vh;
-    margin: 20px;
-    width: 60vw;
+    height: 20vh;
+    width: 30vw;
+}
+.graficos h1{
+    font-size: 25px;
 }
 .container_menu{
     width: 20vw;
@@ -89,7 +99,9 @@ body{
     color: #ffffff;
     border-radius: 10px;
     height: 5vh;
+    display: none;
 }
+
 
 #select_filtro{
     background-color: rgba(166, 138, 100, 1);
@@ -105,7 +117,8 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    padding-bottom: 3vh;
+
 }
 .container_all{
     display: flex;
@@ -129,11 +142,25 @@ body{
 }
 #graficos_lote1{
     display: none;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
 }
 #graficos_lote2{
     display: none;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
 }
-#select_filtro_lote{
+
+#graficos_lotes{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+}
+#select_filt
+ro_lote{
     display: none;
 }
 #container_kpis_lote2{
@@ -145,6 +172,7 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     justify-content: space-around;
+    
 }
 .container_kpis_lote{
     display: none;

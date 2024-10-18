@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../css/style_dash.css" />
+</head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<body>
+  <script src="https://kit.fontawesome.com/88fed8b646.js" crossorigin="anonymous"></script>
+  <div class="container_all">
+    <div class="container_menu">
+      <ul class="lista">
+        <li>
+          <a href="landing_page.html"><img src="../images/logo1.png" alt=""> </a>
+
+        </li>
+        <li><a href="dashboard.html"><button>
+              DASH
+            </button></a></li>
+        <li>
+          <a href="SHITECH_CADASTRO_FUNCIONARIO.html"><button>CADASTRO</button></a>
+        </li>
+      </ul>
+    </div>
+    <div class="container_dash">
+      <div class="div_nav_dash border">
+        <div class="bem_vindo">
+          <span>Bem-vindo! Empresa</span>
+        </div>
+        <i class="fa-solid fa-user icone_entrar"></i>
+      </div>
+      <div class="div_titulo">
+        <h1>Informações sobre Linha de Produção</h1>
+        <span class="span_filtro"><select name="" id="select_filtro" onclick="filtro()">
+            <option value="todos" selected>Todos Sensores</option>
+            <option value="lotes">Lotes</option>
+          </select></span>
+          <span class="span_filtro_lote"><select name="" id="select_filtro_lote" onclick="filtro()">
+            <!-- <option value="lotes_variacoes" selected>Lotes com maiores variações</option> -->
+            <option value="abc123" selected>Lote ABC123</option>
+            <option value="def456">Lote DEF456</option>
+          </select></span>
+      </div>
+      </select></span>
+      <div class="container_dashboard">
+        <div class="dashboard border">
+          <div class="container_kpis" id="container_kpis_sensores">
+            <span class="kpis">
+              <div class="informacao">
+                <span class="titulos-kpis">Média de umidade diária:</span>
+                <div class="container_valor_termometro">
+                  <span id="UmidadePorcentagem3" class="info-kpi" style="color: rgb(48, 107, 196);"></span>
+                  <div class="container_umidade">
+                    <div class="umidade" id="umidade3">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </span>
+
+            <span class="kpis">
+              <div class="informacao">
+                <span class="titulos-kpis">Média de temperatura diária:</span>
+                <div class="container_valor_termometro">
+                  <span id="TemperaturaGraus" class="info-kpi" style="color: rgb(196, 169, 48);"></span>
+                  <div class="container_termometro">
+                    <div class="termometro" id="termometro">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </span>
+            <span class="kpis">
+              <span class="titulos-kpis"> Horários de maior variação: </span>
+              <span class="info-kpi" style="font-size: 4vh;"> 10:00 e 18:00 </span>
+            </span>
+            <span class="kpis">
+              <span class="titulos-kpis"> Maiores variações entre os sensores:</span>
+              <span class="info-kpi"> 5ºC 
+                <span style="color: black;">|</span> 
+                    <span style="color: blue;">10%</span>
+              </span>
+            </span>
+          </div>
+          <span id="kpis_lotes">
+            <div class="container_kpis_lote" id="container_kpis_lote">
+              <span class="kpis">
+                <div class="informacao">
+                  <span class="titulos-kpis">Média de umidade diária:</span>
+                  <div class="container_valor_termometro">
+                    <span id="UmidadePorcentagem2" class="info-kpi" style="color: rgb(48, 107, 196);"></span>
+                    <div class="container_umidade">
+                      <div class="umidade" id="umidade2">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </span>
+              <span class="kpis">
+                <div class="informacao">
+                  <span class="titulos-kpis">Média de temperatura diária:</span>
+                  <div class="container_valor_termometro">
+                    <span id="TemperaturaGraus2" class="info-kpi" style="color: rgb(196, 169, 48);"></span>
+                    <div class="container_termometro">
+                      <div class="termometro" id="termometro2">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </span>
+              <span class="kpis">
+                <span class="titulos-kpis"> Horários de maior variação:</span>
+                <span class="info-kpi" style="font-size: 4vh;" ;>12:00 e 17:00</span>
+              </span>
+              <span class="kpis">
+                <span class="titulos-kpis"> Sensor que mais emitiu alertas:</span>
+                <span class="info-kpi" style="font-size: 5vh;">Sensor 2</span>
+              </span>
+            </div>
+
+
+            <div class="container_kpis_lote2" id="container_kpis_lote2">
+              <span class="kpis">
+                <div class="informacao">
+                  <span class="titulos-kpis">Média de umidade diária:</span>
+                  <div class="container_valor_termometro">
+                    <span id="UmidadePorcentagem4" class="info-kpi" style="color: rgb(48, 107, 196);"></span>
+                    <div class="container_umidade">
+                      <div class="umidade" id="umidade4">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </span>
+              <span class="kpis">
+                <div class="informacao">
+                  <span class="titulos-kpis">Média de temperatura diária:</span>
+                  <div class="container_valor_termometro">
+                    <span id="TemperaturaGraus4" class="info-kpi" style="color: rgb(196, 169, 48);"></span>
+                    <div class="container_termometro">
+                      <div class="termometro" id="termometro4">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </span>
+              <span class="kpis">
+                <span class="titulos-kpis"> Horários de maior variação:</span>
+                <span class="info-kpi" style="font-size: 4vh;">12:00 e 17:00</span>
+              </span>
+              <span class="kpis">
+                <span class="titulos-kpis"> Sensor que mais emitiu alertas:</span>
+                <span class="info-kpi" style="font-size: 5vh;">Sensor 4</span>
+              </span>
+            </div>
+          </span>
+          <div id="graficos_todos" class="graficos_todos">
+            <div class="graficos border">
+              <h1>Temperatura e Umidade diária</h1>
+              <canvas class="chart" id="myChart2"></canvas>
+            </div>
+            <div class="graficos border">
+              <h1>Temperatura e Umidade média mensal</h1>
+              <canvas class="chart" id="myChart"></canvas>
+            </div>
+            <!-- <div class="graficos border">
+              <h1>Adicionar mapa de calor</h1>
+              <canvas class="chart" id="myChart3"></canvas>
+            </div> -->
+          </div>
+          <span id="graficos_lotes">
+            <div id="graficos_lote1">
+              <div class="graficos border">
+                <h1>Temperatura e Umidade diária (Lote ABC123)</h1>
+                <canvas class="chart" id="myChart2_lote"></canvas>
+              </div>
+              <div class="graficos border">
+                <h1>Temperatura e Umidade média mensal (Lote ABC123)</h1>
+                <canvas class="chart" id="myChart_lote"></canvas>
+              </div>
+              <!-- <div class="graficos border">
+                <h1>Adicionar mapa de calor</h1>
+                <canvas class="chart" id="myChart3_lote"></canvas>
+              </div> -->
+            </div>
+            <div id="graficos_lote2">
+              <div class="graficos border">
+                <h1>Temperatura e Umidade diária (Lote DEF456)</h1>
+                <canvas class="chart" id="myChart2_lote2"></canvas>
+              </div>
+              <div class="graficos border">
+                <h1>Temperatura e Umidade média mensal (Lote DEF456)</h1>
+                <canvas class="chart" id="myChart_lote2"></canvas>
+              </div>
+              <!-- <div class="graficos border">
+                <h1>Adicionar mapa de calor</h1>
+                <canvas class="chart" id="myChart3_lote2"></canvas>
+              </div> -->
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<script>
+  function filtro() {
+    if (select_filtro.value == 'lotes') {
+      document.getElementById("graficos_lotes").style.display = 'block'
+      document.getElementById("select_filtro_lote").style.display = "flex";
+      document.getElementById("container_kpis_sensores").style.display = "none";
+      document.getElementById("graficos_todos").style.display = 'none';
+
+      if (select_filtro_lote.value == 'abc123') {
+        document.getElementById("graficos_lote2").style.display = 'none';
+        document.getElementById("container_kpis_lote").style.display = "flex";
+        document.getElementById("container_kpis_lote2").style.display = "none";
+        document.getElementById("graficos_lote1").style.display = 'flex';
+
+      }
+      if (select_filtro_lote.value == 'def456') {
+        document.getElementById("graficos_lote1").style.display = 'none';
+        document.getElementById("container_kpis_lote").style.display = "none";
+        document.getElementById("container_kpis_lote2").style.display = "flex";
+        document.getElementById("graficos_lote2").style.display = 'flex';
+      }
+    }
+    else if (select_filtro.value == 'todos') {
+      document.getElementById("select_filtro_lote").style.display = "none";
+      document.getElementById("container_kpis_sensores").style.display = "flex";
+      document.getElementById("container_kpis_lote").style.display = "none";
+      document.getElementById("graficos_todos").style.display = 'flex';
+      document.getElementById("graficos_lote1").style.display = 'none';
+      document.getElementById("graficos_lotes").style.display = 'none';
+      document.getElementById("container_kpis_lote").style.display = "none";
+      document.getElementById("container_kpis_lote2").style.display = "none";
+    }
+  }
+
+  //Todos os sensores
+  var mediaUmidadeTS = Math.random();
+  mediaUmidadeTS = Math.floor(mediaUmidadeTS * 35 + 65 );
+  var mediaTempTS = Math.random();
+  mediaTempTS = Math.floor(mediaTempTS * 15 + 15 );
+
+  //Lote ABC123
+  var mediaUmidadeLote = Math.random();
+  mediaUmidadeLote = Math.floor(mediaUmidadeLote * 35 + 65 );
+  var mediaTempLote = Math.random();
+  mediaTempLote = Math.floor(mediaTempLote * 15 + 15 );
+
+  //Lote DEF456
+  var mediaUmidadeLote2 = Math.random();
+  mediaUmidadeLote2 = Math.floor(mediaUmidadeLote2 * 35 + 65 );
+  var mediaTempLote2 = Math.random();
+  mediaTempLote2 = Math.floor(mediaTempLote2 * 15 + 15 );
+
+
+  // primeira kpi umidade (todos os sensores)
+  const termometroUmidade3 = document.getElementById("umidade3")
+  termometroUmidade3.style.height = mediaUmidadeTS + "%";
+  UmidadePorcentagem3.innerHTML = `${mediaUmidadeTS}%`;
+  //se a umidade for menor que 75 a barrinha fica vermelha e aparece um alerta do lado
+  if (mediaUmidadeTS < 75) {
+    termometroUmidade3.style.backgroundColor = '#ff0000';
+    UmidadePorcentagem3.innerHTML = ` ${mediaUmidadeTS}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
+  }
+
+  // segunda kpi temperatura (todos os sensores)
+  const termometroTemp = document.getElementById("termometro")
+  termometroTemp.style.height = mediaTempTS + "%";
+  TemperaturaGraus.innerHTML = `${mediaTempTS}°C`;
+  //se a temperatura for maior que 25 a barrinha fica vermelha e aparece um alerta do lado
+  if (mediaTempTS > 25) {
+    termometroTemp.style.backgroundColor = '#ff0000';
+    TemperaturaGraus.innerHTML = ` ${mediaTempTS}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
+  }
+
+// primeira kpi umidade (lote abc)
+  const termometroUmidade2 = document.getElementById("umidade2")
+  termometroUmidade2.style.height = mediaUmidadeLote + "%";
+  UmidadePorcentagem2.innerHTML = `${mediaUmidadeLote}%`;
+  if (mediaUmidadeLote < 75) {  
+    termometroUmidade2.style.backgroundColor = '#ff0000';
+    UmidadePorcentagem2.innerHTML = ` ${mediaUmidadeLote}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
+  }
+    
+// segunda kpi temperatura (lote abc)
+  const termometroTemp2 = document.getElementById("termometro2")
+  termometroTemp2.style.height = mediaTempLote + "%";
+  TemperaturaGraus2.innerHTML = `${mediaTempLote}C°`;
+  if (mediaTempLote > 25) {
+    termometroTemp2.style.backgroundColor = '#ff0000';
+    TemperaturaGraus2.innerHTML = ` ${mediaTempLote}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
+  }
+
+  // primeira kpi umidade (lote def)
+  const termometroUmidade4 = document.getElementById("umidade4")
+  termometroUmidade4.style.height = mediaUmidadeLote2 + "%";
+  UmidadePorcentagem4.innerHTML = `${mediaUmidadeLote2}%`;
+  if (mediaUmidadeLote2 < 75) {  
+    termometroUmidade4.style.backgroundColor = '#ff0000';
+    UmidadePorcentagem4.innerHTML = ` ${mediaUmidadeLote2}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
+  }
+
+  // segunda kpi temperatura (lote def)
+  const termometroTemp4 = document.getElementById("termometro4")
+  termometroTemp4.style.height = mediaTempLote2 + "%";
+  TemperaturaGraus4.innerHTML = `${mediaTempLote2}ºC`;
+  if (mediaTempLote2 > 25) {
+    termometroTemp4.style.backgroundColor = '#ff0000';
+    TemperaturaGraus4.innerHTML = ` ${mediaTempLote2}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
+  }
+
+
+
+
+  const ctx = document.getElementById("myChart");
+  const ctx2 = document.getElementById("myChart2");
+  const ctx3 = document.getElementById("myChart3");
+  const ctx4 = document.getElementById("myChart4");
+  const ctx_lote = document.getElementById("myChart_lote")
+  const ctx2_lote = document.getElementById("myChart2_lote")
+  const ctx_lote2 = document.getElementById("myChart_lote2");
+  const ctx2_lote2 = document.getElementById("myChart2_lote2");
+
+  new Chart(ctx2, {
+    type: "line",
+    data: {
+      labels: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+      datasets: [
+        {
+          label: "Temperatura",
+          data: [30, 29, 25, 25, 22, 23, 25, 25, 29, 27, 26],
+          borderWidth: 2,
+          borderColor: "#ff5927",
+          backgroundColor: "#ff5927",
+        },
+        {
+          label: "Umidade",
+          data: [75, 82, 80, 85, 80, 83, 84, 79, 75, 83, 87],
+          borderWidth: 2,
+          borderColor: "#45aadd",
+          backgroundColor: "#45aadd",
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
+      datasets: [
+        {
+          label: "Temperatura Média",
+          data: [22, 24, 27, 23, 20, 18],
+          borderWidth: 1,
+          borderColor: "#ff5927",
+          backgroundColor: "#ff5927",
+        },
+        {
+          label: "Umidade Média",
+          data: [70, 73, 78, 90, 87, 82],
+          borderWidth: 1,
+          borderColor: "#45aadd",
+          backgroundColor: "#45aadd",
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+  new Chart(ctx_lote, {
+    type: "bar",
+    data: {
+      labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
+      datasets: [
+        {
+          label: "Temperatura Média",
+          data: [22, 24, 24, 23, 17, 21],
+          borderWidth: 1,
+          borderColor: "#ff5927",
+          backgroundColor: "#ff5927",
+        },
+        {
+          label: "Umidade Média",
+          data: [50, 55, 60, 57, 63, 55],
+          borderWidth: 1,
+          borderColor: "#45aadd",
+          backgroundColor: "#45aadd",
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+  new Chart(ctx2_lote, {
+    type: "line",
+    data: {
+      labels: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+      datasets: [
+        {
+          label: "Temperatura",
+          data: [30, 29, 28, 25, 22, 23, 25, 22, 21, 22, 21, 23],
+          borderWidth: 2,
+          borderColor: "#ff5927",
+          backgroundColor: "#ff5927",
+        },
+        {
+          label: "Umidade",
+          data: [76, 78, 76, 81, 76, 79, 78, 74, 72, 66, 73],
+          borderWidth: 2,
+          borderColor: "#45aadd",
+          backgroundColor: "#45aadd",
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+  new Chart(ctx_lote2, {
+    type: "bar",
+    data: {
+      labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
+      datasets: [
+        {
+          label: "Temperatura Média",
+          data: [21, 17, 23, 24, 24, 22],
+          borderWidth: 1,
+          borderColor: "#ff5927",
+          backgroundColor: "#ff5927",
+        },
+        {
+          label: "Umidade Média",
+          data: [55, 63, 57, 60, 55, 50],
+          borderWidth: 1,
+          borderColor: "#45aadd",
+          backgroundColor: "#45aadd",
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+  new Chart(ctx2_lote2, {
+    type: "line",
+    data: {
+      labels: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+      datasets: [
+        {
+          label: "Temperatura",
+          data: [23, 21, 22, 21, 22, 25, 23, 22, 25, 28, 29, 30],
+          borderWidth: 2,
+          borderColor: "#ff5927",
+          backgroundColor: "#ff5927",
+        },
+        {
+          label: "Umidade",
+          data: [73, 66, 72, 74, 78, 79, 76, 81, 76, 78, 76],
+          borderWidth: 2,
+          borderColor: "#45aadd",
+          backgroundColor: "#45aadd",
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+</script>

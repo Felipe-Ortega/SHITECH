@@ -127,14 +127,6 @@ body{
     display: flex;
     flex-direction: row;
 }
-.container_kpis_lote{
-    display: none;
-    flex-direction: row;
-    color: #ff5927;
-
-}
-
-
 #graficos_lote1{
     display: none;
 }
@@ -155,7 +147,7 @@ body{
     justify-content: space-around;
 }
 .container_kpis_lote{
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     justify-content: center;
     justify-content: space-around;

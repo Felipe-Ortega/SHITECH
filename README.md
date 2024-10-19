@@ -1,5 +1,5 @@
 
-# <img align="center" src="home_page/images/logo2.png" width="95"> <h1 align="center"> SHITECH </h1>
+# <img src="home_page/images/logo2.png" width="95"> <h1> SHITECH </h1>
 
 ## Sistema de Monitoramento para Cultivo de Shimeji e Champignon
 

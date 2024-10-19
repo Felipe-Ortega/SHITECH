@@ -193,8 +193,7 @@ ro_lote{
 .kpis{
     display: flex;
     flex-direction: column;
-    
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     max-width: 20%;
     width: fit-content;

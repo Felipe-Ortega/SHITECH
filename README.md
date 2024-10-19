@@ -69,7 +69,7 @@ Aumentar a eficiência da produção de cogumelos em até 20,7% por meio de um m
 - O cliente se responsabiliza por fornecer os recursos necessários para a realização do projeto, como tempo e orçamento; 
 - A estufa possui um sistema de controle de temperatura e umidade que atende as necessidades da plantação de cogumelos; 
 
-##Restrições 
+## Restrições 
 
 - Será disponibilizado apenas a versão Desktop; 
 - As informações serão exibidas apenas na Aplicação Web (site); 

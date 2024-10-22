@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Yanone+Kaffeesatz:wght@200..700&display=swap');
+body{
+    font-family: 'Afacad Flux';
+    background-color: rgb(199, 169, 114);
+}
+.container-graficos{
+    display: flex;
+    flex-direction: column;
+}
+.container-graficos h1{
+    margin: auto;
+    padding: 10px;
+}
+.grafico{
+    background-color: #EAE7E3;
+}
+.graficos{
+    justify-content: space-around;
+}

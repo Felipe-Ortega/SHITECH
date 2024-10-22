@@ -275,7 +275,7 @@
 
   // segunda kpi temperatura (todos os sensores)
   const termometroTemp = document.getElementById("termometro")
-  termometroTemp.style.height = mediaTempTS + "%";
+  termometroTemp.style.height = mediaTempTS*2 + "%";
   TemperaturaGraus.innerHTML = `${mediaTempTS}°C`;
   //se a temperatura for maior que 25 a barrinha fica vermelha e aparece um alerta do lado
   if (mediaTempTS > 25) {
@@ -294,7 +294,7 @@
     
 // segunda kpi temperatura (lote abc)
   const termometroTemp2 = document.getElementById("termometro2")
-  termometroTemp2.style.height = mediaTempLote + "%";
+  termometroTemp2.style.height = mediaTempLote*2 + "%";
   TemperaturaGraus2.innerHTML = `${mediaTempLote}C°`;
   if (mediaTempLote > 25) {
     termometroTemp2.style.backgroundColor = '#ff0000';
@@ -312,7 +312,7 @@
 
   // segunda kpi temperatura (lote def)
   const termometroTemp4 = document.getElementById("termometro4")
-  termometroTemp4.style.height = mediaTempLote2 + "%";
+  termometroTemp4.style.height = mediaTempLote2*2 + "%";
   TemperaturaGraus4.innerHTML = `${mediaTempLote2}ºC`;
   if (mediaTempLote2 > 25) {
     termometroTemp4.style.backgroundColor = '#ff0000';

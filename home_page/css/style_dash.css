@@ -237,28 +237,34 @@ ro_lote{
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    height: 300%;
+    justify-content: end;
+    height: 100%;
     width: 6%;
-    padding-bottom: 1.5vh;
+    border: solid 1px black;
+    
 }
+
 .container_umidade{
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    height: 120%;
+    justify-content: end;
+    height: 100%;
     width: 6%;
-    padding-bottom: 1.5vh;
+    border: solid 1px black;
 
 }
 .termometro{
     box-shadow: 3px 3px 10px rgb(88, 88, 250, 0.5);
     width: 100%;
     background-color: rgb(201, 137, 17);
+
 }
 .umidade{
     box-shadow: 3px 3px 10px rgba(131, 131, 246, 0.5);
     width: 100%;
-    background-color: rgb(89, 214, 255);
+    background-color: rgb(33, 188, 240);
+
 }
 .informacao{
     width: 90%;
@@ -277,6 +283,7 @@ ro_lote{
     box-shadow: 3px 3px 10px rgb(88, 88, 250, 0.5);
     width: 100%;
     background-color: rgb(201, 137, 17);
+
 }
 .umidade3 {
     box-shadow: 3px 3px 10px rgb(88, 88, 250, 0.5);

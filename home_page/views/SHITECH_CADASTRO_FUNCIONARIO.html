@@ -160,7 +160,7 @@
     } else {
       verificacoes++;
     }
-    // email tem que conter @ e terminar .com ou .br
+    // email tem que conter @ e terminar .com ou .br e ter um tamanho maior que 10
 
     if (
       email.includes("@") &&
@@ -180,15 +180,13 @@
       mensagemErro += "Telefone inválido.\n";
     }
 
-    // cnpj tem que ter 14 digitos
+    // cpf tem que ter 11 digitos
 
     if (cpf.length == 11) {
       verificacoes++;
     } else {
       mensagemErro += "CPF inválido.\n";
     }
-
-    // senha tem que ter no mínimo um caráctere maiúsculo, um número, um minúsculo e um dos seguintes simbolos (. ! _ - $)
 
     // variável que armazena se o texto contém numero ou não
 
@@ -202,6 +200,8 @@
         i = senha.length;
       }
     }
+
+    // verificação se a senha possui algum carácter especial, se possui letra maiúscula, minúscula e número e que a senha seja maior que 7 digitos.
 
     if (
       (senha.includes(".") ||
@@ -228,15 +228,18 @@
       mensagemErro += "As senhas não são compátiveis.\n";
     }
 
-    // confirmação de que o nome do Resposável não está vazio
+    // confirmação de que o nome do Responsável não está vazio
     if (nome != "") {
       verificacoes++;
     } else {
       mensagemErro += "Nome não pode estar vazio.\n";
     }
 
+    // se passar nas 8 verificações o usuário é cadastrado e redirecionado a dashboard se não exibe uma mensagem de erro
+
     if (verificacoes == 8) {
-      window.location.href = "./dashboard.html";
+      alert('Funcionário cadastrado')
+      window.location.href = "./SHITECH_CADASTRO_RESPONSÁVEL.HTML";
     } else {
       alert(mensagemErro);
     }

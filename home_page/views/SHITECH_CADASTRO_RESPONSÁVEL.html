@@ -91,7 +91,7 @@ else{
   mensagemErro += 'Telefone inválido.\n'
 }
 
-  // cnpj tem que ter 14 digitos
+  // cpfj tem que ter 11 digitos
 
 if(cpf.length == 11){
   verificacoes++;
@@ -99,9 +99,6 @@ if(cpf.length == 11){
 else{
   mensagemErro += 'CPF inválido.\n'
 }
-
-  // senha tem que ter no mínimo um caráctere maiúsculo, um número, um minúsculo e um dos seguintes simbolos (. ! _ - $)
-
 
   // variável que armazena se o texto contém numero ou não
   
@@ -116,6 +113,8 @@ for(i = 0; i < senha.length; i++){
     i = senha.length;
   }
 }
+
+  // verificação se a senha possui algum carácter especial, se possui letra maiúscula, minúscula e número e que a senha seja maior que 7 digitos.
   
 if((senha.includes('.') || senha.includes('#') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) || senha.includes("@") && senha.toUpperCase() != senha && senha.toLowerCase() != senha && contem_numero && senha.length >= 8){
   verificacoes++;
@@ -132,7 +131,7 @@ else{
   mensagemErro += 'As senhas não são compátiveis.\n'
 }
 
-  // confirmação de que o nome do Resposável não está vazio
+  // confirmação de que o nome do Responsável não está vazio
 if(nome != ""){
   verificacoes++;
 }
@@ -140,6 +139,7 @@ else{
   mensagemErro += 'Nome não pode estar vazio.\n'
 }
 
+  // se passar nas verificações o usuário é redirecionado para a tela de login se não exibe erro
 
 if(verificacoes == 6 || testeCadastro.checked){
   window.location.href = './login_page.html';

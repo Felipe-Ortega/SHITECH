@@ -13,10 +13,10 @@
     <div class="container-graficos">
         <h1>Gráficos SHITECH</h1>
     <div style="display: flex;" class="graficos">
-        <div style="width: 45%;" class="grafico">
+        <div style="width: 45%; border-radius: 20px; padding: 2vh;" class="grafico">
             <canvas id="sensorAnalogico"></canvas>
         </div>
-        <div style="width: 45%;" class="grafico">
+        <div style="width: 45%; border-radius: 20px; padding: 2vh" class="grafico">
             <canvas id="sensorDigital"></canvas>
         </div>
     </div>
@@ -27,9 +27,9 @@
             type: 'line',
             data: {
                 datasets: [{
-                    label: 'Analogico',
-                    borderColor: '#63B1BC',
-                    backgroundColor: '#ED145B'
+                    label: 'Temperatura',
+                    borderColor: '#ff6e6e',
+                    backgroundColor: '#ff1919'
                 }]
             },
             options: {
@@ -40,7 +40,7 @@
                     y: {
                         title: {
                             display: true,
-                            text: '(%)'
+                            text: '(C°)'
                         },
                         beginAtZero: true,
                     },
@@ -52,7 +52,7 @@
             type: 'line',
             data: {
                 datasets: [{
-                    label: 'Digital',
+                    label: 'Umidade',
                     borderColor: '#63B1BC',
                     backgroundColor: '#0762C8'
                 }]
@@ -65,7 +65,7 @@
                     y: {
                         title: {
                             display: true,
-                            text: '(0-1)'
+                            text: '(%)'
                         },
                         beginAtZero: true
                     }

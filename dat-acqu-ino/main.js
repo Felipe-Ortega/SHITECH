@@ -1,3 +1,4 @@
+
 // importa os bibliotecas necessários
 const serialport = require('serialport');
 const express = require('express');
@@ -8,7 +9,7 @@ const SERIAL_BAUD_RATE = 9600;
 const SERVIDOR_PORTA = 3300;
 
 // habilita ou desabilita a inserção de dados no banco de dados
-const HABILITAR_OPERACAO_INSERIR = false;
+const HABILITAR_OPERACAO_INSERIR = true;
 
 // função para comunicação serial
 const serial = async (
@@ -20,10 +21,10 @@ const serial = async (
     let poolBancoDados = mysql.createPool(
         { 
             host: '127.0.0.1', 
-            user: 'shitech2',
+            user: 'shitech',
             password: 'Shitech123@',
             database: 'shitech',
-            port: 3306
+            port: 3307
         }
     ).promise();
 

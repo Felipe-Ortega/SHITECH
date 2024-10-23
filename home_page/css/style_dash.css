@@ -302,3 +302,9 @@ h1 {
     color: #787a48;
     font-size: 35px;
 }
+.horarios_kpi{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

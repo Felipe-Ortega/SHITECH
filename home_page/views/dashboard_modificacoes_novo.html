@@ -280,6 +280,7 @@
   //se a umidade for menor que 80 a barrinha fica vermelha e aparece um alerta do lado
   if (mediaUmidadeTS < 80) {
     termometroUmidade3.style.backgroundColor = '#ff0000';
+    termometroUmidade3.style.boxShadow = '3px 3px 10px #ff0000';
     UmidadePorcentagem3.innerHTML = ` ${mediaUmidadeTS}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
   }
 
@@ -290,6 +291,7 @@
   //se a temperatura for maior que 27 ou menor que 23 a barrinha fica vermelha e aparece um alerta do lado
   if (mediaTempTS > 27 || mediaTempTS < 23) {
     termometroTemp.style.backgroundColor = '#ff0000';
+    termometroTemp.style.boxShadow = '3px 3px 10px #ff0000';
     TemperaturaGraus.innerHTML = ` ${mediaTempTS}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
   }
 
@@ -299,6 +301,7 @@
   UmidadePorcentagem2.innerHTML = `${mediaUmidadeLote}%`;
   if (mediaUmidadeLote < 85) {  
     termometroUmidade2.style.backgroundColor = '#ff0000';
+    termometroUmidade2.style.boxShadow = '3px 3px 10px #ff0000';
     UmidadePorcentagem2.innerHTML = ` ${mediaUmidadeLote}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
   }
     
@@ -308,6 +311,7 @@
   TemperaturaGraus2.innerHTML = `${mediaTempLote}C°`;
   if (mediaTempLote > 27) {
     termometroTemp2.style.backgroundColor = '#ff0000';
+    termometroTemp2.style.boxShadow = '3px 3px 10px #ff0000';
     TemperaturaGraus2.innerHTML = ` ${mediaTempLote}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
   }
 
@@ -317,6 +321,7 @@
   UmidadePorcentagem4.innerHTML = `${mediaUmidadeLote2}%`;
   if (mediaUmidadeLote2 < 75) {  
     termometroUmidade4.style.backgroundColor = '#ff0000';
+    termometroUmidade4.style.boxShadow = '3px 3px 10px #ff0000';
     UmidadePorcentagem4.innerHTML = ` ${mediaUmidadeLote2}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
   }
 
@@ -326,6 +331,7 @@
   TemperaturaGraus4.innerHTML = `${mediaTempLote2}ºC`;
   if (mediaTempLote2 > 25) {
     termometroTemp4.style.backgroundColor = '#ff0000';
+    termometroTemp4.style.boxShadow = '3px 3px 10px #ff0000';
     TemperaturaGraus4.innerHTML = ` ${mediaTempLote2}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
   }
 

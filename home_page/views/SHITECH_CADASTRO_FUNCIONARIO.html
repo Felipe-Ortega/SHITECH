@@ -30,6 +30,9 @@
               ><button>CADASTRO</button></a
             >
           </li>
+          <li>
+            <a href="login_page.html"><button>SAIR</button></a>
+          </li>
         </ul>
       </div>
       <div class="cadastro">
@@ -240,7 +243,7 @@
     // se passar nas 8 verificações o usuário é cadastrado e redirecionado a dashboard se não exibe uma mensagem de erro
 
     if (verificacoes == 8) {
-      alert('Funcionário cadastrado')
+      alert("Funcionário cadastrado");
       window.location.href = "./SHITECH_CADASTRO_RESPONSÁVEL.HTML";
     } else {
       alert(mensagemErro);

@@ -116,6 +116,9 @@ body {
     justify-content: center;
     padding: 2vh;
     font-family: 'Barlow', sans-serif;
+    text-decoration: none;
+    color:#936639;
+
 }
 
 .cadastro .container .campo {
@@ -139,4 +142,8 @@ body {
 
 .cadastro .container .formulario .botao:hover {
     background-color: #75522e;
+}
+
+.cadastro .container .formulario .possui:hover{
+    color: #a68f78;
 }

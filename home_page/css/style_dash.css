@@ -68,6 +68,7 @@ body{
     display: flex;
 }
 .lista{
+    
     list-style: none;
     padding: 0px;
     display: flex;
@@ -75,8 +76,8 @@ body{
     text-align: center;
     width: 100%;
 }
-.lista li{
-    text-decoration: none;
+.lista button{
+    cursor:pointer;
 }
 .lista button{
     padding-top: 2vh;

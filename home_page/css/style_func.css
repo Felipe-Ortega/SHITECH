@@ -69,7 +69,9 @@ body {
     font-size: 17px;
     font-family: 'Barlow', sans-serif;
 }
-
+.lista button{
+    cursor:pointer;
+}
 .cadastro .container .campo_funcao{
     font-weight: 750;
     font-size: 17px;

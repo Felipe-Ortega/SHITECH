@@ -241,6 +241,8 @@ ro_lote{
     height: 100%;
     width: 6%;
     border: solid 1px black;
+    margin-bottom: 10px;
+    
     
 }
 
@@ -252,16 +254,17 @@ ro_lote{
     height: 100%;
     width: 6%;
     border: solid 1px black;
+    margin-bottom: 10px;
 
 }
 .termometro{
-    box-shadow: 3px 3px 10px rgb(88, 88, 250, 0.5);
+    box-shadow: 3px 3px 10px rgb(224, 157, 34);
     width: 100%;
-    background-color: rgb(201, 137, 17);
+    background-color: rgb(216, 159, 54);
 
 }
 .umidade{
-    box-shadow: 3px 3px 10px rgba(131, 131, 246, 0.5);
+    box-shadow: 3px 3px 10px rgba(33, 188, 240, 1);
     width: 100%;
     background-color: rgb(33, 188, 240);
 

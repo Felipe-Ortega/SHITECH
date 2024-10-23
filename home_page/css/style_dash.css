@@ -309,3 +309,21 @@ h1 {
     justify-content: center;
     flex-direction: column;
 }
+
+.legenda{
+    font-family: "Afacad Flux";
+    font-size: 3vh;
+    padding: 2vh;
+    margin-top: 2vh;
+    height: fit-content;
+    width: 78%;
+    background-color: #CECFBB;
+
+}
+.legenda span{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.legenda h3{
+    margin: 0;
+}

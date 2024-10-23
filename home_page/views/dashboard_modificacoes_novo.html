@@ -126,11 +126,11 @@
             </span>
               </span>
               <span class="kpis">
-                <span class="titulos-kpis"> Sensor que mais emitiu alertas:</span>
-                <span class="info-kpi" style="font-size: 5vh;">Sensor 2</span>
+                <span class="titulos-kpis"> Quadrante que mais emitiu alertas:</span>
+                <span class="info-kpi" style="font-size: 5vh;">Quadrante 2</span>
               </span>
             </div>
-
+            
 
             <div class="container_kpis_lote2" id="container_kpis_lote2">
               <span class="kpis">
@@ -167,8 +167,8 @@
                 </div>
               </span>
               <span class="kpis">
-                <span class="titulos-kpis"> Sensor que mais emitiu alertas:</span>
-                <span class="info-kpi" style="font-size: 5vh;">Sensor 4</span>
+                <span class="titulos-kpis"> Quadrante que mais emitiu alertas:</span>
+                <span class="info-kpi" style="font-size: 5vh;">Quadrante 4</span>
               </span>
             </div>
           </span>
@@ -181,10 +181,6 @@
               <h1>Temperatura e Umidade média mensal</h1>
               <canvas class="chart" id="myChart"></canvas>
             </div>
-            <!-- <div class="graficos border">
-              <h1>Adicionar mapa de calor</h1>
-              <canvas class="chart" id="myChart3"></canvas>
-            </div> -->
           </div>
           <span id="graficos_lotes">
             <div id="graficos_lote1">
@@ -196,10 +192,6 @@
                 <h1>Temperatura e Umidade média mensal (Lote ABC123)</h1>
                 <canvas class="chart" id="myChart_lote"></canvas>
               </div>
-              <!-- <div class="graficos border">
-                <h1>Adicionar mapa de calor</h1>
-                <canvas class="chart" id="myChart3_lote"></canvas>
-              </div> -->
             </div>
             <div id="graficos_lote2">
               <div class="graficos border">
@@ -210,15 +202,19 @@
                 <h1>Temperatura e Umidade média mensal (Lote DEF456)</h1>
                 <canvas class="chart" id="myChart_lote2"></canvas>
               </div>
-              <!-- <div class="graficos border">
-                <h1>Adicionar mapa de calor</h1>
-                <canvas class="chart" id="myChart3_lote2"></canvas>
-              </div> -->
             </div>
           </span>
         </div>
       </div>
+      
+      <div class="legenda border">
+        <h3>Parâmetros</h3>
+        <span>Margem ideal de temperatura: <b>18°C a 26°C</b></span> <br>
+        <span>Margem ideal de umidade: <b>75% a 100%</b></span>
+      </div>
+
     </div>
+    
   </div>
 </body>
 
@@ -292,7 +288,7 @@
   termometroTemp.style.height = mediaTempTS*2 + "%";
   TemperaturaGraus.innerHTML = `${mediaTempTS}°C`;
   //se a temperatura for maior que 27 ou menor que 23 a barrinha fica vermelha e aparece um alerta do lado
-  if (mediaTempTS > 27 || mediaTempTS < 23) {
+  if (mediaTempTS > 26 || mediaTempTS < 18) {
     termometroTemp.style.backgroundColor = '#ff0000';
     termometroTemp.style.boxShadow = '3px 3px 10px #ff0000';
     TemperaturaGraus.innerHTML = ` ${mediaTempTS}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
@@ -312,7 +308,7 @@
   const termometroTemp2 = document.getElementById("termometro2")
   termometroTemp2.style.height = mediaTempLote*2 + "%";
   TemperaturaGraus2.innerHTML = `${mediaTempLote}C°`;
-  if (mediaTempLote > 27) {
+  if (mediaTempLote > 26 || mediaTempTS < 18) {
     termometroTemp2.style.backgroundColor = '#ff0000';
     termometroTemp2.style.boxShadow = '3px 3px 10px #ff0000';
     TemperaturaGraus2.innerHTML = ` ${mediaTempLote}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
@@ -332,7 +328,7 @@
   const termometroTemp4 = document.getElementById("termometro4")
   termometroTemp4.style.height = mediaTempLote2*2 + "%";
   TemperaturaGraus4.innerHTML = `${mediaTempLote2}ºC`;
-  if (mediaTempLote2 > 25) {
+  if (mediaTempLote2 > 25 ) {
     termometroTemp4.style.backgroundColor = '#ff0000';
     termometroTemp4.style.boxShadow = '3px 3px 10px #ff0000';
     TemperaturaGraus4.innerHTML = ` ${mediaTempLote2}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;

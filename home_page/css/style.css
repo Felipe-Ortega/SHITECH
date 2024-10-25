@@ -10,7 +10,7 @@ body {
     height: fit-content;
     width: 800px;
     border-radius: 30px;
-    background-color: #EAE7E3;
+    background-color: white;
     position: relative;
     margin: auto;
     margin-top: 80px;
@@ -43,7 +43,7 @@ body {
     text-align: center;
     font-family: 'Barlow', sans-serif;
     font-size: 17px;
-    background-color: #EAE7E3;
+    background-color: white;
 }
 
 .cadastro .container .campo_funcao {

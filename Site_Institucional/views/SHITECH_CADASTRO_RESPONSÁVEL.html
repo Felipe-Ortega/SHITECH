@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SHITech | Cadastro Responsável</title>
+
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="website icon" type="png" href="../images/logo2.png">
+
+</head>
+
+<body>
+  <!-- <input type="checkbox" id="teste_do_cadastro"> -->
+  <div class="cadastro">
+
+    <div class="container">
+      <div class="card card-cadastro">
+        <img src="../images/logo.png" alt="Logo SHITech">
+        <div class="formulario">
+           <div class="campo">
+            <span>Nome:</span>
+            <input id="nome_input" type="text" placeholder="Nome Responsável" />
+           </div>  
+          <div class="campo">
+            <span>CPF:</span>
+            <input id="cpf_input" type="text" placeholder="CPF Responsável" maxlength="11"/>
+          </div>
+          <div class="campo">
+            <span>Email:</span>
+            <input id="email_input" type="email" placeholder="Email Responsável" />
+          </div>
+          <div class="campo">
+            <span>Telefone:</span>
+            <input id="telefone_input" type="text" maxlength="11" placeholder="Insira seu telefone sem espaços, traços e parenteses" />
+          </div>
+          <div class="campo">
+            <span>Senha:</span>
+            <input id="senha_input" type="password" placeholder="******" />
+          </div>
+          <div class="campo">
+            <span>Confirmação da Senha:</span>
+            <input id="confirmacao_senha_input" type="password" placeholder="******" />
+          </div>
+          <button class="botao" onclick="cadastrar()">Cadastrar</button>
+          <a class="possui" href="login_page.html">Já possui uma conta?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+<script>
+
+function cadastrar(){
+  var testeCadastro = teste_do_cadastro;
+  // ALOCA AS VARIÁVEIS
+
+  var nome = nome_input.value;
+  var email = email_input.value; //nome_fantasia
+  var telefone = telefone_input.value; //x
+  var cpf = cpf_input.value;
+  var senha = senha_input.value; //x
+  var confirmacao_senha = confirmacao_senha_input.value; //x
+  var mensagemErro = '';
+
+  // INICIA UM CONTADOR DE VERIFICAÇÕES QUE SERÁ USADO PARA REALIZAR O CADASTRO
+  var verificacoes = 0;
+
+
+  // email tem que conter @ e terminar .com ou .br
+
+if (email.includes('@') && (email.endsWith('.com') || email.endsWith('.br')) && email.length > 10){
+  verificacoes++;
+}
+else{
+  mensagemErro += 'Email inválido.\n'
+}
+
+  // telefone tem que ter 10 ou 11 digitos
+  
+if(telefone.length < 12 && telefone.length > 9){
+  verificacoes++;
+}
+else{
+  mensagemErro += 'Telefone inválido.\n'
+}
+
+  // cpfj tem que ter 11 digitos
+
+if(cpf.length == 11){
+  verificacoes++;
+}
+else{
+  mensagemErro += 'CPF inválido.\n'
+}
+
+  // variável que armazena se o texto contém numero ou não
+  
+var contem_numero = false;
+
+
+// loop que passa por cada dígito do texto e verifica se é um número ou não.
+
+for(i = 0; i < senha.length; i++){
+  if(!isNaN(senha[i])){
+    contem_numero = true;
+    i = senha.length;
+  }
+}
+
+  // verificação se a senha possui algum carácter especial, se possui letra maiúscula, minúscula e número e que a senha seja maior que 7 digitos.
+  
+if((senha.includes('.') || senha.includes('#') || senha.includes('!') || senha.includes('_') || senha.includes('-') || senha.includes('$')) || senha.includes("@") && senha.toUpperCase() != senha && senha.toLowerCase() != senha && contem_numero && senha.length >= 8){
+  verificacoes++;
+}
+else{
+  mensagemErro += 'Senha inválida.\n'
+}
+
+  // confirmação tem que ser igual senha
+if(confirmacao_senha == senha){
+  verificacoes++;
+}
+else{
+  mensagemErro += 'As senhas não são compátiveis.\n'
+}
+
+  // confirmação de que o nome do Responsável não está vazio
+if(nome != ""){
+  verificacoes++;
+}
+else{
+  mensagemErro += 'Nome não pode estar vazio.\n'
+}
+
+  // se passar nas verificações o usuário é redirecionado para a tela de login se não exibe erro
+
+if(verificacoes == 6 || testeCadastro.checked){
+  window.location.href = './login_page.html';
+}
+else{
+  alert(mensagemErro)
+}
+}
+
+</script>

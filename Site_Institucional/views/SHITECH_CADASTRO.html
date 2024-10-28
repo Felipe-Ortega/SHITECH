@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SHITech | Cadastro Empresa</title>
+
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="website icon" type="png" href="../images/logo2.png">
+</head>
+
+<body>
+
+  <div class="cadastro">
+
+    <div class="container">
+      <div class="card card-cadastro">
+        <img src="../images/logo.png" alt="Logo SHITech">
+        <div class="formulario">
+           <div class="campo">
+            <span>Razão Social:</span>
+            <input id="razao_input" type="text" placeholder="Insira aqui sua razão social" />
+           </div>  
+          <div class="campo">
+            <span>Nome fantasia:</span>
+            <input id="nomeFantasia_input" type="text" placeholder="Nome fantasia" />
+          </div>
+          <div class="campo">
+            <span>CNPJ:</span>
+            <input id="cnpj_input" type="text" maxlength="14" placeholder="**.***.***/****-**" />
+          </div>
+          <button class="botao" onclick="continuar()">Continuar</button>
+          <a class="possui" href="login_page.html">Já possui uma conta?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+<script>
+
+function continuar(){
+  // ALOCA AS VARIÁVEIS
+
+  var nomeFantasia = nomeFantasia_input.value;
+  var razaoSocial = razao_input.value;
+  var cnpj = cnpj_input.value;
+  var mensagemErro = '';
+
+  // INICIA UM CONTADOR DE VERIFICAÇÕES QUE SERÁ USADO PARA REALIZAR O CADASTRO
+  var verificacoes = 0;
+
+  // cnpj tem que ter 14 digitos
+
+if(cnpj.length == 14){
+  verificacoes++;
+}
+else{
+  mensagemErro += 'CNPJ inválido.\n'
+}
+
+  // nome fantasia não pode ser vázio
+
+if(nomeFantasia!= ''){
+  verificacoes++
+}
+else{
+  mensagemErro += 'Nome fantasia não pode ser vazio.\n'
+}
+
+  // razão social não pode ser vázia
+
+if(razaoSocial!= ''){
+  verificacoes++
+}
+else{
+  mensagemErro += 'Razao social não pode ser vazio.\n'
+}
+
+  // se passar nas 3 verificações é redirecionado a tela de cadastro do responsável se não exibe erro
+
+if(verificacoes == 3){
+  window.location.href = './SHITECH_CADASTRO_RESPONSÁVEL.HTML';
+}
+else{
+  alert(mensagemErro)
+}
+}
+
+</script>

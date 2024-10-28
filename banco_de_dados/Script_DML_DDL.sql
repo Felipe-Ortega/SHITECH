@@ -1,6 +1,8 @@
 CREATE DATABASE Shitech;
 USE Shitech;
 
+
+
 CREATE TABLE Empresa (
     idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     razaoSocial VARCHAR(60) NOT NULL,
@@ -35,6 +37,8 @@ CREATE TABLE Lote (
     fkEmpresa INT NOT NULL,
     CONSTRAINT fkEmpresaLote FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
+
+alter table Lote rename column localidade to estufa;
 
 CREATE TABLE Sensor (
     idSensor INT PRIMARY KEY AUTO_INCREMENT,
@@ -296,20 +300,6 @@ join Lote
 on Lote.fkEmpresa = Empresa.idEmpresa
 join Sensor
 on Sensor.fkLote = Lote.idLote;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

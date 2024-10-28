@@ -178,3 +178,16 @@ body {
     width: 150px;
     height: 120px;
 }
+.slt_lote{
+    height: 45px;
+    width: 65vw;
+    border: solid #936639 0.3px;
+    border-radius: 12px;
+    display: flex;
+    margin-top: 5px;
+    margin-bottom: 16px;
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+    font-size: 17px;
+    background-color: #EAE7E3;
+}

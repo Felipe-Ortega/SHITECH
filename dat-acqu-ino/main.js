@@ -125,3 +125,6 @@ const servidor = (
         valoresSensorAnalogico2
     );
 })();
+var tempoRestante = 1;
+var crescimento = 0;
+var tempoNovo = 0;

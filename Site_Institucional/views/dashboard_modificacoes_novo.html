@@ -292,7 +292,7 @@
   termometroUmidade3.style.height = mediaUmidadeTS + "%";
   UmidadePorcentagem3.innerHTML = `${mediaUmidadeTS}%`;
   //se a umidade for menor que 80 a barrinha fica vermelha e aparece um alerta do lado
-  if (mediaUmidadeTS < 80) {
+  if (mediaUmidadeTS < 75) {
     termometroUmidade3.style.backgroundColor = '#ff0000';
     termometroUmidade3.style.boxShadow = '3px 3px 10px #ff0000';
     UmidadePorcentagem3.innerHTML = ` ${mediaUmidadeTS}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
@@ -313,7 +313,7 @@
   const termometroUmidade2 = document.getElementById("umidade2")
   termometroUmidade2.style.height = mediaUmidadeLote + "%";
   UmidadePorcentagem2.innerHTML = `${mediaUmidadeLote}%`;
-  if (mediaUmidadeLote < 85) {  
+  if (mediaUmidadeLote < 75) {  
     termometroUmidade2.style.backgroundColor = '#ff0000';
     termometroUmidade2.style.boxShadow = '3px 3px 10px #ff0000';
     UmidadePorcentagem2.innerHTML = ` ${mediaUmidadeLote}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;

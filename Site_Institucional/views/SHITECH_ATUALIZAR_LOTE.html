@@ -59,19 +59,19 @@
               <div class="campo">
                 <span>Data de plantio</span>
                 <input
-                  id="local_input"
+                  id="dt_plantio"
                   type="date"
                   placeholder="Data de plantio"
                 />
                 <span>Data de frutificação</span>
                 <input
-                  id="local_input"
+                  id="dt_fruti"
                   type="date"
                   placeholder="Data de frutificação"
                 />
                 <span>Data de colheita</span>
                 <input
-                  id="local_input"
+                  id="dt_colheita"
                   type="date"
                   placeholder="Data de colheita"
                 />
@@ -87,116 +87,12 @@
 
 <script>
   function cadastrar() {
-    // ALOCA AS VARIÁVEIS
-    var gerente = ipt_gerente;
-    var supervisor = ipt_supervisor;
-    var comum = ipt_comum;
-    var unidade = Number(unidade_ipt.value);
-    var nome = nome_input.value;
-    var email = email_input.value; //nome_fantasia
-    var telefone = telefone_input.value; //x
-    var cpf = cpf_input.value;
-    var senha = senha_input.value; //x
-    var confirmacao_senha = confirmacao_senha_input.value; //x
-    var mensagemErro = "";
-
-    // INICIA UM CONTADOR DE VERIFICAÇÕES QUE SERÁ USADO PARA REALIZAR O CADASTRO
-    var verificacoes = 0;
-
-    // Verifica se a função foi escolhida
-    if (gerente.checked || supervisor.checked || comum.checked) {
-      verificacoes++;
+   var dtMarcada = dt_plantio.value != "" || dt_fruti.value != "" || dt_colheita.value != ""
+    if (dtMarcada) {
+      alert("Lote atualizado");
+      window.location.href = "./dashboard_modificacoes_novo.HTML";
     } else {
-      mensagemErro += "Escolha uma função. \n";
-    }
-    // Unidade deve ser maior que 0
-    if (unidade < 0) {
-      mensagemErro += "Unidade deve ser igual ou maior que 0";
-    } else {
-      verificacoes++;
-    }
-    // email tem que conter @ e terminar .com ou .br e ter um tamanho maior que 10
-
-    if (
-      email.includes("@") &&
-      (email.endsWith(".com") || email.endsWith(".br")) &&
-      email.length > 10
-    ) {
-      verificacoes++;
-    } else {
-      mensagemErro += "Email inválido.\n";
-    }
-
-    // telefone tem que ter 10 ou 11 digitos
-
-    if (telefone.length < 12 && telefone.length > 9) {
-      verificacoes++;
-    } else {
-      mensagemErro += "Telefone inválido.\n";
-    }
-
-    // cpf tem que ter 11 digitos
-
-    if (cpf.length == 11) {
-      verificacoes++;
-    } else {
-      mensagemErro += "CPF inválido.\n";
-    }
-
-    // variável que armazena se o texto contém numero ou não
-
-    var contem_numero = false;
-
-    // loop que passa por cada dígito do texto e verifica se é um número ou não.
-
-    for (i = 0; i < senha.length; i++) {
-      if (!isNaN(senha[i])) {
-        contem_numero = true;
-        i = senha.length;
-      }
-    }
-
-    // verificação se a senha possui algum carácter especial, se possui letra maiúscula, minúscula e número e que a senha seja maior que 7 digitos.
-
-    if (
-      (senha.includes(".") ||
-        senha.includes("#") ||
-        senha.includes("!") ||
-        senha.includes("_") ||
-        senha.includes("-") ||
-        senha.includes("$") ||
-        senha.includes("@")) &&
-      senha.toUpperCase() != senha &&
-      senha.toLowerCase() != senha &&
-      contem_numero &&
-      senha.length >= 8
-    ) {
-      verificacoes++;
-    } else {
-      mensagemErro += "Senha inválida.\n";
-    }
-
-    // confirmação tem que ser igual senha
-    if (confirmacao_senha == senha) {
-      verificacoes++;
-    } else {
-      mensagemErro += "As senhas não são compátiveis.\n";
-    }
-
-    // confirmação de que o nome do Responsável não está vazio
-    if (nome != "") {
-      verificacoes++;
-    } else {
-      mensagemErro += "Nome não pode estar vazio.\n";
-    }
-
-    // se passar nas 8 verificações o usuário é cadastrado e redirecionado a dashboard se não exibe uma mensagem de erro
-
-    if (verificacoes == 8) {
-      alert("Funcionário cadastrado");
-      window.location.href = "./SHITECH_CADASTRO_RESPONSÁVEL.HTML";
-    } else {
-      alert(mensagemErro);
+      alert("Preencha alguma das datas");
     }
   }
 </script>

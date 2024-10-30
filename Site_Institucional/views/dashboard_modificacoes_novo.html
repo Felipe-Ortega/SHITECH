@@ -269,16 +269,12 @@
   }
 
   //Todos os sensores
-  var mediaUmidadeTS = Math.random();
-  mediaUmidadeTS = Math.floor(mediaUmidadeTS * 35 + 65 );
-  var mediaTempTS = Math.random();
-  mediaTempTS = Math.floor(mediaTempTS * 15 + 15 );
+  var mediaUmidadeTS = 81
+  var mediaTempTS = 26
 
   //Lote ABC123
-  var mediaUmidadeLote = Math.random();
-  mediaUmidadeLote = Math.floor(mediaUmidadeLote * 35 + 65 );
-  var mediaTempLote = Math.random();
-  mediaTempLote = Math.floor(mediaTempLote * 15 + 15 );
+  var mediaUmidadeLote = 70
+  var mediaTempLote = 28
 
   //Lote DEF456
   var mediaUmidadeLote2 = Math.random();
@@ -455,14 +451,14 @@
       datasets: [
         {
           label: "Temperatura",
-          data: [30, 29, 28, 25, 22, 23, 25, 22, 21, 22, 21, 23],
+          data: [35, 29, 28, 30, 32, 32, 30, 28, 27, 22, 21, 29],
           borderWidth: 2,
           borderColor: "#ff5927",
           backgroundColor: "#ff5927",
         },
         {
           label: "Umidade",
-          data: [76, 78, 76, 81, 76, 79, 78, 74, 72, 66, 73],
+          data: [66, 68, 66, 61, 76, 79, 78, 74, 72, 66, 73],
           borderWidth: 2,
           borderColor: "#45aadd",
           backgroundColor: "#45aadd",

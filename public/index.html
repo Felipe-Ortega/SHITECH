@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="../css/style_home.css" />
-    <link rel="website icon" type="png" href="../images/logo2.png">
+    <link rel="stylesheet" href="./css/style_home.css" />
+    <link rel="website icon" type="png" href="./assets/imgs/logo2.png">
 
   </head>
 
@@ -21,12 +21,12 @@
       <div class="lateral_direita_nav">
         <div class="bem_vindo">
           <span>Bem-vindo!</span><br /><a
-            href="login_page.html"
+            href="./login.html"
             style="text-decoration: none"
             ><span class="entrar">Entrar</span></a
           >
         </div>
-        <a href="login_page.html" style="text-decoration: none">
+        <a href="./login.html" style="text-decoration: none">
           <i class="fa-solid fa-user-plus icone_entrar" style="color: white;"></i>
         </a>
       </div>
@@ -218,57 +218,4 @@
   </body>
 </html>
 
-<script>
-  function calcular() {
-    var mensagem = "";
-    var kg = Number(ipt_quilos.value);
-    var tempo = Number(ipt_tempo.value);
-    var preco = Number(ipt_preco.value);
-    var safra = Number(ipt_safra.value);
-
-    if (kg <= 0 || tempo <= 0 || preco <= 0 || safra <= 0) {
-      alert("Dados inválidos, por favor preencher os campos corretamente");
-    } else {
-      // Quantidade de safras por ano
-      var producao_anual = kg * safra;
-
-      // Otimização de tempo
-      var dias_totais = safra * tempo;
-      var producao_otimizada = dias_totais * 0.89;
-
-      // Cálculo da Receita
-      var receita = producao_anual * preco;
-      var receita_lucro = receita + receita * 0.207;
-      var lucro = receita_lucro - receita;
-
-      mensagem += ` <br>
-                      <b style= "font-size: 29px;">Com a solução da <span style="font-weight: 800; color: #535B44;">SHITECH</span> você pode: <br></b>
-                    
-                        <br>⚡ Aumentar a produtividade do seus cultivos em até <span style= "font-weight: 800;">21%</span>;<br>
-
-                        <br>⏳ Otimizar o tempo de produção de <span style= "font-weight: 800;">${safra}</span> safras, reduzindo de <span style= "font-weight: 800;">${dias_totais}</span> dias para <span style= "font-weight: 800;">${producao_otimizada.toFixed(
-        0
-      )} </span> dias;<br>
-
-                        <br>💰 Aumentar sua receita anual de <span style= "font-weight: 800; color: red">${receita.toLocaleString(
-                          "pt-BR",
-                          { style: "currency", currency: "BRL" }
-                        )} </span> para  <span style= "font-weight: 800; color: rgb(132, 214, 107)">${receita_lucro.toLocaleString(
-        "pt-BR",
-        { style: "currency", currency: "BRL" }
-      )} </span>.
-
-                         <br> 💵 Um aumento de  <span style= "font-weight: 800; color:rgb(132, 214, 107) ">${lucro.toLocaleString(
-                           "pt-BR",
-                           { style: "currency", currency: "BRL" }
-                         )}</span>!! <br> <br>
-
-                        <br> Entre em contato e faça um orçamento agora mesmo!
-                    `;
-
-      mensagem += ` <br><img src="../images/logo2.png" width = '80px'>`;
-    }
-
-    div_mensagem.innerHTML = ` <p style= "background-color: rgba(166, 138, 100, 1) ; border-radius: 40px;"> ${mensagem}</p>`;
-  }
-</script>
+<script src="./js/sessao.js"></script>

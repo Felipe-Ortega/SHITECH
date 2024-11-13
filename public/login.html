@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="./css/style_login.css">
+    <link rel="website icon" type="png" href="./assets/imgs/logo2.png">
+
+</head>
+<body>
+
+    <div class="corpo">
+
+        <div class="header">
+            <span class="titulo"> SHITECH </span>
+            <span class="subtitulo"> LOGIN </span>
+        </div>
+
+        <div class="logo"></div>
+
+        <div class="inputs">
+
+            <span> Email: </span> <br> <br>
+            <input type="email" id="ipt_email" placeholder="exemplo@gmail.com">  <br> <br>
+
+            <span> Senha: </span> <br> <br>
+            <input type="password" id="ipt_senha" placeholder="Digite sua senha">
+
+        </div>
+        <br>
+        <button class="botao_entrar" onclick="logar()"> Entrar </button>
+        <br>
+        <div class="links">
+
+            <a> Esqueceu sua senha? <a> <br> <br>
+            <a href="./cadastro.html" style="text-decoration: none; color: #936639"> Não possui conta? Cadastre-se <a> 
+
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script>
+
+
+    function logar() {
+
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            alert('Preencha todos os campos para proseguir!')
+        }
+        else {
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id
+                    console.log('a');
+
+                    setTimeout(function () {
+                        window.location = "./index.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                // resposta.text().then(texto => {
+                //     console.error(texto);
+                //     finalizarAguardar(texto);
+                // });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
+
+</script>

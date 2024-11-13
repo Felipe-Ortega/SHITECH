@@ -10,14 +10,14 @@ body{
 }
 
 .logo{
-    background-image: url(../images/logo2.png);
+    background-image: url(../assets/imgs/logo2.png);
     width: 80px;
     height: 65px;
     background-size: cover;
 }
 
 .fungos{
-    background-image: url(../images/fungos.png);
+    background-image: url(../assets/imgs/fungos.png);
     width: 755px;
     height: 410px;
 }
@@ -314,7 +314,7 @@ body{
     justify-content: center;
 }
 .logo_footer{
-    background-image: url(../images/logo2.png);
+    background-image: url(../assets/imgs/logo2.png);
     width: 195px;
     height: 175px;
     background-size: cover;

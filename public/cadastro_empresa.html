@@ -110,25 +110,15 @@ if(verificacoes == 3){
         cnpjServer: cnpj,
         unidadeServer: unidade
       }),
+    }).then((response) => {
+      response.json().then(json => {
+        sessionStorage.ID_EMPRESA = json.insertId
+      })
     })
-
-    buscarId()
-    window.location.href = './cadastro_reponsavel.html';
 }
 else{
   alert(mensagemErro)
 }
 }
 
-function buscarId(){
-  fetch(`/empresas/buscarMaiorId`, {
-          method: "GET",
-        }).then((res) =>  {
-          res.json().then((json=>{
-            console.log(json)
-            console.log(json[0])
-            sessionStorage.ID_EMPRESA = json[0].idEmpresa
-          }))
-        })
-}
 </script>

@@ -55,7 +55,7 @@
 
 <script>
 
-function continuar(){
+async function continuar(){
   // ALOCA AS VARIÁVEIS
 
   var nomeFantasia = nomeFantasia_input.value;
@@ -97,7 +97,7 @@ else{
   // se passar nas 3 verificações é redirecionado a tela de cadastro do responsável se não exibe erro
 
 if(verificacoes == 3){
-    var teste =fetch("/empresas/cadastrar", {
+    var response = await fetch("/empresas/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -110,13 +110,10 @@ if(verificacoes == 3){
         cnpjServer: cnpj,
         unidadeServer: unidade
       }),
-    }).then((response) => {
-      response.json().then((json) => {
-        console.log(json)
-        console.log(json.insertId)
-        sessionStorage.ID_EMPRESA = Number(json.insertId)
-      })
     })
+    const jsonn = await response.json()
+    sessionStorage.ID_EMPRESA = Number(jsonn.insertId)
+
     window.location = "./cadastro_reponsavel.html";
 }
 else{

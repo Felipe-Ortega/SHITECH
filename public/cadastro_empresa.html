@@ -111,11 +111,24 @@ if(verificacoes == 3){
         unidadeServer: unidade
       }),
     })
-    window.location.href = './cadastro_responsavel.html';
+
+    buscarId()
+    window.location.href = './cadastro_reponsavel.html';
 }
 else{
   alert(mensagemErro)
 }
 }
 
+function buscarId(){
+  fetch(`/empresas/buscarMaiorId`, {
+          method: "GET",
+        }).then((res) =>  {
+          res.json().then((json=>{
+            console.log(json)
+            console.log(json[0])
+            sessionStorage.ID_EMPRESA = json[0].idEmpresa
+          }))
+        })
+}
 </script>

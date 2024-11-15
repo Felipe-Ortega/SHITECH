@@ -11,7 +11,10 @@ function listar() {
 
   return database.executar(instrucaoSql);
 }
-
+function buscarMaiorId(){
+  var instrucaoSql = `SELECT MAX(idEmpresa) AS idEmpresa FROM empresa`
+  return database.executar(instrucaoSql)
+}
 function buscarPorCnpj(cnpj) {
   var instrucaoSql = `SELECT * FROM empresa WHERE cnpj = '${cnpj}'`;
 
@@ -24,4 +27,4 @@ function cadastrar(razaoSocial, fantasia, cnpj, unidade) {
   return database.executar(instrucaoSql);
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };
+module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, buscarMaiorId };

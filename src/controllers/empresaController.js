@@ -1,5 +1,11 @@
 var empresaModel = require("../models/empresaModel");
 
+
+function buscarMaiorId(req,res){
+    empresaModel.buscarMaiorId().then((resultado) => {
+      res.status(200).json(resultado)
+    })
+}
 function buscarPorCnpj(req, res) {
   var cnpj = req.query.cnpj;
 
@@ -44,6 +50,7 @@ function cadastrar(req, res) {
 module.exports = {
   buscarPorCnpj,
   buscarPorId,
+  buscarMaiorId,
   cadastrar,
   listar,
 };

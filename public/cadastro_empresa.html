@@ -97,7 +97,7 @@ else{
   // se passar nas 3 verificações é redirecionado a tela de cadastro do responsável se não exibe erro
 
 if(verificacoes == 3){
-  fetch("/empresas/cadastrar", {
+    var teste =fetch("/empresas/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -111,7 +111,7 @@ if(verificacoes == 3){
         unidadeServer: unidade
       }),
     }).then((response) => {
-      response.json().then(json => {
+      response.json().then((json) => {
         sessionStorage.ID_EMPRESA = json.insertId
       })
     })
@@ -119,6 +119,8 @@ if(verificacoes == 3){
 else{
   alert(mensagemErro)
 }
+
 }
+
 
 </script>

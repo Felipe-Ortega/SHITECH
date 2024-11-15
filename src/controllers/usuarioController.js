@@ -51,7 +51,7 @@ function cadastrar(req, res) {
     var telefone = req.body.telefoneServer;
     var cpf = req.body.cpfServer;
     var cargo = req.body.cargoServer;
-    var fkEmpresa = sessionStorage.ID_EMPRESA
+    var fkEmpresa =req.body.fkEmpresaServer
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");

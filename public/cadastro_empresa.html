@@ -113,8 +113,10 @@ if(verificacoes == 3){
     }).then((response) => {
       response.json().then((json) => {
         sessionStorage.ID_EMPRESA = json.insertId
+        console.log(json.insertId)
       })
     })
+    window.location = "./cadastro_reponsavel.html";
 }
 else{
   alert(mensagemErro)

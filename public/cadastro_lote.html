@@ -110,12 +110,13 @@
         // Agora vá para o arquivo routes/usuario.js
         estufa: estufa,
         tipo: tipo,
-        idLote: sessionStorage.FK_EMPRESA
+        fkEmpresa: Number(sessionStorage.FK_EMPRESA)
       }),
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 
+  
         if (resposta.ok) {
           // cardErro.style.display = "block";
 

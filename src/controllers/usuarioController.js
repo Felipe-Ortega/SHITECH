@@ -4,6 +4,7 @@ var usuarioModel = require("../models/usuarioModel");
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -20,11 +21,10 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
                         res.json({
-                            id: resultadoAutenticar[0].id,
+                            idRepresentante: resultadoAutenticar[0].idRepresentante,
                             email: resultadoAutenticar[0].email,
-                            senha: resultadoAutenticar[0].senha,
-                            unidade: resultadoAutenticar[0].unidade,
-                            cargo: resultadoAutenticar[0].cargo,
+                            nome: resultadoAutenticar[0].nome,
+                            fkEmpresa: resultadoAutenticar[0].fkEmpresa
                         });
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");

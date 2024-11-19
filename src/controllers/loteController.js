@@ -5,9 +5,9 @@ function cadastrar(req, res){
     var estufa = req.body.estufa;
     var tipo = req.body.tipo;
     loteModel.cadastrar(fkEmpresa, estufa, tipo)
-    .then(function (res) 
+    .then(function (resultado) 
     {
-        res.json(res)
+      res.json(resultado)
     })
     .catch(function (error) {
         console.log(error)

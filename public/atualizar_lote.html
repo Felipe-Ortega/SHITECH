@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
   </head>
 
-  <body>
+  <body onload="listar()">
     <div class="container_all">
       <div class="container_menu">
         <ul class="lista">
@@ -52,8 +52,6 @@
                 <span>Lote para alteração</span>
                 <select class="slt_lote" name="" id="select_filtro_lote" onclick="filtro()">
                   <!-- <option value="lotes_variacoes" selected>Lotes com maiores variações</option> -->
-                  <option value="abc123" selected>Lote ABC123</option>
-                  <option value="def456">Lote DEF456</option>
                 </select>
               </div>
               <div class="campo">
@@ -86,6 +84,7 @@
 </html>
 
 <script>
+
   function cadastrar() {
    var dtMarcada = dt_plantio.value != "" || dt_fruti.value != "" || dt_colheita.value != ""
     if (dtMarcada) {
@@ -95,4 +94,23 @@
       alert("Preencha alguma das datas");
     }
   }
+
+  var lote = [];
+
+  function listar(){
+    fetch("/lotes/listar", {
+      method: "GET",
+    }).then((res => {
+      res.json().then((json) => {
+        console.log(json)
+        lote = json
+        console.log(lote)
+
+        for(var i = 0; i < lote.length; i++){
+          select_filtro_lote.innerHTML += `<option value="${lote[i].estufa}"> Lote ${lote[i].estufa}</option>`  
+        }
+    })
+  }))
+}
+
 </script>

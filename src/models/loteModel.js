@@ -13,4 +13,9 @@ function atualizar(dtPlantacao, dtColheita, dtFrutificacao, idLote){
   return database.executar(instrucaoSql); 
 }
 
-module.exports = {cadastrar, atualizar}
+function listar(){
+    var instrucaoSql = `select * from lote;`
+    return database.executar(instrucaoSql);
+}
+
+module.exports = {cadastrar, atualizar, listar}

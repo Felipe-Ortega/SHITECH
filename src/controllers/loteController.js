@@ -33,4 +33,10 @@ function atualizar(req, res){
     })
 }
 
-module.exports = {cadastrar, atualizar}
+function listar(req, res){
+    loteModel.listar().then((resultado) => {
+        res.status(200).json(resultado)
+    })
+}
+
+module.exports = {cadastrar, atualizar, listar}

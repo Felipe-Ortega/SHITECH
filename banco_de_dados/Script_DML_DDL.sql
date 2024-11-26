@@ -315,3 +315,31 @@ DROP DATABASE Shitech;
 desc lote;
 
 SELECT * FROM plantacaoChampignon;
+
+SELECT
+    HOUR(horarioCaptura) AS hora,
+    MAX(temperatura) - MIN(temperatura) AS variacao_temperatura, -- SELECT PARA MOSTRAR VARIAÇÃO DE TEMP., DE UMID E MOSTRAR A HORA DA CAPTURA --
+    MAX(umidade) - MIN(umidade) AS variacao_umidade
+FROM Dados
+GROUP BY HOUR(horarioCaptura)
+ORDER BY variacao_temperatura DESC, variacao_umidade DESC;
+
+SELECT 
+	date_format(horarioCaptura, '%H:%i') AS hora,
+	idSensor,
+	idLote,
+    MAX(d.temperatura) as temp_max,
+    MIN(d.temperatura) as temp_min,
+    MAX(d.umidade) as umid_max,
+    MIN(d.umidade) as umid_min,
+    s.posicao as 'Quadrante	',
+    l.estufa as 'Nome Estufa',    
+    l.tipo as 'Tipo Estufa',							-- SELECT PARA MOSTRAR VARIAÇÃO DE TEMP., DE UMID., MOSTRAR A HORA DA CAPTURA, NOME DAS EMPRESAS --
+    e.nomeFantasia as 'Nome empresa',								-- NOME DOS USUARIOS, QUADRANTES, TIPOS DA ESTUFA E NOME DA ESTUFA --
+    u.nome as 'Nome usuário'
+FROM Dados as d JOIN sensor as s on d.fkSensor = s.idSensor 
+JOIN lote as l on s.fkLote = l.idLote 
+JOIN empresa as e on l.fkEmpresa = e.idEmpresa
+JOIN usuario as u on e.idEmpresa = u.fkEmpresa
+GROUP BY hora, s.posicao, u.nome, l.estufa, l.tipo, e.nomeFantasia, idLote, idSensor
+ORDER BY temp_max DESC, temp_min DESC, umid_max DESC, umid_min DESC, hora ASC;

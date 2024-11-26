@@ -238,10 +238,7 @@ select nomeFantasia, idLote, dtPlantacao, dtColheita, dtFrutificacao, tipo from 
 on idEmpresa = fkEmpresa
 where tipo = 'Champignon';
 
-<<<<<<< HEAD
 CREATE VIEW manutencaoEstufa as
-=======
->>>>>>> 34ae35929f9369c4104bf82e147522e7c8a161c1
 select Empresa.nomeFantasia, Lote.estufa,
 Sensor.manutencao, Sensor.sensorStatus 
 from Empresa join Lote
@@ -255,12 +252,8 @@ left join Lote
 on idEmpresa = fkEmpresa
 where nomeFantasia = 'BioFarms';
 
-<<<<<<< HEAD
 CREATE VIEW plantacaoEstufa as
 select Lote.estufa as 'Localidade', Lote.tipo as 'Tipo',
-=======
-select Lote.estufa as 'Localidade da Estufa', Lote.tipo as 'Tipo',
->>>>>>> 34ae35929f9369c4104bf82e147522e7c8a161c1
 Sensor.sensorStatus as 'Status do Sensor', Sensor.posicao as 'Posição do Sensor'
 from Lote join Sensor
 on fkLote = idLote;
@@ -308,11 +301,7 @@ where Lote.tipo = 'Champignon';
 CREATE VIEW manutencaoEstufaEmpresa as
 select Empresa.nomeFantasia as 'Nome da Empresa', Usuario.nome as 'Representante',
 Usuario.status_colaborador as 'Status Colaborador', Lote.idLote as 'N° Lote', 
-<<<<<<< HEAD
 Lote.estufa as 'Estufa', Sensor.idSensor as 'N° Sensor',
-=======
-Lote.estufa as 'Localidade da Estufa', Sensor.idSensor as 'N° Sensor',
->>>>>>> 34ae35929f9369c4104bf82e147522e7c8a161c1
 Sensor.posicao as 'Posição', Sensor.manutencao as 'Manutenção'
 from Empresa join Usuario
 on Usuario.fkEmpresa = Empresa.idEmpresa
@@ -321,10 +310,8 @@ on Lote.fkEmpresa = Empresa.idEmpresa
 join Sensor
 on Sensor.fkLote = Lote.idLote;
 
-<<<<<<< HEAD
 DROP DATABASE Shitech;
 
 desc lote;
-=======
-DROP DATABASE Shitech;
->>>>>>> 34ae35929f9369c4104bf82e147522e7c8a161c1
+
+SELECT * FROM plantacaoChampignon;

@@ -7,7 +7,9 @@ var empresaController = require("../controllers/empresaController");
 router.post("/cadastrar", function (req, res) {
     empresaController.cadastrar(req, res);
 })
-
+router.get("/buscarMaiorId", function (req,res){
+  empresaController.buscarMaiorId(req,res)
+})
 router.get("/buscar", function (req, res) {
     empresaController.buscarPorCnpj(req, res);
 });

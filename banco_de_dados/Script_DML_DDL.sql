@@ -7,7 +7,8 @@ CREATE TABLE Empresa (
     nomeFantasia VARCHAR(144) NOT NULL,
     cnpj CHAR(14) NOT NULL,
     status_cliente TINYINT(1) NOT NULL,
-    CONSTRAINT chkStatusCliente CHECK (status_cliente IN (0, 1))
+    CONSTRAINT chkStatusCliente CHECK (status_cliente IN (0, 1)),
+    unidade CHAR(3) NOT NULL
 );
 
 CREATE TABLE Usuario (
@@ -18,7 +19,6 @@ CREATE TABLE Usuario (
     telefone CHAR(11) NOT NULL,
     status_colaborador TINYINT(1) NOT NULL,
     CONSTRAINT chkStatusColaborador CHECK (status_colaborador IN (0, 1)),
-    unidade CHAR(3) NOT NULL,
     cargo VARCHAR(45) NOT NULL,
     email VARCHAR(256) NOT NULL,
     senha CHAR(32) NOT NULL,
@@ -30,13 +30,11 @@ CREATE TABLE Lote (
     dtPlantacao DATE NOT NULL,
     dtColheita DATE NOT NULL,
     dtFrutificacao DATE NOT NULL,
-    localidade CHAR(6) NOT NULL,
+    estufa CHAR(6) NOT NULL,
     tipo VARCHAR(45) NOT NULL,
     fkEmpresa INT NOT NULL,
     CONSTRAINT fkEmpresaLote FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
-
-alter table Lote rename column localidade to estufa;
 
 CREATE TABLE Sensor (
     idSensor INT PRIMARY KEY AUTO_INCREMENT,
@@ -59,18 +57,18 @@ CREATE TABLE Dados (
  
 INSERT INTO Empresa 
 VALUES 
-(DEFAULT, 'GreenFields Agro LTDA', 'GreenFields', '11223344000177', 1),
-(DEFAULT, 'BioFarms Inc.', 'BioFarms', '55667788000166', 1),
-(DEFAULT, 'AgroNatura SA', 'AgroNatura', '99887766000155', 1);
+(DEFAULT, 'GreenFields Agro LTDA', 'GreenFields', '11223344000177', 1, '001'),
+(DEFAULT, 'BioFarms Inc.', 'BioFarms', '55667788000166', 1, '002'),
+(DEFAULT, 'AgroNatura SA', 'AgroNatura', '99887766000155', 1, '003');
 
 INSERT INTO Usuario 
 VALUES 
-(DEFAULT, 1, 'Lucas Menezes', '12398765400', '11976543210', 1, '001', 'Supervisor', 'lucas@greenfields.com', 'senha112'),
-(DEFAULT, 1, 'Fernanda Lima', '98732165400', '11965432109', 1, '002', 'Gerente', 'fernanda@greenfields.com', 'senha113'),
-(DEFAULT, 2, 'Roberto Alves', '45678912300', '11987654322', 1, '001', 'Supervisor', 'roberto@biofarms.com', 'senha114'),
-(DEFAULT, 2, 'Juliana Reis', '65498732100', '11999887755', 1, '002', 'Gerente', 'juliana@biofarms.com', 'senha115'),
-(DEFAULT, 3, 'Marcos Ferreira', '78912345600', '11988776644', 1, '001', 'Gerente', 'marcos@agronatura.com', 'senha116'),
-(DEFAULT, 3, 'Isabela Santos', '32198765400', '11977665544', 1, '002', 'Supervisor', 'isabela@agronatura.com', 'senha117');
+(DEFAULT, 1, 'Lucas Menezes', '12398765400', '11976543210', 1, 'Supervisor', 'lucas@greenfields.com', 'senha112'),
+(DEFAULT, 1, 'Fernanda Lima', '98732165400', '11965432109', 1, 'Gerente', 'fernanda@greenfields.com', 'senha113'),
+(DEFAULT, 2, 'Roberto Alves', '45678912300', '11987654322', 1, 'Supervisor', 'roberto@biofarms.com', 'senha114'),
+(DEFAULT, 2, 'Juliana Reis', '65498732100', '11999887755', 1, 'Gerente', 'juliana@biofarms.com', 'senha115'),
+(DEFAULT, 3, 'Marcos Ferreira', '78912345600', '11988776644', 1, 'Gerente', 'marcos@agronatura.com', 'senha116'),
+(DEFAULT, 3, 'Isabela Santos', '32198765400', '11977665544', 1, 'Supervisor', 'isabela@agronatura.com', 'senha117');
  
 INSERT INTO Lote
 VALUES 
@@ -240,7 +238,10 @@ select nomeFantasia, idLote, dtPlantacao, dtColheita, dtFrutificacao, tipo from 
 on idEmpresa = fkEmpresa
 where tipo = 'Champignon';
 
+<<<<<<< HEAD
 CREATE VIEW manutencaoEstufa as
+=======
+>>>>>>> 34ae35929f9369c4104bf82e147522e7c8a161c1
 select Empresa.nomeFantasia, Lote.estufa,
 Sensor.manutencao, Sensor.sensorStatus 
 from Empresa join Lote
@@ -254,8 +255,12 @@ left join Lote
 on idEmpresa = fkEmpresa
 where nomeFantasia = 'BioFarms';
 
+<<<<<<< HEAD
 CREATE VIEW plantacaoEstufa as
 select Lote.estufa as 'Localidade', Lote.tipo as 'Tipo',
+=======
+select Lote.estufa as 'Localidade da Estufa', Lote.tipo as 'Tipo',
+>>>>>>> 34ae35929f9369c4104bf82e147522e7c8a161c1
 Sensor.sensorStatus as 'Status do Sensor', Sensor.posicao as 'Posição do Sensor'
 from Lote join Sensor
 on fkLote = idLote;
@@ -303,7 +308,11 @@ where Lote.tipo = 'Champignon';
 CREATE VIEW manutencaoEstufaEmpresa as
 select Empresa.nomeFantasia as 'Nome da Empresa', Usuario.nome as 'Representante',
 Usuario.status_colaborador as 'Status Colaborador', Lote.idLote as 'N° Lote', 
+<<<<<<< HEAD
 Lote.estufa as 'Estufa', Sensor.idSensor as 'N° Sensor',
+=======
+Lote.estufa as 'Localidade da Estufa', Sensor.idSensor as 'N° Sensor',
+>>>>>>> 34ae35929f9369c4104bf82e147522e7c8a161c1
 Sensor.posicao as 'Posição', Sensor.manutencao as 'Manutenção'
 from Empresa join Usuario
 on Usuario.fkEmpresa = Empresa.idEmpresa
@@ -312,6 +321,10 @@ on Lote.fkEmpresa = Empresa.idEmpresa
 join Sensor
 on Sensor.fkLote = Lote.idLote;
 
+<<<<<<< HEAD
 DROP DATABASE Shitech;
 
 desc lote;
+=======
+DROP DATABASE Shitech;
+>>>>>>> 34ae35929f9369c4104bf82e147522e7c8a161c1

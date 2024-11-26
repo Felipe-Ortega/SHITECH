@@ -8,7 +8,7 @@
 
   <title>SHITech | Cadastro Empresa</title>
 
-  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="./css/style.css" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link rel="website icon" type="png" href="../images/logo2.png">
 </head>
@@ -19,7 +19,7 @@
 
     <div class="container">
       <div class="card card-cadastro">
-        <img src="../images/logo.png" alt="Logo SHITech">
+        <img src="./assets/imgs/logo.png" alt="Logo SHITech">
         <div class="formulario">
            <div class="campo">
             <span>Razão Social:</span>
@@ -33,8 +33,17 @@
             <span>CNPJ:</span>
             <input id="cnpj_input" type="text" maxlength="14" placeholder="**.***.***/****-**" />
           </div>
+          <div class="campo">
+            <span>Unidade:</span>
+            <input
+              id="unidade_ipt"
+              type="number"
+              placeholder="Unidade de atuação"
+              min="0"
+              max="999"
+            />
           <button class="botao" onclick="continuar()">Continuar</button>
-          <a class="possui" href="login_page.html">Já possui uma conta?</a>
+          <a class="possui" href="./login.html">Já possui uma conta?</a>
         </div>
       </div>
     </div>
@@ -52,6 +61,7 @@ function continuar(){
   var nomeFantasia = nomeFantasia_input.value;
   var razaoSocial = razao_input.value;
   var cnpj = cnpj_input.value;
+  var unidade = unidade_ipt.value;
   var mensagemErro = '';
 
   // INICIA UM CONTADOR DE VERIFICAÇÕES QUE SERÁ USADO PARA REALIZAR O CADASTRO
@@ -87,11 +97,38 @@ else{
   // se passar nas 3 verificações é redirecionado a tela de cadastro do responsável se não exibe erro
 
 if(verificacoes == 3){
-  window.location.href = './SHITECH_CADASTRO_RESPONSÁVEL.HTML';
-}
+    var teste =fetch("/empresas/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomefantasiaServer: nomeFantasia,
+        razaosocialServer: razaoSocial,
+        cnpjServer: cnpj,
+        unidadeServer: unidade
+      }),
+    }).then((response) => {
+      response.json().then((json) => {
+        sessionStorage.ID_EMPRESA = Number(json.insertId)
+      })
+    })
+
+          setTimeout(() => {
+            window.location = "./cadastro_reponsavel.html";
+          }, "2000");
+        }
+
+    
+
+
 else{
   alert(mensagemErro)
 }
+
 }
+
 
 </script>

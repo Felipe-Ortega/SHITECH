@@ -34,7 +34,7 @@
         <div class="links">
 
             <a> Esqueceu sua senha? <a> <br> <br>
-            <a href="./cadastro.html" style="text-decoration: none; color: #936639"> Não possui conta? Cadastre-se <a> 
+            <a href="./cadastro_empresa.html" style="text-decoration: none; color: #936639"> Não possui conta? Cadastre-se <a> 
 
         </div>
     </div>
@@ -79,12 +79,13 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id
+                    sessionStorage.ID_USUARIO = json.idRepresentante;
+                    sessionStorage.FK_EMPRESA = json.fkEmpresa;
                     console.log('a');
 
                     setTimeout(function () {
-                        window.location = "./index.html";
-                    }, 1000); // apenas para exibir o loading
+                        window.location = "./dashboard_modificacoes_novo.html";
+                    }, 2000); // apenas para exibir o loading
 
                 });
 

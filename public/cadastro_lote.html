@@ -7,7 +7,7 @@
 
     <title>SHITech | Cadastro Funcionário</title>
 
-    <link rel="stylesheet" href="../css/style_func.css" />
+    <link rel="stylesheet" href="./css/style_func.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
   </head>
 
@@ -17,36 +17,36 @@
         <ul class="lista">
           <li>
             <a href="landing_page.html"
-              ><img src="../images/logo1.png" alt="" />
+              ><img src="./assets/imgs/logo1.png" alt="" />
             </a>
           </li>
           <li>
             <a href="dashboard_modificacoes_novo.html"><button>DASH</button></a>
           </li>
           <li>
-            <a href="SHITECH_CADASTRO_FUNCIONARIO.html"
+            <a href="cadastro_funcionario.html"
               ><button>CADASTRO</button></a
             >
           </li>
           <li>
-            <a href="SHITECH_CADASTRO_LOTE.html"
+            <a href="cadastro_lote.html"
               ><button>ADICIONAR LOTE</button></a
             >
           </li>
           <li>
-            <a href="SHITECH_ATUALIZAR_LOTE.html"
+            <a href="atualizar_lote.html"
               ><button>ATUALIZAR LOTE</button></a
             >
           </li>
           <li>
-            <a href="login_page.html"><button>SAIR</button></a>
+            <a href="login.html"><button>SAIR</button></a>
           </li>
         </ul>
       </div>
       <div class="cadastro">
         <div class="container">
           <div class="card card-cadastro">
-            <img src="../images/logo.png" alt="Logo SHITech" />
+            <img src="./assets/imgs/logo.png" alt="Logo SHITech" />
             <div class="formulario">
               <div class="campo">
                 <span>Estufa</span>
@@ -66,6 +66,7 @@
                     class="funcaoradio"
                     type="radio"
                     name="funcao"
+                    value="shimeji"
                   />
                 </div>
                 <div class="ipt_radio_span">
@@ -75,6 +76,7 @@
                     class="funcaoradio"
                     type="radio"
                     name="funcao"
+                    value="champignon"
                   />
                 </div>
               </div>
@@ -90,11 +92,53 @@
 <script>
   function cadastrar() {
     var estufa = ipt_estufa.value
+    if(ipt_shimeji.checked){
+      var tipo = ipt_shimeji.value;
+    }
+    else if(ipt_champignon.checked){
+      var tipo = ipt_champignon.value;
+    }
     if (estufa != "" && (ipt_shimeji.checked || ipt_champignon.checked)) {
       alert("Lote cadastrado");
-      window.location.href = "./SHITECH_CADASTRO_LOTE.HTML";
-    } else {
+      fetch("/lotes/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        estufa: estufa,
+        tipo: tipo,
+        fkEmpresa: Number(sessionStorage.FK_EMPRESA)
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+  
+        if (resposta.ok) {
+          // cardErro.style.display = "block";
+
+          // mensagem_erro.innerHTML =
+          //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "./atualizar_lote.html";
+          }, "2000");
+
+          // limparFormulario();
+          // finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+} else {
       alert("Preencha todos os campos");
     }
-  }
+}
 </script>

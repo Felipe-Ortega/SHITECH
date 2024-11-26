@@ -46,6 +46,39 @@
             <span>Confirmação da Senha:</span>
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
           </div>
+              <span class="funcao">Selecione sua função:</span>
+              <div class="ipt_funcao">
+                <div class="ipt_radio_span">
+                  <span>Gerente</span>
+                  <input
+                    id="ipt_gerente"
+                    class="funcaoradio"
+                    type="radio"
+                    name="funcao"
+                    value="gerente"
+                  />
+                </div>
+                <div class="ipt_radio_span">
+                  <span>Supervisor</span>
+                  <input
+                    id="ipt_supervisor"
+                    class="funcaoradio"
+                    type="radio"
+                    name="funcao"
+                    value="supervisor"
+                  />
+                </div>
+                <div class="ipt_radio_span">
+                  <span>Comum</span>
+                  <input
+                    id="ipt_comum"
+                    class="funcaoradio"
+                    type="radio"
+                    name="funcao"
+                    value="comum"
+                  />
+                </div>
+              </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
           <a class="possui" href="./login.html">Já possui uma conta?</a>
         </div>
@@ -73,6 +106,14 @@
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var telefoneVar = telefone_input.value;
     var cpfVar = cpf_input.value;
+    //ARMAZENA TODOS OS ELEMENTOS COM NOME "funcao" EM UM VETOR ENTÃO FAZ UM LOOP PARA VERIFICAR QUAL ESTÁ MARCADO E CONSEGUIR SEU VALOR
+    var radios = document.getElementsByName("funcao")
+    for(i = 0; i < radios.length; i++){
+      if(radios[i].checked){
+        var cargoVar = radios[i].value;
+      }
+    }
+    console.log()
     // var idEmpresaVincular
 
     // Verificando se há algum campo em branco
@@ -81,7 +122,8 @@
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      telefoneVar == ""
+      telefoneVar == "" ||
+      cargoVar == "" 
     ) {
       alert('Preencha todos os campos para se cadastrar!');
 
@@ -90,7 +132,7 @@
     } else {
       // setInterval(sumirMensagem, 5000);
     }
-
+        
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
@@ -104,7 +146,9 @@
         emailServer: emailVar,
         senhaServer: senhaVar,
         cpfServer: cpfVar,
-        telefoneServer: telefoneVar
+        telefoneServer: telefoneVar,
+        cargoServer: cargoVar,
+        fkEmpresaServer: sessionStorage.ID_EMPRESA
       }),
     })
       .then(function (resposta) {

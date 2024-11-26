@@ -4,6 +4,7 @@ var usuarioModel = require("../models/usuarioModel");
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -20,9 +21,10 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
                         res.json({
-                            id: resultadoAutenticar[0].id,
+                            idRepresentante: resultadoAutenticar[0].idRepresentante,
                             email: resultadoAutenticar[0].email,
-                            senha: resultadoAutenticar[0].senha
+                            nome: resultadoAutenticar[0].nome,
+                            fkEmpresa: resultadoAutenticar[0].fkEmpresa
                         });
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
@@ -48,7 +50,8 @@ function cadastrar(req, res) {
     var senha = req.body.senhaServer;
     var telefone = req.body.telefoneServer;
     var cpf = req.body.cpfServer;
-
+    var cargo = req.body.cargoServer;
+    var fkEmpresa = req.body.fkEmpresaServer;
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -60,10 +63,13 @@ function cadastrar(req, res) {
         res.status(400).send("Seu telefone está undefined!");
     } else if (cpf == undefined) {
         res.status(400).send("Seu CPF está undefined!");
+    
+    } else if (cargo == undefined) {
+        res.status(400).send("Seu cargo está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, telefone, cpf)
+        usuarioModel.cadastrar(nome, email, senha, telefone, cpf, cargo, fkEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);

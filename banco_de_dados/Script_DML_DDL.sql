@@ -1,8 +1,6 @@
 CREATE DATABASE Shitech;
 USE Shitech;
 
-
-
 CREATE TABLE Empresa (
     idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     razaoSocial VARCHAR(60) NOT NULL,
@@ -221,49 +219,59 @@ VALUES
 (DEFAULT, 12, 28.1, 69.6, '2024-08-11 13:09:00'),
 (DEFAULT, 12, 28.3, 69.8, '2024-08-11 13:10:00');
 
+CREATE VIEW empresaLote as
 select * from empresa join lote
 on idEmpresa = fkEmpresa
 order by nomeFantasia asc;
 
+CREATE VIEW plantacaoShimeji AS
 select nomeFantasia, idLote, dtPlantacao, dtColheita, dtFrutificacao, tipo from empresa join lote
 on idEmpresa = fkEmpresa
 where tipo = 'Shimeji';
 
+CREATE VIEW nomeEmpresa AS
 select usuario.nome,usuario.status_colaborador, nomeFantasia
 from usuario join empresa
 on idEmpresa = fkEmpresa
 order by nomeFantasia;
 
+CREATE VIEW plantacaoChampignon AS
 select nomeFantasia, idLote, dtPlantacao, dtColheita, dtFrutificacao, tipo from empresa join lote
 on idEmpresa = fkEmpresa
 where tipo = 'Champignon';
 
-select Empresa.nomeFantasia, Lote.localidade,
+CREATE VIEW manutencaoEstufa as
+select Empresa.nomeFantasia, Lote.estufa,
 Sensor.manutencao, Sensor.sensorStatus 
 from Empresa join Lote
 on idEmpresa = fkEmpresa
 join Sensor
 on fkLote = idLote;
 
+CREATE VIEW empresaBiofarms AS
 select * from Empresa
 left join Lote
 on idEmpresa = fkEmpresa
 where nomeFantasia = 'BioFarms';
 
-select Lote.localidade as 'Localidade', Lote.tipo as 'Tipo',
+CREATE VIEW plantacaoEstufa as
+select Lote.estufa as 'Localidade', Lote.tipo as 'Tipo',
 Sensor.sensorStatus as 'Status do Sensor', Sensor.posicao as 'Posição do Sensor'
 from Lote join Sensor
 on fkLote = idLote;
 
+CREATE VIEW sensorDados AS
 select * from Sensor 
 join Dados
 on fkSensor = idSensor;
 
+CREATE VIEW sensorDadosHorario AS
 select * from Sensor 
 join Dados
 on fkSensor = idSensor
 where horarioCaptura > '2024-05-11 10:05:00';
 
+CREATE VIEW statusLotes AS
 select Lote.idLote as 'N° Lote', Sensor.posicao as 'Posição',
 Dados.temperatura as 'Temperatura', Dados.umidade as 'Umidade',
 Dados.horarioCaptura as 'Horário da Captura'
@@ -272,6 +280,7 @@ on fkLote = idLote
 join Dados
 on fkSensor = idSensor;
 
+CREATE VIEW statusLotesShimeji AS
 select Lote.idLote as 'N° Lote', Sensor.posicao as 'Posição',
 Dados.temperatura as 'Temperatura', Dados.umidade as 'Umidade',
 Dados.horarioCaptura as 'Horário da Captura'
@@ -281,6 +290,7 @@ join Dados
 on fkSensor = idSensor
 where Lote.tipo = 'Shimeji';
 
+CREATE VIEW statusLotesChampignon AS
 select Lote.idLote as 'N° Lote', Sensor.posicao as 'Posição',
 Dados.temperatura as 'Temperatura', Dados.umidade as 'Umidade',
 Dados.horarioCaptura as 'Horário da Captura'
@@ -290,9 +300,10 @@ join Dados
 on fkSensor = idSensor
 where Lote.tipo = 'Champignon';
 
+CREATE VIEW manutencaoEstufaEmpresa as
 select Empresa.nomeFantasia as 'Nome da Empresa', Usuario.nome as 'Representante',
 Usuario.status_colaborador as 'Status Colaborador', Lote.idLote as 'N° Lote', 
-Lote.localidade as 'Localidade', Sensor.idSensor as 'N° Sensor',
+Lote.estufa as 'Estufa', Sensor.idSensor as 'N° Sensor',
 Sensor.posicao as 'Posição', Sensor.manutencao as 'Manutenção'
 from Empresa join Usuario
 on Usuario.fkEmpresa = Empresa.idEmpresa
@@ -301,7 +312,6 @@ on Lote.fkEmpresa = Empresa.idEmpresa
 join Sensor
 on Sensor.fkLote = Lote.idLote;
 
-
-
-
 DROP DATABASE Shitech;
+
+desc lote;

@@ -17,14 +17,14 @@ function cadastrar(req, res){
 }
 
 function atualizar(req, res){
-    var dtPlantacao = req.body.dtPlantacao;
-    var dtColheita = req.body.dtColheita;
-    var dtFrutificacao = req.body.dtFrutificacao;
-    var idLote = req.body.idLote;
-    loteModel.atualizar(dtPlantacao, dtColheita, dtFrutificacao, idLote)
-    .then(function (res) 
+    var dtPlantacao = req.body.dtplantioServer;
+    var dtColheita = req.body.dtcolheitaServer;
+    var dtFrutificacao = req.body.dtfrutiServer;
+    var Lote = req.body.loteServer;
+    loteModel.atualizar(dtPlantacao, dtColheita, dtFrutificacao, Lote)
+    .then(function (resultado) 
     {
-        res.json(res)
+        res.json(resultado)
     })
     .catch(function (error) {
         console.log(error)

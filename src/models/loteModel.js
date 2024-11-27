@@ -7,9 +7,8 @@ function cadastrar(fkEmpresa, estufa, tipo){
   return database.executar(instrucaoSql);    
 }
 
-function atualizar(dtPlantacao, dtColheita, dtFrutificacao, idLote){
-  var instrucaoSql = `update lote set dtPlantacao = '${dtPlantacao}', 
-  dtColheita = '${dtColheita}', dtFruticacao = '${dtFrutificacao}' where idLote = ${idLote}');`;
+function atualizar(dtPlantacao, dtColheita, dtFrutificacao, Lote){
+  var instrucaoSql = `update lote set dtPlantacao = '${dtPlantacao}', dtColheita = '${dtColheita}', dtFrutificacao = '${dtFrutificacao}' where idLote = ${Lote};`;
   return database.executar(instrucaoSql); 
 }
 

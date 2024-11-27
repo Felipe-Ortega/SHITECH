@@ -86,10 +86,44 @@
 <script>
 
   function cadastrar() {
-   var dtMarcada = dt_plantio.value != "" || dt_fruti.value != "" || dt_colheita.value != ""
+    var dtPlantio = dt_plantio.value;
+    if(dtPlantio == ""){
+      dtPlantio = '1990-01-01'
+    }
+    var dtFruti = dt_fruti.value;
+    if(dtFruti == ""){
+      dtFruti = '1990-01-01'
+    }
+    var dtColheita = dt_colheita.value;
+    if(dtColheita == ""){
+      dtColheita = '1990-01-01'
+    }
+    var estufaLote = select_filtro_lote.value;
+    for(i = 0; i < lote.length; i++){
+      if(lote[i].estufa == estufaLote){
+        var idLote = lote[i].idLote
+      }
+    }
+   var dtMarcada = dtPlantio != "" || dtFruti != "" || dtColheita != ""
     if (dtMarcada) {
       alert("Lote atualizado");
-      window.location.href = "./dashboard_modificacoes_novo.HTML";
+      fetch("/lotes/atualizar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        dtplantioServer: dtPlantio,
+        dtfrutiServer: dtFruti,
+        dtcolheitaServer: dtColheita,
+        loteServer: idLote
+      }),
+    }).then((response) => {
+      response.json().then((json) => {
+        sessionStorage.ID_EMPRESA = Number(json.insertId)
+        window.location.href = "./dashboard_modificacoes_novo.HTML";
+      })
+    })
     } else {
       alert("Preencha alguma das datas");
     }

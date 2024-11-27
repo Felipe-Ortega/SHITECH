@@ -310,8 +310,6 @@ on Lote.fkEmpresa = Empresa.idEmpresa
 join Sensor
 on Sensor.fkLote = Lote.idLote;
 
-DROP DATABASE Shitech;
-
 desc lote;
 
 SELECT * FROM plantacaoChampignon;

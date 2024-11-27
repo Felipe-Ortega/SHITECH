@@ -11,4 +11,8 @@ router.get("/listar", function (req, res) {
     loteController.listar(req, res);
 });
 
+router.post("/atualizar", function (req, res) {
+    loteController.atualizar(req, res);
+});
+
 module.exports = router;

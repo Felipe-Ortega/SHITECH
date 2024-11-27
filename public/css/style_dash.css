@@ -143,6 +143,11 @@ body{
     display: flex;
     flex-direction: row;
 }
+
+#kpi_4temp, #kpi_4umid{
+    font-size: 0.7em;
+}
+
 #graficos_lote1{
     display: none;
     justify-content: space-around;

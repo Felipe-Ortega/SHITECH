@@ -324,7 +324,7 @@ SELECT
     WHEN MAX(umidade) - avg(umidade)  > ABS(MIN(umidade) - avg(umidade)) THEN TRUNCATE(MAX(umidade) - avg(umidade), 2) 
 	WHEN MAX(umidade) - avg(umidade)  < ABS(MIN(umidade) - avg(umidade)) THEN TRUNCATE(ABS(MIN(umidade) - avg(umidade)), 2)
     ELSE TRUNCATE(MAX(umidade) - avg(umidade), 2)  END AS variacao_umidadeFINAL
-FROM Dados
+FROM Dados WHERE horarioCaptura >= NOW() - interval 1 DAY
 GROUP BY HOUR(horarioCaptura)
 ORDER BY hora;
 
@@ -334,22 +334,15 @@ SELECT
     FROM dados WHERE horarioCaptura >= NOW() - interval 1 DAY;
     
 SELECT
-    HOUR(horarioCaptura) AS hora, -- terceira KPI --
+    HOUR(horarioCaptura) AS horaTemp,-- terceira KPI --
     CASE
     WHEN MAX(temperatura) - avg(temperatura)  > ABS(MIN(temperatura) - avg(temperatura)) THEN TRUNCATE(MAX(temperatura) - avg(temperatura), 2) 
 	WHEN MAX(temperatura) - avg(temperatura)  < ABS(MIN(temperatura) - avg(temperatura)) THEN TRUNCATE(ABS(MIN(temperatura) - avg(temperatura)), 2)
-    ELSE TRUNCATE(MAX(temperatura) - avg(temperatura), 2)  END AS variacao_temperaturaFINAL,
-    CASE
-    WHEN MAX(umidade) - avg(umidade)  > ABS(MIN(umidade) - avg(umidade)) THEN TRUNCATE(MAX(umidade) - avg(umidade), 2) 
-	WHEN MAX(umidade) - avg(umidade)  < ABS(MIN(umidade) - avg(umidade)) THEN TRUNCATE(ABS(MIN(umidade) - avg(umidade)), 2)
-    ELSE TRUNCATE(MAX(umidade) - avg(umidade), 2)  END AS variacao_umidadeFINAL
+    ELSE TRUNCATE(MAX(temperatura) - avg(temperatura), 2)  END AS variacao_temperaturaFINAL
 FROM Dados WHERE horarioCaptura >= NOW() - interval 1 DAY
 GROUP BY HOUR(horarioCaptura)
-ORDER BY hora;
+order by variacao_temperaturaFINAL DESC limit 1;
 
-
-<<<<<<< HEAD
-=======
 SELECT 
 	date_format(horarioCaptura, '%H:%i') AS hora,
 	idSensor,
@@ -369,4 +362,26 @@ JOIN empresa as e on l.fkEmpresa = e.idEmpresa
 JOIN usuario as u on e.idEmpresa = u.fkEmpresa
 GROUP BY hora, s.posicao, u.nome, l.estufa, l.tipo, e.nomeFantasia, idLote, idSensor
 ORDER BY temp_max DESC, temp_min DESC, umid_max DESC, umid_min DESC, hora ASC;
->>>>>>> 218c38b4b20cf256fd95bd34957889a24c5b0a7d
+
+
+SELECT
+	hour(horarioCaptura) as Hora, 
+	TRUNCATE(temperatura ,2)AS mediaTempDiaria,
+    TRUNCATE(umidade ,2) AS mediaUmidDiaria	-- --
+    FROM dados WHERE horarioCaptura >= NOW() - interval 1 DAY
+    group by hora, mediaTempDiaria, mediaUmidDiaria;
+    
+    SELECT
+    HOUR(horarioCaptura) AS horaUmid,-- terceira KPI --
+        CASE
+    WHEN MAX(umidade) - avg(umidade)  > ABS(MIN(umidade) - avg(umidade)) THEN TRUNCATE(MAX(umidade) - avg(umidade), 2) 
+	WHEN MAX(umidade) - avg(umidade)  < ABS(MIN(umidade) - avg(umidade)) THEN TRUNCATE(ABS(MIN(umidade) - avg(umidade)), 2)
+    ELSE TRUNCATE(MAX(umidade) - avg(umidade), 2)  END AS variacao_umidadeFINAL
+FROM Dados WHERE horarioCaptura >= NOW() - interval 1 DAY
+GROUP BY HOUR(horarioCaptura)
+order by variacao_umidadeFINAL desc limit 1;
+    
+     delete from dados where horarioCaptura >= NOW() - interval 1 DAY;
+
+    select * from dados WHERE horarioCaptura >= NOW() - interval 1 DAY;
+    

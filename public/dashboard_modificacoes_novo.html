@@ -96,14 +96,14 @@
             <span class="kpis">
               <span class="titulos-kpis"> Horários de maior variação: </span>
               <div>
-                <span class="info-kpi" style="font-size: 4vh; color:rgb(196, 169, 48)">10:00</span> | <span class="info-kpi" style=" font-size: 4vh; color: rgb(48, 107, 196)">18:00</span>
+                <span class="info-kpi" id="kpi_3temperatura" style="font-size: 4vh; color:rgb(196, 169, 48)"></span> | <span class="info-kpi" id="kpi_3umidade" style=" font-size: 4vh; color: rgb(48, 107, 196)"></span>
               </div>
             </span>
             <span class="kpis">
               <span class="titulos-kpis"> Maior variação comparado com a média:</span>
-              <span class="info-kpi"> 5ºC 
+              <span class="info-kpi"> <span id="kpi_4temp">5ºC</span> 
                 <span style="color: black;">|</span> 
-                    <span style="color: blue;">10%</span>
+                    <span style="color: blue;" id="kpi_4umid">10%</span>
               </span>
             </span>
           </div>
@@ -136,7 +136,7 @@
               <span class="kpis">
                 <span class="titulos-kpis"> Horários de maior variação: </span>
               <div>
-                <span class="info-kpi" style="font-size: 4vh; color:rgb(196, 169, 48)">10:00</span> | <span class="info-kpi" style=" font-size: 4vh; color: rgb(48, 107, 196)">13:00</span>
+                <span class="info-kpi" style="font-size: 4vh; color:rgb(196, 169, 48)"></span> | <span class="info-kpi"  style=" font-size: 4vh; color: rgb(48, 107, 196)">13:00</span>
               </div>
             </span>
               </span>
@@ -235,6 +235,11 @@
 
 </html>
 <script>
+    var mediaUmidadeTS = 0
+    var mediaTempTS = 0
+  kpi1_2()
+  kpi_3temp()
+  kpi_3umid()
   function filtro() {
     if (select_filtro.value == 'lotes') {
       document.getElementById("graficos_lotes").style.display = 'block'
@@ -268,10 +273,6 @@
     }
   }
 
-  //Todos os sensores
-  var mediaUmidadeTS = 81
-  var mediaTempTS = 26
-
   //Lote ABC123
   var mediaUmidadeLote = 70
   var mediaTempLote = 28
@@ -284,9 +285,9 @@
 
 
   // primeira kpi umidade (todos os sensores)
-  const termometroUmidade3 = document.getElementById("umidade3")
-  termometroUmidade3.style.height = mediaUmidadeTS + "%";
-  UmidadePorcentagem3.innerHTML = `${mediaUmidadeTS}%`;
+  // const termometroUmidade3 = document.getElementById("umidade3")
+  // termometroUmidade3.style.height = mediaUmidadeTS + "%";
+  // UmidadePorcentagem3.innerHTML = `${mediaUmidadeTS}%`;
   //se a umidade for menor que 80 a barrinha fica vermelha e aparece um alerta do lado
   if (mediaUmidadeTS < 75) {
     termometroUmidade3.style.backgroundColor = '#ff0000';
@@ -295,9 +296,9 @@
   }
 
   // segunda kpi temperatura (todos os sensores)
-  const termometroTemp = document.getElementById("termometro")
-  termometroTemp.style.height = mediaTempTS*2 + "%";
-  TemperaturaGraus.innerHTML = `${mediaTempTS}°C`;
+  // const termometroTemp = document.getElementById("termometro")
+  // termometroTemp.style.height = mediaTempTS*2 + "%";
+  // TemperaturaGraus.innerHTML = `${mediaTempTS}°C`;
   //se a temperatura for maior que 27 ou menor que 23 a barrinha fica vermelha e aparece um alerta do lado
   if (mediaTempTS > 26 || mediaTempTS < 18) {
     termometroTemp.style.backgroundColor = '#ff0000';
@@ -531,4 +532,53 @@
       },
     },
   });
+
+  function kpi1_2(){
+    fetch("/lotes/kpi1_2", {
+      method: "GET",
+    }).then((res => {
+      res.json().then((json) => {
+        console.log(json)
+        mediaTempTS = Number(json[0].mediaTempDiaria)
+        mediaUmidadeTS = Number(json[0].mediaUmidDiaria)
+
+
+        const termometroTemp = document.getElementById("termometro")
+        termometroTemp.style.height = mediaTempTS*2 + "%";
+        TemperaturaGraus.innerHTML = `${mediaTempTS}°C`
+
+        const termometroUmidade3 = document.getElementById("umidade3")
+        termometroUmidade3.style.height = mediaUmidadeTS + "%";
+        UmidadePorcentagem3.innerHTML = `${mediaUmidadeTS}%`;
+    })
+  }))
+  };
+
+  function kpi_3temp(){
+    fetch("/lotes/kpi_3temp", {
+      method: "GET",
+    }).then((res => {
+      res.json().then((json) => {
+        console.log(json)
+        console.log(json[0].horaTemp)
+        kpi_3temperatura.innerHTML = `${json[0].horaTemp}:00`;
+        kpi_4temp.innerHTML = `${json[0].variacao_temperaturaFINAL}°C`;
+    })
+  }))
+  }
+
+  function kpi_3umid(){
+    fetch("/lotes/kpi_3umid", {
+      method: "GET",
+    }).then((res => {
+      res.json().then((json) => {
+        console.log(json)
+        console.log(json[0].horaUmid)
+        kpi_3umidade.innerHTML = `${json[0].horaUmid}:00`;
+        kpi_4umid.innerHTML = `${json[0].variacao_umidadeFINAL}%`;
+    })
+  }))
+  }
+  
+
 </script>

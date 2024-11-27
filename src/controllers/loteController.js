@@ -39,4 +39,22 @@ function listar(req, res){
     })
 }
 
-module.exports = {cadastrar, atualizar, listar}
+function kpi1_2(req, res){
+    loteModel.kpi1_2().then((resultado) => {
+        res.status(200).json(resultado)
+    })
+}
+
+function kpi_3temp(req, res){
+    loteModel.kpi_3temp().then((resultado) => {
+        res.status(200).json(resultado)
+    })
+}
+
+function kpi_3umid(req, res){
+    loteModel.kpi_3umid().then((resultado) => {
+        res.status(200).json(resultado)
+    })
+}
+
+module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid}    

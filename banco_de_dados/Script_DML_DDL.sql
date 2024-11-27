@@ -317,29 +317,36 @@ desc lote;
 SELECT * FROM plantacaoChampignon;
 
 SELECT
-    HOUR(horarioCaptura) AS hora,
-    MAX(temperatura) - MIN(temperatura) AS variacao_temperatura, -- SELECT PARA MOSTRAR VARIAÇÃO DE TEMP., DE UMID E MOSTRAR A HORA DA CAPTURA --
-    MAX(umidade) - MIN(umidade) AS variacao_umidade
+    HOUR(horarioCaptura) AS hora, -- ultima KPI --
+    CASE
+    WHEN MAX(temperatura) - avg(temperatura)  > ABS(MIN(temperatura) - avg(temperatura)) THEN TRUNCATE(MAX(temperatura) - avg(temperatura), 2) 
+	WHEN MAX(temperatura) - avg(temperatura)  < ABS(MIN(temperatura) - avg(temperatura)) THEN TRUNCATE(ABS(MIN(temperatura) - avg(temperatura)), 2)
+    ELSE TRUNCATE(MAX(temperatura) - avg(temperatura), 2)  END AS variacao_temperaturaFINAL,
+    CASE
+    WHEN MAX(umidade) - avg(umidade)  > ABS(MIN(umidade) - avg(umidade)) THEN TRUNCATE(MAX(umidade) - avg(umidade), 2) 
+	WHEN MAX(umidade) - avg(umidade)  < ABS(MIN(umidade) - avg(umidade)) THEN TRUNCATE(ABS(MIN(umidade) - avg(umidade)), 2)
+    ELSE TRUNCATE(MAX(umidade) - avg(umidade), 2)  END AS variacao_umidadeFINAL
 FROM Dados
 GROUP BY HOUR(horarioCaptura)
-ORDER BY variacao_temperatura DESC, variacao_umidade DESC;
+ORDER BY hora;
 
-SELECT 
-	date_format(horarioCaptura, '%H:%i') AS hora,
-	idSensor,
-	idLote,
-    MAX(d.temperatura) as temp_max,
-    MIN(d.temperatura) as temp_min,
-    MAX(d.umidade) as umid_max,
-    MIN(d.umidade) as umid_min,
-    s.posicao as 'Quadrante	',
-    l.estufa as 'Nome Estufa',    
-    l.tipo as 'Tipo Estufa',							-- SELECT PARA MOSTRAR VARIAÇÃO DE TEMP., DE UMID., MOSTRAR A HORA DA CAPTURA, NOME DAS EMPRESAS --
-    e.nomeFantasia as 'Nome empresa',								-- NOME DOS USUARIOS, QUADRANTES, TIPOS DA ESTUFA E NOME DA ESTUFA --
-    u.nome as 'Nome usuário'
-FROM Dados as d JOIN sensor as s on d.fkSensor = s.idSensor 
-JOIN lote as l on s.fkLote = l.idLote 
-JOIN empresa as e on l.fkEmpresa = e.idEmpresa
-JOIN usuario as u on e.idEmpresa = u.fkEmpresa
-GROUP BY hora, s.posicao, u.nome, l.estufa, l.tipo, e.nomeFantasia, idLote, idSensor
-ORDER BY temp_max DESC, temp_min DESC, umid_max DESC, umid_min DESC, hora ASC;
+SELECT
+	TRUNCATE(avg(temperatura),2)AS 'Média temperatura diária',
+    TRUNCATE(avg(umidade),2) AS 'Média umidade diária'	-- primeira e segunda KPI --
+    FROM dados WHERE horarioCaptura >= NOW() - interval 1 DAY;
+    
+SELECT
+    HOUR(horarioCaptura) AS hora, -- terceira KPI --
+    CASE
+    WHEN MAX(temperatura) - avg(temperatura)  > ABS(MIN(temperatura) - avg(temperatura)) THEN TRUNCATE(MAX(temperatura) - avg(temperatura), 2) 
+	WHEN MAX(temperatura) - avg(temperatura)  < ABS(MIN(temperatura) - avg(temperatura)) THEN TRUNCATE(ABS(MIN(temperatura) - avg(temperatura)), 2)
+    ELSE TRUNCATE(MAX(temperatura) - avg(temperatura), 2)  END AS variacao_temperaturaFINAL,
+    CASE
+    WHEN MAX(umidade) - avg(umidade)  > ABS(MIN(umidade) - avg(umidade)) THEN TRUNCATE(MAX(umidade) - avg(umidade), 2) 
+	WHEN MAX(umidade) - avg(umidade)  < ABS(MIN(umidade) - avg(umidade)) THEN TRUNCATE(ABS(MIN(umidade) - avg(umidade)), 2)
+    ELSE TRUNCATE(MAX(umidade) - avg(umidade), 2)  END AS variacao_umidadeFINAL
+FROM Dados WHERE horarioCaptura >= NOW() - interval 1 DAY
+GROUP BY HOUR(horarioCaptura)
+ORDER BY hora;
+
+

@@ -195,7 +195,6 @@
             </div>
           </div>
           <span id="graficos_lotes">
-            <div id="graficos_lote1">
               <div class="graficos border">
                 <h1>Temperatura e Umidade diária (Lote ABC123)</h1>
                 <canvas class="chart" id="myChart2_lote"></canvas>
@@ -204,17 +203,6 @@
                 <h1>Temperatura e Umidade média mensal (Lote ABC123)</h1>
                 <canvas class="chart" id="myChart_lote"></canvas>
               </div>
-            </div>
-            <div id="graficos_lote2">
-              <div class="graficos border">
-                <h1>Temperatura e Umidade diária (Lote DEF456)</h1>
-                <canvas class="chart" id="myChart2_lote2"></canvas>
-              </div>
-              <div class="graficos border">
-                <h1>Temperatura e Umidade média mensal (Lote DEF456)</h1>
-                <canvas class="chart" id="myChart_lote2"></canvas>
-              </div>
-            </div>
           </span>
         </div>
       </div>
@@ -240,34 +228,18 @@
   kpi_3umid()
   function filtro() {
     if (select_filtro.value == 'lotes') {
-      document.getElementById("graficos_lotes").style.display = 'block'
+      document.getElementById("graficos_lotes").style.display = 'flex'
       document.getElementById("select_filtro_lote").style.display = "flex";
       document.getElementById("container_kpis_sensores").style.display = "none";
+      document.getElementById("container_kpis_lote").style.display = "flex";
       document.getElementById("graficos_todos").style.display = 'none';
-
-      if (select_filtro_lote.value == 'abc123') {
-        document.getElementById("graficos_lote2").style.display = 'none';
-        document.getElementById("container_kpis_lote").style.display = "flex";
-        document.getElementById("container_kpis_lote2").style.display = "none";
-        document.getElementById("graficos_lote1").style.display = 'flex';
-
-      }
-      if (select_filtro_lote.value == 'def456') {
-        document.getElementById("graficos_lote1").style.display = 'none';
-        document.getElementById("container_kpis_lote").style.display = "none";
-        document.getElementById("container_kpis_lote2").style.display = "flex";
-        document.getElementById("graficos_lote2").style.display = 'flex';
-      }
     }
     else if (select_filtro.value == 'todos') {
       document.getElementById("select_filtro_lote").style.display = "none";
       document.getElementById("container_kpis_sensores").style.display = "flex";
       document.getElementById("container_kpis_lote").style.display = "none";
+      document.getElementById("graficos_lotes").style.display = 'none'
       document.getElementById("graficos_todos").style.display = 'flex';
-      document.getElementById("graficos_lote1").style.display = 'none';
-      document.getElementById("graficos_lotes").style.display = 'none';
-      document.getElementById("container_kpis_lote").style.display = "none";
-      document.getElementById("container_kpis_lote2").style.display = "none";
     }
   }
 

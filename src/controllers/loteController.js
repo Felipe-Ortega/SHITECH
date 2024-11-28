@@ -40,19 +40,22 @@ function listar(req, res){
 }
 
 function kpi1_2(req, res){
-    loteModel.kpi1_2().then((resultado) => {
+    var fkEmpresa = req.body.fkempresaServer
+    loteModel.kpi1_2(fkEmpresa).then((resultado) => {
         res.status(200).json(resultado)
     })
 }
 
 function kpi_3temp(req, res){
-    loteModel.kpi_3temp().then((resultado) => {
+    var fkEmpresa = req.body.fkempresaServer;
+    loteModel.kpi_3temp(fkEmpresa).then((resultado) => {
         res.status(200).json(resultado)
     })
 }
 
 function kpi_3umid(req, res){
-    loteModel.kpi_3umid().then((resultado) => {
+    var fkEmpresa = req.body.fkempresaServer;
+    loteModel.kpi_3umid(fkEmpresa).then((resultado) => {
         res.status(200).json(resultado)
     })
 }

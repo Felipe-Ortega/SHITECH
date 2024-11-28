@@ -535,7 +535,13 @@
 
   function kpi1_2(){
     fetch("/lotes/kpi1_2", {
-      method: "GET",
+      method: "POST",
+      headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkempresaServer: sessionStorage.FK_EMPRESA
+            })
     }).then((res => {
       res.json().then((json) => {
         console.log(json)
@@ -556,7 +562,13 @@
 
   function kpi_3temp(){
     fetch("/lotes/kpi_3temp", {
-      method: "GET",
+      method: "POST",
+      headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkempresaServer: sessionStorage.FK_EMPRESA
+            })
     }).then((res => {
       res.json().then((json) => {
         console.log(json)
@@ -569,7 +581,13 @@
 
   function kpi_3umid(){
     fetch("/lotes/kpi_3umid", {
-      method: "GET",
+      method: "POST",
+      headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkempresaServer: sessionStorage.FK_EMPRESA
+            })
     }).then((res => {
       res.json().then((json) => {
         console.log(json)

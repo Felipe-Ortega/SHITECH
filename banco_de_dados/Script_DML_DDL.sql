@@ -384,4 +384,4 @@ order by variacao_umidadeFINAL desc limit 1;
      delete from dados where horarioCaptura >= NOW() - interval 1 DAY;
 
     select * from dados WHERE horarioCaptura >= NOW() - interval 1 DAY;
-    
+    SELECT TRUNCATE(avg(temperatura),2)AS mediaTempDiaria, TRUNCATE(avg(umidade),2) AS mediaUmidDiaria FROM dados join sensor on idSensor = fkSensor join lote on idLote = fkLote join empresa on idEmpresa = fkEmpresa WHERE horarioCaptura >= NOW() - interval 1000 DAY and fkEmpresa = 1;

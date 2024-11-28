@@ -63,12 +63,12 @@ VALUES
 
 INSERT INTO Usuario 
 VALUES 
-(DEFAULT, 1, 'Lucas Menezes', '12398765400', '11976543210', 1, 'Supervisor', 'lucas@greenfields.com', 'senha112'),
-(DEFAULT, 1, 'Fernanda Lima', '98732165400', '11965432109', 1, 'Gerente', 'fernanda@greenfields.com', 'senha113'),
-(DEFAULT, 2, 'Roberto Alves', '45678912300', '11987654322', 1, 'Supervisor', 'roberto@biofarms.com', 'senha114'),
-(DEFAULT, 2, 'Juliana Reis', '65498732100', '11999887755', 1, 'Gerente', 'juliana@biofarms.com', 'senha115'),
-(DEFAULT, 3, 'Marcos Ferreira', '78912345600', '11988776644', 1, 'Gerente', 'marcos@agronatura.com', 'senha116'),
-(DEFAULT, 3, 'Isabela Santos', '32198765400', '11977665544', 1, 'Supervisor', 'isabela@agronatura.com', 'senha117');
+(DEFAULT, 1, 'Lucas Menezes', '12398765400', '11976543210', 1, 'Supervisor', 'lucas@greenfields.com', md5('senha112')),
+(DEFAULT, 1, 'Fernanda Lima', '98732165400', '11965432109', 1, 'Gerente', 'fernanda@greenfields.com', md5('senha113')),
+(DEFAULT, 2, 'Roberto Alves', '45678912300', '11987654322', 1, 'Supervisor', 'roberto@biofarms.com', md5('senha114')),
+(DEFAULT, 2, 'Juliana Reis', '65498732100', '11999887755', 1, 'Gerente', 'juliana@biofarms.com', md5('senha115')),
+(DEFAULT, 3, 'Marcos Ferreira', '78912345600', '11988776644', 1, 'Gerente', 'marcos@agronatura.com', md5('senha116')),
+(DEFAULT, 3, 'Isabela Santos', '32198765400', '11977665544', 1, 'Supervisor', 'isabela@agronatura.com', md5('senha117'));
  
 INSERT INTO Lote
 VALUES 
@@ -385,3 +385,5 @@ order by variacao_umidadeFINAL desc limit 1;
 
     select * from dados WHERE horarioCaptura >= NOW() - interval 1 DAY;
     SELECT TRUNCATE(avg(temperatura),2)AS mediaTempDiaria, TRUNCATE(avg(umidade),2) AS mediaUmidDiaria FROM dados join sensor on idSensor = fkSensor join lote on idLote = fkLote join empresa on idEmpresa = fkEmpresa WHERE horarioCaptura >= NOW() - interval 1000 DAY and fkEmpresa = 1;
+    
+    select * from usuario;

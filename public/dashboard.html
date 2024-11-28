@@ -58,9 +58,6 @@
             <option value="lotes">Lotes individuais</option>
           </select></span>
           <span class="span_filtro_lote"><select name="" id="select_filtro_lote" onclick="filtro()">
-            <!-- <option value="lotes_variacoes" selected>Lotes com maiores variações</option> -->
-            <option value="abc123" selected>Lote ABC123</option>
-            <option value="def456">Lote DEF456</option>
           </select></span>
       </div>
       </select></span>
@@ -237,6 +234,7 @@
 <script>
     var mediaUmidadeTS = 0
     var mediaTempTS = 0
+    listar()
   kpi1_2()
   kpi_3temp()
   kpi_3umid()
@@ -597,6 +595,28 @@
     })
   }))
   }
+
+  function listar(){
+    fetch("/lotes/listar", {
+      method: "POST",
+      headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkempresaServer: sessionStorage.FK_EMPRESA
+            })
+    }).then((res => {
+      res.json().then((json) => {
+        console.log(json)
+        lote = json
+        console.log(lote)
+
+        for(var i = 0; i < lote.length; i++){
+          select_filtro_lote.innerHTML += `<option value="${lote[i].estufa}"> Lote ${lote[i].estufa}</option>`  
+        }
+    })
+  }))
+}
   
 
 </script>

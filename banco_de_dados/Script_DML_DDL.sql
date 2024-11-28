@@ -387,3 +387,20 @@ order by variacao_umidadeFINAL desc limit 1;
     SELECT TRUNCATE(avg(temperatura),2)AS mediaTempDiaria, TRUNCATE(avg(umidade),2) AS mediaUmidDiaria FROM dados join sensor on idSensor = fkSensor join lote on idLote = fkLote join empresa on idEmpresa = fkEmpresa WHERE horarioCaptura >= NOW() - interval 1000 DAY and fkEmpresa = 1;
     
     select * from usuario;
+    
+    select truncate(avg(temperatura), 2) as mediaTemp, hour(horarioCaptura) as horario from dados group by horarioCaptura;
+    
+    select curdate();
+    
+    SELECT convert(concat(curdate(), " ", (SEC_TO_TIME(
+          FLOOR(
+             TIME_TO_SEC('00:00:00') + RAND() * (
+                  TIME_TO_SEC(TIMEDIFF('23:59:00', '00:00:00'))
+             )
+          )
+        ))), datetime
+        
+        ) as horario;
+        ;
+        
+	

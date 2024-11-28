@@ -34,7 +34,8 @@ function atualizar(req, res){
 }
 
 function listar(req, res){
-    loteModel.listar().then((resultado) => {
+    var fkEmpresa = req.body.fkempresaServer;
+    loteModel.listar(fkEmpresa).then((resultado) => {
         res.status(200).json(resultado)
     })
 }

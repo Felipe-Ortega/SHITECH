@@ -121,7 +121,7 @@
     }).then((response) => {
       response.json().then((json) => {
         sessionStorage.ID_EMPRESA = Number(json.insertId)
-        window.location.href = "./dashboard_modificacoes_novo.HTML";
+        window.location.href = "./dashboard.HTML";
       })
     })
     } else {
@@ -133,7 +133,13 @@
 
   function listar(){
     fetch("/lotes/listar", {
-      method: "GET",
+      method: "POST",
+      headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkempresaServer: sessionStorage.FK_EMPRESA
+            })
     }).then((res => {
       res.json().then((json) => {
         console.log(json)

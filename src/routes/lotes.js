@@ -7,7 +7,7 @@ router.post("/cadastrar", function (req, res) {
     loteController.cadastrar(req, res);
 });
 
-router.get("/listar", function (req, res) {
+router.post("/listar", function (req, res) {
     loteController.listar(req, res);
 });
 

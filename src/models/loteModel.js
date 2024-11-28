@@ -12,8 +12,8 @@ function atualizar(dtPlantacao, dtColheita, dtFrutificacao, Lote){
   return database.executar(instrucaoSql); 
 }
 
-function listar(){
-    var instrucaoSql = `select * from lote;`
+function listar(fkEmpresa){
+    var instrucaoSql = `select * from lote join empresa on idEmpresa = fkEmpresa where fkEmpresa = ${fkEmpresa};`
     return database.executar(instrucaoSql);
 }
 

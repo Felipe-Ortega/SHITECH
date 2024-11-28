@@ -23,7 +23,7 @@ function kpi1_2(fkEmpresa){
  JOIN Sensor ON idSensor = fkSensor 
  JOIN Lote ON idLote = fkLote 
  JOIN Empresa ON idEmpresa = fkEmpresa 
- WHERE horarioCaptura >= NOW() - INTERVAL 1 DAY AND fkEmpresa = ${fkEmpresa};`
+ WHERE horarioCaptura >= NOW() - INTERVAL 1000 DAY AND fkEmpresa = ${fkEmpresa};`
  return database.executar(instrucaoSql);
 }
 
@@ -38,7 +38,7 @@ function kpi_3temp(fkEmpresa){
  JOIN Sensor ON idSensor = fkSensor 
  JOIN Lote ON idLote = fkLote 
  JOIN Empresa ON idEmpresa = fkEmpresa 
- WHERE horarioCaptura >= NOW() - INTERVAL 1 DAY AND fkEmpresa = ${fkEmpresa}
+ WHERE horarioCaptura >= NOW() - INTERVAL 1000 DAY AND fkEmpresa = ${fkEmpresa}
  GROUP BY HOUR(horarioCaptura)
  ORDER BY variacao_temperaturaFINAL DESC 
  LIMIT 1;`
@@ -56,7 +56,7 @@ function kpi_3umid(fkEmpresa){
  JOIN Sensor ON idSensor = fkSensor 
  JOIN Lote ON idLote = fkLote 
  JOIN Empresa ON idEmpresa = fkEmpresa 
- WHERE horarioCaptura >= NOW() - INTERVAL 1 DAY AND fkEmpresa = ${fkEmpresa}
+ WHERE horarioCaptura >= NOW() - INTERVAL 1000 DAY AND fkEmpresa = ${fkEmpresa}
  GROUP BY HOUR(horarioCaptura)
  ORDER BY variacao_umidadeFINAL DESC 
  LIMIT 1;`

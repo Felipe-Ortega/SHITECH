@@ -142,9 +142,6 @@
                 <span class="info-kpi" style="font-size: 5vh;">Quadrante 2</span>
               </span>
             </div>
-            
-
-
           </span>
           <div id="graficos_todos" class="graficos_todos">
             <div class="graficos border">
@@ -188,6 +185,11 @@
   kpi1_2()
   kpi_3temp()
   kpi_3umid()
+  document.getElementById("select_filtro_lote").style.display = "none";
+      document.getElementById("container_kpis_sensores").style.display = "flex";
+      document.getElementById("container_kpis_lote").style.display = "none";
+      document.getElementById("graficos_lotes").style.display = 'none'
+      document.getElementById("graficos_todos").style.display = 'flex';
   function filtro() {
     if (select_filtro.value == 'lotes') {
       document.getElementById("graficos_lotes").style.display = 'flex'
@@ -406,64 +408,6 @@
       },
     },
   });
-  new Chart(ctx_lote2, {
-    type: "bar",
-    data: {
-      labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
-      datasets: [
-        {
-          label: "Temperatura Média",
-          data: [21, 17, 23, 24, 24, 22],
-          borderWidth: 1,
-          borderColor: "#ff5927",
-          backgroundColor: "#ff5927",
-        },
-        {
-          label: "Umidade Média",
-          data: [55, 63, 57, 60, 55, 50],
-          borderWidth: 1,
-          borderColor: "#45aadd",
-          backgroundColor: "#45aadd",
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
-  new Chart(ctx2_lote2, {
-    type: "line",
-    data: {
-      labels: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
-      datasets: [
-        {
-          label: "Temperatura",
-          data: [23, 21, 22, 21, 22, 25, 23, 22, 25, 28, 29, 30],
-          borderWidth: 2,
-          borderColor: "#ff5927",
-          backgroundColor: "#ff5927",
-        },
-        {
-          label: "Umidade",
-          data: [73, 66, 72, 74, 78, 79, 76, 81, 76, 78, 76],
-          borderWidth: 2,
-          borderColor: "#45aadd",
-          backgroundColor: "#45aadd",
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
 
   function kpi1_2(){
     fetch("/lotes/kpi1_2", {
@@ -546,7 +490,7 @@
         console.log(lote)
 
         for(var i = 0; i < lote.length; i++){
-          select_filtro_lote.innerHTML += `<option value="${lote[i].estufa}"> Lote ${lote[i].estufa}</option>`  
+          select_filtro_lote.innerHTML += `<option value="${lote[i].idLote}" > Lote ${lote[i].estufa}</option>`  
         }
     })
   }))

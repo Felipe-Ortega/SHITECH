@@ -4,20 +4,38 @@ var empresaModel = require("../models/empresaModel");
 function buscarMaiorId(req,res){
     empresaModel.buscarMaiorId().then((resultado) => {
       res.status(200).json(resultado)
-    })
+    }).catch(
+      function (erro) {
+          console.log(erro);
+          console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+          res.status(500).json(erro.sqlMessage);
+      }
+  );
 }
 function buscarPorCnpj(req, res) {
   var cnpj = req.query.cnpj;
 
   empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
-    res.status(200).json(resultado);
-  });
+    res.status(200).json(resultado)
+  }).catch(
+    function (erro) {
+        console.log(erro);
+        console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    }
+);
 }
 
 function listar(req, res) {
   empresaModel.listar().then((resultado) => {
     res.status(200).json(resultado);
-  });
+  }).catch(
+    function (erro) {
+        console.log(erro);
+        console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    }
+);
 }
 
 function buscarPorId(req, res) {
@@ -25,7 +43,13 @@ function buscarPorId(req, res) {
 
   empresaModel.buscarPorId(id).then((resultado) => {
     res.status(200).json(resultado);
-  });
+  }).catch(
+    function (erro) {
+        console.log(erro);
+        console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    }
+);
 }
 
 function cadastrar(req, res) {
@@ -41,7 +65,13 @@ function cadastrar(req, res) {
         .json({ mensagem: `a empresa com o cnpj ${cnpj} já existe` });
     } else {
       empresaModel.cadastrar(razaoSocial, fantasia, cnpj, unidade).then((resultado) => {
-        res.status(201).json(resultado);
+        res.status(201).json(resultado).catch(
+          function (erro) {
+              console.log(erro);
+              console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+              res.status(500).json(erro.sqlMessage);
+          }
+      );
       });
     }
   });

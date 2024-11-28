@@ -37,28 +37,52 @@ function listar(req, res){
     var fkEmpresa = req.body.fkempresaServer;
     loteModel.listar(fkEmpresa).then((resultado) => {
         res.status(200).json(resultado)
-    })
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
 }
 
 function kpi1_2(req, res){
     var fkEmpresa = req.body.fkempresaServer
     loteModel.kpi1_2(fkEmpresa).then((resultado) => {
         res.status(200).json(resultado)
-    })
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
 }
 
 function kpi_3temp(req, res){
     var fkEmpresa = req.body.fkempresaServer;
     loteModel.kpi_3temp(fkEmpresa).then((resultado) => {
         res.status(200).json(resultado)
-    })
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
 }
 
 function kpi_3umid(req, res){
     var fkEmpresa = req.body.fkempresaServer;
     loteModel.kpi_3umid(fkEmpresa).then((resultado) => {
         res.status(200).json(resultado)
-    })
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
 }
 
 module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid}    

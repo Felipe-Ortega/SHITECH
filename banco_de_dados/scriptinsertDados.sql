@@ -1,14 +1,6 @@
 use shitech;
 INSERT INTO Dados (fkSensor, temperatura, umidade, horarioCaptura) VALUES
-(1, 24.72, 43.74,convert(concat(curdate(), " ", (SEC_TO_TIME(
-          FLOOR(
-             TIME_TO_SEC('00:00:00') + RAND() * (
-                  TIME_TO_SEC(TIMEDIFF('23:59:00', '00:00:00'))
-             )
-          )
-        ))), datetime
-        
-        )),
+(1, 24.72, 43.74,convert(concat(curdate(), " ", (SEC_TO_TIME(FLOOR(TIME_TO_SEC('00:00:00') + RAND() * (TIME_TO_SEC(TIMEDIFF('23:59:00', '00:00:00'))))))), datetime)),
 (1, 24.83, 46.05,convert(concat(curdate(), " ", (SEC_TO_TIME(
           FLOOR(
              TIME_TO_SEC('00:00:00') + RAND() * (

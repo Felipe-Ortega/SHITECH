@@ -59,12 +59,12 @@ insert into empresa values
 (1, 'Shitech LTDA', 'Shitech Soluções', '12345678901112', 1, '000');
 
 insert into usuario values
-(1, 1, 'Lucas Aquino', '12345678901', '12345678901', 1, 'suporte', 'lucas@shitech.com', md5('admin2012')),
-(2, 1, 'Laiza Tavares', '21345678901', '21345678901', 1, 'suporte', 'laiza@shitech.com', md5('admin2012')),
-(3, 1, 'Lara Silva', '31245678901', '31245678901', 1, 'suporte', 'lara@shitech.com', md5('admin2012')),
-(4, 1, 'Felipe Miguel', '41235678901', '41235678901', 1, 'suporte', 'felipe@shitech.com', md5('admin2012')),
-(5, 1, 'Amanda Pedroza', '51234678901', '51234678901', 1, 'suporte', 'amanda@shitech.com', md5('admin2012')),
-(6, 1, 'Pedro Luiz', '61234578901', '61234578901', 1, 'suporte', 'pedro@shitech.com', md5('admin2012'));
+(1, 1, 'Lucas Aquino', '12345678901', '12345678901', 1, 'suporte', 'lucas@shitech.com', md5('#Admin2012')),
+(2, 1, 'Laiza Tavares', '21345678901', '21345678901', 1, 'suporte', 'laiza@shitech.com', md5('#Admin2012')),
+(3, 1, 'Lara Silva', '31245678901', '31245678901', 1, 'suporte', 'lara@shitech.com', md5('#Admin2012')),
+(4, 1, 'Felipe Miguel', '41235678901', '41235678901', 1, 'suporte', 'felipe@shitech.com', md5('#Admin2012')),
+(5, 1, 'Amanda Pedroza', '51234678901', '51234678901', 1, 'suporte', 'amanda@shitech.com', md5('#Admin2012')),
+(6, 1, 'Pedro Luiz', '61234578901', '61234578901', 1, 'suporte', 'pedro@shitech.com', md5('#Admin2012'));
 
 INSERT INTO Empresa 
 VALUES 
@@ -74,12 +74,12 @@ VALUES
 
 INSERT INTO Usuario 
 VALUES 
-(DEFAULT, 1, 'Lucas Menezes', '12398765400', '11976543210', 1, 'Supervisor', 'lucas@greenfields.com', md5('senha112')),
-(DEFAULT, 1, 'Fernanda Lima', '98732165400', '11965432109', 1, 'Gerente', 'fernanda@greenfields.com', md5('senha113')),
-(DEFAULT, 2, 'Roberto Alves', '45678912300', '11987654322', 1, 'Supervisor', 'roberto@biofarms.com', md5('senha114')),
-(DEFAULT, 2, 'Juliana Reis', '65498732100', '11999887755', 1, 'Gerente', 'juliana@biofarms.com', md5('senha115')),
-(DEFAULT, 3, 'Marcos Ferreira', '78912345600', '11988776644', 1, 'Gerente', 'marcos@agronatura.com', md5('senha116')),
-(DEFAULT, 3, 'Isabela Santos', '32198765400', '11977665544', 1, 'Supervisor', 'isabela@agronatura.com', md5('senha117'));
+(DEFAULT, 2, 'Lucas Menezes', '12398765400', '11976543210', 1, 'Supervisor', 'lucas@greenfields.com', md5('senha112')),
+(DEFAULT, 2, 'Fernanda Lima', '98732165400', '11965432109', 1, 'Gerente', 'fernanda@greenfields.com', md5('senha113')),
+(DEFAULT, 3, 'Roberto Alves', '45678912300', '11987654322', 1, 'Supervisor', 'roberto@biofarms.com', md5('senha114')),
+(DEFAULT, 3, 'Juliana Reis', '65498732100', '11999887755', 1, 'Gerente', 'juliana@biofarms.com', md5('senha115')),
+(DEFAULT, 4, 'Marcos Ferreira', '78912345600', '11988776644', 1, 'Gerente', 'marcos@agronatura.com', md5('senha116')),
+(DEFAULT, 4, 'Isabela Santos', '32198765400', '11977665544', 1, 'Supervisor', 'isabela@agronatura.com', md5('senha117'));
  
 INSERT INTO Lote
 VALUES 

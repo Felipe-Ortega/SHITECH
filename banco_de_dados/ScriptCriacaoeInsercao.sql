@@ -94,16 +94,16 @@ INSERT INTO Sensor
 VALUES 
 (DEFAULT, 2, '2024-03-01', 1, 'G00001'),
 (DEFAULT, 2, '2024-04-15', 1, 'G00002'),
-(DEFAULT, 3, '2024-05-10', 1, 'G00001'),
-(DEFAULT, 3, '2024-06-01', 1, 'G00002'),
-(DEFAULT, 4, '2024-07-20', 1, 'B00001'),
-(DEFAULT, 4, '2024-08-10', 1, 'B00002'),
-(DEFAULT, 5, '2024-09-01', 1, 'B00001'),
-(DEFAULT, 5, '2024-10-05', 1, 'B00002'),
-(DEFAULT, 6, '2024-11-10', 1, 'A00001'),
-(DEFAULT, 6, '2024-11-10', 1, 'A00002'),
-(DEFAULT, 7, '2024-11-10', 1, 'A00001'),
-(DEFAULT, 7, '2024-11-10', 1, 'A00002');
+(DEFAULT, 2, '2024-05-10', 1, 'G00001'),
+(DEFAULT, 2, '2024-06-01', 1, 'G00002'),
+(DEFAULT, 2, '2024-07-20', 1, 'B00001'),
+(DEFAULT, 2, '2024-08-10', 1, 'B00002'),
+(DEFAULT, 2, '2024-09-01', 1, 'B00001'),
+(DEFAULT, 2, '2024-10-05', 1, 'B00002'),
+(DEFAULT, 2, '2024-11-10', 1, 'A00001'),
+(DEFAULT, 2, '2024-11-10', 1, 'A00002'),
+(DEFAULT, 2, '2024-11-10', 1, 'A00001'),
+(DEFAULT, 2, '2024-11-10', 1, 'A00002');
 
 
 
@@ -268,3 +268,5 @@ SELECT
 FROM Dados WHERE horarioCaptura >= NOW() - interval 1 DAY
 GROUP BY HOUR(horarioCaptura)
 order by variacao_umidadeFINAL desc limit 1;
+use Shitech;
+select * from lote;

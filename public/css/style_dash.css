@@ -91,6 +91,7 @@ body{
 .lista button:hover{
     border: none;
     background-color: rgba(127, 79, 36, 1);
+    font-weight: 700;
 
 }
 

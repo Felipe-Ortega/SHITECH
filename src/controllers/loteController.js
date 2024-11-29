@@ -53,7 +53,7 @@ function kpi1_2(req, res){
     }).catch(
         function (erro) {
             console.log(erro);
-            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            console.log("\nHouve um erro ao puxar dados da kpi 2. Erro: ", erro.sqlMessage);
             res.status(500).json(erro.sqlMessage);
         }
     );
@@ -66,7 +66,7 @@ function kpi_3temp(req, res){
     }).catch(
         function (erro) {
             console.log(erro);
-            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            console.log("\nHouve um erro ao puxar dados da kpi 3 temperatura. Erro: ", erro.sqlMessage);
             res.status(500).json(erro.sqlMessage);
         }
     );
@@ -79,10 +79,36 @@ function kpi_3umid(req, res){
     }).catch(
         function (erro) {
             console.log(erro);
-            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            console.log("\nHouve um erro ao puxar dados da kpi 3 umidade. Erro: ", erro.sqlMessage);
             res.status(500).json(erro.sqlMessage);
         }
     );
 }
 
-module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid}    
+function buscarUmidTempDia(req, res){
+    var fkEmpresa = req.body.fkempresaServer;
+    loteModel.buscarUmidTempDia(fkEmpresa).then((resultado) => {
+        res.status(200).json(resultado)
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao puxar dados para o gráfico! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+function buscarUmidTempMes(req, res){
+    var fkEmpresa = req.body.fkempresaServer;
+    loteModel.buscarUmidTempMes(fkEmpresa).then((resultado) => {
+        res.status(200).json(resultado)
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao puxar dados para o gráfico! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes}    

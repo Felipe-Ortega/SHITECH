@@ -11,47 +11,49 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
   </head>
 
-  <body onload="listar()">
+  <body>
     <div class="container_all">
       <div class="container_menu">
         <ul class="lista">
           <li>
             <a href="landing_page.html"
-              ><img src="./assets/imgs/logo1.png" alt="" />
+              ><img src="../images/logo1.png" alt="" />
             </a>
           </li>
           <li>
-            <a href="dashboard.html"><button>DASH</button></a>
+            <a href="dashboard_modificacoes_novo.html"><button>DASH</button></a>
           </li>
           <li>
-            <a href="cadastro_funcionario.html"
+            <a href="SHITECH_CADASTRO_FUNCIONARIO.html"
               ><button>CADASTRO</button></a
             >
           </li>
           <li>
-            <a href="cadastro_lote.html"
+            <a href="SHITECH_CADASTRO_LOTE.html"
               ><button>ADICIONAR LOTE</button></a
             >
           </li>
           <li>
-            <a href="atualizar_lote.html"
-              ><button style="font-weight: 700;">ATUALIZAR LOTE</button></a
+            <a href="SHITECH_ATUALIZAR_LOTE.html"
+              ><button>ATUALIZAR LOTE</button></a
             >
           </li>
           <li>
-            <a href="login.html"><button>SAIR</button></a>
+            <a href="login_page.html"><button>SAIR</button></a>
           </li>
         </ul>
       </div>
       <div class="cadastro">
         <div class="container">
           <div class="card card-cadastro">
-            <img src="./assets/imgs/logo.png" alt="Logo SHITech" />
+            <img src="../images/logo.png" alt="Logo SHITech" />
             <div class="formulario">
               <div class="campo">
                 <span>Lote para alteração</span>
                 <select class="slt_lote" name="" id="select_filtro_lote" onclick="filtro()">
                   <!-- <option value="lotes_variacoes" selected>Lotes com maiores variações</option> -->
+                  <option value="abc123" selected>Lote ABC123</option>
+                  <option value="def456">Lote DEF456</option>
                 </select>
               </div>
               <div class="campo">
@@ -84,73 +86,13 @@
 </html>
 
 <script>
-
   function cadastrar() {
-    var dtPlantio = dt_plantio.value;
-    if(dtPlantio == ""){
-      dtPlantio = '1990-01-01'
-    }
-    var dtFruti = dt_fruti.value;
-    if(dtFruti == ""){
-      dtFruti = '1990-01-01'
-    }
-    var dtColheita = dt_colheita.value;
-    if(dtColheita == ""){
-      dtColheita = '1990-01-01'
-    }
-    var estufaLote = select_filtro_lote.value;
-    for(i = 0; i < lote.length; i++){
-      if(lote[i].estufa == estufaLote){
-        var idLote = lote[i].idLote
-      }
-    }
-   var dtMarcada = dtPlantio != "" || dtFruti != "" || dtColheita != ""
+   var dtMarcada = dt_plantio.value != "" || dt_fruti.value != "" || dt_colheita.value != ""
     if (dtMarcada) {
       alert("Lote atualizado");
-      fetch("/lotes/atualizar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        dtplantioServer: dtPlantio,
-        dtfrutiServer: dtFruti,
-        dtcolheitaServer: dtColheita,
-        loteServer: idLote
-      }),
-    }).then((response) => {
-      response.json().then((json) => {
-        sessionStorage.ID_EMPRESA = Number(json.insertId)
-        window.location.href = "./dashboard.HTML";
-      })
-    })
+      window.location.href = "./dashboard_modificacoes_novo.HTML";
     } else {
       alert("Preencha alguma das datas");
     }
   }
-
-  var lote = [];
-
-  function listar(){
-    fetch("/lotes/listar", {
-      method: "POST",
-      headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                fkempresaServer: sessionStorage.FK_EMPRESA
-            })
-    }).then((res => {
-      res.json().then((json) => {
-        console.log(json)
-        lote = json
-        console.log(lote)
-
-        for(var i = 0; i < lote.length; i++){
-          select_filtro_lote.innerHTML += `<option value="${lote[i].estufa}"> Lote ${lote[i].estufa}</option>`  
-        }
-    })
-  }))
-}
-
 </script>

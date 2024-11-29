@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,23 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard</title>
   <link rel="stylesheet" href="../css/style_dash.css" />
-  <link rel="website icon" type="png" href="../images/logo2.png">
+  <link rel="website icon" type="png" href="./assets/imgs/logo2.png">
+  <script src="./js/sessao.js"></script>
 
 </head>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<body>
+<body onload="validarSessao()">
   <script src="https://kit.fontawesome.com/88fed8b646.js" crossorigin="anonymous"></script>
   <div class="container_all">
     <div class="container_menu">
       <ul class="lista">
         <li>
           <a href="landing_page.html"
-            ><img src="./assets/imgs/logo1.png alt="" />
+            ><img src="./assets/imgs/logo2.png" />
           </a>
         </li>
         <li>
-          <a href="dashboard_modificacoes_novo.html"><button>DASH</button></a>
+          <a href="dashboard.html"><button style="font-weight: 700;">DASH</button></a>
         </li>
         <li>
           <a href="cadastro_funcionario.html"
@@ -40,14 +41,14 @@
           >
         </li>
         <li>
-          <a href="login_page.html"><button>SAIR</button></a>
+          <a href="login.html"><button>SAIR</button></a>
         </li>
       </ul>
     </div>
     <div class="container_dash">
       <div class="div_nav_dash border">
         <div class="bem_vindo">
-          <span>Bem-vindo! Empresa</span>
+          <span>Bem-vindo <span id="b_usuario"></span>!</span>
         </div>
         <i class="fa-solid fa-user icone_entrar"></i>
       </div>
@@ -185,6 +186,10 @@
   kpi1_2()
   kpi_3temp()
   kpi_3umid()
+  buscarUmidTempDia()
+  buscarUmidTempMes()
+  
+
   document.getElementById("select_filtro_lote").style.display = "none";
       document.getElementById("container_kpis_sensores").style.display = "flex";
       document.getElementById("container_kpis_lote").style.display = "none";
@@ -207,76 +212,106 @@
     }
   }
 
-  //Lote ABC123
-  var mediaUmidadeLote = 70
-  var mediaTempLote = 28
+//   //Lote ABC123
+//   var mediaUmidadeLote = 70
+//   var mediaTempLote = 28
 
-  //Lote DEF456
-  var mediaUmidadeLote2 = Math.random();
-  mediaUmidadeLote2 = Math.floor(mediaUmidadeLote2 * 35 + 65 );
-  var mediaTempLote2 = Math.random();
-  mediaTempLote2 = Math.floor(mediaTempLote2 * 15 + 15 );
+//   //Lote DEF456
+//   var mediaUmidadeLote2 = Math.random();
+//   mediaUmidadeLote2 = Math.floor(mediaUmidadeLote2 * 35 + 65 );
+//   var mediaTempLote2 = Math.random();
+//   mediaTempLote2 = Math.floor(mediaTempLote2 * 15 + 15 );
 
-// primeira kpi umidade (lote abc)
-  const termometroUmidade2 = document.getElementById("umidade2")
-  termometroUmidade2.style.height = mediaUmidadeLote + "%";
-  UmidadePorcentagem2.innerHTML = `${mediaUmidadeLote}%`;
-  if (mediaUmidadeLote < 75) {  
-    termometroUmidade2.style.backgroundColor = '#ff0000';
-    termometroUmidade2.style.boxShadow = '3px 3px 10px #ff0000';
-    UmidadePorcentagem2.innerHTML = ` ${mediaUmidadeLote}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
-  }
+// // primeira kpi umidade (lote abc)
+//   const termometroUmidade2 = document.getElementById("umidade2")
+//   termometroUmidade2.style.height = mediaUmidadeLote + "%";
+//   UmidadePorcentagem2.innerHTML = `${mediaUmidadeLote}%`;
+//   if (mediaUmidadeLote < 75) {  
+//     termometroUmidade2.style.backgroundColor = '#ff0000';
+//     termometroUmidade2.style.boxShadow = '3px 3px 10px #ff0000';
+//     UmidadePorcentagem2.innerHTML = ` ${mediaUmidadeLote}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
+//   }
     
-// segunda kpi temperatura (lote abc)
-  const termometroTemp2 = document.getElementById("termometro2")
-  termometroTemp2.style.height = mediaTempLote*2 + "%";
-  TemperaturaGraus2.innerHTML = `${mediaTempLote}C°`;
-  if (mediaTempLote > 26 || mediaTempTS < 18) {
-    termometroTemp2.style.backgroundColor = '#ff0000';
-    termometroTemp2.style.boxShadow = '3px 3px 10px #ff0000';
-    TemperaturaGraus2.innerHTML = ` ${mediaTempLote}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
-  }
+// // segunda kpi temperatura (lote abc)
+//   const termometroTemp2 = document.getElementById("termometro2")
+//   termometroTemp2.style.height = mediaTempLote*2 + "%";
+//   TemperaturaGraus2.innerHTML = `${mediaTempLote}C°`;
+//   if (mediaTempLote > 26 || mediaTempTS < 18) {
+//     termometroTemp2.style.backgroundColor = '#ff0000';
+//     termometroTemp2.style.boxShadow = '3px 3px 10px #ff0000';
+//     TemperaturaGraus2.innerHTML = ` ${mediaTempLote}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
+//   }
 
-  // primeira kpi umidade (lote def)
-  const termometroUmidade4 = document.getElementById("umidade4")
-  termometroUmidade4.style.height = mediaUmidadeLote2 + "%";
-  UmidadePorcentagem4.innerHTML = `${mediaUmidadeLote2}%`;
-  if (mediaUmidadeLote2 < 75) {  
-    termometroUmidade4.style.backgroundColor = '#ff0000';
-    termometroUmidade4.style.boxShadow = '3px 3px 10px #ff0000';
-    UmidadePorcentagem4.innerHTML = ` ${mediaUmidadeLote2}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
-  }
+//   // primeira kpi umidade (lote def)
+//   const termometroUmidade4 = document.getElementById("umidade4")
+//   termometroUmidade4.style.height = mediaUmidadeLote2 + "%";
+//   UmidadePorcentagem4.innerHTML = `${mediaUmidadeLote2}%`;
+//   if (mediaUmidadeLote2 < 75) {  
+//     termometroUmidade4.style.backgroundColor = '#ff0000';
+//     termometroUmidade4.style.boxShadow = '3px 3px 10px #ff0000';
+//     UmidadePorcentagem4.innerHTML = ` ${mediaUmidadeLote2}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
+//   }
 
-  // segunda kpi temperatura (lote def)
-  const termometroTemp4 = document.getElementById("termometro4")
-  termometroTemp4.style.height = mediaTempLote2*2 + "%";
-  TemperaturaGraus4.innerHTML = `${mediaTempLote2}ºC`;
-  if (mediaTempLote2 > 25 ) {
-    termometroTemp4.style.backgroundColor = '#ff0000';
-    termometroTemp4.style.boxShadow = '3px 3px 10px #ff0000';
-    TemperaturaGraus4.innerHTML = ` ${mediaTempLote2}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
-  }
+//   // segunda kpi temperatura (lote def)
+//   const termometroTemp4 = document.getElementById("termometro4")
+//   termometroTemp4.style.height = mediaTempLote2*2 + "%";
+//   TemperaturaGraus4.innerHTML = `${mediaTempLote2}ºC`;
+//   if (mediaTempLote2 > 25 ) {
+//     termometroTemp4.style.backgroundColor = '#ff0000';
+//     termometroTemp4.style.boxShadow = '3px 3px 10px #ff0000';
+//     TemperaturaGraus4.innerHTML = ` ${mediaTempLote2}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
+//   }
 
   const ctx = document.getElementById("myChart");
   const ctx2 = document.getElementById("myChart2");
   const ctx_lote = document.getElementById("myChart_lote")
   const ctx2_lote = document.getElementById("myChart2_lote")
 
+
+  function buscarUmidTempDia() {
+    fetch("/lotes/buscarUmidTempDia",{
+    method: "POST",
+      headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkempresaServer: sessionStorage.FK_EMPRESA
+            })
+          }).then(response => {
+        if (response.ok) {
+          return response.json();
+          console.log(response)
+        } else {
+          console.error('Erro ao obter dados do gráfico');
+        }
+      })
+      .then(data => {
+        if (data && data.length > 0) {
+          // processa os dados e plota o grafico
+          var labels = [];
+          var valuesTemp = [];
+          var valuesUmid = [];
+
+          for (var i = 0; i < data.length; i++) {
+            labels.push(Number(data[i].horario));
+            valuesTemp.push(Number(data[i].mediaTemp));
+            valuesUmid.push(Number(data[i].mediaUmid))
+          }
   new Chart(ctx2, {
     type: "line",
     data: {
-      labels: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+      labels: labels,
       datasets: [
         {
           label: "Temperatura",
-          data: [30, 29, 25, 25, 22, 23, 25, 25, 29, 27, 26],
+          data: valuesTemp,
           borderWidth: 2,
           borderColor: "#ff5927",
           backgroundColor: "#ff5927",
         },
         {
           label: "Umidade",
-          data: [75, 82, 80, 85, 80, 83, 84, 79, 75, 83, 87],
+          data: valuesUmid,
           borderWidth: 2,
           borderColor: "#45aadd",
           backgroundColor: "#45aadd",
@@ -291,21 +326,59 @@
       },
     },
   });
+
+        }
+      })
+      .catch(error => {
+        console.error('Erro ao obter dados do gráfico:', error);
+      });
+  }
+
+  function buscarUmidTempMes() {
+    fetch("/lotes/buscarUmidTempMes",{
+    method: "POST",
+      headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkempresaServer: sessionStorage.FK_EMPRESA
+            })
+          }).then(response => {
+        if (response.ok) {
+          return response.json();
+          console.log(response)
+        } else {
+          console.error('Erro ao obter dados do gráfico');
+        }
+      })
+      .then(data => {
+        if (data && data.length > 0) {
+          // processa os dados e plota o grafico
+          var labels = [];
+          var valuesTemp = [];
+          var valuesUmid = [];
+
+          for (var i = 0; i < data.length; i++) {
+            labels.push(Number(data[i].mes));
+            valuesTemp.push(Number(data[i].mediaTemp));
+            valuesUmid.push(Number(data[i].mediaUmid))
+          }
+
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
+      labels: labels,
       datasets: [
         {
           label: "Temperatura Média",
-          data: [22, 24, 27, 23, 20, 18],
+          data: valuesTemp,
           borderWidth: 1,
           borderColor: "#ff5927",
           backgroundColor: "#ff5927",
         },
         {
           label: "Umidade Média",
-          data: [70, 73, 78, 90, 87, 82],
+          data: valuesUmid,
           borderWidth: 1,
           borderColor: "#45aadd",
           backgroundColor: "#45aadd",
@@ -320,6 +393,17 @@
       },
     },
   });
+
+}
+      })
+      .catch(error => {
+        console.error('Erro ao obter dados do gráfico:', error);
+      });
+  }
+
+
+
+
   new Chart(ctx_lote, {
     type: "bar",
     data: {

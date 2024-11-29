@@ -63,5 +63,25 @@ function kpi_3umid(fkEmpresa){
  return database.executar(instrucaoSql);
 }
 
-module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid}
+function buscarUmidTempDia(fkEmpresa){
+  var instrucaoSql = `select truncate(avg(temperatura), 2) as mediaTemp, truncate(avg(umidade), 2) as mediaUmid, hour(horarioCaptura) as horario from dados 
+  JOIN Sensor ON idSensor = fkSensor 
+  JOIN Lote ON idLote = fkLote
+  JOIN Empresa ON idEmpresa = fkEmpresa 
+  where fkEmpresa = ${fkEmpresa}
+  group by hour(horarioCaptura) order by horario;`
+  return database.executar(instrucaoSql);
+ }
+
+ function buscarUmidTempMes(fkEmpresa){
+  var instrucaoSql = `select truncate(avg(temperatura), 2) as mediaTemp, truncate(avg(umidade), 2) as mediaUmid, month(horarioCaptura) as mes from dados 
+  JOIN Sensor ON idSensor = fkSensor 
+  JOIN Lote ON idLote = fkLote
+  JOIN Empresa ON idEmpresa = fkEmpresa 
+  where fkEmpresa = ${fkEmpresa}
+  group by month(horarioCaptura) order by month(horarioCaptura);`
+  return database.executar(instrucaoSql);
+ }
+
+module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes}
 

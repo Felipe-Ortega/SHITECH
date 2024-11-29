@@ -62,20 +62,20 @@ function cadastrar(req, res) {
     if (resultado.length > 0) {
       res
         .status(401)
-        .json({ mensagem: `a empresa com o cnpj ${cnpj} já existe` });
+        .json({ mensagem: `A empresa com o CNPJ ${cnpj} já existe` });
     } else {
       empresaModel.cadastrar(razaoSocial, fantasia, cnpj, unidade).then((resultado) => {
-        res.status(201).json(resultado).catch(
-          function (erro) {
-              console.log(erro);
-              console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-              res.status(500).json(erro.sqlMessage);
-          }
-      );
+        res.status(201).json(resultado);
+      }).catch((erro) => { // O .catch deve estar diretamente após este .then
+        console.log("\nHouve um erro ao cadastrar a empresa! Erro:", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
       });
     }
-  });
-}
+  }).catch((erro) => { // Este .catch captura erros de buscarPorCnpj
+    console.log("\nHouve um erro ao buscar o CNPJ! Erro:", erro.sqlMessage);
+    res.status(500).json(erro.sqlMessage);
+  });}
+  
 
 module.exports = {
   buscarPorCnpj,

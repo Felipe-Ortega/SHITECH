@@ -27,4 +27,13 @@ router.post("/kpi_3umid", function (req, res) {
     loteController.kpi_3umid(req, res);
 });
 
+router.post("/buscarUmidTempDia", function (req, res) {
+    loteController.buscarUmidTempDia(req, res);
+});
+
+router.post("/buscarUmidTempMes", function (req, res) {
+    loteController.buscarUmidTempMes(req, res);
+});
+
+
 module.exports = router;

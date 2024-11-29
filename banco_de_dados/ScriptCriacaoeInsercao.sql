@@ -51,7 +51,7 @@ CREATE TABLE Dados (
     temperatura DECIMAL(5,2) NOT NULL,
     umidade DECIMAL(5,2) NOT NULL,
     horarioCaptura DATETIME NOT NULL,
-    CONSTRAINT fkDadosSensor FOREIGN KEY (fkSensor) REFERENCES SensoR(idSensor),
+    CONSTRAINT fkDadosSensor FOREIGN KEY (fkSensor) REFERENCES Sensor(idSensor),
     CONSTRAINT pkDadosSensor PRIMARY KEY (idDados, fkSensor)
 );
 

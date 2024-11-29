@@ -64,7 +64,7 @@ function kpi_3umid(fkEmpresa){
 }
 
 function buscarUmidTempDia(fkEmpresa){
-  var instrucaoSql = `select truncate(avg(temperatura), 2) as mediaTemp, truncate(avg(umidade), 2) as mediaUmid, hour(horarioCaptura) as horario from dados 
+  var instrucaoSql = `select truncate(avg(temperatura), 2) as mediaTemp, truncate(avg(umidade), 2) as mediaUmid, hour(horarioCaptura) as horario from Dados 
   JOIN Sensor ON idSensor = fkSensor 
   JOIN Lote ON idLote = fkLote
   JOIN Empresa ON idEmpresa = fkEmpresa 
@@ -74,7 +74,7 @@ function buscarUmidTempDia(fkEmpresa){
  }
 
  function buscarUmidTempMes(fkEmpresa){
-  var instrucaoSql = `select truncate(avg(temperatura), 2) as mediaTemp, truncate(avg(umidade), 2) as mediaUmid, month(horarioCaptura) as mes from dados 
+  var instrucaoSql = `select truncate(avg(temperatura), 2) as mediaTemp, truncate(avg(umidade), 2) as mediaUmid, month(horarioCaptura) as mes from Dados 
   JOIN Sensor ON idSensor = fkSensor 
   JOIN Lote ON idLote = fkLote
   JOIN Empresa ON idEmpresa = fkEmpresa 

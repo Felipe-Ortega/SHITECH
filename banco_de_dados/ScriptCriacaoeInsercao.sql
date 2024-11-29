@@ -54,7 +54,18 @@ CREATE TABLE Dados (
     CONSTRAINT fkDadosSensor FOREIGN KEY (fkSensor) REFERENCES SensoR(idSensor),
     CONSTRAINT pkDadosSensor PRIMARY KEY (idDados, fkSensor)
 );
- 
+
+insert into empresa values
+(1, 'Shitech LTDA', 'Shitech Soluções', '12345678901112', 1, '000');
+
+insert into usuario values
+(1, 1, 'Lucas Aquino', '12345678901', '12345678901', 1, 'suporte', 'lucas@shitech.com', md5('admin2012')),
+(2, 1, 'Laiza Tavares', '21345678901', '21345678901', 1, 'suporte', 'laiza@shitech.com', md5('admin2012')),
+(3, 1, 'Lara Silva', '31245678901', '31245678901', 1, 'suporte', 'lara@shitech.com', md5('admin2012')),
+(4, 1, 'Felipe Miguel', '41235678901', '41235678901', 1, 'suporte', 'felipe@shitech.com', md5('admin2012')),
+(5, 1, 'Amanda Pedroza', '51234678901', '51234678901', 1, 'suporte', 'amanda@shitech.com', md5('admin2012')),
+(6, 1, 'Pedro Luiz', '61234578901', '61234578901', 1, 'suporte', 'pedro@shitech.com', md5('admin2012'));
+
 INSERT INTO Empresa 
 VALUES 
 (DEFAULT, 'GreenFields Agro LTDA', 'GreenFields', '11223344000177', 1, '001'),
@@ -259,13 +270,3 @@ SELECT
 FROM Dados WHERE horarioCaptura >= NOW() - interval 1 DAY
 GROUP BY HOUR(horarioCaptura)
 order by variacao_umidadeFINAL desc limit 1;
-    
-     delete from dados where horarioCaptura >= NOW() - interval 1 DAY;
-
-    select * from dados WHERE horarioCaptura >= NOW() - interval 1 DAY;
-    SELECT TRUNCATE(avg(temperatura),2)AS mediaTempDiaria, TRUNCATE(avg(umidade),2) AS mediaUmidDiaria FROM dados join sensor on idSensor = fkSensor join lote on idLote = fkLote join empresa on idEmpresa = fkEmpresa WHERE horarioCaptura >= NOW() - interval 1000 DAY and fkEmpresa = 1;
-    
-    select * from usuario;
-    
-    -- SELECT PARA O PRIMEIRO GRÁFICO DA TELA DE TODOS OS LOTES
-    select truncate(avg(temperatura), 2) as mediaTemp, truncate(avg(umidade), 2) as mediaUmid, hour(horarioCaptura) as horario from dados group by hour(horarioCaptura) order by horario;

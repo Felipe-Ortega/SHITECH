@@ -1,5 +1,5 @@
-create user 'shitech'@'localhost' identified by 'Shitech#123';
+create user 'shitech'@'%' identified by 'Shitech#123';
 
-grant all on shitech.* to 'shitech'@'localhost';
+grant all on shitech.* to 'shitech'@'%';
 
 flush privileges;

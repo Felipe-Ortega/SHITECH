@@ -55,10 +55,10 @@ CREATE TABLE Dados (
     CONSTRAINT pkDadosSensor PRIMARY KEY (idDados, fkSensor)
 );
 
-insert into empresa values
+insert into Empresa values
 (1, 'Shitech LTDA', 'Shitech Soluções', '12345678901112', 1, '000');
 
-insert into usuario values
+insert into Usuario values
 (1, 1, 'Lucas Aquino', '12345678901', '12345678901', 1, 'suporte', 'lucas@shitech.com', md5('#Admin2012')),
 (2, 1, 'Laiza Tavares', '21345678901', '21345678901', 1, 'suporte', 'laiza@shitech.com', md5('#Admin2012')),
 (3, 1, 'Lara Silva', '31245678901', '31245678901', 1, 'suporte', 'lara@shitech.com', md5('#Admin2012')),
@@ -108,23 +108,23 @@ VALUES
 
 
 CREATE VIEW empresaLote as
-select * from empresa join lote
+select * from Empresa join Lote
 on idEmpresa = fkEmpresa
 order by nomeFantasia asc;
 
 CREATE VIEW plantacaoShimeji AS
-select nomeFantasia, idLote, dtPlantacao, dtColheita, dtFrutificacao, tipo from empresa join lote
+select nomeFantasia, idLote, dtPlantacao, dtColheita, dtFrutificacao, tipo from Empresa join Lote
 on idEmpresa = fkEmpresa
 where tipo = 'Shimeji';
 
 CREATE VIEW nomeEmpresa AS
 select usuario.nome,usuario.status_colaborador, nomeFantasia
-from usuario join empresa
+from Usuario join Empresa
 on idEmpresa = fkEmpresa
 order by nomeFantasia;
 
 CREATE VIEW plantacaoChampignon AS
-select nomeFantasia, idLote, dtPlantacao, dtColheita, dtFrutificacao, tipo from empresa join lote
+select nomeFantasia, idLote, dtPlantacao, dtColheita, dtFrutificacao, tipo from Empresa join Lote
 on idEmpresa = fkEmpresa
 where tipo = 'Champignon';
 
@@ -200,9 +200,7 @@ on Lote.fkEmpresa = Empresa.idEmpresa
 join Sensor
 on Sensor.fkLote = Lote.idLote;
 
-desc lote;
-
-SELECT * FROM plantacaoChampignon;
+desc Lote;
 
 SELECT
     HOUR(horarioCaptura) AS hora, -- ultima KPI --
@@ -221,7 +219,7 @@ ORDER BY hora;
 SELECT
 	TRUNCATE(avg(temperatura),2)AS 'Média temperatura diária',
     TRUNCATE(avg(umidade),2) AS 'Média umidade diária'	-- primeira e segunda KPI --
-    FROM dados WHERE horarioCaptura >= NOW() - interval 1 DAY;
+    FROM Dados WHERE horarioCaptura >= NOW() - interval 1 DAY;
     
 SELECT
     HOUR(horarioCaptura) AS horaTemp,-- terceira KPI --
@@ -247,9 +245,9 @@ SELECT
     e.nomeFantasia as 'Nome empresa',								-- NOME DOS USUARIOS, QUADRANTES, TIPOS DA ESTUFA E NOME DA ESTUFA --
     u.nome as 'Nome usuário'
 FROM Dados as d JOIN sensor as s on d.fkSensor = s.idSensor 
-JOIN lote as l on s.fkLote = l.idLote 
-JOIN empresa as e on l.fkEmpresa = e.idEmpresa
-JOIN usuario as u on e.idEmpresa = u.fkEmpresa
+JOIN Lote as l on s.fkLote = l.idLote 
+JOIN Empresa as e on l.fkEmpresa = e.idEmpresa
+JOIN Usuario as u on e.idEmpresa = u.fkEmpresa
 GROUP BY hora, s.posicao, u.nome, l.estufa, l.tipo, e.nomeFantasia, idLote, idSensor
 ORDER BY temp_max DESC, temp_min DESC, umid_max DESC, umid_min DESC, hora ASC;
 
@@ -258,7 +256,7 @@ SELECT
 	hour(horarioCaptura) as Hora, 
 	TRUNCATE(temperatura ,2)AS mediaTempDiaria,
     TRUNCATE(umidade ,2) AS mediaUmidDiaria	-- --
-    FROM dados WHERE horarioCaptura >= NOW() - interval 1 DAY
+    FROM Dados WHERE horarioCaptura >= NOW() - interval 1 DAY
     group by hora, mediaTempDiaria, mediaUmidDiaria;
     
     SELECT

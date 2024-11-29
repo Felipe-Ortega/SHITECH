@@ -259,13 +259,3 @@ SELECT
 FROM Dados WHERE horarioCaptura >= NOW() - interval 1 DAY
 GROUP BY HOUR(horarioCaptura)
 order by variacao_umidadeFINAL desc limit 1;
-    
-     delete from dados where horarioCaptura >= NOW() - interval 1 DAY;
-
-    select * from dados WHERE horarioCaptura >= NOW() - interval 1 DAY;
-    SELECT TRUNCATE(avg(temperatura),2)AS mediaTempDiaria, TRUNCATE(avg(umidade),2) AS mediaUmidDiaria FROM dados join sensor on idSensor = fkSensor join lote on idLote = fkLote join empresa on idEmpresa = fkEmpresa WHERE horarioCaptura >= NOW() - interval 1000 DAY and fkEmpresa = 1;
-    
-    select * from usuario;
-    
-    -- SELECT PARA O PRIMEIRO GRÁFICO DA TELA DE TODOS OS LOTES
-    select truncate(avg(temperatura), 2) as mediaTemp, truncate(avg(umidade), 2) as mediaUmid, hour(horarioCaptura) as horario from dados group by hour(horarioCaptura) order by horario;

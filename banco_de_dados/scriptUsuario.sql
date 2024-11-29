@@ -1,9 +1,9 @@
-create user 'shitech'@'%' identified by 'Shitech#123';
+create user 'Shitech'@'%' identified by 'Shitech#123';
 
-grant all on Shitech.* to 'shitech'@'%';
+grant all on Shitech.* to 'Shitech'@'%';
 
-create user 'shitechINSERT'@'%' identified by 'Shitech#123';
+create user 'ShitechINSERT'@'%' identified by 'Shitech#123';
 
-grant insert on Shitech.Dados to 'shitechINSERT'@'%';
+grant insert on Shitech.Dados to 'ShitechINSERT'@'%';
 
 flush privileges;

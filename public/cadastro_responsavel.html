@@ -96,25 +96,101 @@
   // let listaEmpresasCadastradas = [];
 
   function cadastrar() {
-    // aguardar();
-
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var telefoneVar = telefone_input.value;
+    var emailVar = email_input.value; //nome_fantasia
+    var telefoneVar = telefone_input.value; //x
     var cpfVar = cpf_input.value;
-    //ARMAZENA TODOS OS ELEMENTOS COM NOME "funcao" EM UM VETOR ENTÃO FAZ UM LOOP PARA VERIFICAR QUAL ESTÁ MARCADO E CONSEGUIR SEU VALOR
+    var senhaVar = senha_input.value; //x
+    var confirmacaoSenhaVar = confirmacao_senha_input.value; //x
+    var mensagemErro = "";
+
+    // INICIA UM CONTADOR DE VERIFICAÇÕES QUE SERÁ USADO PARA REALIZAR O CADASTRO
+    var verificacoes = 0;
+
     var radios = document.getElementsByName("funcao")
     for(i = 0; i < radios.length; i++){
       if(radios[i].checked){
         var cargoVar = radios[i].value;
+        verificacoes++
+      }
+  
+    }
+
+  
+    // email tem que conter @ e terminar .com ou .br e ter um tamanho maior que 10
+
+    if (
+      emailVar.includes("@") &&
+      (emailVar.endsWith(".com") || emailVar.endsWith(".br")) &&
+      emailVar.length > 10
+    ) {
+      verificacoes++;
+    } else {
+      mensagemErro += "Email inválido.\n";
+    }
+
+    // telefone tem que ter 10 ou 11 digitos
+
+    if (telefoneVar.length < 12 && telefoneVar.length > 9) {
+      verificacoes++;
+    } else {
+      mensagemErro += "Telefone inválido.\n";
+    }
+
+    // cpf tem que ter 11 digitos
+
+    if (cpfVar.length == 11) {
+      verificacoes++;
+    } else {
+      mensagemErro += "CPF inválido.\n";
+    }
+
+    // variável que armazena se o texto contém numero ou não
+
+    var contem_numero = false;
+
+    // loop que passa por cada dígito do texto e verifica se é um número ou não.
+
+    for (i = 0; i < senhaVar.length; i++) {
+      if (!isNaN(senhaVar[i])) {
+        contem_numero = true;
+        i = senhaVar.length;
       }
     }
-    console.log()
-    // var idEmpresaVincular
+
+    // verificação se a senha possui algum carácter especial, se possui letra maiúscula, minúscula e número e que a senha seja maior que 7 digitos.
+
+    if (
+      (senhaVar.includes(".") ||
+        senhaVar.includes("#") ||
+        senhaVar.includes("!") ||
+        senhaVar.includes("_") ||
+        senhaVar.includes("-") ||
+        senhaVar.includes("$") ||
+        senhaVar.includes("@")) &&
+      senhaVar.toUpperCase() != senhaVar &&
+      senhaVar.toLowerCase() != senhaVar &&
+      contem_numero &&
+      senhaVar.length >= 8
+    ) {
+      verificacoes++;
+    } else {
+      mensagemErro += "Senha inválida.\n";
+    }
+
+    // confirmação tem que ser igual senha
+    if (confirmacaoSenhaVar == senhaVar) {
+      verificacoes++;
+    } else {
+      mensagemErro += "As senhas não são compátiveis.\n";
+    }
+
+    // confirmação de que o nome do Responsável não está vazio
+    if (nomeVar != "") {
+      verificacoes++;
+    } else {
+      mensagemErro += "Nome não pode estar vazio.\n";
+    }
 
     // Verificando se há algum campo em branco
     if (
@@ -133,6 +209,7 @@
       // setInterval(sumirMensagem, 5000);
     }
         
+    if(verificacoes == 7){
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
@@ -177,5 +254,9 @@
 
     return false;
   }
+  else{
+    alert(mensagemErro)
+  }
+}
 
 </script>

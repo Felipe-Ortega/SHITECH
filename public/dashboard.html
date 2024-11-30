@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,32 +18,23 @@
     <div class="container_menu">
       <ul class="lista">
         <li>
-          <a href="landing_page.html"
-            ><img src="./assets/imgs/logo2.png" />
+          <a href="landing_page.html"><img src="./assets/imgs/logo2.png" />
           </a>
         </li>
         <li>
           <a href="dashboard.html"><button style="font-weight: 700;">DASH</button></a>
         </li>
         <li>
-          <a href="cadastro_funcionario.html"
-            ><button>CADASTRO</button></a
-          >
+          <a href="cadastro_funcionario.html"><button>CADASTRO</button></a>
         </li>
         <li>
-          <a href="cadastro_lote.html"
-            ><button>ADICIONAR LOTE</button></a
-          >
+          <a href="cadastro_lote.html"><button>ADICIONAR LOTE</button></a>
         </li>
         <li>
-          <a href="atualizar_lote.html"
-            ><button>ATUALIZAR LOTE</button></a
-          >
+          <a href="atualizar_lote.html"><button>ATUALIZAR LOTE</button></a>
         </li>
         <li>
-          <a href="suporte.html"
-            ><button>SUPORTE</button></a
-          >
+          <a href="suporte.html"><button>SUPORTE</button></a>
         </li>
         <li>
           <a href="login.html"><button>SAIR</button></a>
@@ -59,11 +50,11 @@
       </div>
       <div class="div_titulo">
         <h1>Informações sobre Linha de Produção</h1>
-        <span class="span_filtro"><select name="" id="select_filtro" onclick="filtro(); kpi1_2Lotes()">
+        <span class="span_filtro"><select name="" id="select_filtro" onclick="filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote()">
             <option value="todos" selected>Todos Lotes</option>
             <option value="lotes">Lotes individuais</option>
           </select></span>
-          <span class="span_filtro_lote"><select name="" id="select_filtro_lote" onclick="filtro(); kpi1_2Lotes()">
+        <span class="span_filtro_lote"><select name="" id="select_filtro_lote" onclick="filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote()">
           </select></span>
       </div>
       </select></span>
@@ -99,14 +90,15 @@
             <span class="kpis">
               <span class="titulos-kpis"> Horários de maior variação: </span>
               <div>
-                <span class="info-kpi" id="kpi_3temperatura" style="font-size: 4vh; color:rgb(196, 169, 48)"></span> | <span class="info-kpi" id="kpi_3umidade" style=" font-size: 4vh; color: rgb(48, 107, 196)"></span>
+                <span class="info-kpi" id="kpi_3temperatura" style="font-size: 4vh; color:rgb(196, 169, 48)"></span> |
+                <span class="info-kpi" id="kpi_3umidade" style=" font-size: 4vh; color: rgb(48, 107, 196)"></span>
               </div>
             </span>
             <span class="kpis">
               <span class="titulos-kpis"> Maior variação comparado com a média:</span>
-              <span class="info-kpi"> <span id="kpi_4temp">5ºC</span> 
-                <span style="color: black;">|</span> 
-                    <span style="color: blue;" id="kpi_4umid">10%</span>
+              <span class="info-kpi"> <span id="kpi_4temp"></span>
+                <span style="color: black;">|</span>
+                <span style="color: blue;" id="kpi_4umid"></span>
               </span>
             </span>
           </div>
@@ -138,56 +130,57 @@
               </span>
               <span class="kpis">
                 <span class="titulos-kpis"> Horários de maior variação: </span>
-              <div>
-                <span class="info-kpi" style="font-size: 4vh; color:rgb(196, 169, 48)"></span> | <span class="info-kpi"  style=" font-size: 4vh; color: rgb(48, 107, 196)">13:00</span>
-              </div>
-            </span>
+                <div>
+                  <span id="kpi3Lotetemp" class="info-kpi" style="font-size: 4vh; color:rgb(196, 169, 48)"></span> | 
+                  <span id="kpi3Loteumid" class="info-kpi" style=" font-size: 4vh; color: rgb(48, 107, 196)"></span>
+                </div>
               </span>
-              <span class="kpis">
-                <span class="titulos-kpis"> Quadrante que mais emitiu alertas:</span>
-                <span class="info-kpi" style="font-size: 5vh;">Quadrante 2</span>
-              </span>
-            </div>
           </span>
-          <div id="graficos_todos" class="graficos_todos">
-            <div class="graficos border">
-              <h1>Temperatura e Umidade diária</h1>
-              <canvas class="chart" id="myChart2"></canvas>
-            </div>
-            <div class="graficos border">
-              <h1>Temperatura e Umidade média mensal</h1>
-              <canvas class="chart" id="myChart"></canvas>
-            </div>
-          </div>
-          <span id="graficos_lotes">
-              <div class="graficos border">
-                <h1>Temperatura e Umidade diária (Lote ABC123)</h1>
-                <canvas class="chart" id="myChart2_lote"></canvas>
-              </div>
-              <div class="graficos border">
-                <h1>Temperatura e Umidade média mensal (Lote ABC123)</h1>
-                <canvas class="chart" id="myChart_lote"></canvas>
-              </div>
+          <span class="kpis">
+            <span class="titulos-kpis"> Quadrante que mais emitiu alertas:</span>
+            <span class="info-kpi" style="font-size: 5vh;">Quadrante 2</span>
           </span>
         </div>
+        </span>
+        <div id="graficos_todos" class="graficos_todos">
+          <div class="graficos border">
+            <h1>Temperatura e Umidade diária</h1>
+            <canvas class="chart" id="myChart2"></canvas>
+          </div>
+          <div class="graficos border">
+            <h1>Temperatura e Umidade média mensal</h1>
+            <canvas class="chart" id="myChart"></canvas>
+          </div>
+        </div>
+        <span id="graficos_lotes">
+          <div class="graficos border">
+            <h1>Temperatura e Umidade diária (Lote ABC123)</h1>
+            <canvas class="chart" id="myChart2_lote"></canvas>
+          </div>
+          <div class="graficos border">
+            <h1>Temperatura e Umidade média mensal (Lote ABC123)</h1>
+            <canvas class="chart" id="myChart_lote"></canvas>
+          </div>
+        </span>
       </div>
-      
-      <div class="legenda border">
-        <h3>Parâmetros</h3>
-        <span>Margem ideal de temperatura: <b>18°C a 26°C</b></span> <br>
-        <span>Margem ideal de umidade: <b>75% a 100%</b></span>
-      </div>
-
     </div>
-    
+
+    <div class="legenda border">
+      <h3>Parâmetros</h3>
+      <span>Margem ideal de temperatura: <b>18°C a 26°C</b></span> <br>
+      <span>Margem ideal de umidade: <b>75% a 100%</b></span>
+    </div>
+
+  </div>
+
   </div>
 </body>
 
 </html>
 <script>
-    var mediaUmidadeTS = 0
-    var mediaTempTS = 0
-    listar()
+  var mediaUmidadeTS = 0
+  var mediaTempTS = 0
+  listar()
   kpi1_2()
   kpi_3temp()
   kpi_3umid()
@@ -196,18 +189,18 @@
 
   setInterval(() => {
     kpi1_2()
-  kpi_3temp()
-  kpi_3umid()
-  buscarUmidTempDia()
-  buscarUmidTempMes()
-  }, 5000)
-  
+    kpi_3temp()
+    kpi_3umid()
+    buscarUmidTempDia()
+    buscarUmidTempMes()
+  }, 2000)
+
 
   document.getElementById("select_filtro_lote").style.display = "none";
-      document.getElementById("container_kpis_sensores").style.display = "flex";
-      document.getElementById("container_kpis_lote").style.display = "none";
-      document.getElementById("graficos_lotes").style.display = 'none'
-      document.getElementById("graficos_todos").style.display = 'flex';
+  document.getElementById("container_kpis_sensores").style.display = "flex";
+  document.getElementById("container_kpis_lote").style.display = "none";
+  document.getElementById("graficos_lotes").style.display = 'none'
+  document.getElementById("graficos_todos").style.display = 'flex';
   function filtro() {
     if (select_filtro.value == 'lotes') {
       document.getElementById("graficos_lotes").style.display = 'flex'
@@ -225,55 +218,6 @@
     }
   }
 
-//   //Lote ABC123
-//   var mediaUmidadeLote = 70
-//   var mediaTempLote = 28
-
-//   //Lote DEF456
-//   var mediaUmidadeLote2 = Math.random();
-//   mediaUmidadeLote2 = Math.floor(mediaUmidadeLote2 * 35 + 65 );
-//   var mediaTempLote2 = Math.random();
-//   mediaTempLote2 = Math.floor(mediaTempLote2 * 15 + 15 );
-
-// // primeira kpi umidade (lote abc)
-//   const termometroUmidade2 = document.getElementById("umidade2")
-//   termometroUmidade2.style.height = mediaUmidadeLote + "%";
-//   UmidadePorcentagem2.innerHTML = `${mediaUmidadeLote}%`;
-//   if (mediaUmidadeLote < 75) {  
-//     termometroUmidade2.style.backgroundColor = '#ff0000';
-//     termometroUmidade2.style.boxShadow = '3px 3px 10px #ff0000';
-//     UmidadePorcentagem2.innerHTML = ` ${mediaUmidadeLote}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
-//   }
-    
-// // segunda kpi temperatura (lote abc)
-//   const termometroTemp2 = document.getElementById("termometro2")
-//   termometroTemp2.style.height = mediaTempLote*2 + "%";
-//   TemperaturaGraus2.innerHTML = `${mediaTempLote}C°`;
-//   if (mediaTempLote > 26 || mediaTempTS < 18) {
-//     termometroTemp2.style.backgroundColor = '#ff0000';
-//     termometroTemp2.style.boxShadow = '3px 3px 10px #ff0000';
-//     TemperaturaGraus2.innerHTML = ` ${mediaTempLote}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
-//   }
-
-//   // primeira kpi umidade (lote def)
-//   const termometroUmidade4 = document.getElementById("umidade4")
-//   termometroUmidade4.style.height = mediaUmidadeLote2 + "%";
-//   UmidadePorcentagem4.innerHTML = `${mediaUmidadeLote2}%`;
-//   if (mediaUmidadeLote2 < 75) {  
-//     termometroUmidade4.style.backgroundColor = '#ff0000';
-//     termometroUmidade4.style.boxShadow = '3px 3px 10px #ff0000';
-//     UmidadePorcentagem4.innerHTML = ` ${mediaUmidadeLote2}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
-//   }
-
-//   // segunda kpi temperatura (lote def)
-//   const termometroTemp4 = document.getElementById("termometro4")
-//   termometroTemp4.style.height = mediaTempLote2*2 + "%";
-//   TemperaturaGraus4.innerHTML = `${mediaTempLote2}ºC`;
-//   if (mediaTempLote2 > 25 ) {
-//     termometroTemp4.style.backgroundColor = '#ff0000';
-//     termometroTemp4.style.boxShadow = '3px 3px 10px #ff0000';
-//     TemperaturaGraus4.innerHTML = ` ${mediaTempLote2}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
-//   }
 
   const ctx = document.getElementById("myChart");
   const ctx2 = document.getElementById("myChart2");
@@ -282,22 +226,22 @@
 
 
   function buscarUmidTempDia() {
-    fetch("/lotes/buscarUmidTempDia",{
-    method: "POST",
+    fetch("/lotes/buscarUmidTempDia", {
+      method: "POST",
       headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                fkempresaServer: sessionStorage.FK_EMPRESA
-            })
-          }).then(response => {
-        if (response.ok) {
-          return response.json();
-          console.log(response)
-        } else {
-          console.error('Erro ao obter dados do gráfico');
-        }
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fkempresaServer: sessionStorage.FK_EMPRESA
       })
+    }).then(response => {
+      if (response.ok) {
+        return response.json();
+        console.log(response)
+      } else {
+        console.error('Erro ao obter dados do gráfico');
+      }
+    })
       .then(data => {
         if (data && data.length > 0) {
           // processa os dados e plota o grafico
@@ -310,35 +254,35 @@
             valuesTemp.push(Number(data[i].mediaTemp));
             valuesUmid.push(Number(data[i].mediaUmid))
           }
-  new Chart(ctx2, {
-    type: "line",
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: "Temperatura",
-          data: valuesTemp,
-          borderWidth: 2,
-          borderColor: "#ff5927",
-          backgroundColor: "#ff5927",
-        },
-        {
-          label: "Umidade",
-          data: valuesUmid,
-          borderWidth: 2,
-          borderColor: "#45aadd",
-          backgroundColor: "#45aadd",
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
+          new Chart(ctx2, {
+            type: "line",
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  label: "Temperatura",
+                  data: valuesTemp,
+                  borderWidth: 2,
+                  borderColor: "#ff5927",
+                  backgroundColor: "#ff5927",
+                },
+                {
+                  label: "Umidade",
+                  data: valuesUmid,
+                  borderWidth: 2,
+                  borderColor: "#45aadd",
+                  backgroundColor: "#45aadd",
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
 
         }
       })
@@ -348,22 +292,22 @@
   }
 
   function buscarUmidTempMes() {
-    fetch("/lotes/buscarUmidTempMes",{
-    method: "POST",
+    fetch("/lotes/buscarUmidTempMes", {
+      method: "POST",
       headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                fkempresaServer: sessionStorage.FK_EMPRESA
-            })
-          }).then(response => {
-        if (response.ok) {
-          return response.json();
-          console.log(response)
-        } else {
-          console.error('Erro ao obter dados do gráfico');
-        }
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fkempresaServer: sessionStorage.FK_EMPRESA
       })
+    }).then(response => {
+      if (response.ok) {
+        return response.json();
+        console.log(response)
+      } else {
+        console.error('Erro ao obter dados do gráfico');
+      }
+    })
       .then(data => {
         if (data && data.length > 0) {
           // processa os dados e plota o grafico
@@ -377,37 +321,37 @@
             valuesUmid.push(Number(data[i].mediaUmid))
           }
 
-  new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: "Temperatura Média",
-          data: valuesTemp,
-          borderWidth: 1,
-          borderColor: "#ff5927",
-          backgroundColor: "#ff5927",
-        },
-        {
-          label: "Umidade Média",
-          data: valuesUmid,
-          borderWidth: 1,
-          borderColor: "#45aadd",
-          backgroundColor: "#45aadd",
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
+          new Chart(ctx, {
+            type: "bar",
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  label: "Temperatura Média",
+                  data: valuesTemp,
+                  borderWidth: 1,
+                  borderColor: "#ff5927",
+                  backgroundColor: "#ff5927",
+                },
+                {
+                  label: "Umidade Média",
+                  data: valuesUmid,
+                  borderWidth: 1,
+                  borderColor: "#45aadd",
+                  backgroundColor: "#45aadd",
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
 
-}
+        }
       })
       .catch(error => {
         console.error('Erro ao obter dados do gráfico:', error);
@@ -476,15 +420,15 @@
     },
   });
 
-  function kpi1_2(){
+  function kpi1_2() {
     fetch("/lotes/kpi1_2", {
       method: "POST",
       headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                fkempresaServer: sessionStorage.FK_EMPRESA
-            })
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fkempresaServer: sessionStorage.FK_EMPRESA
+      })
     }).then((res => {
       res.json().then((json) => {
         console.log(json)
@@ -493,126 +437,171 @@
 
 
         const termometroTemp = document.getElementById("termometro")
-        termometroTemp.style.height = mediaTempTS*2 + "%";
-        TemperaturaGraus.innerHTML = `${mediaTempTS}°C`
+        termometroTemp.style.height = mediaTempTS * 2 + "%";
+        TemperaturaGraus.innerHTML = `${mediaTempTS.toFixed(1)}°C`
         if (mediaTempTS > 26 || mediaTempTS < 18) {
-            termometroTemp.style.backgroundColor = '#ff0000';
-            termometroTemp.style.boxShadow = '3px 3px 10px #ff0000';
-            TemperaturaGraus.innerHTML = ` ${mediaTempTS}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
+          termometroTemp.style.backgroundColor = '#ff0000';
+          termometroTemp.style.boxShadow = '3px 3px 10px #ff0000';
+          TemperaturaGraus.innerHTML = ` ${mediaTempTS.toFixed(1)}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
         }
 
         const termometroUmidade3 = document.getElementById("umidade3")
         termometroUmidade3.style.height = mediaUmidadeTS + "%";
-        UmidadePorcentagem3.innerHTML = `${mediaUmidadeTS}%`;
+        UmidadePorcentagem3.innerHTML = `${mediaUmidadeTS.toFixed(1)}%`;
         if (mediaUmidadeTS < 75) {
-    termometroUmidade3.style.backgroundColor = '#ff0000';
-    termometroUmidade3.style.boxShadow = '3px 3px 10px #ff0000';
-    UmidadePorcentagem3.innerHTML = ` ${mediaUmidadeTS}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
-  }
+          termometroUmidade3.style.backgroundColor = '#ff0000';
+          termometroUmidade3.style.boxShadow = '3px 3px 10px #ff0000';
+          UmidadePorcentagem3.innerHTML = ` ${mediaUmidadeTS.toFixed(1)}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
+        }
 
-    })
-  }))
+      })
+    }))
   };
 
-  function kpi_3temp(){
+  function kpi_3temp() {
     fetch("/lotes/kpi_3temp", {
       method: "POST",
       headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                fkempresaServer: sessionStorage.FK_EMPRESA
-            })
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fkempresaServer: sessionStorage.FK_EMPRESA
+      })
     }).then((res => {
       res.json().then((json) => {
         console.log(json)
         console.log(json[0].horaTemp)
         kpi_3temperatura.innerHTML = `${json[0].horaTemp}:00`;
         kpi_4temp.innerHTML = `${json[0].variacao_temperaturaFINAL}°C`;
-    })
-  }))
+      })
+    }))
   }
 
-  function kpi_3umid(){
+  function kpi_3umid() {
     fetch("/lotes/kpi_3umid", {
       method: "POST",
       headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                fkempresaServer: sessionStorage.FK_EMPRESA
-            })
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fkempresaServer: sessionStorage.FK_EMPRESA
+      })
     }).then((res => {
       res.json().then((json) => {
         console.log(json)
         console.log(json[0].horaUmid)
         kpi_3umidade.innerHTML = `${json[0].horaUmid}:00`;
         kpi_4umid.innerHTML = `${json[0].variacao_umidadeFINAL}%`;
-    })
-  }))
+      })
+    }))
   }
 
-  function listar(){
+  function listar() {
     fetch("/lotes/listar", {
       method: "POST",
       headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                fkempresaServer: sessionStorage.FK_EMPRESA
-            })
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fkempresaServer: sessionStorage.FK_EMPRESA
+      })
     }).then((res => {
       res.json().then((json) => {
         console.log(json)
         lote = json
         console.log(lote)
 
-        for(var i = 0; i < lote.length; i++){
-          select_filtro_lote.innerHTML += `<option value="${lote[i].idLote}" > Lote ${lote[i].estufa}</option>`  
+        for (var i = 0; i < lote.length; i++) {
+          select_filtro_lote.innerHTML += `<option value="${lote[i].idLote}" > Lote ${lote[i].estufa}</option>`
         }
-    })
-  }))
-}
-  
-function kpi1_2Lotes(){
-  const select = document.getElementById('select_filtro_lote');
-  const loteSelecionado = select.value;
-  console.log(loteSelecionado)
+      })
+    }))
+  }
+
+  function kpi1_2Lotes() {
+    const select = document.getElementById('select_filtro_lote');
+    const loteSelecionado = select.value;
+    console.log(loteSelecionado)
     fetch("/lotes/kpi1_2Lotes", {
       method: "POST",
       headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                fkempresaServer: sessionStorage.FK_EMPRESA,
-                idLoteServer: loteSelecionado
-            })
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fkempresaServer: sessionStorage.FK_EMPRESA,
+        idLoteServer: loteSelecionado
+      })
     }).then((res => {
       res.json().then((json) => {
         console.log(json)
-    
+
         mediaTempTS = Number(json[0].mediaTempDiariaLote)
         mediaUmidadeTS = Number(json[0].mediaUmidDiariaLote)
 
-    const termometroTemp2 = document.getElementById("termometro2")
-    termometroTemp2.style.height = mediaTempTS*2 + "%";
-    TemperaturaGraus2.innerHTML = `${mediaTempTS}C°`;
-    if (mediaTempTS > 26 || mediaTempTS < 18) {
-    termometroTemp2.style.backgroundColor = '#ff0000';
-    termometroTemp2.style.boxShadow = '3px 3px 10px #ff0000';
-    TemperaturaGraus2.innerHTML = ` ${mediaTempTS}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
-      }
-      
-      const termometroUmidade3 = document.getElementById("umidade2")
-      termometroUmidade3.style.height = mediaUmidadeTS + "%";
-        UmidadePorcentagem3.innerHTML = `${mediaUmidadeTS}%`;
-        if (mediaUmidadeTS < 75) {
-    termometroUmidade3.style.backgroundColor = '#ff0000';
-    termometroUmidade3.style.boxShadow = '3px 3px 10px #ff0000';
-    UmidadePorcentagem2.innerHTML = ` ${mediaUmidadeTS}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
+        const termometroTemp2 = document.getElementById("termometro2")
+        termometroTemp2.style.height = mediaTempTS * 2 + "%";
+        TemperaturaGraus2.innerHTML = `${mediaTempTS.toFixed(1)}C°`;
+        if (mediaTempTS > 26 || mediaTempTS < 18) {
+          termometroTemp2.style.backgroundColor = '#ff0000';
+          termometroTemp2.style.boxShadow = '3px 3px 10px #ff0000';
+          TemperaturaGraus2.innerHTML = ` ${mediaTempTS.toFixed(1)}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
         }
-    })
-  }))
-  };
+
+        const termometroUmidade3 = document.getElementById("umidade2")
+        termometroUmidade3.style.height = mediaUmidadeTS + "%";
+        UmidadePorcentagem3.innerHTML = `${mediaUmidadeTS.toFixed(1)}%`;
+        if (mediaUmidadeTS < 75) {
+          termometroUmidade3.style.backgroundColor = '#ff0000';
+          termometroUmidade3.style.boxShadow = '3px 3px 10px #ff0000';
+          UmidadePorcentagem2.innerHTML = ` ${mediaUmidadeTS.toFixed(1)}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
+        }
+      })
+    }))
+  }
+
+  
+  function kpi_3tempLote() {
+    const select = document.getElementById('select_filtro_lote');
+    const loteSelecionado = select.value;
+    console.log(loteSelecionado)
+    fetch("/lotes/kpi_3temp", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fkempresaServer: sessionStorage.FK_EMPRESA,
+        idLoteServer: loteSelecionado
+      })
+    }).then((res => {
+      res.json().then((json) => {
+        console.log(json)
+        console.log(json[0].horaTemp)
+        kpi3Lotetemp.innerHTML = `${json[0].horaTemp}:00`;
+        
+      })
+    }))}
+
+
+    function kpi_3umidLote() {
+      const select = document.getElementById('select_filtro_lote');
+      const loteSelecionado = select.value;
+    fetch("/lotes/kpi_3umidLote", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fkempresaServer: sessionStorage.FK_EMPRESA,
+        idLoteServer: loteSelecionado
+      })
+    }).then((res => {
+      res.json().then((json) => {
+        console.log(json)
+        console.log(json[0].horaUmid)
+        kpi3Loteumid.innerHTML = `${json[0].horaUmid}:00`;
+      })
+    }))
+  }
 
 </script>

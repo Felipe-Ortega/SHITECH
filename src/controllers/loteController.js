@@ -125,4 +125,32 @@ function kpi1_2Lotes(req, res){
     );
 }
 
-module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes}    
+function kpi_3tempLote(req, res){
+    var fkEmpresa = req.body.fkempresaServer;
+    var idLote = req.body.idLoteServer
+    loteModel.kpi_3tempLote(fkEmpresa, idLote).then((resultado) => {
+        res.status(200).json(resultado)
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao puxar dados da kpi 3 temperatura. Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+function kpi_3umidLote(req, res){
+    var fkEmpresa = req.body.fkempresaServer;
+    var idLote = req.body.idLoteServer
+    loteModel.kpi_3umidLote(fkEmpresa, idLote).then((resultado) => {
+        res.status(200).json(resultado)
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao puxar dados da kpi 3 umidade. Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes, kpi_3tempLote, kpi_3umidLote}    

@@ -1,3 +1,4 @@
+
 var database = require("../database/config");
 
 function cadastrar(fkEmpresa, estufa, tipo){
@@ -93,7 +94,47 @@ function buscarUmidTempDia(fkEmpresa){
   return database.executar(instrucaoSql);
  }
 
-module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes}
+ function kpi_3tempLote(fkEmpresa, idLote){
+  var instrucaoSql = `SELECT
+    HOUR(horarioCaptura) AS horaTemp,
+    CASE
+    WHEN MAX(Temperatura) - AVG(Temperatura) > ABS(MIN(Temperatura) - AVG(Temperatura)) THEN TRUNCATE(MAX(Temperatura) - AVG(Temperatura), 2) 
+    WHEN MAX(Temperatura) - AVG(Temperatura) < ABS(MIN(Temperatura) - AVG(Temperatura)) THEN TRUNCATE(ABS(MIN(Temperatura) - AVG(Temperatura)), 2)
+    ELSE TRUNCATE(MAX(Temperatura) - AVG(Temperatura), 2) END AS variacao_temperaturaFINAL
+  FROM Dados 
+  JOIN Sensor ON idSensor = fkSensor 
+  JOIN Lote ON idLote = fkLote 
+  JOIN Empresa ON idEmpresa = fkEmpresa 
+  WHERE horarioCaptura >= NOW() - INTERVAL 1000 DAY AND fkEmpresa = ${fkEmpresa} AND idLote = ${idLote}
+  GROUP BY HOUR(horarioCaptura)
+  ORDER BY variacao_temperaturaFINAL DESC 
+  LIMIT 1;`
+  return database.executar(instrucaoSql);
+ }
+
+ function kpi_3umidLote(fkEmpresa, idLote){
+  var instrucaoSql = `SELECT
+    HOUR(horarioCaptura) AS horaUmid,
+    CASE
+    WHEN MAX(Umidade) - AVG(Umidade) > ABS(MIN(Umidade) - AVG(Umidade)) THEN TRUNCATE(MAX(Umidade) - AVG(Umidade), 2) 
+    WHEN MAX(Umidade) - AVG(Umidade) < ABS(MIN(Umidade) - AVG(Umidade)) THEN TRUNCATE(ABS(MIN(Umidade) - AVG(Umidade)), 2)
+    ELSE TRUNCATE(MAX(Umidade) - AVG(Umidade), 2) END AS variacao_umidadeFINAL
+  FROM Dados 
+  JOIN Sensor ON idSensor = fkSensor 
+  JOIN Lote ON idLote = fkLote 
+  JOIN Empresa ON idEmpresa = fkEmpresa 
+  WHERE horarioCaptura >= NOW() - INTERVAL 1000 DAY AND fkEmpresa = ${fkEmpresa} AND idLote = ${idLote}
+  GROUP BY HOUR(horarioCaptura)
+  ORDER BY variacao_umidadeFINAL DESC 
+  LIMIT 1;`
+  return database.executar(instrucaoSql);
+ }
+
+
+
+
+
+module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes, kpi_3tempLote, kpi_3umidLote}
 
 
 

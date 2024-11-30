@@ -39,6 +39,14 @@ router.post("/kpi1_2Lotes", function (req, res) {
     loteController.kpi1_2Lotes(req, res);
 });
 
+router.post("/kpi_3tempLote", function (req, res) {
+    loteController.kpi_3tempLote(req, res);
+});
+
+router.post("/kpi_3umidLote", function (req, res) {
+    loteController.kpi_3umidLote(req, res);
+});
+
 
 
 module.exports = router;

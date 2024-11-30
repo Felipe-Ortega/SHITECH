@@ -152,6 +152,9 @@
             <h1>Temperatura e Umidade média mensal</h1>
             <canvas class="chart" id="myChart"></canvas>
           </div>
+          <div class="graficos border">
+            <canvas class="chart" id="myChart_tipo"></canvas>
+          </div>
         </div>
 
         <span id="graficos_lotes">
@@ -164,9 +167,7 @@
             <canvas class="chart" id="myChart_lote"></canvas>
           </div>
         </span>
-        <div class="graficos border">
-          <canvas class="chart" id="myChart_tipo"></canvas>
-        </div>
+       
       </div>
     </div>
 
@@ -404,7 +405,7 @@
       labels: listaTipo,
       datasets: [
         {
-          label: "Temperatura",
+          label: "Tipos por lote",
           data: listaQtd,
           borderWidth: 2,
           borderColor: ["#ff5927", '#0000ff'],

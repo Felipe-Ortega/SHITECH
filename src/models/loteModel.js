@@ -83,5 +83,17 @@ function buscarUmidTempDia(fkEmpresa){
   return database.executar(instrucaoSql);
  }
 
-module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes}
+ function kpi1_2Lotes(fkEmpresa, idLote){
+  var instrucaoSql = `SELECT TRUNCATE(AVG(Temperatura), 2) AS mediaTempDiariaLote, TRUNCATE(AVG(Umidade), 2) AS mediaUmidDiariaLote
+  FROM Dados 
+  JOIN Sensor ON idSensor = fkSensor 
+  JOIN Lote ON idLote = fkLote 
+  JOIN Empresa ON idEmpresa = fkEmpresa 
+  WHERE horarioCaptura >= NOW() - INTERVAL 1000 DAY AND fkEmpresa = ${fkEmpresa} AND idLote = ${idLote};`
+  return database.executar(instrucaoSql);
+ }
+
+module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes}
+
+
 

@@ -35,5 +35,10 @@ router.post("/buscarUmidTempMes", function (req, res) {
     loteController.buscarUmidTempMes(req, res);
 });
 
+router.post("/kpi1_2Lotes", function (req, res) {
+    loteController.kpi1_2Lotes(req, res);
+});
+
+
 
 module.exports = router;

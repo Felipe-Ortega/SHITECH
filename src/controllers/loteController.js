@@ -111,4 +111,18 @@ function buscarUmidTempMes(req, res){
     );
 }
 
-module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes}    
+function kpi1_2Lotes(req, res){
+    var fkEmpresa = req.body.fkempresaServer
+    var idLote = req.body.idLoteServer
+    loteModel.kpi1_2Lotes(fkEmpresa, idLote).then((resultado) => {
+        res.status(200).json(resultado)
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao puxar dados da kpi 2. Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes}    

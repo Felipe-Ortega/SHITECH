@@ -59,11 +59,11 @@
       </div>
       <div class="div_titulo">
         <h1>Informações sobre Linha de Produção</h1>
-        <span class="span_filtro"><select name="" id="select_filtro" onclick="filtro()">
+        <span class="span_filtro"><select name="" id="select_filtro" onclick="filtro(); kpi1_2Lotes()">
             <option value="todos" selected>Todos Lotes</option>
             <option value="lotes">Lotes individuais</option>
           </select></span>
-          <span class="span_filtro_lote"><select name="" id="select_filtro_lote" onclick="filtro()">
+          <span class="span_filtro_lote"><select name="" id="select_filtro_lote" onclick="filtro(); kpi1_2Lotes()">
           </select></span>
       </div>
       </select></span>
@@ -574,5 +574,45 @@
   }))
 }
   
+function kpi1_2Lotes(){
+  const select = document.getElementById('select_filtro_lote');
+  const loteSelecionado = select.value;
+  console.log(loteSelecionado)
+    fetch("/lotes/kpi1_2Lotes", {
+      method: "POST",
+      headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkempresaServer: sessionStorage.FK_EMPRESA,
+                idLoteServer: loteSelecionado
+            })
+    }).then((res => {
+      res.json().then((json) => {
+        console.log(json)
+    
+        mediaTempTS = Number(json[0].mediaTempDiariaLote)
+        mediaUmidadeTS = Number(json[0].mediaUmidDiariaLote)
+
+    const termometroTemp2 = document.getElementById("termometro2")
+    termometroTemp2.style.height = mediaTempTS*2 + "%";
+    TemperaturaGraus2.innerHTML = `${mediaTempTS}C°`;
+    if (mediaTempTS > 26 || mediaTempTS < 18) {
+    termometroTemp2.style.backgroundColor = '#ff0000';
+    termometroTemp2.style.boxShadow = '3px 3px 10px #ff0000';
+    TemperaturaGraus2.innerHTML = ` ${mediaTempTS}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
+      }
+      
+      const termometroUmidade3 = document.getElementById("umidade2")
+      termometroUmidade3.style.height = mediaUmidadeTS + "%";
+        UmidadePorcentagem3.innerHTML = `${mediaUmidadeTS}%`;
+        if (mediaUmidadeTS < 75) {
+    termometroUmidade3.style.backgroundColor = '#ff0000';
+    termometroUmidade3.style.boxShadow = '3px 3px 10px #ff0000';
+    UmidadePorcentagem2.innerHTML = ` ${mediaUmidadeTS}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
+        }
+    })
+  }))
+  };
 
 </script>

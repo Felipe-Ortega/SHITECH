@@ -131,9 +131,9 @@ function buscarUmidTempDia(fkEmpresa){
  }
 
 function kpi4(tipo){
-  var instrucaoSql = `-
+  var instrucaoSql = `
 SELECT
-    quadrante,-- terceira KPI --
+    quadrante,
     CASE
     WHEN MAX(${tipo}) - avg(${tipo})  > ABS(MIN(${tipo}) - avg(${tipo})) THEN TRUNCATE(MAX(${tipo}) - avg(${tipo}), 2) 
 	WHEN MAX(${tipo}) - avg(${tipo})  < ABS(MIN(${tipo}) - avg(${tipo})) THEN TRUNCATE(ABS(MIN(${tipo}) - avg(${tipo})), 2)

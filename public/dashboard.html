@@ -195,7 +195,7 @@
     buscarUmidTempMes()
     kpi4("temperatura")
     kpi4("umidade")
-  }, 100000)
+  }, 1000)
 
 
   document.getElementById("select_filtro_lote").style.display = "none";
@@ -227,7 +227,7 @@
   const ctx2_lote = document.getElementById("myChart2_lote")
 
   function kpi4(tipo){
-    fetch(`/lotes/kpi4/${tipo}`, {
+    fetch(`/lotes/kpi4_geral/${tipo}`, {
       method: "GET"
     }).then(response =>{
       if (response.ok) {

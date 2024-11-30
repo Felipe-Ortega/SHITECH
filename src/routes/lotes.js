@@ -52,4 +52,9 @@ router.get("/kpi4_geral/:tipo", function (req,res){
     loteController.kpi4(req,res);
 })
 
+
+router.get("/buscarTipo/:fkEmpresa", function (req,res){
+    loteController.buscarTipo(req,res);
+})
+
 module.exports = router;

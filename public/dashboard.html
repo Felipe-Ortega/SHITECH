@@ -12,7 +12,8 @@
 </head>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<body onload="validarSessao()">
+   
+<body onload="validarSessao(); buscarTipo() ">
   <script src="https://kit.fontawesome.com/88fed8b646.js" crossorigin="anonymous"></script>
   <div class="container_all">
     <div class="container_menu">
@@ -152,6 +153,7 @@
             <canvas class="chart" id="myChart"></canvas>
           </div>
         </div>
+
         <span id="graficos_lotes">
           <div class="graficos border">
             <h1>Temperatura e Umidade diária (Lote ABC123)</h1>
@@ -162,6 +164,9 @@
             <canvas class="chart" id="myChart_lote"></canvas>
           </div>
         </span>
+        <div class="graficos border">
+          <canvas class="chart" id="myChart_tipo"></canvas>
+        </div>
       </div>
     </div>
 
@@ -374,40 +379,54 @@
       .catch(error => {
         console.error('Erro ao obter dados do gráfico:', error);
       });
+  } 
+
+  var listaTipo = []
+  var listaQtd = []
+
+
+  function buscarTipo(){
+    var fkEmpresa = sessionStorage.FK_EMPRESA
+    fetch(`/lotes/buscarTipo/${fkEmpresa}`, {
+      method: "GET"
+    }).then(response =>{
+      if (response.ok) {
+        response.json().then(json =>{
+          console.log(json + 'tipoooooo')
+        
+          for (let i = 0; i < json.length; i++) {
+            listaQtd.push(json[i].qtdTipo)
+            listaTipo.push(json[i].tipo)
+            const ctx2_tipo = document.getElementById(`myChart_tipo`)
+    new Chart(ctx2_tipo, {
+    type: "doughnut",
+    data: {
+      labels: listaTipo,
+      datasets: [
+        {
+          label: "Temperatura",
+          data: listaQtd,
+          borderWidth: 2,
+          borderColor: ["#ff5927", '#0000ff'],
+          backgroundColor: ["#ff5927", '#0000ff']
+        },
+       
+      ],
+    },
+   
+  });
+          }
+        })
+      } else {
+        console.error('Erro ao obter dados por quadrante');
+      }
+    })
+
+   
   }
 
 
 
-
-  new Chart(ctx_lote, {
-    type: "bar",
-    data: {
-      labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
-      datasets: [
-        {
-          label: "Temperatura Média",
-          data: [22, 24, 24, 23, 17, 21],
-          borderWidth: 1,
-          borderColor: "#ff5927",
-          backgroundColor: "#ff5927",
-        },
-        {
-          label: "Umidade Média",
-          data: [50, 55, 60, 57, 63, 55],
-          borderWidth: 1,
-          borderColor: "#45aadd",
-          backgroundColor: "#45aadd",
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
   new Chart(ctx2_lote, {
     type: "line",
     data: {

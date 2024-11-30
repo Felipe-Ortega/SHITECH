@@ -147,8 +147,13 @@ order by variacao_${tipo}FINAL DESC limit 1;
   return database.executar(instrucaoSql);
 }
 
+function buscarTipo(fkEmpresa){
+  var instrucaoSql = `SELECT COUNT(tipo) as qtdTipo, tipo FROM Lote WHERE fkEmpresa = ${fkEmpresa} GROUP BY tipo ;`
+  return database.executar(instrucaoSql);
+ }
 
-module.exports = {kpi4, cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes, kpi_3tempLote, kpi_3umidLote}
+
+module.exports = {kpi4, cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes, kpi_3tempLote, kpi_3umidLote, buscarTipo}
 
 
 

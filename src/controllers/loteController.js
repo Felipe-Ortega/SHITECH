@@ -163,4 +163,17 @@ function kpi_3umidLote(req, res){
     );
 }
 
-module.exports = {kpi4, cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes, kpi_3tempLote, kpi_3umidLote}    
+function buscarTipo(req, res){
+    var fkEmpresa = req.params.fkEmpresa;
+    loteModel.buscarTipo(fkEmpresa).then((resultado) => {
+        res.status(200).json(resultado)
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao puxar dados para o gráfico! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+module.exports = {kpi4, cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes, kpi_3tempLote, kpi_3umidLote, buscarTipo}    

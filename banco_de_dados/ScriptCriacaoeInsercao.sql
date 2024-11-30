@@ -1,3 +1,5 @@
+
+
 CREATE DATABASE Shitech;
 USE Shitech;
 
@@ -27,7 +29,7 @@ CREATE TABLE Usuario (
 
 CREATE TABLE Lote (
     idLote INT PRIMARY KEY AUTO_INCREMENT,
-    dtPlantacao DATE,
+    dtPlantacao DATE ,
     dtColheita DATE,
     dtFrutificacao DATE,
     estufa CHAR(6),
@@ -36,12 +38,14 @@ CREATE TABLE Lote (
     CONSTRAINT fkEmpresaLote FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
 
+
+
 CREATE TABLE Sensor (
     idSensor INT PRIMARY KEY AUTO_INCREMENT,
     fkLote INT NOT NULL,
     manutencao DATE NOT NULL,
     sensorStatus TINYINT(1) NOT NULL,
-    quadrante CHAR(1),
+    posicao CHAR(6) NOT NULL,
     CONSTRAINT fkLoteSensor FOREIGN KEY (fkLote) REFERENCES Lote(idLote)
 );
 
@@ -92,18 +96,18 @@ VALUES
 
 INSERT INTO Sensor
 VALUES 
-(DEFAULT, 2, '2024-03-01', 1, '1'),
-(DEFAULT, 2, '2024-04-15', 1, '1'),
-(DEFAULT, 2, '2024-05-10', 1, '1'),
-(DEFAULT, 2, '2024-06-01', 1, '2'),
-(DEFAULT, 2, '2024-07-20', 1, '2'),
-(DEFAULT, 2, '2024-08-10', 1, '2'),
-(DEFAULT, 2, '2024-09-01', 1, '3'),
-(DEFAULT, 2, '2024-10-05', 1, '3'),
-(DEFAULT, 2, '2024-11-10', 1, '4'),
-(DEFAULT, 2, '2024-11-10', 1, '4'),
-(DEFAULT, 2, '2024-11-10', 1, '4'),
-(DEFAULT, 2, '2024-11-10', 1, '4');
+(DEFAULT, 2, '2024-03-01', 1, 'G00001'),
+(DEFAULT, 2, '2024-04-15', 1, 'G00002'),
+(DEFAULT, 2, '2024-05-10', 1, 'G00001'),
+(DEFAULT, 2, '2024-06-01', 1, 'G00002'),
+(DEFAULT, 2, '2024-07-20', 1, 'B00001'),
+(DEFAULT, 2, '2024-08-10', 1, 'B00002'),
+(DEFAULT, 2, '2024-09-01', 1, 'B00001'),
+(DEFAULT, 2, '2024-10-05', 1, 'B00002'),
+(DEFAULT, 2, '2024-11-10', 1, 'A00001'),
+(DEFAULT, 2, '2024-11-10', 1, 'A00002'),
+(DEFAULT, 2, '2024-11-10', 1, 'A00001'),
+(DEFAULT, 2, '2024-11-10', 1, 'A00002');
 
 
 
@@ -144,7 +148,7 @@ where nomeFantasia = 'BioFarms';
 
 CREATE VIEW plantacaoEstufa as
 select Lote.estufa as 'Localidade', Lote.tipo as 'Tipo',
-Sensor.sensorStatus as 'Status do Sensor', Sensor.quadrante as 'Posição do Sensor'
+Sensor.sensorStatus as 'Status do Sensor', Sensor.posicao as 'Posição do Sensor'
 from Lote join Sensor
 on fkLote = idLote;
 
@@ -160,7 +164,7 @@ on fkSensor = idSensor
 where horarioCaptura > '2024-05-11 10:05:00';
 
 CREATE VIEW statusLotes AS
-select Lote.idLote as 'N° Lote', Sensor.quadrante as 'Posição',
+select Lote.idLote as 'N° Lote', Sensor.posicao as 'Posição',
 Dados.temperatura as 'Temperatura', Dados.umidade as 'Umidade',
 Dados.horarioCaptura as 'Horário da Captura'
 from Lote join Sensor
@@ -169,7 +173,7 @@ join Dados
 on fkSensor = idSensor;
 
 CREATE VIEW statusLotesShimeji AS
-select Lote.idLote as 'N° Lote', Sensor.quadrante as 'Posição',
+select Lote.idLote as 'N° Lote', Sensor.posicao as 'Posição',
 Dados.temperatura as 'Temperatura', Dados.umidade as 'Umidade',
 Dados.horarioCaptura as 'Horário da Captura'
 from Lote join Sensor
@@ -179,7 +183,7 @@ on fkSensor = idSensor
 where Lote.tipo = 'Shimeji';
 
 CREATE VIEW statusLotesChampignon AS
-select Lote.idLote as 'N° Lote', Sensor.quadrante as 'Posição',
+select Lote.idLote as 'N° Lote', Sensor.posicao as 'Posição',
 Dados.temperatura as 'Temperatura', Dados.umidade as 'Umidade',
 Dados.horarioCaptura as 'Horário da Captura'
 from Lote join Sensor
@@ -192,7 +196,7 @@ CREATE VIEW manutencaoEstufaEmpresa as
 select Empresa.nomeFantasia as 'Nome da Empresa', Usuario.nome as 'Representante',
 Usuario.status_colaborador as 'Status Colaborador', Lote.idLote as 'N° Lote', 
 Lote.estufa as 'Estufa', Sensor.idSensor as 'N° Sensor',
-Sensor.quadrante as 'Posição', Sensor.manutencao as 'Manutenção'
+Sensor.posicao as 'Posição', Sensor.manutencao as 'Manutenção'
 from Empresa join Usuario
 on Usuario.fkEmpresa = Empresa.idEmpresa
 join Lote 
@@ -239,7 +243,7 @@ SELECT
     MIN(d.temperatura) as temp_min,
     MAX(d.umidade) as umid_max,
     MIN(d.umidade) as umid_min,
-    s.quadrante as 'Quadrante	',
+    s.posicao as 'Quadrante	',
     l.estufa as 'Nome Estufa',    
     l.tipo as 'Tipo Estufa',							-- SELECT PARA MOSTRAR VARIAÇÃO DE TEMP., DE UMID., MOSTRAR A HORA DA CAPTURA, NOME DAS EMPRESAS --
     e.nomeFantasia as 'Nome empresa',								-- NOME DOS USUARIOS, QUADRANTES, TIPOS DA ESTUFA E NOME DA ESTUFA --
@@ -248,7 +252,7 @@ FROM Dados as d JOIN sensor as s on d.fkSensor = s.idSensor
 JOIN Lote as l on s.fkLote = l.idLote 
 JOIN Empresa as e on l.fkEmpresa = e.idEmpresa
 JOIN Usuario as u on e.idEmpresa = u.fkEmpresa
-GROUP BY hora, s.quadrante, u.nome, l.estufa, l.tipo, e.nomeFantasia, idLote, idSensor
+GROUP BY hora, s.posicao, u.nome, l.estufa, l.tipo, e.nomeFantasia, idLote, idSensor
 ORDER BY temp_max DESC, temp_min DESC, umid_max DESC, umid_min DESC, hora ASC;
 
 
@@ -270,3 +274,50 @@ GROUP BY HOUR(horarioCaptura)
 order by variacao_umidadeFINAL desc limit 1;
 use Shitech;
 select * from lote;
+select * from dados;
+
+SELECT TRUNCATE(AVG(Temperatura), 2) AS mediaTempDiaria, TRUNCATE(AVG(Umidade), 2) AS mediaUmidDiaria 
+  FROM Dados 
+  JOIN Sensor ON idSensor = fkSensor 
+  JOIN Lote ON idLote = fkLote 
+  JOIN Empresa ON idEmpresa = fkEmpresa 
+  WHERE horarioCaptura >= NOW() - INTERVAL 1000 DAY AND fkEmpresa = 2 AND idLote = 2;
+  
+     SELECT HOUR(horarioCaptura) AS horaTemp,
+    CASE
+    WHEN MAX(Temperatura) - AVG(Temperatura) > ABS(MIN(Temperatura) - AVG(Temperatura)) THEN TRUNCATE(MAX(Temperatura) - AVG(Temperatura), 2) 
+    WHEN MAX(Temperatura) - AVG(Temperatura) < ABS(MIN(Temperatura) - AVG(Temperatura)) THEN TRUNCATE(ABS(MIN(Temperatura) - AVG(Temperatura)), 2)
+    ELSE TRUNCATE(MAX(Temperatura) - AVG(Temperatura), 2) END AS variacao_temperaturaFINAL
+  FROM Dados 
+  JOIN Sensor ON idSensor = fkSensor 
+  JOIN Lote ON idLote = fkLote 
+  JOIN Empresa ON idEmpresa = fkEmpresa 
+  WHERE horarioCaptura >= NOW() - INTERVAL 1000 DAY AND fkEmpresa = 2 AND idLote = 2
+  GROUP BY HOUR(horarioCaptura)
+  ORDER BY variacao_temperaturaFINAL DESC 
+  LIMIT 1;
+  
+  INSERT INTO Sensor (fkLote, manutencao, sensorStatus, quadrante) VALUES
+(1, '2024-11-01', 1, '1'),
+(3, '2024-11-05', 0, '1'),
+(1, '2024-11-10', 1, '1'),
+(3, '2024-11-15', 0, '2'),
+(1, '2024-11-20', 1, '2'),
+(3, '2024-11-25', 1, '2'),
+(1, '2024-12-01', 0, '2'),
+(3, '2024-12-05', 1, '3');
+
+INSERT INTO Dados (fkSensor, temperatura, umidade, horarioCaptura) VALUES
+(13, 22.35, 65.45, '2024-11-01 08:15:00'),
+(14, 23.78, 60.22, '2024-11-01 09:30:00'),
+(15, 19.45, 70.13, '2024-11-01 10:45:00'),
+(16, 21.87, 62.91, '2024-11-01 12:00:00'),
+(17, 24.33, 58.67, '2024-11-01 13:30:00'),
+(18, 20.56, 68.34, '2024-11-01 15:00:00'),
+(19, 22.12, 64.51, '2024-11-01 16:45:00'),
+(20, 23.65, 61.23, '2024-11-01 18:00:00'),
+(13, 25.34, 55.76, '2024-11-02 08:15:00'),
+(14, 19.12, 72.88, '2024-11-02 09:30:00'),
+(15, 22.43, 67.54, '2024-11-02 10:45:00'),
+(16, 21.79, 63.11, '2024-11-02 12:00:00'),
+(17, 23.10, 59.44, '2024-11-02 13:30:00');

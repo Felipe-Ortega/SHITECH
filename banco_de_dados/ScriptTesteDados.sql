@@ -2259,3 +2259,5 @@ INSERT INTO Dados (fkSensor, temperatura, umidade, horarioCaptura) VALUES
         ));
         
         select * from Dados;
+        
+        insert into Lotes;

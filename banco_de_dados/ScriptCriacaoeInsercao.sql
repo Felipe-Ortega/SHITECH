@@ -68,42 +68,32 @@ insert into Usuario values
 
 INSERT INTO Empresa 
 VALUES 
-(DEFAULT, 'GreenFields Agro LTDA', 'GreenFields', '11223344000177', 1, '001'),
-(DEFAULT, 'BioFarms Inc.', 'BioFarms', '55667788000166', 1, '002'),
-(DEFAULT, 'AgroNatura SA', 'AgroNatura', '99887766000155', 1, '003');
+(DEFAULT, 'GreenFields Agro LTDA', 'GreenFields', '11223344000177', 1, '001');
 
 INSERT INTO Usuario 
 VALUES 
-(DEFAULT, 2, 'Lucas Menezes', '12398765400', '11976543210', 1, 'Supervisor', 'lucas@greenfields.com', md5('senha112')),
-(DEFAULT, 2, 'Fernanda Lima', '98732165400', '11965432109', 1, 'Gerente', 'fernanda@greenfields.com', md5('senha113')),
-(DEFAULT, 3, 'Roberto Alves', '45678912300', '11987654322', 1, 'Supervisor', 'roberto@biofarms.com', md5('senha114')),
-(DEFAULT, 3, 'Juliana Reis', '65498732100', '11999887755', 1, 'Gerente', 'juliana@biofarms.com', md5('senha115')),
-(DEFAULT, 4, 'Marcos Ferreira', '78912345600', '11988776644', 1, 'Gerente', 'marcos@agronatura.com', md5('senha116')),
-(DEFAULT, 4, 'Isabela Santos', '32198765400', '11977665544', 1, 'Supervisor', 'isabela@agronatura.com', md5('senha117'));
+(DEFAULT, 2, 'Lucas Menezes', '12398765400', '11976543210', 1, 'Supervisor', 'lucas@greenfields.com', md5('senha112'));
  
 INSERT INTO Lote
 VALUES 
-(DEFAULT, '2024-02-01', '2024-08-01', '2024-05-01', 'RJ001', 'Shimeji', 2),
+(DEFAULT, '2024-02-01', '2024-08-01', '2024-05-01', 'RJ001', 'Champignon', 2),
 (DEFAULT, '2024-03-10', '2024-09-10', '2024-06-10', 'RJ002', 'Champignon', 2),
-(DEFAULT, '2024-04-15', '2024-11-15', '2024-07-30', 'MG001', 'Shimeji', 3),
-(DEFAULT, '2024-05-20', '2024-12-20', '2024-08-25', 'MG002', 'Champignon', 3),
-(DEFAULT, '2024-06-05', '2025-01-05', '2024-09-15', 'SP001', 'Shimeji', 4),
-(DEFAULT, '2024-07-10', '2025-02-10', '2024-10-25', 'SP002', 'Champignon', 4);
+(DEFAULT, '2024-04-15', '2024-11-15', '2024-07-30', 'MG001', 'Shimeji', 2);
 
 INSERT INTO Sensor
 VALUES 
-(DEFAULT, 2, '2024-03-01', 1, '1'),
-(DEFAULT, 2, '2024-04-15', 1, '1'),
-(DEFAULT, 2, '2024-05-10', 1, '1'),
-(DEFAULT, 2, '2024-06-01', 1, '2'),
-(DEFAULT, 2, '2024-07-20', 1, '2'),
+(DEFAULT, 1, '2024-03-01', 1, '1'),
+(DEFAULT, 1, '2024-04-15', 1, '2'),
+(DEFAULT, 1, '2024-05-10', 1, '3'),
+(DEFAULT, 1, '2024-06-01', 1, '4'),
+(DEFAULT, 2, '2024-07-20', 1, '1'),
 (DEFAULT, 2, '2024-08-10', 1, '2'),
 (DEFAULT, 2, '2024-09-01', 1, '3'),
-(DEFAULT, 2, '2024-10-05', 1, '3'),
-(DEFAULT, 2, '2024-11-10', 1, '4'),
-(DEFAULT, 2, '2024-11-10', 1, '4'),
-(DEFAULT, 2, '2024-11-10', 1, '4'),
-(DEFAULT, 2, '2024-11-10', 1, '4');
+(DEFAULT, 2, '2024-10-05', 1, '4'),
+(DEFAULT, 3, '2024-11-10', 1, '1'),
+(DEFAULT, 3, '2024-11-10', 1, '2'),
+(DEFAULT, 3, '2024-11-10', 1, '3'),
+(DEFAULT, 3, '2024-11-10', 1, '4');
 
 
 

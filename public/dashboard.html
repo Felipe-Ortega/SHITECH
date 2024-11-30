@@ -195,7 +195,7 @@
     buscarUmidTempMes()
     kpi4("temperatura")
     kpi4("umidade")
-  }, 1000)
+  }, 10000)
 
 
   document.getElementById("select_filtro_lote").style.display = "none";
@@ -615,6 +615,7 @@
       })
     }).then((res => {
       res.json().then((json) => {
+        console.log("lotes3")
         console.log(json)
         console.log(json[0].horaUmid)
         kpi3Loteumid.innerHTML = `${json[0].horaUmid}:00`;

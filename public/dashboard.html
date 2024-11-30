@@ -193,6 +193,14 @@
   kpi_3umid()
   buscarUmidTempDia()
   buscarUmidTempMes()
+
+  setInterval(() => {
+    kpi1_2()
+  kpi_3temp()
+  kpi_3umid()
+  buscarUmidTempDia()
+  buscarUmidTempMes()
+  }, 5000)
   
 
   document.getElementById("select_filtro_lote").style.display = "none";

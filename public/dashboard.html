@@ -634,7 +634,6 @@
       })
     }).then((res => {
       res.json().then((json) => {
-        console.log("lotes3")
         console.log(json)
         console.log(json[0].horaUmid)
         kpi3Loteumid.innerHTML = `${json[0].horaUmid}:00`;

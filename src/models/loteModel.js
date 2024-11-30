@@ -130,11 +130,25 @@ function buscarUmidTempDia(fkEmpresa){
   return database.executar(instrucaoSql);
  }
 
+function kpi4(tipo){
+  var instrucaoSql = `-
+SELECT
+    quadrante,-- terceira KPI --
+    CASE
+    WHEN MAX(${tipo}) - avg(${tipo})  > ABS(MIN(${tipo}) - avg(${tipo})) THEN TRUNCATE(MAX(${tipo}) - avg(${tipo}), 2) 
+	WHEN MAX(${tipo}) - avg(${tipo})  < ABS(MIN(${tipo}) - avg(${tipo})) THEN TRUNCATE(ABS(MIN(${tipo}) - avg(${tipo})), 2)
+    ELSE TRUNCATE(MAX(${tipo}) - avg(${tipo}), 2)  END AS variacao_${tipo}FINAL
+FROM Dados JOIN Sensor
+ON Dados.fkSensor = Sensor.idSensor
+ WHERE horarioCaptura >= NOW() - interval 1 DAY
+GROUP BY quadrante 
+order by variacao_${tipo}FINAL DESC limit 1;
+  `
+  return database.executar(instrucaoSql);
+}
 
 
-
-
-module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes, kpi_3tempLote, kpi_3umidLote}
+module.exports = {kpi4, cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes, kpi_3tempLote, kpi_3umidLote}
 
 
 

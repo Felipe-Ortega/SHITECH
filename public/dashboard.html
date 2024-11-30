@@ -90,8 +90,8 @@
             <span class="kpis">
               <span class="titulos-kpis"> Horários de maior variação: </span>
               <div>
-                <span class="info-kpi" id="kpi_3temperatura" style="font-size: 4vh; color:rgb(196, 169, 48)"></span> |
-                <span class="info-kpi" id="kpi_3umidade" style=" font-size: 4vh; color: rgb(48, 107, 196)"></span>
+                <span class="info-kpi" id="kpi_3umidade" style=" font-size: 4vh; color: rgb(48, 107, 196)"></span> |
+                <span class="info-kpi" id="kpi_3temperatura" style="font-size: 4vh; color:rgb(196, 169, 48)"></span> 
               </div>
             </span>
             <span class="kpis">
@@ -193,7 +193,9 @@
     kpi_3umid()
     buscarUmidTempDia()
     buscarUmidTempMes()
-  }, 2000)
+    kpi4("temperatura")
+    kpi4("umidade")
+  }, 100000)
 
 
   document.getElementById("select_filtro_lote").style.display = "none";
@@ -223,6 +225,21 @@
   const ctx2 = document.getElementById("myChart2");
   const ctx_lote = document.getElementById("myChart_lote")
   const ctx2_lote = document.getElementById("myChart2_lote")
+
+  function kpi4(tipo){
+    fetch(`/lotes/kpi4/${tipo}`, {
+      method: "GET"
+    }).then(response =>{
+      if (response.ok) {
+        response.json().then(json =>{
+          console.log(json + "Quaaaaaaadraaaaaaante")
+        })
+      } else {
+        console.error('Erro ao obter dados por quadrante');
+      }
+    })
+  }
+
 
 
   function buscarUmidTempDia() {

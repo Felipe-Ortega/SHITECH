@@ -16,6 +16,16 @@ function cadastrar(req, res){
     })
 }
 
+function kpi4(req,res){
+    var tipo = req.params.tipo
+    loteModel.kpi4(tipo).then(function (resultado){
+        res.json(resultado)
+    }).catch(function (error){  
+        console.log(error)
+        console.log('Erro ao listar quadrante com maior variação', error.sqlMessage)
+        res.status(500).json(error.sqlMessage)
+    })
+}
 function atualizar(req, res){
     var dtPlantacao = req.body.dtplantioServer;
     var dtColheita = req.body.dtcolheitaServer;
@@ -153,4 +163,4 @@ function kpi_3umidLote(req, res){
     );
 }
 
-module.exports = {cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes, kpi_3tempLote, kpi_3umidLote}    
+module.exports = {kpi4, cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes, kpi_3tempLote, kpi_3umidLote}    

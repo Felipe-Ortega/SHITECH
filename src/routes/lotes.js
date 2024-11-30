@@ -48,5 +48,8 @@ router.post("/kpi_3umidLote", function (req, res) {
 });
 
 
+router.get("/kpi4_geral/:tipo", function (req,res){
+    loteController.kpi4(req,res);
+})
 
 module.exports = router;

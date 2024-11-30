@@ -10,9 +10,11 @@ body {
     background-size: cover;
     margin: 0;
 }
+
 .cadastro {
     width: 80vw;
 }
+
 .cadastro .container {
     height: fit-content;
     width: 80vw;
@@ -192,3 +194,68 @@ body {
     font-size: 17px;
     background-color: #EAE7E3;
 }
+
+.container_suporte {
+    display: flex;
+    align-items: center; 
+    gap: 20px; 
+    background-color: white;
+    border-radius: 50px;
+    height: 640px;
+    width: 80vw;
+    font-family: 'Barlow', sans-serif;
+  }
+  
+  .text-container_suporte {
+    text-align: left; 
+    margin-left: 20px;
+  }
+
+  .titulo_logo_suporte{
+    display: flex;
+    align-self: center;
+  }
+
+  .text-container_suporte img{
+    width: 80px;
+    align-self: center;
+    margin-top: 20px;
+  }
+  
+  .text-container_suporte h1 {
+    font-size: 40px; 
+    margin-bottom: 10px;
+    color: #75522e;
+    align-self: center;
+  }
+  
+  .text-container_suporte h2 {
+    font-size: 30px; 
+    margin-bottom: 10px;
+    color: #936639;
+  }
+  
+  .text-container_suporte p {
+    margin-bottom: 20px;
+    color: #A68A64;
+    font-size: 20px;
+  }
+  
+  .text-container_suporte button {
+    width: 200px;
+    height: 50px;
+    font-size: 30px;
+    background-color: #936639;
+    border-radius: 50px;
+    border: none;
+    color: white;
+  }
+
+  .text-container_suporte button:hover{
+    background-color: #75522e;
+  }
+  
+  img {
+    width: 1000px;
+    height: auto;
+  }

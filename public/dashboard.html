@@ -13,7 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
    
-<body onload="validarSessao(); buscarTipo() ">
+<body onload="validarSessao(); buscarTipo(); buscarUmidTempDiaLote(2,'temperatura');  buscarUmidTempDiaLote(2,'umidade'); ">
   <script src="https://kit.fontawesome.com/88fed8b646.js" crossorigin="anonymous"></script>
   <div class="container_all">
     <div class="container_menu">
@@ -117,7 +117,7 @@
                   </div>
                 </div>
               </span>
-              <span class="kpis">
+              <span class="kpis">Horários de 
                 <div class="informacao">
                   <span class="titulos-kpis">Média de temperatura diária:</span>
                   <div class="container_valor_termometro">
@@ -159,11 +159,11 @@
 
         <span id="graficos_lotes">
           <div class="graficos border">
-            <h1>Temperatura e Umidade diária (Lote ABC123)</h1>
+            <h1>Temperatura e Umidade da Última Hora</h1>
             <canvas class="chart" id="myChart2_lote"></canvas>
           </div>
           <div class="graficos border">
-            <h1>Temperatura e Umidade média mensal (Lote ABC123)</h1>
+            <h1>Temperatura e Umidade média mensal</h1>
             <canvas class="chart" id="myChart_lote"></canvas>
           </div>
         </span>
@@ -426,12 +426,24 @@
    
   }
 
-
-
-  new Chart(ctx2_lote, {
+  function buscarUmidTempDiaLote(fkLote, tipo){
+    var fkEmpresa = sessionStorage.FK_EMPRESA
+    fetch(`/lotes/buscarUmidTempDiaLote/${tipo}/${fkEmpresa}/${fkLote}`, {
+      method: "GET"
+    }).then(response =>{
+      if (response.ok) {
+        response.json().then(json =>{
+          console.log(json)
+          var labelsHORA = []
+          console.log(json[0].horarioCaptura)
+          for(i = 0; i < json.length; i++){
+            json[i].horarioCaptura = json[i].horarioCaptura.slice(11, -5)
+            labelsHORA.push(json[i].horarioCaptura)
+          }
+          new Chart(ctx2_lote, {
     type: "line",
     data: {
-      labels: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+      labels: labelsHORA,
       datasets: [
         {
           label: "Temperatura",
@@ -457,6 +469,14 @@
       },
     },
   });
+        })
+      } else {
+        console.error('Erro ao obter dados por horario');
+      }
+    })
+
+   
+  }
 
   function kpi1_2() {
     fetch("/lotes/kpi1_2", {

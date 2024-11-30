@@ -1,5 +1,14 @@
 use Shitech;
 
+select truncate(temperatura,2) as temperatura, horarioCaptura from Dados 
+  JOIN Sensor ON idSensor = fkSensor 
+  JOIN Lote ON idLote = fkLote
+  JOIN Empresa ON idEmpresa = fkEmpresa 
+ WHERE horarioCaptura >= NOW() - INTERVAL 1 HOUR AND fkEmpresa = 2 AND fkLote = 2 AND horarioCaptura <= NOW()
+ group by horarioCaptura
+ ORDER BY horarioCaptura
+ ;
+ 
 INSERT INTO Dados(fkSensor,temperatura,umidade,horarioCaptura)VALUES
 (2,24.72,43.74,convert(concat(curdate()," ",(SEC_TO_TIME(FLOOR(TIME_TO_SEC('00:00:00')+RAND()*(TIME_TO_SEC(TIMEDIFF('23:59:00','00:00:00'))))))),datetime)),
 (2,24.83,46.05,convert(concat(curdate()," ",(SEC_TO_TIME(FLOOR(TIME_TO_SEC('00:00:00')+RAND()*(TIME_TO_SEC(TIMEDIFF('23:59:00','00:00:00'))))))),datetime)),

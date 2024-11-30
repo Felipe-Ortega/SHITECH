@@ -153,7 +153,20 @@ function buscarTipo(fkEmpresa){
  }
 
 
-module.exports = {kpi4, cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes, kpi_3tempLote, kpi_3umidLote, buscarTipo}
+ function buscarUmidTempDiaLote(fkEmpresa, fkLote, tipo){
+  var instrucaoSql = `select truncate(${tipo},2) as ${tipo}, horarioCaptura from Dados 
+  JOIN Sensor ON idSensor = fkSensor 
+  JOIN Lote ON idLote = fkLote
+  JOIN Empresa ON idEmpresa = fkEmpresa 
+ WHERE horarioCaptura >= NOW() - INTERVAL 1 HOUR AND fkEmpresa = ${fkEmpresa} AND fkLote = ${fkLote} AND horarioCaptura <= NOW()
+ group by horarioCaptura
+ ORDER BY horarioCaptura
+ ;`
+  return database.executar(instrucaoSql);
+ }
+
+
+module.exports = {buscarUmidTempDiaLote, kpi4, cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes, kpi_3tempLote, kpi_3umidLote, buscarTipo}
 
 
 

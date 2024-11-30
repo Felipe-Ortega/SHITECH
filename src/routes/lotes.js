@@ -57,4 +57,7 @@ router.get("/buscarTipo/:fkEmpresa", function (req,res){
     loteController.buscarTipo(req,res);
 })
 
+router.get("/buscarUmidTempDiaLote/:tipo/:fkEmpresa/:fkLote", function (req,res){
+    loteController.buscarUmidTempDiaLote(req,res)
+})
 module.exports = router;

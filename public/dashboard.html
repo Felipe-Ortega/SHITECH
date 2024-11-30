@@ -138,7 +138,7 @@
           </span>
           <span class="kpis">
             <span class="titulos-kpis"> Quadrante que mais emitiu alertas:</span>
-            <span class="info-kpi" style="font-size: 5vh;">Quadrante 2</span>
+            <span class="info-kpi" style="font-size: 5vh;" id="kpi4_lotes"></span>
           </span>
         </div>
         </span>
@@ -232,7 +232,8 @@
     }).then(response =>{
       if (response.ok) {
         response.json().then(json =>{
-          console.log(json + "Quaaaaaaadraaaaaaante")
+          console.log(json[0])
+          kpi4_lotes.innerHTML = `Quadrante: ${json[0].quadrante}`
         })
       } else {
         console.error('Erro ao obter dados por quadrante');

@@ -27,11 +27,11 @@ CREATE TABLE Usuario (
 
 CREATE TABLE Lote (
     idLote INT PRIMARY KEY AUTO_INCREMENT,
-    dtPlantacao DATE NOT NULL,
-    dtColheita DATE NOT NULL,
-    dtFrutificacao DATE NOT NULL,
-    estufa CHAR(6) NOT NULL,
-    tipo VARCHAR(45) NOT NULL,
+    dtPlantacao DATE,
+    dtColheita DATE,
+    dtFrutificacao DATE,
+    estufa CHAR(6),
+    tipo VARCHAR(45),
     fkEmpresa INT NOT NULL,
     CONSTRAINT fkEmpresaLote FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
 );
@@ -41,7 +41,7 @@ CREATE TABLE Sensor (
     fkLote INT NOT NULL,
     manutencao DATE NOT NULL,
     sensorStatus TINYINT(1) NOT NULL,
-    posicao CHAR(6) NOT NULL,
+    quadrante CHAR(1),
     CONSTRAINT fkLoteSensor FOREIGN KEY (fkLote) REFERENCES Lote(idLote)
 );
 
@@ -92,18 +92,18 @@ VALUES
 
 INSERT INTO Sensor
 VALUES 
-(DEFAULT, 2, '2024-03-01', 1, 'G00001'),
-(DEFAULT, 2, '2024-04-15', 1, 'G00002'),
-(DEFAULT, 2, '2024-05-10', 1, 'G00001'),
-(DEFAULT, 2, '2024-06-01', 1, 'G00002'),
-(DEFAULT, 2, '2024-07-20', 1, 'B00001'),
-(DEFAULT, 2, '2024-08-10', 1, 'B00002'),
-(DEFAULT, 2, '2024-09-01', 1, 'B00001'),
-(DEFAULT, 2, '2024-10-05', 1, 'B00002'),
-(DEFAULT, 2, '2024-11-10', 1, 'A00001'),
-(DEFAULT, 2, '2024-11-10', 1, 'A00002'),
-(DEFAULT, 2, '2024-11-10', 1, 'A00001'),
-(DEFAULT, 2, '2024-11-10', 1, 'A00002');
+(DEFAULT, 2, '2024-03-01', 1, '1'),
+(DEFAULT, 2, '2024-04-15', 1, '1'),
+(DEFAULT, 2, '2024-05-10', 1, '1'),
+(DEFAULT, 2, '2024-06-01', 1, '2'),
+(DEFAULT, 2, '2024-07-20', 1, '2'),
+(DEFAULT, 2, '2024-08-10', 1, '2'),
+(DEFAULT, 2, '2024-09-01', 1, '3'),
+(DEFAULT, 2, '2024-10-05', 1, '3'),
+(DEFAULT, 2, '2024-11-10', 1, '4'),
+(DEFAULT, 2, '2024-11-10', 1, '4'),
+(DEFAULT, 2, '2024-11-10', 1, '4'),
+(DEFAULT, 2, '2024-11-10', 1, '4');
 
 
 
@@ -144,7 +144,7 @@ where nomeFantasia = 'BioFarms';
 
 CREATE VIEW plantacaoEstufa as
 select Lote.estufa as 'Localidade', Lote.tipo as 'Tipo',
-Sensor.sensorStatus as 'Status do Sensor', Sensor.posicao as 'Posição do Sensor'
+Sensor.sensorStatus as 'Status do Sensor', Sensor.quadrante as 'Posição do Sensor'
 from Lote join Sensor
 on fkLote = idLote;
 
@@ -160,7 +160,7 @@ on fkSensor = idSensor
 where horarioCaptura > '2024-05-11 10:05:00';
 
 CREATE VIEW statusLotes AS
-select Lote.idLote as 'N° Lote', Sensor.posicao as 'Posição',
+select Lote.idLote as 'N° Lote', Sensor.quadrante as 'Posição',
 Dados.temperatura as 'Temperatura', Dados.umidade as 'Umidade',
 Dados.horarioCaptura as 'Horário da Captura'
 from Lote join Sensor
@@ -169,7 +169,7 @@ join Dados
 on fkSensor = idSensor;
 
 CREATE VIEW statusLotesShimeji AS
-select Lote.idLote as 'N° Lote', Sensor.posicao as 'Posição',
+select Lote.idLote as 'N° Lote', Sensor.quadrante as 'Posição',
 Dados.temperatura as 'Temperatura', Dados.umidade as 'Umidade',
 Dados.horarioCaptura as 'Horário da Captura'
 from Lote join Sensor
@@ -179,7 +179,7 @@ on fkSensor = idSensor
 where Lote.tipo = 'Shimeji';
 
 CREATE VIEW statusLotesChampignon AS
-select Lote.idLote as 'N° Lote', Sensor.posicao as 'Posição',
+select Lote.idLote as 'N° Lote', Sensor.quadrante as 'Posição',
 Dados.temperatura as 'Temperatura', Dados.umidade as 'Umidade',
 Dados.horarioCaptura as 'Horário da Captura'
 from Lote join Sensor
@@ -192,7 +192,7 @@ CREATE VIEW manutencaoEstufaEmpresa as
 select Empresa.nomeFantasia as 'Nome da Empresa', Usuario.nome as 'Representante',
 Usuario.status_colaborador as 'Status Colaborador', Lote.idLote as 'N° Lote', 
 Lote.estufa as 'Estufa', Sensor.idSensor as 'N° Sensor',
-Sensor.posicao as 'Posição', Sensor.manutencao as 'Manutenção'
+Sensor.quadrante as 'Posição', Sensor.manutencao as 'Manutenção'
 from Empresa join Usuario
 on Usuario.fkEmpresa = Empresa.idEmpresa
 join Lote 
@@ -239,7 +239,7 @@ SELECT
     MIN(d.temperatura) as temp_min,
     MAX(d.umidade) as umid_max,
     MIN(d.umidade) as umid_min,
-    s.posicao as 'Quadrante	',
+    s.quadrante as 'Quadrante	',
     l.estufa as 'Nome Estufa',    
     l.tipo as 'Tipo Estufa',							-- SELECT PARA MOSTRAR VARIAÇÃO DE TEMP., DE UMID., MOSTRAR A HORA DA CAPTURA, NOME DAS EMPRESAS --
     e.nomeFantasia as 'Nome empresa',								-- NOME DOS USUARIOS, QUADRANTES, TIPOS DA ESTUFA E NOME DA ESTUFA --
@@ -248,7 +248,7 @@ FROM Dados as d JOIN sensor as s on d.fkSensor = s.idSensor
 JOIN Lote as l on s.fkLote = l.idLote 
 JOIN Empresa as e on l.fkEmpresa = e.idEmpresa
 JOIN Usuario as u on e.idEmpresa = u.fkEmpresa
-GROUP BY hora, s.posicao, u.nome, l.estufa, l.tipo, e.nomeFantasia, idLote, idSensor
+GROUP BY hora, s.quadrante, u.nome, l.estufa, l.tipo, e.nomeFantasia, idLote, idSensor
 ORDER BY temp_max DESC, temp_min DESC, umid_max DESC, umid_min DESC, hora ASC;
 
 

@@ -178,10 +178,9 @@ function buscarTipo(req, res){
 
 function buscarUmidTempDiaLote(req,res){
     var fkEmpresa = req.params.fkEmpresa;
-    var tipo = req.params.tipo;
     var fkLote = req.params.fkLote;
     
-    loteModel.buscarUmidTempDiaLote(fkEmpresa, fkLote, tipo).then((resultado) => {
+    loteModel.buscarUmidTempDiaLote(fkEmpresa, fkLote).then((resultado) => {
         res.status(200).json(resultado)
     }).catch(
         function (erro) {

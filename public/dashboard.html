@@ -13,7 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
    
-<body onload="validarSessao(); buscarTipo(); buscarUmidTempDiaLote(2,'temperatura');  buscarUmidTempDiaLote(2,'umidade'); ">
+<body onload="validarSessao(); buscarTipo(); ">
   <script src="https://kit.fontawesome.com/88fed8b646.js" crossorigin="anonymous"></script>
   <div class="container_all">
     <div class="container_menu">
@@ -51,11 +51,11 @@
       </div>
       <div class="div_titulo">
         <h1>Informações sobre Linha de Produção</h1>
-        <span class="span_filtro"><select name="" id="select_filtro" onclick="filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote()">
+        <span class="span_filtro"><select name="" id="select_filtro" onclick="filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote(); buscarUmidTempDiaLote()">
             <option value="todos" selected>Todos Lotes</option>
             <option value="lotes">Lotes individuais</option>
           </select></span>
-        <span class="span_filtro_lote"><select name="" id="select_filtro_lote" onclick="filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote()">
+        <span class="span_filtro_lote"><select name="" id="select_filtro_lote" onclick="filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote(); buscarUmidTempDiaLote()">
           </select></span>
       </div>
       </select></span>
@@ -248,7 +248,7 @@
   }
 
 
-
+  let myChart;
   function buscarUmidTempDia() {
     fetch("/lotes/buscarUmidTempDia", {
       method: "POST",
@@ -278,7 +278,10 @@
             valuesTemp.push(Number(data[i].mediaTemp));
             valuesUmid.push(Number(data[i].mediaUmid))
           }
-          new Chart(ctx2, {
+          if (myChart) {
+        myChart.destroy();
+      }
+          myChart = new Chart(ctx2, {
             type: "line",
             data: {
               labels: labels,
@@ -314,7 +317,7 @@
         console.error('Erro ao obter dados do gráfico:', error);
       });
   }
-
+  let myCHartUMidTemp;
   function buscarUmidTempMes() {
     fetch("/lotes/buscarUmidTempMes", {
       method: "POST",
@@ -344,8 +347,10 @@
             valuesTemp.push(Number(data[i].mediaTemp));
             valuesUmid.push(Number(data[i].mediaUmid))
           }
-
-          new Chart(ctx, {
+          if (myCHartUMidTemp) {
+            myCHartUMidTemp.destroy();
+           }
+           myCHartUMidTemp = new Chart(ctx, {
             type: "bar",
             data: {
               labels: labels,
@@ -384,8 +389,8 @@
 
   var listaTipo = []
   var listaQtd = []
-
-
+ 
+  let myChartTipo;
   function buscarTipo(){
     var fkEmpresa = sessionStorage.FK_EMPRESA
     fetch(`/lotes/buscarTipo/${fkEmpresa}`, {
@@ -394,12 +399,14 @@
       if (response.ok) {
         response.json().then(json =>{
           console.log(json + 'tipoooooo')
-        
           for (let i = 0; i < json.length; i++) {
             listaQtd.push(json[i].qtdTipo)
             listaTipo.push(json[i].tipo)
-            const ctx2_tipo = document.getElementById(`myChart_tipo`)
-    new Chart(ctx2_tipo, {
+    const ctx2_tipo = document.getElementById(`myChart_tipo`)
+    if (myChartTipo) {
+      myChartTipo.destroy();
+           }
+    myChartTipo = new Chart(ctx2_tipo, {
     type: "doughnut",
     data: {
       labels: listaTipo,
@@ -414,7 +421,6 @@
        
       ],
     },
-   
   });
           }
         })
@@ -425,36 +431,44 @@
 
    
   }
+  var labelsHORA = []
+  var dataumidHORA = []
+  var datatempHORA = [] 
 
-  function buscarUmidTempDiaLote(fkLote, tipo){
+  let myChartTempUmidLote
+  function buscarUmidTempDiaLote(){
+    var fkLote = Number(select_filtro_lote.value)
     var fkEmpresa = sessionStorage.FK_EMPRESA
-    fetch(`/lotes/buscarUmidTempDiaLote/${tipo}/${fkEmpresa}/${fkLote}`, {
+    fetch(`/lotes/buscarUmidTempDiaLote/${fkEmpresa}/${fkLote}`, {
       method: "GET"
     }).then(response =>{
       if (response.ok) {
         response.json().then(json =>{
-          console.log(json)
-          var labelsHORA = []
-          console.log(json[0].horarioCaptura)
+          console.log(json + "temp diaaaas")
           for(i = 0; i < json.length; i++){
             json[i].horarioCaptura = json[i].horarioCaptura.slice(11, -5)
             labelsHORA.push(json[i].horarioCaptura)
+            dataumidHORA.push(json[i].umidade)
+            datatempHORA.push(json[i].temperatura)
           }
-          new Chart(ctx2_lote, {
+    if (myChartTempUmidLote) {
+      myChartTempUmidLote.destroy();
+    }
+    var myChartTempUmidLote = new Chart(ctx2_lote, {
     type: "line",
     data: {
       labels: labelsHORA,
       datasets: [
         {
           label: "Temperatura",
-          data: [35, 29, 28, 30, 32, 32, 30, 28, 27, 22, 21, 29],
+          data: datatempHORA,
           borderWidth: 2,
           borderColor: "#ff5927",
           backgroundColor: "#ff5927",
         },
         {
           label: "Umidade",
-          data: [66, 68, 66, 61, 76, 79, 78, 74, 72, 66, 73],
+          data: dataumidHORA,
           borderWidth: 2,
           borderColor: "#45aadd",
           backgroundColor: "#45aadd",
@@ -474,8 +488,6 @@
         console.error('Erro ao obter dados por horario');
       }
     })
-
-   
   }
 
   function kpi1_2() {
@@ -527,8 +539,6 @@
       })
     }).then((res => {
       res.json().then((json) => {
-        console.log(json)
-        console.log(json[0].horaTemp)
         kpi_3temperatura.innerHTML = `${json[0].horaTemp}:00`;
         kpi_4temp.innerHTML = `${json[0].variacao_temperaturaFINAL}°C`;
       })
@@ -546,8 +556,6 @@
       })
     }).then((res => {
       res.json().then((json) => {
-        console.log(json)
-        console.log(json[0].horaUmid)
         kpi_3umidade.innerHTML = `${json[0].horaUmid}:00`;
         kpi_4umid.innerHTML = `${json[0].variacao_umidadeFINAL}%`;
       })

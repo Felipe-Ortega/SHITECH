@@ -525,7 +525,9 @@
             valuesTemp.push(Number(data[i].mediaTemp));
             valuesUmid.push(Number(data[i].mediaUmid))
           }
-       
+          if (myChartTempUmidLote2) {
+            myChartTempUmidLote2.destroy();
+      }
            myChartTempUmidLote2 = new Chart(ctx_lote, {
             type: "bar",
             data: {

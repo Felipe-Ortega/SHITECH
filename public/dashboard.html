@@ -139,7 +139,7 @@
           </span>
           <span class="kpis">
             <span class="titulos-kpis"> Quadrante que mais emitiu alertas:</span>
-            <span class="info-kpi" style="font-size: 5vh;" id="kpi4_lotes"></span>
+            <span class="info-kpi" style="font-size: 3vh;" id="kpi4_lotes"></span>
           </span>
         </div>
         </span>
@@ -229,10 +229,10 @@
 
 
   const ctx = document.getElementById("myChart");
-  const ctx2 = document.getElementById("myChart2");
   const ctx_lote = document.getElementById("myChart_lote")
   const ctx2_lote = document.getElementById("myChart2_lote")
-
+  const ctx2 = document.getElementById("myChart2");
+  
   function kpi4(tipo){
     fetch(`/lotes/kpi4_geral/${tipo}`, {
       method: "GET"
@@ -318,6 +318,7 @@
         console.error('Erro ao obter dados do gráfico:', error);
       });
   }
+
   let myCHartUMidTemp;
   function buscarUmidTempMes() {
     fetch("/lotes/buscarUmidTempMes", {

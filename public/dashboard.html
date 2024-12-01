@@ -117,7 +117,7 @@
                   </div>
                 </div>
               </span>
-              <span class="kpis">Horários de 
+              <span class="kpis"> 
                 <div class="informacao">
                   <span class="titulos-kpis">Média de temperatura diária:</span>
                   <div class="container_valor_termometro">
@@ -201,7 +201,7 @@
     buscarUmidTempMes()
     kpi4("temperatura")
     kpi4("umidade")
-  }, 10000)
+  }, 1000)
 
 
   document.getElementById("select_filtro_lote").style.display = "none";
@@ -439,6 +439,9 @@
   function buscarUmidTempDiaLote(){
     var fkLote = Number(select_filtro_lote.value)
     var fkEmpresa = sessionStorage.FK_EMPRESA
+    labelsHORA = []
+    dataumidHORA = []
+    datatempHORA = [] 
     fetch(`/lotes/buscarUmidTempDiaLote/${fkEmpresa}/${fkLote}`, {
       method: "GET"
     }).then(response =>{
@@ -454,7 +457,8 @@
     if (myChartTempUmidLote) {
       myChartTempUmidLote.destroy();
     }
-    var myChartTempUmidLote = new Chart(ctx2_lote, {
+
+    myChartTempUmidLote = new Chart(ctx2_lote, {
     type: "line",
     data: {
       labels: labelsHORA,

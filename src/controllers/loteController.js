@@ -190,4 +190,19 @@ function buscarUmidTempDiaLote(req,res){
         }
     );
 }
-module.exports = {buscarUmidTempDiaLote ,kpi4, cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes, kpi_3tempLote, kpi_3umidLote, buscarTipo}    
+
+function buscarUmidTempMesLote(req,res){
+    var fkEmpresa = req.params.fkEmpresa;
+    var fkLote = req.params.fkLote;
+    
+    loteModel.buscarUmidTempMesLote(fkEmpresa, fkLote).then((resultado) => {
+        res.status(200).json(resultado)
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao puxar dados para o gráfico de lotes por mês! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+module.exports = {buscarUmidTempDiaLote ,kpi4, cadastrar, atualizar, listar, kpi1_2, kpi_3temp, kpi_3umid, buscarUmidTempDia, buscarUmidTempMes, kpi1_2Lotes, kpi_3tempLote, kpi_3umidLote, buscarTipo, buscarUmidTempMesLote}    

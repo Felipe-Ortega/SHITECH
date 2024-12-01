@@ -60,4 +60,9 @@ router.get("/buscarTipo/:fkEmpresa", function (req,res){
 router.get("/buscarUmidTempDiaLote/:fkEmpresa/:fkLote", function (req,res){
     loteController.buscarUmidTempDiaLote(req,res)
 })
+
+router.get("/buscarUmidTempMesLote/:fkEmpresa/:fkLote", function (req,res){
+    loteController.buscarUmidTempMesLote(req,res)
+})
+
 module.exports = router;

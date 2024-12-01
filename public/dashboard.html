@@ -51,11 +51,11 @@
       </div>
       <div class="div_titulo">
         <h1>Informações sobre Linha de Produção</h1>
-        <span class="span_filtro"><select name="" id="select_filtro" onclick="filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote(); buscarUmidTempDiaLote()">
+        <span class="span_filtro"><select name="" id="select_filtro" onclick="filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote(); buscarUmidTempDiaLote(); buscarUmidTempMesLote()">
             <option value="todos" selected>Todos Lotes</option>
             <option value="lotes">Lotes individuais</option>
           </select></span>
-        <span class="span_filtro_lote"><select name="" id="select_filtro_lote" onclick="filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote(); buscarUmidTempDiaLote()">
+        <span class="span_filtro_lote"><select name="" id="select_filtro_lote" onclick="filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote(); buscarUmidTempDiaLote(); buscarUmidTempMesLote()">
           </select></span>
       </div>
       </select></span>
@@ -153,6 +153,7 @@
             <canvas class="chart" id="myChart"></canvas>
           </div>
           <div class="graficos border">
+            <h1>Tipos por Lote</h1>
             <canvas class="chart" id="myChart_tipo"></canvas>
           </div>
         </div>
@@ -338,14 +339,14 @@
       .then(data => {
         if (data && data.length > 0) {
           // processa os dados e plota o grafico
-          var labels = [];
-          var valuesTemp = [];
-          var valuesUmid = [];
+          var listaMeses = [];
+          var listaTemp = [];
+          var listaUmid = [];
 
           for (var i = 0; i < data.length; i++) {
-            labels.push(Number(data[i].mes));
-            valuesTemp.push(Number(data[i].mediaTemp));
-            valuesUmid.push(Number(data[i].mediaUmid))
+            listaMeses.push(Number(data[i].mes));
+            listaTemp.push(Number(data[i].mediaTemp));
+            listaUmid.push(Number(data[i].mediaUmid))
           }
           if (myCHartUMidTemp) {
             myCHartUMidTemp.destroy();
@@ -353,18 +354,18 @@
            myCHartUMidTemp = new Chart(ctx, {
             type: "bar",
             data: {
-              labels: labels,
+              labels: listaMeses,
               datasets: [
                 {
                   label: "Temperatura Média",
-                  data: valuesTemp,
+                  data: listaTemp,
                   borderWidth: 1,
                   borderColor: "#ff5927",
                   backgroundColor: "#ff5927",
                 },
                 {
                   label: "Umidade Média",
-                  data: valuesUmid,
+                  data: listaUmid,
                   borderWidth: 1,
                   borderColor: "#45aadd",
                   backgroundColor: "#45aadd",
@@ -431,6 +432,8 @@
 
    
   }
+
+
   var labelsHORA = []
   var dataumidHORA = []
   var datatempHORA = [] 
@@ -489,6 +492,73 @@
       }
     })
   }
+
+  let myChartTempUmidLote2
+     
+  function buscarUmidTempMesLote() {
+    var fkLote = Number(select_filtro_lote.value)
+    var fkEmpresa =  sessionStorage.FK_EMPRESA
+    fetch(`/lotes/buscarUmidTempMesLote/${fkEmpresa}/${fkLote}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+    }).then(response => {
+      if (response.ok) {
+        return response.json();
+        console.log(json + 'media messs lote')
+      } else {
+        console.error('Erro ao obter dados do gráfico');
+      }
+    })
+      .then(data => {
+        var labels = [];
+        var valuesTemp = [];
+        var valuesUmid = [];  
+
+          for (var i = 0; i < data.length; i++) {
+            labels.push(Number(data[i].mes));
+            valuesTemp.push(Number(data[i].mediaTemp));
+            valuesUmid.push(Number(data[i].mediaUmid))
+          }
+       
+           myChartTempUmidLote2 = new Chart(ctx_lote, {
+            type: "bar",
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  label: "Temperatura Média",
+                  data: valuesTemp,
+                  borderWidth: 1,
+                  borderColor: "#ff5927",
+                  backgroundColor: "#ff5927",
+                },
+                {
+                  label: "Umidade Média",
+                  data: valuesUmid,
+                  borderWidth: 1,
+                  borderColor: "#45aadd",
+                  backgroundColor: "#45aadd",
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+
+        
+      })
+      .catch(error => {
+        console.error('Erro ao obter dados do gráfico:', error);
+      });
+  } 
+
 
   function kpi1_2() {
     fetch("/lotes/kpi1_2", {

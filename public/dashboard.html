@@ -13,7 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
    
-<body onload="validarSessao(); buscarTipo(); ">
+<body onload="validarSessao(); buscarTipo(); kpi4(selectTemp); kpi4(selectUmi) ">
   <script src="https://kit.fontawesome.com/88fed8b646.js" crossorigin="anonymous"></script>
   <div class="container_all">
     <div class="container_menu">
@@ -55,7 +55,7 @@
             <option value="todos" selected>Todos Lotes</option>
             <option value="lotes">Lotes individuais</option>
           </select></span>
-        <span class="span_filtro_lote"><select name="" id="select_filtro_lote" onclick="filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote(); buscarUmidTempDiaLote(); buscarUmidTempMesLote()">
+        <span class="span_filtro_lote"><select name="" id="select_filtro_lote" onclick="filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote(); buscarUmidTempDiaLote(); buscarUmidTempMesLote(); ">
           </select></span>
       </div>
       </select></span>
@@ -189,6 +189,9 @@
 
 </html>
 <script>
+  var selectTemp = "temperatura"
+  var selectUmi = "umidade"
+
   var mediaUmidadeTS = 0
   var mediaTempTS = 0
   listar()

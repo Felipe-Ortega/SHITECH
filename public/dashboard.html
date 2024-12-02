@@ -463,15 +463,12 @@
             datatempHORA.push(json[i].temperatura)
           }
     if (myChartTempUmidLote) {
-      // teste
       myChartTempUmidLote.labels.shift();
-      myChartTempUmidLote.labels.push(labelsHORA[labelsHORA.length-1].horarioCaptura);
+      myChartTempUmidLote.labels.push(labelsHORA[labelsHORA.length-1]);
       myChartTempUmidLote.datasets[0].data.shift();  
-      myChartTempUmidLote.datasets[0].data.push(dataumidHORA[dataumidHORA.length -1].umidade);
+      myChartTempUmidLote.datasets[0].data.push(dataumidHORA[dataumidHORA.length -1]);
       myChartTempUmidLote.datasets[1].data.shift();  
-      myChartTempUmidLote.datasets[1].data.push(dataumidHORA[dataumidHORA.length -1].temperatura);
-      myChartTempUmidLote.update();
-
+      myChartTempUmidLote.datasets[1].data.push(dataumidHORA[dataumidHORA.length -1]);
       myChartTempUmidLote.update();
     }
 

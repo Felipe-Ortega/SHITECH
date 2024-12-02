@@ -466,9 +466,8 @@
       myChartTempUmidLote.datasets[1].data.shift();  
       myChartTempUmidLote.datasets[1].data.push(dataumidHORA[dataumidHORA.length -1]);
       myChartTempUmidLote.update();
-    }
-
-    myChartTempUmidLote = new Chart(ctx2_lote, {
+    } else{
+      myChartTempUmidLote = new Chart(ctx2_lote, {
     type: "line",
     data: {
       labels: labelsHORA,
@@ -497,6 +496,7 @@
       },
     },
   });
+    }
         })
       } else {
         console.error('Erro ao obter dados por horario');

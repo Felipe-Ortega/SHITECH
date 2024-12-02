@@ -270,7 +270,7 @@ body{
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    justify-content: center ;
+    justify-content: end ;
     height: 90%;
     width: 6%;
     border: solid 1px black;
@@ -281,7 +281,7 @@ body{
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     height: 100%;
     width: 6%;
     border: solid 1px black;

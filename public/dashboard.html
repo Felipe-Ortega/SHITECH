@@ -51,7 +51,7 @@
       </div>
       <div class="div_titulo">
         <h1>Informações sobre Linha de Produção</h1>
-        <span class="span_filtro"><select name="" id="select_filtro" onclick="kpi1_2(); filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote(); buscarUmidTempDiaLote(); buscarUmidTempMesLote()">
+        <span class="span_filtro"><select name="" id="select_filtro" onclick=" filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote(); buscarUmidTempDiaLote(); buscarUmidTempMesLote()">
             <option value="todos" selected>Todos Lotes</option>
             <option value="lotes">Lotes individuais</option>
           </select></span>
@@ -226,6 +226,7 @@
       document.getElementById("container_kpis_lote").style.display = "flex";
       document.getElementById("graficos_todos").style.display = 'none';
       document.getElementById("grafico_tipo").style.display = 'none';
+      kpi1_2Lotes()
     }
     else if (select_filtro.value == 'todos') {
       document.getElementById("select_filtro_lote").style.display = "none";
@@ -234,6 +235,7 @@
       document.getElementById("graficos_lotes").style.display = 'none'
       document.getElementById("graficos_todos").style.display = 'flex';
       document.getElementById("grafico_tipo").style.display = 'flex';
+      kpi1_2()
     }
   }
 

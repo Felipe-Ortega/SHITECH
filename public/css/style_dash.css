@@ -239,8 +239,8 @@ body{
 
 .titulos-kpis {
     font-family: "Afacad Flux", sans-serif;
-    color: #424242;
-    font-size: 2vh;
+    color: #424242; 
+    font-size: 2.5vh;
     padding: 0 2vh 2vh 2vh;
     font-weight: bold; 
 }
@@ -270,7 +270,7 @@ body{
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    justify-content: end;
+    justify-content: center ;
     height: 90%;
     width: 6%;
     border: solid 1px black;
@@ -281,7 +281,7 @@ body{
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
     height: 100%;
     width: 6%;
     border: solid 1px black;

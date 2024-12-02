@@ -204,6 +204,7 @@
     kpi_3umid()
     buscarUmidTempDia()
     buscarUmidTempMes()
+    buscarUmidTempDiaLote()
     kpi4("temperatura")
     kpi4("umidade")
   }, 5000)
@@ -243,7 +244,6 @@
     }).then(response =>{
       if (response.ok) {
         response.json().then(json =>{
-          console.log(json[0])
           kpi4_lotes.innerHTML = `Quadrante: ${json[0].quadrante}`
         })
       } else {
@@ -266,7 +266,6 @@
     }).then(response => {
       if (response.ok) {
         return response.json();
-        console.log(response)
       } else {
         console.error('Erro ao obter dados do gráfico');
       }
@@ -336,7 +335,6 @@
     }).then(response => {
       if (response.ok) {
         return response.json();
-        console.log(response)
       } else {
         console.error('Erro ao obter dados do gráfico');
       }
@@ -404,7 +402,6 @@
     }).then(response =>{
       if (response.ok) {
         response.json().then(json =>{
-          console.log(json + 'tipoooooo')
           for (let i = 0; i < json.length; i++) {
             listaQtd.push(json[i].qtdTipo)
             listaTipo.push(json[i].tipo)
@@ -455,7 +452,6 @@
     }).then(response =>{
       if (response.ok) {
         response.json().then(json =>{
-          console.log(json + "temp diaaaas")
           for(i = 0; i < json.length; i++){
             json[i].horarioCaptura = json[i].horarioCaptura.slice(11, -5)
             labelsHORA.push(json[i].horarioCaptura)
@@ -521,7 +517,6 @@
     }).then(response => {
       if (response.ok) {
         return response.json();
-        console.log(json + 'media messs lote')
       } else {
         console.error('Erro ao obter dados do gráfico');
       }
@@ -588,7 +583,6 @@
       })
     }).then((res => {
       res.json().then((json) => {
-        console.log(json)
         mediaTempTS = Number(json[0].mediaTempDiaria)
         mediaUmidadeTS = Number(json[0].mediaUmidDiaria)
 
@@ -660,9 +654,7 @@
       })
     }).then((res => {
       res.json().then((json) => {
-        console.log(json)
         lote = json
-        console.log(lote)
 
         for (var i = 0; i < lote.length; i++) {
           select_filtro_lote.innerHTML += `<option value="${lote[i].idLote}" > Lote ${lote[i].estufa}</option>`
@@ -674,7 +666,6 @@
   function kpi1_2Lotes() {
     const select = document.getElementById('select_filtro_lote');
     const loteSelecionado = select.value;
-    console.log(loteSelecionado)
     fetch("/lotes/kpi1_2Lotes", {
       method: "POST",
       headers: {
@@ -686,7 +677,6 @@
       })
     }).then((res => {
       res.json().then((json) => {
-        console.log(json)
 
         mediaTempTS = Number(json[0].mediaTempDiariaLote)
         mediaUmidadeTS = Number(json[0].mediaUmidDiariaLote)
@@ -716,7 +706,6 @@
   function kpi_3tempLote() {
     const select = document.getElementById('select_filtro_lote');
     const loteSelecionado = select.value;
-    console.log(loteSelecionado)
     fetch("/lotes/kpi_3temp", {
       method: "POST",
       headers: {
@@ -728,8 +717,6 @@
       })
     }).then((res => {
       res.json().then((json) => {
-        console.log(json)
-        console.log(json[0].horaTemp)
         kpi3Lotetemp.innerHTML = `${json[0].horaTemp}:00`;
         
       })
@@ -750,8 +737,6 @@
       })
     }).then((res => {
       res.json().then((json) => {
-        console.log(json)
-        console.log(json[0].horaUmid)
         kpi3Loteumid.innerHTML = `${json[0].horaUmid}:00`;
       })
     }))

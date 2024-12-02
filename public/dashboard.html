@@ -157,7 +157,7 @@
         </div>
       </div>
 
-      <div class="graficos_border">
+      <div id="grafico_tipo" class="graficos_border">
         <h1>Tipos por Lote</h1>
         <canvas class="chart" id="myChart_tipo"></canvas>
       </div>
@@ -222,6 +222,7 @@
       document.getElementById("container_kpis_sensores").style.display = "none";
       document.getElementById("container_kpis_lote").style.display = "flex";
       document.getElementById("graficos_todos").style.display = 'none';
+      document.getElementById("grafico_tipo").style.display = 'none';
     }
     else if (select_filtro.value == 'todos') {
       document.getElementById("select_filtro_lote").style.display = "none";

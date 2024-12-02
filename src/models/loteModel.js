@@ -24,7 +24,7 @@ function kpi1_2(fkEmpresa) {
  JOIN Sensor ON idSensor = fkSensor 
  JOIN Lote ON idLote = fkLote 
  JOIN Empresa ON idEmpresa = fkEmpresa 
- WHERE horarioCaptura >= NOW() - INTERVAL 1000 DAY AND fkEmpresa = ${fkEmpresa};`
+ WHERE horarioCaptura >= NOW() - INTERVAL 1 DAY AND fkEmpresa = ${fkEmpresa};`
   return database.executar(instrucaoSql);
 }
 
@@ -39,7 +39,7 @@ function kpi_3temp(fkEmpresa) {
  JOIN Sensor ON idSensor = fkSensor 
  JOIN Lote ON idLote = fkLote 
  JOIN Empresa ON idEmpresa = fkEmpresa 
- WHERE horarioCaptura >= NOW() - INTERVAL 1000 DAY AND fkEmpresa = ${fkEmpresa}
+ WHERE horarioCaptura >= NOW() - INTERVAL 1 DAY AND fkEmpresa = ${fkEmpresa}
  GROUP BY HOUR(horarioCaptura)
  ORDER BY variacao_temperaturaFINAL DESC 
  LIMIT 1;`
@@ -57,7 +57,7 @@ function kpi_3umid(fkEmpresa) {
  JOIN Sensor ON idSensor = fkSensor 
  JOIN Lote ON idLote = fkLote 
  JOIN Empresa ON idEmpresa = fkEmpresa 
- WHERE horarioCaptura >= NOW() - INTERVAL 1000 DAY AND fkEmpresa = ${fkEmpresa}
+ WHERE horarioCaptura >= NOW() - INTERVAL 1 DAY AND fkEmpresa = ${fkEmpresa}
  GROUP BY HOUR(horarioCaptura)
  ORDER BY variacao_umidadeFINAL DESC 
  LIMIT 1;`
@@ -90,7 +90,7 @@ function kpi1_2Lotes(fkEmpresa, idLote) {
   JOIN Sensor ON idSensor = fkSensor 
   JOIN Lote ON idLote = fkLote 
   JOIN Empresa ON idEmpresa = fkEmpresa 
-  WHERE horarioCaptura >= NOW() - INTERVAL 1000 DAY AND fkEmpresa = ${fkEmpresa} AND idLote = ${idLote};`
+  WHERE horarioCaptura >= NOW() - INTERVAL 1 DAY AND fkEmpresa = ${fkEmpresa} AND idLote = ${idLote};`
   return database.executar(instrucaoSql);
 }
 
@@ -98,14 +98,14 @@ function kpi_3tempLote(fkEmpresa, idLote) {
   var instrucaoSql = `SELECT
     HOUR(horarioCaptura) AS horaTemp,
     CASE
-    WHEN MAX(Temperatura) - AVG(Temperatura) > ABS(MIN(Temperatura) - AVG(Temperatura)) THEN TRUNCATE(MAX(Temperatura) - AVG(Temperatura), 2) 
+    WHEN MAX(Temperatura) - AVG(Temperatkpi1_2ura) > ABS(MIN(Temperatura) - AVG(Temperatura)) THEN TRUNCATE(MAX(Temperatura) - AVG(Temperatura), 2) 
     WHEN MAX(Temperatura) - AVG(Temperatura) < ABS(MIN(Temperatura) - AVG(Temperatura)) THEN TRUNCATE(ABS(MIN(Temperatura) - AVG(Temperatura)), 2)
     ELSE TRUNCATE(MAX(Temperatura) - AVG(Temperatura), 2) END AS variacao_temperaturaFINAL
   FROM Dados 
   JOIN Sensor ON idSensor = fkSensor 
   JOIN Lote ON idLote = fkLote 
   JOIN Empresa ON idEmpresa = fkEmpresa 
-  WHERE horarioCaptura >= NOW() - INTERVAL 1000 DAY AND fkEmpresa = ${fkEmpresa} AND idLote = ${idLote}
+  WHERE horarioCaptura >= NOW() - INTERVAL 1 DAY AND fkEmpresa = ${fkEmpresa} AND idLote = ${idLote}
   GROUP BY HOUR(horarioCaptura)
   ORDER BY variacao_temperaturaFINAL DESC 
   LIMIT 1;`
@@ -123,7 +123,7 @@ function kpi_3umidLote(fkEmpresa, idLote) {
   JOIN Sensor ON idSensor = fkSensor 
   JOIN Lote ON idLote = fkLote 
   JOIN Empresa ON idEmpresa = fkEmpresa 
-  WHERE horarioCaptura >= NOW() - INTERVAL 1000 DAY AND fkEmpresa = ${fkEmpresa} AND idLote = ${idLote}
+  WHERE horarioCaptura >= NOW() - INTERVAL 1 DAY AND fkEmpresa = ${fkEmpresa} AND idLote = ${idLote}
   GROUP BY HOUR(horarioCaptura)
   ORDER BY variacao_umidadeFINAL DESC 
   LIMIT 1;`

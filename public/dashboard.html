@@ -129,6 +129,7 @@
                   </div>
                 </div>
               </span>
+            
               <span class="kpis">
                 <span class="titulos-kpis"> Horários de maior variação: </span>
                 <div>
@@ -589,7 +590,7 @@
         if (mediaTempTS > 26 || mediaTempTS < 18) {
           termometroTemp.style.backgroundColor = '#ff0000';
           termometroTemp.style.boxShadow = '3px 3px 10px #ff0000';
-          TemperaturaGraus.innerHTML = ` ${mediaTempTS.toFixed(1)}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
+          TemperaturaGraus.innerHTML = ` ${mediaTempTS.toFixed(1)}°C <img src="./assets/imgs/alerta.png" width= '35px'> </img>`;
         }
 
         const termometroUmidade3 = document.getElementById("umidade3")
@@ -598,7 +599,7 @@
         if (mediaUmidadeTS < 75) {
           termometroUmidade3.style.backgroundColor = '#ff0000';
           termometroUmidade3.style.boxShadow = '3px 3px 10px #ff0000';
-          UmidadePorcentagem3.innerHTML = ` ${mediaUmidadeTS.toFixed(1)}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
+          UmidadePorcentagem3.innerHTML = ` ${mediaUmidadeTS.toFixed(1)}% <img src="./assets/imgs/alerta.png" width= '35px'> </img> `;
         }
 
       })
@@ -687,7 +688,7 @@
         if (mediaTempTS > 26 || mediaTempTS < 18) {
           termometroTemp2.style.backgroundColor = '#ff0000';
           termometroTemp2.style.boxShadow = '3px 3px 10px #ff0000';
-          TemperaturaGraus2.innerHTML = ` ${mediaTempTS.toFixed(1)}°C <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img>`;
+          TemperaturaGraus2.innerHTML = ` ${mediaTempTS.toFixed(1)}°C <img src="./assets/imgs/alerta.png" width= '35px'> </img>`;
         }
 
         const termometroUmidade3 = document.getElementById("umidade2")
@@ -696,7 +697,7 @@
         if (mediaUmidadeTS < 75) {
           termometroUmidade3.style.backgroundColor = '#ff0000';
           termometroUmidade3.style.boxShadow = '3px 3px 10px #ff0000';
-          UmidadePorcentagem2.innerHTML = ` ${mediaUmidadeTS.toFixed(1)}% <img src ='https://png.pngtree.com/png-clipart/20230504/original/pngtree-alert-flat-icon-png-image_9138397.png' width= '35px'> </img> `;
+          UmidadePorcentagem2.innerHTML = ` ${mediaUmidadeTS.toFixed(1)}% <img src="./assets/imgs/alerta.png" width= '35px'> </img> `;
         }
       })
     }))

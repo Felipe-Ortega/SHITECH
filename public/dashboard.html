@@ -459,12 +459,12 @@
             datatempHORA.push(json[i].temperatura)
           }
     if (myChartTempUmidLote) {
-      myChartTempUmidLote.labels.shift();
-      myChartTempUmidLote.labels.push(labelsHORA[labelsHORA.length-1]);
-      myChartTempUmidLote.datasets[0].data.shift();  
-      myChartTempUmidLote.datasets[0].data.push(dataumidHORA[dataumidHORA.length -1]);
-      myChartTempUmidLote.datasets[1].data.shift();  
-      myChartTempUmidLote.datasets[1].data.push(dataumidHORA[dataumidHORA.length -1]);
+      myChartTempUmidLote.data.labels.shift();
+      myChartTempUmidLote.data.labels.push(labelsHORA[labelsHORA.length-1]);
+      myChartTempUmidLote.data.datasets[0].data.shift();  
+      myChartTempUmidLote.data.datasets[0].data.push(dataumidHORA[dataumidHORA.length -1]);
+      myChartTempUmidLote.data.datasets[1].data.shift();  
+      myChartTempUmidLote.data.datasets[1].data.push(dataumidHORA[dataumidHORA.length -1]);
       myChartTempUmidLote.update();
     } else{
       myChartTempUmidLote = new Chart(ctx2_lote, {

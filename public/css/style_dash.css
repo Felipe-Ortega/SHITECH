@@ -240,7 +240,7 @@ body{
 .titulos-kpis {
     font-family: "Afacad Flux", sans-serif;
     color: #424242;
-    font-size: 3vh;
+    font-size: 2vh;
     padding: 0 2vh 2vh 2vh;
     font-weight: bold; 
 }
@@ -274,7 +274,7 @@ body{
     height: 90%;
     width: 6%;
     border: solid 1px black;
-    margin-bottom: 10px;  
+    margin-bottom: 20px;  
 }
 
 .container_umidade{

@@ -8,6 +8,7 @@ body{
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
 }
+
 .div_nav_dash{
     margin: 2%;
     margin-inline: auto;
@@ -20,24 +21,29 @@ body{
     justify-content: end;
     color: white;
 }
+
 .border {
     border-radius: 25px;
 }
+
 .icone_entrar{
     margin-inline: 1vw;
 }
+
 .div_titulo{
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 80%;
 }
+
 .container_dashboard{
     width: 80vw;
     max-width: 80vw;
     display: flex;
     justify-content: center;
 }
+
 .dashboard{
     width: 100%;
     background-color: #CECFBB;
@@ -77,6 +83,7 @@ body{
     background-color: rgba(166, 138, 100, 1);
     display: flex;
 }
+
 .lista{
     list-style: none;
     padding: 0px;
@@ -85,9 +92,11 @@ body{
     text-align: center;
     width: 100%;
 }
+
 .lista button{
     cursor:pointer;
 }
+
 .lista button{
     padding-top: 2vh;
     padding-bottom: 2vh;
@@ -97,6 +106,7 @@ body{
     height: 100%;
     width: 100%;
 }
+
 .lista button:hover{
     border: none;
     background-color: rgba(127, 79, 36, 1);
@@ -113,7 +123,6 @@ body{
     display: none;
 }
 
-
 #select_filtro{
     background-color: rgba(166, 138, 100, 1);
     font-size: 15px;
@@ -121,6 +130,7 @@ body{
     border-radius: 10px;
     height: 5vh;
 }
+
 .container_dash{
     width: 80vw;
     max-width: 80vw;
@@ -130,25 +140,29 @@ body{
     justify-content: center;
     align-items: center;
     padding-bottom: 3vh;
-
 }
+
 .container_all{
     width: 100%;
     display: flex;
 }
+
 .container_menu img {
     width: 150px;
     height: 120px;
 }
+
 .graficos{
     height: fit-content;
     display: flex;
     flex-direction: column;
 }
+
 .dashboard{
     max-width: 95%;
     flex-direction: row;
 }
+
 .container_kpis{
     display: flex;
     flex-direction: row;
@@ -161,26 +175,29 @@ body{
 #graficos_lote1{
     display: none;
     justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: column;
     width: 100%;
 }
+
 #graficos_lote2{
     display: none;
     justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: column;
     width: 100%;
 }
 
 #graficos_lotes{
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: column;
+    margin-left: 16px;
     width: 100%;
 }
-#select_filt
-ro_lote{
+
+#select_filtro_lote{
     display: none;
 }
+
 #container_kpis_lote2{
     display: none;
 }
@@ -189,15 +206,14 @@ ro_lote{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    justify-content: space-around;
-    
+    justify-content: space-around; 
 }
+
 .container_kpis_lote{
     display: none;
     flex-wrap: wrap;
     justify-content: center;
     justify-content: space-around;
-
 }
 
 .container_kpis_lote2{
@@ -206,6 +222,7 @@ ro_lote{
     justify-content: center;
     justify-content: space-around;
 }
+
 .kpis{
     display: flex;
     flex-direction: column;
@@ -220,14 +237,12 @@ ro_lote{
     box-shadow:  0px 1px 20px #5a5a5a;
 }
 
-
 .titulos-kpis {
     font-family: "Afacad Flux", sans-serif;
     color: #424242;
     font-size: 3vh;
     padding: 0 2vh 2vh 2vh;
-    font-weight: bold;
-   
+    font-weight: bold; 
 }
 
 .info-kpi {
@@ -243,12 +258,14 @@ ro_lote{
     display: flex;
     justify-self: flex-end;
 }
+
 .container_valor_termometro{
     display: flex;
     align-items: end;
     justify-content: center;
     gap: 20px;
 }
+
 .container_termometro{
     display: flex;
     flex-direction: column-reverse;
@@ -257,9 +274,7 @@ ro_lote{
     height: 100%;
     width: 6%;
     border: solid 1px black;
-    margin-bottom: 10px;
-    
-    
+    margin-bottom: 10px;  
 }
 
 .container_umidade{
@@ -271,20 +286,20 @@ ro_lote{
     width: 6%;
     border: solid 1px black;
     margin-bottom: 10px;
-
 }
+
 .termometro{
     box-shadow: 3px 3px 10px rgb(224, 157, 34);
     width: 100%;
     background-color: rgb(216, 159, 54);
-
 }
+
 .umidade{
     box-shadow: 3px 3px 10px rgba(33, 188, 240, 1);
     width: 100%;
     background-color: rgb(33, 188, 240);
-
 }
+
 .informacao{
     width: 90%;
     height: 100%;
@@ -302,8 +317,8 @@ ro_lote{
     box-shadow: 3px 3px 10px rgb(88, 88, 250, 0.5);
     width: 100%;
     background-color: rgb(201, 137, 17);
-
 }
+
 .umidade3 {
     box-shadow: 3px 3px 10px rgb(88, 88, 250, 0.5);
     width: 100%;
@@ -318,6 +333,7 @@ h1 {
     color: #787a48;
     font-size: 35px;
 }
+
 .horarios_kpi{
     display: flex;
     align-items: center;
@@ -335,10 +351,12 @@ h1 {
     background-color: #CECFBB;
 
 }
+
 .legenda span{
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 .legenda h3{
     margin: 0;
 }

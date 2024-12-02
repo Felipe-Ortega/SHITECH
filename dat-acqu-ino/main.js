@@ -22,7 +22,7 @@ const serial = async (
         { 
             host: '10.18.32.117', 
             user: 'ShitechINSERT',
-            password: 'shitech#123',
+            password: 'Shitech#123',
             database: 'Shitech',
             port: 3306
         }

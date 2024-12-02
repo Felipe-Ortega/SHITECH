@@ -20,11 +20,11 @@ const serial = async (
     // conexão com o banco de dados MySQL
     let poolBancoDados = mysql.createPool(
         { 
-            host: '10.18.33.51', 
-            user: 'shitechINSERT',
-            password: 'Shitech#123',
+            host: '10.18.32.117', 
+            user: 'ShitechINSERT',
+            password: 'shitech#123',
             database: 'Shitech',
-            port: 3307
+            port: 3306
         }
     ).promise();
 
@@ -64,13 +64,11 @@ const serial = async (
 
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO dados (temperatura, umidade, fkSensor, horarioCaptura) VALUES (?, ?, 1, now())',
+                'INSERT INTO Dados (temperatura, umidade, fkSensor, horarioCaptura) VALUES (?, ?, 1, now())',
                 [sensorAnalogico1, sensorAnalogico2]
             );
             console.log("valores inseridos no banco: ", sensorAnalogico1 + ", " + sensorAnalogico2);
-
         }
-
     });
 
     // evento para lidar com erros na comunicação serial

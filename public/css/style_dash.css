@@ -48,9 +48,10 @@ body{
 }
 #graficos_todos{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
-    width: 100%;
+    width: 50%;
+    padding: 1vw;
 }
 
 .graficos{
@@ -58,6 +59,7 @@ body{
     background-color: #EAE7E3;
     height: 20vh;
     width: 58vw;
+  
 }
 .graficos h1{
     font-size: 25px;
@@ -137,7 +139,7 @@ body{
     flex-direction: column;
 }
 .dashboard{
-    max-width: 80%;
+    max-width: 95%;
     flex-direction: row;
 }
 .container_kpis{
@@ -222,7 +224,7 @@ ro_lote{
 }
 
 .info-kpi {
-    font-size: 4.6vh;
+    font-size: 6vh;
     align-self: center;
     color: red;
     font-weight: bold;
@@ -322,7 +324,7 @@ h1 {
     padding: 2vh;
     margin-top: 2vh;
     height: fit-content;
-    width: 78%;
+    width: 90%;
     background-color: #CECFBB;
 
 }
@@ -332,4 +334,8 @@ h1 {
 }
 .legenda h3{
     margin: 0;
+}
+
+#myChart_tipo {
+   background-color: #CECFBB;
 }

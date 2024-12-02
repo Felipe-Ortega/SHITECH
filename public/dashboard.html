@@ -144,6 +144,7 @@
           </span>
         </div>
         </span>
+        <div class="container_graficos">
         <div id="graficos_todos" class="graficos_todos">
           <div class="graficos border">
             <h1>Temperatura e Umidade diária</h1>
@@ -153,11 +154,13 @@
             <h1>Temperatura e Umidade média mensal</h1>
             <canvas class="chart" id="myChart"></canvas>
           </div>
-          <div class="graficos_border">
-            <h1>Tipos por Lote</h1>
-            <canvas class="chart" id="myChart_tipo"></canvas>
-          </div>
         </div>
+      </div>
+
+      <div class="graficos_border">
+        <h1>Tipos por Lote</h1>
+        <canvas class="chart" id="myChart_tipo"></canvas>
+      </div>
 
         <span id="graficos_lotes">
           <div class="graficos border">
@@ -203,7 +206,7 @@
     buscarUmidTempMes()
     kpi4("temperatura")
     kpi4("umidade")
-  }, 1000)
+  }, 5000)
 
 
   document.getElementById("select_filtro_lote").style.display = "none";
@@ -418,8 +421,8 @@
           label: "Tipos por lote",
           data: listaQtd,
           borderWidth: 2,
-          borderColor: ["#ff5927", '#0000ff'],
-          backgroundColor: ["#ff5927", '#0000ff']
+          borderColor: ["#815f32", '#ecd9ba'],
+          backgroundColor: ["#815f32", '#ecd9ba']
         },
        
       ],

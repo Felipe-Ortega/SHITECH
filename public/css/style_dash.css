@@ -6,6 +6,7 @@ body{
     margin: 0;
     background-color: #EAE7E3;
     font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
 }
 .div_nav_dash{
     margin: 2%;
@@ -46,31 +47,37 @@ body{
     flex-wrap: wrap;
     padding-bottom: 3vh;
 }
+
+.container_graficos{
+    display: flex;
+    justify-content: start;
+}
+
 #graficos_todos{
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: start;
     width: 50%;
     padding: 1vw;
 }
 
 .graficos{
     display: flex;
+    margin-left: 10px;
     background-color: #EAE7E3;
-    height: 20vh;
-    width: 58vw;
-  
+    height: 50vh;
+    width: 72vw;
 }
+
 .graficos h1{
     font-size: 25px;
 }
+
 .container_menu{
     width: 20vw;
     background-color: rgba(166, 138, 100, 1);
     display: flex;
 }
 .lista{
-    
     list-style: none;
     padding: 0px;
     display: flex;

@@ -652,6 +652,9 @@
           termometroTemp.style.backgroundColor = '#ff0000';
           termometroTemp.style.boxShadow = '3px 3px 10px #ff0000';
           TemperaturaGraus.innerHTML = ` ${mediaTempTS.toFixed(1)}°C <img src="./assets/imgs/alerta.png" width= '35px'> </img>`;
+        } else {
+          termometroTemp.style.backgroundColor = 'rgb(201, 137, 17);';
+          termometroTemp.style.boxShadow = '3px 3px 10px rgb(224, 157, 34)';
         }
 
         const termometroUmidade3 = document.getElementById("umidade3")
@@ -661,6 +664,9 @@
           termometroUmidade3.style.backgroundColor = '#ff0000';
           termometroUmidade3.style.boxShadow = '3px 3px 10px #ff0000';
           UmidadePorcentagem3.innerHTML = ` ${mediaUmidadeTS.toFixed(1)}% <img src="./assets/imgs/alerta.png" width= '35px'> </img> `;
+        } else {
+          termometroUmidade3.style.backgroundColor = ' 3px 3px 10px rgb(33, 188, 240);';
+          termometroUmidade3.style.boxShadow = 'rgba(33, 188, 240, 1)';
         }
 
       })
@@ -746,8 +752,10 @@
           termometroTemp2.style.backgroundColor = '#ff0000';
           termometroTemp2.style.boxShadow = '3px 3px 10px #ff0000';
           TemperaturaGraus2.innerHTML = ` ${mediaTempTS.toFixed(1)}°C <img src="./assets/imgs/alerta.png" width= '35px'> </img>`;
+        }  else {
+          termometroTemp2.style.backgroundColor = 'rgb(201, 137, 17);';
+          termometroTemp2.style.boxShadow = '3px 3px 10px rgb(224, 157, 34)';
         }
-
         const termometroUmidade3 = document.getElementById("umidade2")
         termometroUmidade3.style.height = mediaUmidadeTS + "%";
         UmidadePorcentagem2.innerHTML = `${mediaUmidadeTS.toFixed(1)}%`;
@@ -756,6 +764,11 @@
           termometroUmidade3.style.boxShadow = '3px 3px 10px #ff0000';
           UmidadePorcentagem2.innerHTML = ` ${mediaUmidadeTS.toFixed(1)}% <img src="./assets/imgs/alerta.png" width= '35px'> </img> `;
         }
+        else {
+          termometroUmidade3.style.backgroundColor = ' 3px 3px 10px rgb(33, 188, 240);';
+          termometroUmidade3.style.boxShadow = 'rgba(33, 188, 240, 1)';
+        }
+
       })
     }))
   }

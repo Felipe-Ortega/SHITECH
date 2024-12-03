@@ -154,7 +154,7 @@ function buscarTipo(fkEmpresa) {
 
 
 function buscarUmidTempDiaLote(fkEmpresa, fkLote) {
-  var instrucaoSql = `select truncate(umidade,2) as umidade, truncate(temperatura,2) as temperatura, DATE_SUB(horarioCaptura, INTERVAL -3 HOUR)  from Dados 
+  var instrucaoSql = `select truncate(umidade,2) as umidade, truncate(temperatura,2) as temperatura, DATE_SUB(horarioCaptura, INTERVAL 3 HOUR)  from Dados 
   JOIN Sensor ON idSensor = fkSensor 
   JOIN Lote ON idLote = fkLote
   JOIN Empresa ON idEmpresa = fkEmpresa 

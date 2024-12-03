@@ -457,7 +457,9 @@
     var fkLote = Number(select_filtro_lote.value)
     if (fkLoteantigo != fkLote) {
       fkLoteantigo = fkLote;
-      myChartTempUmidLote.destroy()
+      if (myChartTempUmidLote) {
+        myChartTempUmidLote.destroy()
+      }
     } 
     var fkEmpresa = sessionStorage.FK_EMPRESA
     labelsHORA = []
@@ -481,10 +483,10 @@
     if (myChartTempUmidLote) {
       if(myChartTempUmidLote.data.datasets[0].data.length < 15){
         console.log(myChartTempUmidLote.data.datasets[0].data.length)
-      myChartTempUmidLote.data.labels.push(labelsHORA[labelsHORA.length-1]);
-      myChartTempUmidLote.data.datasets[0].data.push(datatempHORA[datatempHORA.length -1]);
-      myChartTempUmidLote.data.datasets[1].data.push(dataumidHORA[dataumidHORA.length -1]);
-      myChartTempUmidLote.update();
+        myChartTempUmidLote.data.labels.push(labelsHORA[labelsHORA.length-1]);
+        myChartTempUmidLote.data.datasets[0].data.push(datatempHORA[datatempHORA.length -1]);
+        myChartTempUmidLote.data.datasets[1].data.push(dataumidHORA[dataumidHORA.length -1]);
+        myChartTempUmidLote.update();
       }
       else{
         myChartTempUmidLote.data.labels.shift();

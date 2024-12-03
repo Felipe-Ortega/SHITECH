@@ -475,6 +475,38 @@
 
   
     if (myChartTempUmidLote) {
+      if (fkLoteantigo != fklote) {
+        myChartTempUmidLote.destroy()
+        myChartTempUmidLote = new Chart(ctx2_lote, {
+      type: "line",
+      data: {
+      labels: labelsHORA,
+      datasets: [
+        {
+          label: "Temperatura", 
+          data: datatempHORA,
+          borderWidth: 2,
+          borderColor: "#ff5927",
+          backgroundColor: "#ff5927",
+        },
+        {
+          label: "Umidade",
+          data: dataumidHORA,
+          borderWidth: 2,
+          borderColor: "#45aadd",
+          backgroundColor: "#45aadd",
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+      }
       if(myChartTempUmidLote.data.datasets[0].data.length < 15){
         console.log(myChartTempUmidLote.data.datasets[0].data.length)
         myChartTempUmidLote.data.labels.push(labelsHORA[labelsHORA.length-1]);
@@ -523,10 +555,6 @@
   });
     }
         })
-        if (fkLoteantigo != fkLote) {
-        fkLoteantigo = fkLote
-        myChartTempUmidLote.destroy()
-      }
       } else {
         console.error('Erro ao obter dados por horario');
       }

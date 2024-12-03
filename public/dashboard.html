@@ -89,14 +89,14 @@
               </div>
             </span>
             <span class="kpis">
-              <span class="titulos-kpis"> Horários de maior variação: </span>
+              <span class="titulos-kpis"> Horários de maior variação diária: </span>
               <div>
                 <span class="info-kpi" id="kpi_3umidade" style=" font-size: 4vh; color: rgb(48, 107, 196)"></span> |
                 <span class="info-kpi" id="kpi_3temperatura" style="font-size: 4vh; color:rgb(196, 169, 48)"></span> 
               </div>
             </span>
             <span class="kpis">
-              <span class="titulos-kpis"> Maior variação comparado com a média:</span>
+              <span class="titulos-kpis"> Maior variação comparado com a média diária:</span>
               <span class="info-kpi"> <span style="font-size: 4vh;" id="kpi_4temp"></span>
                 <span style="color: black; font-size: 4vh;">|</span>
                 <span style="color: blue; font-size: 4vh;" id="kpi_4umid"></span>
@@ -131,7 +131,7 @@
               </span>
             
               <span class="kpis">
-                <span class="titulos-kpis"> Horários de maior variação: </span>
+                <span class="titulos-kpis"> Horários de maior variação diária: </span>
                 <div>
                   <span id="kpi3Lotetemp" class="info-kpi" style="font-size: 4vh; color:rgb(196, 169, 48)"></span> | 
                   <span id="kpi3Loteumid" class="info-kpi" style=" font-size: 4vh; color: rgb(48, 107, 196)"></span>
@@ -139,7 +139,7 @@
               </span>
           </span>
           <span class="kpis">
-            <span class="titulos-kpis"> Quadrante que mais emitiu alertas:</span>
+            <span class="titulos-kpis"> Quadrante com maior variação diária:</span>
             <span class="info-kpi" style="font-size: 4vh;" id="kpi4_lotes"></span>
           </span>
         </div>
@@ -256,7 +256,7 @@
     }).then(response =>{
       if (response.ok) {
         response.json().then(json =>{
-          kpi4_lotes.innerHTML = `Quadrante: ${json[0].quadrante}`
+          kpi4_lotes.innerHTML = `Quadrante ${json[0].quadrante}`
         })
       } else {
         console.error('Erro ao obter dados por quadrante');

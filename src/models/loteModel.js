@@ -98,7 +98,7 @@ function kpi_3tempLote(fkEmpresa, idLote) {
   var instrucaoSql = `SELECT
     HOUR(horarioCaptura) AS horaTemp,
     CASE
-    WHEN MAX(Temperatura) - AVG(Temperatkpi1_2ura) > ABS(MIN(Temperatura) - AVG(Temperatura)) THEN TRUNCATE(MAX(Temperatura) - AVG(Temperatura), 2) 
+    WHEN MAX(Temperatura) - AVG(Temperatura) > ABS(MIN(Temperatura) - AVG(Temperatura)) THEN TRUNCATE(MAX(Temperatura) - AVG(Temperatura), 2) 
     WHEN MAX(Temperatura) - AVG(Temperatura) < ABS(MIN(Temperatura) - AVG(Temperatura)) THEN TRUNCATE(ABS(MIN(Temperatura) - AVG(Temperatura)), 2)
     ELSE TRUNCATE(MAX(Temperatura) - AVG(Temperatura), 2) END AS variacao_temperaturaFINAL
   FROM Dados 

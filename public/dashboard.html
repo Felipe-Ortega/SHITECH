@@ -55,7 +55,7 @@
             <option value="todos" selected>Todos Lotes</option>
             <option value="lotes">Lotes individuais</option>
           </select></span>
-        <span class="span_filtro_lote"><select name="" id="select_filtro_lote" onclick="filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote(); buscarUmidTempDiaLote(); buscarUmidTempMesLote(); ">
+        <span class="span_filtro_lote"><select name="" id="select_filtro_lote" onclick="myChartTempUmidLote.destroy();filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote(); buscarUmidTempDiaLote(); buscarUmidTempMesLote(); ">
           </select></span>
       </div>
       </select></span>
@@ -446,6 +446,7 @@
   var labelsHORA = []
   var dataumidHORA = []
   var datatempHORA = [] 
+
 
   let myChartTempUmidLote
   function buscarUmidTempDiaLote(){

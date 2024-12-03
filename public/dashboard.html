@@ -473,12 +473,20 @@
             datatempHORA.push(json[i].temperatura)
           }
     if (myChartTempUmidLote) {
-      myChartTempUmidLote.data.labels.shift();
+      if(myChartTempUmidLote.data.datasets[0].data.length < 15){
+        console.log(myChartTempUmidLote.data.datasets[0].data.length)
+      myChartTempUmidLote.data.labels.push(labelsHORA[labelsHORA.length-1]);
+      myChartTempUmidLote.data.datasets[0].data.push(datatempHORA[datatempHORA.length -1]);
+      myChartTempUmidLote.data.datasets[1].data.push(dataumidHORA[dataumidHORA.length -1]);
+      }
+      else{
+        myChartTempUmidLote.data.labels.shift();
       myChartTempUmidLote.data.labels.push(labelsHORA[labelsHORA.length-1]);
       myChartTempUmidLote.data.datasets[0].data.shift();  
       myChartTempUmidLote.data.datasets[0].data.push(datatempHORA[datatempHORA.length -1]);
       myChartTempUmidLote.data.datasets[1].data.shift();  
       myChartTempUmidLote.data.datasets[1].data.push(dataumidHORA[dataumidHORA.length -1]);
+      }
       myChartTempUmidLote.update();
     } else{
       myChartTempUmidLote = new Chart(ctx2_lote, {

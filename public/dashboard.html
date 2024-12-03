@@ -454,13 +454,7 @@
   var fkLoteantigo = null
   let myChartTempUmidLote
   function buscarUmidTempDiaLote(){
-    var fkLote = Number(select_filtro_lote.value)
-    if (fkLoteantigo != fkLote) {
-      fkLoteantigo = fkLote;
-      if (myChartTempUmidLote) {
-        myChartTempUmidLote.destroy()
-      }
-    } 
+    var fkLote = Number(select_filtro_lote.value) 
     var fkEmpresa = sessionStorage.FK_EMPRESA
     labelsHORA = []
     dataumidHORA = []
@@ -529,6 +523,10 @@
   });
     }
         })
+        if (fkLoteantigo != fkLote) {
+        fkLoteantigo = fkLote
+        myChartTempUmidLote.destroy()
+      }
       } else {
         console.error('Erro ao obter dados por horario');
       }

@@ -203,7 +203,7 @@
   var filtroSelect = document.getElementById("select_filtro_lote")
   filtroSelect.addEventListener('change',atualizarLotesIndividuais)
   function atualizarLotesIndividuais(){
-    myChartTempUmidLote.destroy();filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote(); buscarUmidTempDiaLote(); buscarUmidTempMesLote(); 
+    filtro(); kpi1_2Lotes(); kpi_3tempLote(); kpi_3umidLote(); buscarUmidTempDiaLote(); buscarUmidTempMesLote(); 
   }
   setInterval(() => {
     kpi1_2()
@@ -482,12 +482,12 @@
       myChartTempUmidLote.update();
     } else{
       myChartTempUmidLote = new Chart(ctx2_lote, {
-    type: "line",
-    data: {
+      type: "line",
+      data: {
       labels: labelsHORA,
       datasets: [
         {
-          label: "Temperatura",
+          label: "Temperatura", 
           data: datatempHORA,
           borderWidth: 2,
           borderColor: "#ff5927",

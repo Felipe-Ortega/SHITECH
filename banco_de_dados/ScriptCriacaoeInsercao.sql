@@ -1,7 +1,16 @@
 CREATE DATABASE Shitech;
 USE Shitech;
-
-CREATE TABLE Empresa (
+SELECT
+    quadrante,
+    CASE
+    WHEN MAX(${tipo}) - avg(${tipo})  > ABS(MIN(${tipo}) - avg(${tipo})) THEN TRUNCATE(MAX(${tipo}) - avg(${tipo}), 2) 
+	WHEN MAX(${tipo}) - avg(${tipo})  < ABS(MIN(${tipo}) - avg(${tipo})) THEN TRUNCATE(ABS(MIN(${tipo}) - avg(${tipo})), 2)
+    ELSE TRUNCATE(MAX(${tipo}) - avg(${tipo}), 2)  END AS variacao_${tipo}FINAL
+FROM Dados JOIN Sensor
+ON Dados.fkSensor = Sensor.idSensor
+ WHERE horarioCaptura >= NOW() - interval 1 DAY
+GROUP BY quadrante 
+order by variacao_${tipo}FINAL DESC limit 1;CREATE TABLE Empresa (
     idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     razaoSocial VARCHAR(60) NOT NULL,
     nomeFantasia VARCHAR(144) NOT NULL,

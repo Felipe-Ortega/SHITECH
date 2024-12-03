@@ -461,6 +461,7 @@
         response.json().then(json =>{
           for(i = 0; i < json.length; i++){
             json[i].horarioCaptura = json[i].horarioCaptura.slice(11, -5)
+            console.log(json[i].horarioCaptura)
             labelsHORA.push(json[i].horarioCaptura)
             dataumidHORA.push(json[i].umidade)
             datatempHORA.push(json[i].temperatura)

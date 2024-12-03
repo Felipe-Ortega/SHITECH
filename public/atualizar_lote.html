@@ -127,7 +127,7 @@
       response.json().then((json) => {
         sessionStorage.ID_EMPRESA = Number(json.insertId)
         window.location.href = "./dashboard.html";
-      })
+      }) 
     })
     } else {
       alert("Preencha alguma das datas");

@@ -451,10 +451,14 @@
   var dataumidHORA = []
   var datatempHORA = [] 
 
-
+  var fkLoteantigo = null
   let myChartTempUmidLote
   function buscarUmidTempDiaLote(){
     var fkLote = Number(select_filtro_lote.value)
+    if (fkLoteantigo != fkLOte) {
+      fkLoteantigo = fkLote;
+      myChartTempUmidLote.destroy()
+    } 
     var fkEmpresa = sessionStorage.FK_EMPRESA
     labelsHORA = []
     dataumidHORA = []
@@ -472,6 +476,8 @@
             dataumidHORA.push(json[i].umidade)
             datatempHORA.push(json[i].temperatura)
           }
+
+  
     if (myChartTempUmidLote) {
       if(myChartTempUmidLote.data.datasets[0].data.length < 15){
         console.log(myChartTempUmidLote.data.datasets[0].data.length)

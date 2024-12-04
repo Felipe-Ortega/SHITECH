@@ -259,4 +259,4 @@ FROM Dados WHERE horarioCaptura >= NOW() - interval 1 DAY
 GROUP BY HOUR(horarioCaptura)
 order by variacao_umidadeFINAL desc limit 1;
 use Shitech;
-select * from lote;
+select * from lote where fkEmpresa = 2;

@@ -14,7 +14,19 @@ function atualizar(dtPlantacao, dtColheita, dtFrutificacao, Lote) {
 }
 
 function listar(fkEmpresa) {
-  var instrucaoSql = `SELECT * FROM Lote JOIN Empresa ON idEmpresa = fkEmpresa WHERE fkEmpresa = ${fkEmpresa};`
+  var instrucaoSql = `SELECT
+    idLote, estufa,
+    CASE
+    WHEN MAX(Temperatura) - 22 > ABS(MIN(Temperatura) - 22) THEN TRUNCATE(MAX(Temperatura) - 22, 2) + TRUNCATE(ABS(MIN(Umidade) - AVG(Umidade)), 2)
+    WHEN MAX(Temperatura) - 22 < ABS(MIN(Temperatura) - 22) THEN TRUNCATE(ABS(MIN(Temperatura) - 22), 2) + TRUNCATE(ABS(MIN(Umidade) - AVG(Umidade)), 2)
+    ELSE TRUNCATE(MAX(Temperatura) - 22, 2) + TRUNCATE(ABS(MIN(Umidade) - AVG(Umidade)), 2) END AS variacao_totalFINAL
+  FROM Dados 
+  JOIN Sensor ON idSensor = fkSensor 
+  LEFT JOIN Lote ON idLote = fkLote 
+  JOIN Empresa ON idEmpresa = fkEmpresa 
+  WHERE horarioCaptura >= NOW() - INTERVAL 1 DAY AND fkEmpresa = ${fkEmpresa}
+  GROUP BY idLote, estufa
+  ORDER BY variacao_totalFINAL DESC;`
   return database.executar(instrucaoSql);
 }
 
@@ -48,19 +60,16 @@ function kpi_3temp(fkEmpresa) {
 
 function kpi_3umid(fkEmpresa) {
   var instrucaoSql = `SELECT
-   HOUR(horarioCaptura) AS horaUmid,
-   CASE
-   WHEN MAX(Umidade) - AVG(Umidade) > ABS(MIN(Umidade) - AVG(Umidade)) THEN TRUNCATE(MAX(Umidade) - AVG(Umidade), 2) 
-   WHEN MAX(Umidade) - AVG(Umidade) < ABS(MIN(Umidade) - AVG(Umidade)) THEN TRUNCATE(ABS(MIN(Umidade) - AVG(Umidade)), 2)
-   ELSE TRUNCATE(MAX(Umidade) - AVG(Umidade), 2) END AS variacao_umidadeFINAL
- FROM Dados 
- JOIN Sensor ON idSensor = fkSensor 
- JOIN Lote ON idLote = fkLote 
- JOIN Empresa ON idEmpresa = fkEmpresa 
- WHERE horarioCaptura >= NOW() - INTERVAL 1 DAY AND fkEmpresa = ${fkEmpresa}
- GROUP BY HOUR(horarioCaptura)
- ORDER BY variacao_umidadeFINAL DESC 
- LIMIT 1;`
+    HOUR(horarioCaptura) AS horaUmid,
+    TRUNCATE(ABS(MIN(Umidade) - AVG(Umidade)), 2) as variacao_umidadeFINAL
+  FROM Dados 
+  JOIN Sensor ON idSensor = fkSensor 
+  JOIN Lote ON idLote = fkLote 
+  JOIN Empresa ON idEmpresa = fkEmpresa 
+  WHERE horarioCaptura >= NOW() - INTERVAL 1 DAY AND fkEmpresa = ${fkEmpresa}
+  GROUP BY HOUR(horarioCaptura)
+  ORDER BY variacao_umidadeFINAL DESC 
+  LIMIT 1;`
   return database.executar(instrucaoSql);
 }
 
@@ -115,10 +124,7 @@ function kpi_3tempLote(fkEmpresa, idLote) {
 function kpi_3umidLote(fkEmpresa, idLote) {
   var instrucaoSql = `SELECT
     HOUR(horarioCaptura) AS horaUmid,
-    CASE
-    WHEN MAX(Umidade) - AVG(Umidade) > ABS(MIN(Umidade) - AVG(Umidade)) THEN TRUNCATE(MAX(Umidade) - AVG(Umidade), 2) 
-    WHEN MAX(Umidade) - AVG(Umidade) < ABS(MIN(Umidade) - AVG(Umidade)) THEN TRUNCATE(ABS(MIN(Umidade) - AVG(Umidade)), 2)
-    ELSE TRUNCATE(MAX(Umidade) - AVG(Umidade), 2) END AS variacao_umidadeFINAL
+    TRUNCATE(ABS(MIN(Umidade) - AVG(Umidade)), 2) as variacao_umidadeFINAL
   FROM Dados 
   JOIN Sensor ON idSensor = fkSensor 
   JOIN Lote ON idLote = fkLote 

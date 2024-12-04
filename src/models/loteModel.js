@@ -17,9 +17,9 @@ function listar(fkEmpresa) {
   var instrucaoSql = `SELECT
     idLote, estufa,
     CASE
-    WHEN MAX(Temperatura) - 22 > ABS(MIN(Temperatura) - 22) THEN TRUNCATE(MAX(Temperatura) - 22, 2) + TRUNCATE(ABS(MIN(Umidade) - AVG(Umidade)), 2)
-    WHEN MAX(Temperatura) - 22 < ABS(MIN(Temperatura) - 22) THEN TRUNCATE(ABS(MIN(Temperatura) - 22), 2) + TRUNCATE(ABS(MIN(Umidade) - AVG(Umidade)), 2)
-    ELSE TRUNCATE(MAX(Temperatura) - 22, 2) + TRUNCATE(ABS(MIN(Umidade) - AVG(Umidade)), 2) END AS variacao_totalFINAL
+    WHEN MAX(Temperatura) - 22 > ABS(MIN(Temperatura) - 22) THEN TRUNCATE(MAX(Temperatura) - 22, 2) + TRUNCATE(ABS(MIN(Umidade) - 85), 2)
+    WHEN MAX(Temperatura) - 22 < ABS(MIN(Temperatura) - 22) THEN TRUNCATE(ABS(MIN(Temperatura) - 22), 2) + TRUNCATE(ABS(MIN(Umidade) - 85), 2)
+    ELSE TRUNCATE(MAX(Temperatura) - 22, 2) + TRUNCATE(ABS(MIN(Umidade) - 85), 2) END AS variacao_totalFINAL
   FROM Dados 
   JOIN Sensor ON idSensor = fkSensor 
   LEFT JOIN Lote ON idLote = fkLote 
